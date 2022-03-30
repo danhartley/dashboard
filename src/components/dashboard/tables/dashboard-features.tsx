@@ -5,13 +5,13 @@ export const Row = ({feature}): JSX.Element => {
 
     const _colSpan = 3;
 
-    const [selectedFeature, setSelectedFeature] = useState(null);
+    const [selectedFeature, setSelectedFeature] = useState('');
 
     const handleClick = e => {
         const id = e.target.getAttribute('data-table-id');
         id !== selectedFeature
             ? setSelectedFeature(id)
-            : setSelectedFeature(null);
+            : setSelectedFeature('');
     };
 
     return (

@@ -1,7 +1,7 @@
 import Slider from './dashboard-controls-slider';
-import { IControls } from './interfaces';
+import { ControlsProps } from './types';
 
-const DashboardControls = ({snapShots, snapShot, onChange}:IControls): JSX.Element => {
+const DashboardControls = ({snapShots, snapShot, onChange}:ControlsProps): JSX.Element => {
 
     const options = [
         {

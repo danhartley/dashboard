@@ -20,17 +20,17 @@ const getDashboard = (at?: AssistedTechnology) => {
     return dashboard;
 };
 
-const getDashboardData = async ({data, filter = (Object) => Object, map = (Object) => Object}) => {
+// const getDashboardData = async ({data, filter = (Object) => Object, map = (Object) => Object}) => {
 
-    const _data = { ...data };
+//     const _data = { ...data };
 
-    if(filter !== undefined)
-        _data.items = data.items.filter(filter);
-    if(map !== undefined)
-        _data.items = _data.items.map(map);
+//     if(filter !== undefined)
+//         _data.items = data.items.filter(filter);
+//     if(map !== undefined)
+//         _data.items = _data.items.map(map);
 
-    return await _data;
-};
+//     return await _data;
+// };
 
 const getPledgesByFeatures = async ({source, snapShot=null} : {source:Source, snapShot: string} ): Promise<IFeature> => {
 
@@ -65,7 +65,7 @@ const getPledgesByValues = ({source, snapShot=null}) => {
 
 const api = {
     getDashboard,
-    getDashboardData,
+    // getDashboardData,
     getPledgesByFeatures,
     getPledgesByValues
 };

@@ -1,6 +1,6 @@
-import { ISlider } from './interfaces';
+import { SliderProps } from './types';
 
-const Slider = ({intialState, range, onChange}:ISlider): JSX.Element => {
+const Slider = ({intialState, range, onChange}:SliderProps): JSX.Element => {
 
     const states = range.map((s,i) => {
         return {
@@ -26,7 +26,7 @@ const Slider = ({intialState, range, onChange}:ISlider): JSX.Element => {
         { 
             !states ? null :
             <>
-            <input type="range" id="slider" data-testid="slider" name="slider" min={min} onChange={handleChange} max={max} value={state.value} />
+            <input type="range" id="slider" name="slider" min={min} onChange={handleChange} max={max} value={state.value} />
             <label htmlFor="slider">{state.text}</label>
             </>
         }

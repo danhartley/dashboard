@@ -6,13 +6,13 @@ const Row = ({value}): JSX.Element => {
 
     const _colSpan = 4;
 
-    const [selectedValue, setSelectedValue] = useState(null);
+    const [selectedValue, setSelectedValue] = useState('');
 
     const handleClick = e => {
         const id = e.target.getAttribute('data-table-id');
         id !== selectedValue
             ? setSelectedValue(id)
-            : setSelectedValue(null);
+            : setSelectedValue('');
     };
 
     return (

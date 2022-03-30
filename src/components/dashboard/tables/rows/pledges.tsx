@@ -1,3 +1,5 @@
+import { PledgesRowProps } from 'src/components/dashboard/types';
+
 const PledgeRow = ({pledge, colSpan}): JSX.Element => {
 
     const isTrue = state => {
@@ -30,19 +32,7 @@ const PledgeRow = ({pledge, colSpan}): JSX.Element => {
     )
 };
 
-type IPledgesRow = {
-    source: string,
-    colSpan: number,
-    pledges: [
-        {
-            name: string;
-            honoured: number;
-            broken: number;
-        }
-    ]
-}
-
-export const PledgesRow = ({pledges, colSpan, source}: IPledgesRow):JSX.Element => {
+export const PledgesRow = ({pledges, colSpan, source}: PledgesRowProps): JSX.Element => {
     return (
         <>
         <tr>

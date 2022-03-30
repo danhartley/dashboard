@@ -2,23 +2,24 @@ import { useEffect, useState } from 'react';
 import DashboardFeaturesTable from './tables/dashboard-features';
 import DashboardValuesTable from './tables/dashboard-values';
 import DashboardControls from './dashboard-controls';
+import { IFeature, IValue } from './interfaces';
 import { Source } from './enums';
 
 import api from 'src/api/api';
 
 const ResponsibilityDashboard = (): JSX.Element => {
 
-    const [featuresData, setFeaturesData] = useState(null);
-    const [ValuesData, setValuesData] = useState(null);
+    const [featuresData, setFeaturesData] = useState<IFeature | null>(null);
+    const [ValuesData, setValuesData] = useState<IValue | null>(null);
     const [activeSnapShot, setActiveSnapShot] = useState('');
 
     const getData = async () => {        
-        const features = await api.getPledgesByFeatures({source:Source.Test, snapShot: activeSnapShot});
-        const featuresView = await api.getDashboardData({data:features});
+        const featuresView = await api.getPledgesByFeatures({source:Source.Test, snapShot: activeSnapShot});
+        // const featuresView = await api.getDashboardData({data:features});
         setFeaturesData(featuresView);
-        const values = await api.getPledgesByValues({source:Source.Test});
-        const valuesView = await api.getDashboardData({data:values});
-        setValuesData(valuesView);        
+        const valuesView = await api.getPledgesByValues({source:Source.Test});
+        // const valuesView = await api.getDashboardData({data:values});
+        setValuesData(valuesView);
     }
 
     useEffect(() => {
