@@ -9,7 +9,7 @@ const ResponsibilityDashboard = (): JSX.Element => {
                 <h1 className="text-2xl">Trustworthy AI</h1>
                     <DashboardFeaturesTable></DashboardFeaturesTable>                                            
                     <DashboardValuesTable></DashboardValuesTable>                        
-            </section>       
+            </section>
         </div>
     )
 };
