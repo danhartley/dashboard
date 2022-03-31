@@ -1,11 +1,20 @@
+import {
+    QueryClient,
+    QueryClientProvider,
+} from 'react-query';
+  
 import Dashboard from './components/dashboard/dashboard';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <>
       <header>
       </header>
-      <Dashboard></Dashboard>
+      <QueryClientProvider client={queryClient}>
+        <Dashboard></Dashboard>
+      </QueryClientProvider>
     </>
   );
 }

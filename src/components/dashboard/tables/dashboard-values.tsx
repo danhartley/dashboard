@@ -1,6 +1,13 @@
-import { useState } from 'react';
-
+import {
+    useMutation
+} from 'react-query';
+import { useEffect, useState } from 'react';
+import { IValue } from 'src/components/dashboard/interfaces';
 import { PledgesRow } from './rows/pledges';
+
+import DashboardControls from 'src/components/dashboard/dashboard-controls';
+
+import api from 'src/api/api';
 
 const Row = ({value}): JSX.Element => {
 
@@ -32,48 +39,68 @@ const Row = ({value}): JSX.Element => {
     );
 };
 
-const DashboardValuesTable = ({data}): JSX.Element => {
+const DashboardValuesTable = (): JSX.Element => {
 
-    const totals = data ? {
-        honoured: data.reduce((total, next) => total + next.honoured, 0),
-        broken: data.reduce((total, next) => total + next.broken, 0),
-        features: new Set(data.map(i => i.features)).size        
-    } : null;
+    const { mutateAsync } = useMutation(api.getPledgesByValues);
 
-    return (!data ? null :
+    const [values, setValues] = useState<IValue | null>(null);
+    const [activeSnapShot, setActiveSnapShot] = useState('');
+    const [totals, setTotals] = useState({honoured: 0, broken: 0, features: 0});
 
-        <>
-        <table data-table-id="values" className="w-4/5 text-xs sm:text-base">
-            <thead>
-                <tr>                
-                    <th colSpan={1}></th>
-                    <th colSpan={2}>Pledges</th>
-                    <th colSpan={2}>Project</th>
-                </tr>
-                <tr>
-                    <th className="w-2/5 text-left">Value</th>
-                    <th className="w-1/5">Honoured</th>
-                    <th className="w-1/5">Broken</th>
-                    <th className="w-1/5">Features</th>
-                </tr>
-            </thead>
-            <tbody>                
-                { data.map(value => {
-                    return (
-                        <Row key={value.name} value={value}></Row>
-                    )
-                }) }
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th className="text-left pt-2" scope="row">Totals</th>
-                    <th>{totals.honoured}</th>
-                    <th>{totals.broken}</th>
-                    <th>{totals.features}</th>
-                </tr>
-            </tfoot>
-        </table>
-        </>
+    const fetchValues = async () => {
+        
+        const data = await mutateAsync({source:process.env.REACT_APP_SERVER});
+
+        setValues(data);
+
+        const totals = data ? {
+            honoured: data.items.reduce((total, next) => total + next.honoured, 0),
+            broken: data.items.reduce((total, next) => total + next.broken, 0),
+            features: data.items.reduce((total, next) => total + next.features, 0),
+        } : null;
+
+        setTotals(totals);
+    };
+
+    useEffect(() => {
+        fetchValues();       
+    }, []);
+
+    return (!values ? null :
+
+        <figure className="w-full border-solid border-slate-300 border p-3 my-2">
+            <figcaption className="mb-4"><em>{values.source} Pledges By Values</em></figcaption>
+            <table data-table-id="values" className="w-4/5 text-xs sm:text-base">
+                <thead>
+                    <tr>                
+                        <th colSpan={1}></th>
+                        <th colSpan={2}>Pledges</th>
+                        <th colSpan={2}>Project</th>
+                    </tr>
+                    <tr>
+                        <th className="w-2/5 text-left">Value</th>
+                        <th className="w-1/5">Honoured</th>
+                        <th className="w-1/5">Broken</th>
+                        <th className="w-1/5">Features</th>
+                    </tr>
+                </thead>
+                <tbody>                
+                    { values.items.map(value => {
+                        return (
+                            <Row key={value.name} value={value}></Row>
+                        )
+                    }) }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th className="text-left pt-2" scope="row">Totals</th>
+                        <th>{totals.honoured}</th>
+                        <th>{totals.broken}</th>
+                        <th>{totals.features}</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </figure>
     );
 };
 

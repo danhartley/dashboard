@@ -1,5 +1,14 @@
-import { useState } from 'react';
+import {
+    useMutation
+} from 'react-query';
+
+import { useEffect, useState } from 'react';
 import { PledgesRow } from './rows/pledges';
+import { IFeature } from 'src/components/dashboard/interfaces';
+
+import DashboardControls from 'src/components/dashboard/dashboard-controls';
+
+import api from 'src/api/api';
 
 export const Row = ({feature}): JSX.Element => {
 
@@ -29,42 +38,64 @@ export const Row = ({feature}): JSX.Element => {
     );
 }
 
-export const DashboardFeaturesTable = ({data}) => {
+export const DashboardFeaturesTable = () => {
 
-    const totals = data ? {
-        honoured: data.reduce((total, next) => total + next.honoured, 0),
-        broken: data.reduce((total, next) => total + next.broken, 0)
-    } : null
+    const { mutateAsync } = useMutation(api.getPledgesByFeatures);
 
-    return (!data ? <div>No data!</div> : 
+    const [features, setFeatures] = useState<IFeature | null>(null);
+    const [activeSnapShot, setActiveSnapShot] = useState('');
+    const [totals, setTotals] = useState({honoured: 0, broken: 0});
+
+    const fetchFeatures = async () => {
         
-        <table data-table-id="features" className="w-4/5 text-xs sm:text-base">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th colSpan={2}>Pledges</th>
-                </tr>
-                <tr>
-                    <th className="text-left w-3/5">Feature</th>
-                    <th className="w-1/5">Honoured</th>
-                    <th className="w-1/5">Broken</th>
-                </tr>
-            </thead>
-            <tbody>
-                { data.map(feature => {
-                    return(
-                        <Row key={feature.name} feature={feature}></Row>
-                    )
-                }) }
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th className="text-left pt-2" scope="row">Totals</th>
-                    <th>{totals.honoured}</th>
-                    <th>{totals.broken}</th>
-                </tr>
-            </tfoot>
-        </table>
+        const data = await mutateAsync({source:process.env.REACT_APP_SERVER, snapShot: activeSnapShot});
+
+        setFeatures(data);
+
+        const totals = data ? {
+            honoured: data.items.reduce((total, next) => total + next.honoured, 0),
+            broken: data.items.reduce((total, next) => total + next.broken, 0)
+        } : null;
+
+        setTotals(totals);
+    };
+
+    useEffect(() => {
+        fetchFeatures();       
+    }, [activeSnapShot]);
+
+    return (!features ? <div>No data!</div> :    
+        <figure className="w-full border-solid border-slate-300 border p-3 my-2">
+            <figcaption className="mb-4"><em>{features.source} Pledges By IFeature</em></figcaption>
+            <table data-table-id="features" className="w-4/5 text-xs sm:text-base">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colSpan={2}>Pledges</th>
+                    </tr>
+                    <tr>
+                        <th className="text-left w-3/5">Feature</th>
+                        <th className="w-1/5">Honoured</th>
+                        <th className="w-1/5">Broken</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { features.items.map(feature => {
+                        return(
+                            <Row key={feature.name} feature={feature}></Row>
+                        )
+                    }) }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th className="text-left pt-2" scope="row">Totals</th>
+                        <th>{totals.honoured}</th>
+                        <th>{totals.broken}</th>
+                    </tr>
+                </tfoot>
+            </table>
+            <DashboardControls snapShot={features.snapShot} snapShots={features.snapShots} onChange={setActiveSnapShot}></DashboardControls>
+        </figure>
     );
 };
 

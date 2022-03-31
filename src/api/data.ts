@@ -419,7 +419,7 @@ const getPledgesByFeatures = ({snapShot=''}) => {
     });
 };
 
-const getPledgesByValues = async ({snapShot=''}) => {
+const getPledgesByValues = async () => {
 
     const data = {
             source: 'Trustworthy AI',
@@ -448,7 +448,7 @@ const getPledgesByValues = async ({snapShot=''}) => {
             }]
     };
 
-    const features = await getPledgesByFeatures({snapShot});
+    const features = await getPledgesByFeatures({snapShot: null});
 
     data.items = data.items.map(v => {
         const f = features.items.find(f => f.value === v.name);

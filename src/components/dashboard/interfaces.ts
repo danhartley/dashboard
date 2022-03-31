@@ -26,6 +26,5 @@ export interface IFeature {
 
 export interface IValue {
     source: string;
-    snapShot?: string;
     items: IItem[];
 }
