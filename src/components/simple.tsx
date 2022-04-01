@@ -1,6 +1,11 @@
+import SimpleChild from "./simple-child";
+
 const Simple = () => {
     return(
-        <span>Hey, world!</span>
+        <>
+        <span>Hello from Simple!</span>
+        <SimpleChild></SimpleChild>
+        </>
     )
 };
 

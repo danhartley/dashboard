@@ -1,14 +1,9 @@
-import {
-    useMutation
-} from 'react-query';
-
 import { useEffect, useState } from 'react';
+import { useFeatures } from './useFeatures';
 import { PledgesRow } from './rows/pledges';
 import { IFeature } from 'src/components/dashboard/interfaces';
 
 import DashboardControls from 'src/components/dashboard/dashboard-controls';
-
-import api from 'src/api/api';
 
 export const Row = ({feature}): JSX.Element => {
 
@@ -40,11 +35,11 @@ export const Row = ({feature}): JSX.Element => {
 
 export const DashboardFeaturesTable = () => {
 
-    const { mutateAsync } = useMutation(api.getPledgesByFeatures);
-
     const [features, setFeatures] = useState<IFeature | null>(null);
     const [activeSnapShot, setActiveSnapShot] = useState('');
     const [totals, setTotals] = useState({honoured: 0, broken: 0});
+
+    const { mutateAsync } = useFeatures();
 
     const fetchFeatures = async () => {
         

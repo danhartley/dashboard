@@ -21,6 +21,14 @@ describe('Slider', () => {
         fireEvent.change(slider, { target: { value: "1" } });
         
         expect(handleChange).toHaveBeenCalled();
+        expect(handleChange).toHaveBeenCalledTimes(1);
+        expect(handleChange).toHaveBeenCalledWith("23 Feb 2022");
+       
+        fireEvent.change(slider, { target: { value: "2" } });
+        
+        expect(handleChange).toHaveBeenCalled();
+        expect(handleChange).toHaveBeenCalledTimes(2);
+        expect(handleChange).toHaveBeenCalledWith("23 Mar 2022");
 
     });
 });
