@@ -3,8 +3,6 @@ import { ControlsProps } from './types';
 
 const DashboardControls = ({snapShots, snapShot, onChange}:ControlsProps): JSX.Element => {
 
-    console.log('DashboardControls')
-
     const options = [
         {
             text: 'Table',
@@ -23,16 +21,18 @@ const DashboardControls = ({snapShots, snapShot, onChange}:ControlsProps): JSX.E
     type ChangeEvent = React.KeyboardEvent | React.MouseEvent;
 
     const handleDisplayOptionChange = (e: ChangeEvent) => {
-        (e.target as HTMLButtonElement).disabled = true;        
+        const target = (e.target as HTMLButtonElement);
+        target.setAttribute('aria-selected', "true");
+        target.disabled = true;
     }
 
     return (
         <section>
             <nav className="flex justify-center">
-                <ul className="flex flex-row w-4/5 m-4 justify-evenly">
+                <ul className="flex flex-row w-4/5 m-4 justify-evenly" role="tablist">
                     {
                         options.map(o => {
-                            return <li key={o.text}><button onClick={handleDisplayOptionChange} className="border p-2 border-solid">{o.text}</button></li>
+                            return <li key={o.text}><button role="tab" aria-selected="false" onClick={handleDisplayOptionChange} className="border p-2 border-solid">{o.text}</button></li>
                         })
                     }
                 </ul>                     

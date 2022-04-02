@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import { DashboardFeaturesTable, Row} from './dashboard-features';
+import { Row} from './dashboard-features';
 
 const Wrapper = ({ children }) => {
     return (
@@ -12,7 +12,7 @@ const Wrapper = ({ children }) => {
 
 describe("Row", () => {
 
-    const feature = {
+    const featurePledges = {
         name: 'Human agency and oversight',
         honoured: 1,
         broken: 0,
@@ -31,7 +31,7 @@ describe("Row", () => {
     };
 
     test('Component returns features', () => {
-        render(<Wrapper><Row feature={feature}></Row></Wrapper>);
+        render(<Wrapper><Row featurePledges={featurePledges}></Row></Wrapper>);
         expect(screen.getByText('Human agency and oversight')).toBeTruthy();
     });
 });

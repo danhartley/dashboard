@@ -1,6 +1,6 @@
 import { IFeature } from 'src/components/dashboard/interfaces';
 
-const getPledgesByFeatures = ({snapShot=''}) => {
+const getPledgesByFeatures = ({snapShot}) => {
 
     const data:Array<IFeature> = [{
                 "source": "Trustworthy AI",

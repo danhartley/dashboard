@@ -7,10 +7,6 @@ jest.mock('./simple-child', () => ({}) => <>{<span>I mock you not. I do, says Mo
 
 describe('Simple', () => {
 
-    beforeEach(() => {
-        jest.resetModules();
-    });
-
     test('Check Simple message', () => {
         const { getByText } = render(<Simple></Simple>);
         expect(getByText('Hello from Simple!')).toBeInTheDocument();

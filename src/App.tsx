@@ -2,6 +2,7 @@ import {
     QueryClient,
     QueryClientProvider,
 } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools'
   
 import Dashboard from './components/dashboard/dashboard';
 
@@ -14,6 +15,7 @@ function App() {
       </header>
       <QueryClientProvider client={queryClient}>
         <Dashboard></Dashboard>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
   );

@@ -20,9 +20,9 @@ const getDashboard = (at?: AssistedTechnology) => {
     return dashboard;
 };
 
-const getPledgesByFeatures = async ({source, snapShot=null} : {source:string, snapShot: string} ): Promise<IFeature> => {
+const getPledgesByFeatures = async ({source, snapShot} : {source:string, snapShot: string | null} ) => {
 
-    let data: IFeature = { source: "", snapShot: "", items: [] };
+    let data: IFeature = { source, snapShot, items: [] };
 
     switch(source) {
         case Source.Test.toString():
@@ -32,7 +32,7 @@ const getPledgesByFeatures = async ({source, snapShot=null} : {source:string, sn
             data = await local.getPledgesByFeatures({snapShot});
     }
 
-    return data;
+    return await data;
 
 };
 

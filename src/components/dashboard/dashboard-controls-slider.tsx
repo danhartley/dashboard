@@ -2,6 +2,8 @@ import { SliderProps } from './types';
 
 const Slider = ({intialState, range, onChange}:SliderProps): JSX.Element => {
 
+    if(range.length === 0) return <div>Cannot return slider without a range</div>;
+
     const states = range.map((s,i) => {
         return {
             value: i,
@@ -17,19 +19,13 @@ const Slider = ({intialState, range, onChange}:SliderProps): JSX.Element => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = parseInt(e.target.value);
         const change = states.find(h => h.value === value);
-        if(change)
-            onChange(change.text);
+        onChange(change.text);
     };
 
     return (    
         <>
-        { 
-            !states ? null :
-            <>
-            <input type="range" id="slider" name="slider" min={min} onChange={handleChange} max={max} value={state.value} />
-            <label htmlFor="slider">{state.text}</label>
-            </>
-        }
+        <input type="range" id="slider" name="slider" min={min} onChange={handleChange} max={max} value={state.value} />
+        <label htmlFor="slider">{state.text}</label>           
         </>
     )
 };
