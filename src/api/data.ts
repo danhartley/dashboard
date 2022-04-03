@@ -1,10 +1,10 @@
-import { IFeature } from 'src/components/dashboard/interfaces';
+import { IPledgesByFeatureSnapshot } from 'src/components/dashboard/interfaces';
 
-const getPledgesByFeatures = ({snapShot}) => {
+const getPledgesByFeatures = ({snapshot}) => {
 
-    const data:Array<IFeature> = [{
+    const data:Array<IPledgesByFeatureSnapshot> = [{
                 "source": "Trustworthy AI",
-                "snapShot": "23 Jan 2022",
+                "snapshot": "23 Jan 2022",
                 "items": [{
                         "id": 1,
                         "name": "Human agency and oversight",
@@ -206,7 +206,7 @@ const getPledgesByFeatures = ({snapShot}) => {
             },
             {
                 "source": "Trustworthy AI",
-                "snapShot": "23 Feb 2022",
+                "snapshot": "23 Feb 2022",
                 "items": [{
                         "id": 1,
                         "name": "Human agency and oversight",
@@ -408,11 +408,11 @@ const getPledgesByFeatures = ({snapShot}) => {
             }
     ];
 
-    const _snapShot = snapShot || data[0].snapShot;
+    const _snapshot = snapshot || data[0].snapshot;
 
-    return new Promise<IFeature>((resolve, reject) => {
+    return new Promise<IPledgesByFeatureSnapshot>((resolve, reject) => {
         data 
-            ? resolve({ ...data.filter(d => d.snapShot === _snapShot)[0], snapShots: data.map(d => d.snapShot)})
+            ? resolve({ ...data.filter(d => d.snapshot === _snapshot)[0], snapshots: data.map(d => d.snapshot)})
             : reject({
                 error: 'No data'            
             });
@@ -448,7 +448,7 @@ const getPledgesByValues = async () => {
             }]
     };
 
-    const features = await getPledgesByFeatures({snapShot: null});
+    const features = await getPledgesByFeatures({snapshot: null});
 
     data.items = data.items.map(v => {
         const f = features.items.find(f => f.value === v.name);

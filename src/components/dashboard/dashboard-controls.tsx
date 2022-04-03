@@ -1,7 +1,7 @@
 import Slider from './dashboard-controls-slider';
 import { ControlsProps } from './types';
 
-const DashboardControls = ({snapShots, snapShot, onChange}:ControlsProps): JSX.Element => {
+const DashboardControls = ({snapshots, snapshot, onChange}:ControlsProps): JSX.Element => {
 
     const options = [
         {
@@ -38,7 +38,7 @@ const DashboardControls = ({snapShots, snapShot, onChange}:ControlsProps): JSX.E
                 </ul>                     
             </nav>
             <div className="flex justify-center">
-                <Slider intialState={snapShot} range={snapShots} onChange={onChange}></Slider>    
+                <Slider intialState={snapshot} range={snapshots} onChange={onChange}></Slider>    
             </div>
         </section>
     )

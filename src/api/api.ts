@@ -1,7 +1,7 @@
 import local from './data';
 
 import { AssistedTechnology, DashboardStyle, Source } from '../components/dashboard/enums';
-import { IFeature, IValue } from '../components/dashboard/interfaces';
+import { IPledgesByFeatureSnapshot, IValue } from '../components/dashboard/interfaces';
 
 const getDashboard = (at?: AssistedTechnology) => {
     
@@ -20,16 +20,16 @@ const getDashboard = (at?: AssistedTechnology) => {
     return dashboard;
 };
 
-const getPledgesByFeatures = async ({source, snapShot} : {source:string, snapShot: string | null} ) => {
+const getPledgesByFeatures = async ({source, snapshot} : {source:string, snapshot: string | null} ) => {
 
-    let data: IFeature = { source, snapShot, items: [] };
+    let data: IPledgesByFeatureSnapshot = { source, snapshot, items: [] };
 
     switch(source) {
         case Source.Test.toString():
-            data = await local.getPledgesByFeatures({snapShot});
+            data = await local.getPledgesByFeatures({snapshot});
             break;
         default:
-            data = await local.getPledgesByFeatures({snapShot});
+            data = await local.getPledgesByFeatures({snapshot});
     }
 
     return await data;

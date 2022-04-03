@@ -12,8 +12,8 @@ export type SliderProps = {
 }
 
 export type ControlsProps = {
-    snapShot: string, 
-    snapShots: string[], 
+    snapshot: string, 
+    snapshots: string[], 
     onChange: Dispatch<SetStateAction<string>>    
 }
 

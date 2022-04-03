@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useFeature } from './useFeature';
+import { useFeatures } from './useFeatures';
 import { PledgesRow } from './rows/pledges';
-import { IFeature, IPledge } from 'src/components/dashboard/interfaces';
+import { IPledgesByFeatureSnapshot, IPledge } from 'src/components/dashboard/interfaces';
 
 import DashboardControls from 'src/components/dashboard/dashboard-controls';
 
@@ -42,32 +42,12 @@ export const Row = ({featurePledges}:{featurePledges:FeaturePledges}) => {
 
 export const DashboardFeaturesTable = () => {
 
-    const source = process.env.REACT_APP_SERVER || 'Test';
-
-    const [features, setFeatures] = useState<IFeature | null>(null);
-    const [activeSnapShot, setActiveSnapShot] = useState(null);
+    const [source, setSource] = useState<string>(process.env.REACT_APP_SERVER);
+    const [activesnapshot, setActivesnapshot] = useState(null);
     const [totals, setTotals] = useState({honoured: 0, broken: 0});
-    const { status, data, isLoading, isError, isSuccess, isIdle, error, isFetching, isStale, isLoadingError } = useFeature({source:source, snapShot: activeSnapShot});
+    const { data, isLoading, isError, isSuccess, error } = useFeatures({source:source, snapshot: activesnapshot});
 
     const fetchFeatures = async () => {
-        
-        setFeatures(data);
-
-        console.log('source', source)
-        console.log('activeSnapShot', activeSnapShot)
-        console.log('status', status)
-
-        console.log('received data', data)
-        console.log('isLoading',isLoading)
-        console.log('isError',isError)
-        console.log('isSuccess',isSuccess)
-        console.log('isIdle',isIdle)
-        console.log('error',error)
-
-        console.log('isFetching',isFetching)
-        console.log('isStale',isStale)
-        console.log('status',status)
-        console.log('isLoadingError', isLoadingError);
 
         if(!data || data === undefined) return;
 
@@ -81,55 +61,52 @@ export const DashboardFeaturesTable = () => {
 
     useEffect(() => {
         fetchFeatures();       
-    }, [activeSnapShot]);
-    
+    }, [activesnapshot]);
 
-    if (isLoading) {
+    if(isLoading) {
         return <span>Loading...</span>
       }
     
-    if (isError) {
-    return <span>Error: {error}</span>
+    if(isError) {
+        return <span>Error: {error}</span>
     }
-
-    return (
-        
-        
-
-        !features ? <div>No data!</div> :    
-
-        <figure className="w-full border-solid border-slate-300 border p-3 my-2">
-            <figcaption className="mb-4"><em>{features.source} Pledges By IFeature</em></figcaption>
-            <table data-table-id="features" className="w-4/5 text-xs sm:text-base">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th colSpan={2}>Pledges</th>
-                    </tr>
-                    <tr>
-                        <th className="text-left w-3/5">Feature</th>
-                        <th className="w-1/5">Honoured</th>
-                        <th className="w-1/5">Broken</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { features.items.map(feature => {
-                        return(
-                            <Row key={feature.name} featurePledges={feature}></Row>
-                        )
-                    }) }
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th className="text-left pt-2" scope="row">Totals</th>
-                        <th>{totals.honoured}</th>
-                        <th>{totals.broken}</th>
-                    </tr>
-                </tfoot>
-            </table>
-            <DashboardControls snapShot={features.snapShot} snapShots={features.snapShots} onChange={setActiveSnapShot}></DashboardControls>
-        </figure>
-    );
+    
+    if(isSuccess) {
+        return (
+            
+            <figure className="w-full border-solid border-slate-300 border p-3 my-2">
+                <figcaption className="mb-4"><em>{data.source} Pledges By IPledgesByFeatureSnapshot</em></figcaption>
+                <table data-table-id="features" className="w-4/5 text-xs sm:text-base">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th colSpan={2}>Pledges</th>
+                        </tr>
+                        <tr>
+                            <th className="text-left w-3/5">Feature</th>
+                            <th className="w-1/5">Honoured</th>
+                            <th className="w-1/5">Broken</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { data.items.map(feature => {
+                            return(
+                                <Row key={feature.name} featurePledges={feature}></Row>
+                            )
+                        }) }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th className="text-left pt-2" scope="row">Totals</th>
+                            <th>{totals.honoured}</th>
+                            <th>{totals.broken}</th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <DashboardControls snapshot={data.snapshot} snapshots={data.snapshots} onChange={setActivesnapshot}></DashboardControls>
+            </figure>
+        );
+    }
 };
 
 export default DashboardFeaturesTable;

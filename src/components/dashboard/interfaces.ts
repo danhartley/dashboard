@@ -16,10 +16,10 @@ interface IItem {
     features?: number;
 }
 
-export interface IFeature {
+export interface IPledgesByFeatureSnapshot {
     source: Source | string;
-    snapShot: string;
-    snapShots?: Array<string>,
+    snapshot: string;
+    snapshots?: Array<string>,
     items: IItem[];
 }
 

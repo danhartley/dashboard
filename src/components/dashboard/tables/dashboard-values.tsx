@@ -36,17 +36,13 @@ const Row = ({value}): JSX.Element => {
 
 const DashboardValuesTable = (): JSX.Element => {
 
-    const { mutateAsync } = useValues();
-
-    const [values, setValues] = useState<IValue | null>(null);
-    const [activeSnapShot, setActiveSnapShot] = useState('');
+    const [source, setSource] = useState<string>(process.env.REACT_APP_SERVER);
     const [totals, setTotals] = useState({honoured: 0, broken: 0, features: 0});
+    const { data, isLoading, isError, isSuccess, error } = useValues({source:source});
 
     const fetchValues = async () => {
         
-        const data = await mutateAsync({source:process.env.REACT_APP_SERVER});
-
-        setValues(data);
+        if(!data || data === undefined) return;
 
         const totals = data ? {
             honoured: data.items.reduce((total, next) => total + next.honoured, 0),
@@ -61,42 +57,52 @@ const DashboardValuesTable = (): JSX.Element => {
         fetchValues();       
     }, []);
 
-    return (!values ? null :
+    if (isLoading) {
+        return <span>Loading...</span>
+      }
+    
+    if (isError) {
+    return <span>Error: {error}</span>
+    }
 
-        <figure className="w-full border-solid border-slate-300 border p-3 my-2">
-            <figcaption className="mb-4"><em>{values.source} Pledges By Values</em></figcaption>
-            <table data-table-id="values" className="w-4/5 text-xs sm:text-base">
-                <thead>
-                    <tr>                
-                        <th colSpan={1}></th>
-                        <th colSpan={2}>Pledges</th>
-                        <th colSpan={2}>Project</th>
-                    </tr>
-                    <tr>
-                        <th className="w-2/5 text-left">Value</th>
-                        <th className="w-1/5">Honoured</th>
-                        <th className="w-1/5">Broken</th>
-                        <th className="w-1/5">Features</th>
-                    </tr>
-                </thead>
-                <tbody>                
-                    { values.items.map(value => {
-                        return (
-                            <Row key={value.name} value={value}></Row>
-                        )
-                    }) }
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th className="text-left pt-2" scope="row">Totals</th>
-                        <th>{totals.honoured}</th>
-                        <th>{totals.broken}</th>
-                        <th>{totals.features}</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </figure>
-    );
+    if (isSuccess) {
+        return (
+
+            <figure className="w-full border-solid border-slate-300 border p-3 my-2">
+                <figcaption className="mb-4"><em>{data.source} Pledges By Values</em></figcaption>
+                <table data-table-id="values" className="w-4/5 text-xs sm:text-base">
+                    <thead>
+                        <tr>                
+                            <th colSpan={1}></th>
+                            <th colSpan={2}>Pledges</th>
+                            <th colSpan={2}>Project</th>
+                        </tr>
+                        <tr>
+                            <th className="w-2/5 text-left">Value</th>
+                            <th className="w-1/5">Honoured</th>
+                            <th className="w-1/5">Broken</th>
+                            <th className="w-1/5">Features</th>
+                        </tr>
+                    </thead>
+                    <tbody>                
+                        { data.items.map(value => {
+                            return (
+                                <Row key={value.name} value={value}></Row>
+                            )
+                        }) }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th className="text-left pt-2" scope="row">Totals</th>
+                            <th>{totals.honoured}</th>
+                            <th>{totals.broken}</th>
+                            <th>{totals.features}</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </figure>
+        );
+    }
 };
 
 export default DashboardValuesTable;
