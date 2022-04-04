@@ -1,3 +1,4 @@
+import nock from 'nock';
 import { render, screen } from '@testing-library/react';
 import { renderHook, act } from '@testing-library/react-hooks'
 import { useFeatures } from './useFeatures';
@@ -17,18 +18,21 @@ import { IPledgesByFeatureSnapshot } from '../interfaces';
     )
 }
 
-const Wrapper = ({ children }) => {
-    const queryClient = new QueryClient()
-    return ({ children }) => (
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    )
-};
-
 describe('DashboardFeaturesTable', () => {    
-    test("Should return 7 features (items) for feature for local Test data", async () => {
-        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: null}), { wrapper: createWrapper() });        
+    test.skip("Should return 7 features (items) for feature for local Test data", async () => {
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: null}), { wrapper: createWrapper() });
+
+
+        // const expectation = nock('')
+        // .get('snapshots.json')
+        // .reply(200, {
+        //   answer: 42
+        // });
+        
         await waitFor(() => result.current.isSuccess);
-        expect(result.current.data.items.length).toEqual(7);
+        // expect(result.current.data.items.length).toEqual(7);
+
+        expect(result.current.data).toEqual({answer: 42});
     });
     test("Should return 1 feature (item) for feature for mocked data", async () => {
         const items = [{

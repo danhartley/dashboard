@@ -43,9 +43,12 @@ export const Row = ({featurePledges}:{featurePledges:FeaturePledges}) => {
 export const DashboardFeaturesTable = () => {
 
     const [source, setSource] = useState<string>(process.env.REACT_APP_SERVER);
-    const [activesnapshot, setActivesnapshot] = useState(null);
+    const [activesnapshot, setActivesnapshot] = useState('23 Jan 2022');
     const [totals, setTotals] = useState({honoured: 0, broken: 0});
-    const { data, isLoading, isError, isSuccess, error } = useFeatures({source:source, snapshot: activesnapshot});
+    const { data, isLoading, isError, isSuccess, error, status } = useFeatures({source:source, snapshot: activesnapshot});
+
+    console.log('status', status);
+    console.log('data', data);
 
     const fetchFeatures = async () => {
 
@@ -54,14 +57,13 @@ export const DashboardFeaturesTable = () => {
         const totals = {
             honoured: data.items.reduce((total, next) => total + next.honoured, 0),
             broken: data.items.reduce((total, next) => total + next.broken, 0)
-        };
-
+        };        
         setTotals(totals);
     };
 
     useEffect(() => {
-        fetchFeatures();       
-    }, [activesnapshot]);
+        fetchFeatures();
+    }, [data]);
 
     if(isLoading) {
         return <span>Loading...</span>
@@ -71,9 +73,8 @@ export const DashboardFeaturesTable = () => {
         return <span>Error: {error}</span>
     }
     
-    if(isSuccess) {
-        return (
-            
+    if(isSuccess && data !== undefined) {
+        return (            
             <figure className="w-full border-solid border-slate-300 border p-3 my-2">
                 <figcaption className="mb-4"><em>{data.source} Pledges By IPledgesByFeatureSnapshot</em></figcaption>
                 <table data-table-id="features" className="w-4/5 text-xs sm:text-base">
@@ -106,6 +107,10 @@ export const DashboardFeaturesTable = () => {
                 <DashboardControls snapshot={data.snapshot} snapshots={data.snapshots} onChange={setActivesnapshot}></DashboardControls>
             </figure>
         );
+    } else {
+        return (
+            <div>Undefined data</div>
+        )
     }
 };
 

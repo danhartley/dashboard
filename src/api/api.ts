@@ -2,6 +2,22 @@ import local from './data';
 
 import { AssistedTechnology, DashboardStyle, Source } from '../components/dashboard/enums';
 import { IPledgesByFeatureSnapshot, IValue } from '../components/dashboard/interfaces';
+import client from './api-browser-client';
+
+const getData = async (snapshot): Promise<IPledgesByFeatureSnapshot> => {
+
+    const endpoint = 'snapshots.json';
+    const response = await client(endpoint);    
+    
+    const _snapshot = snapshot || response[0].snapshot;
+
+    const data = { 
+          ...response.filter(d => d.snapshot === _snapshot)[0]
+        , snapshots: response.map(d => d.snapshot)
+    };
+    
+    return await data;
+};
 
 const getDashboard = (at?: AssistedTechnology) => {
     
@@ -22,17 +38,17 @@ const getDashboard = (at?: AssistedTechnology) => {
 
 const getPledgesByFeatures = async ({source, snapshot} : {source:string, snapshot: string | null} ) => {
 
-    let data: IPledgesByFeatureSnapshot = { source, snapshot, items: [] };
+    let data: Promise<IPledgesByFeatureSnapshot>;
 
     switch(source) {
         case Source.Test.toString():
-            data = await local.getPledgesByFeatures({snapshot});
+            data = getData(snapshot);
             break;
         default:
-            data = await local.getPledgesByFeatures({snapshot});
+            data = getData(snapshot);
     }
 
-    return await data;
+    return data;
 
 };
 
@@ -52,6 +68,7 @@ const getPledgesByValues = ({source} : {source:string} ): Promise<IValue> => {
 }
 
 const api = {
+    getData,
     getDashboard,
     getPledgesByFeatures,
     getPledgesByValues

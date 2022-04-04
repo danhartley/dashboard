@@ -10,5 +10,5 @@ const getfeatures = async ({source, snapshot}): Promise<IPledgesByFeatureSnapsho
 
 export const useFeatures = ({source, snapshot}) => {
     const key = [{source: source, snapshot: snapshot}];
-    return useQuery(key, () => getfeatures({source, snapshot}), {cacheTime:0});
+    return useQuery(key, () => getfeatures({source, snapshot}));
 };
