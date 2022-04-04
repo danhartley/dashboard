@@ -8,12 +8,14 @@ const getData = async (snapshot): Promise<IPledgesByFeatureSnapshot> => {
 
     const endpoint = 'snapshots.json';
     const response = await client(endpoint);    
+
+    console.log('snapshot', snapshot)
     
     const _snapshot = snapshot || response[0].snapshot;
 
     const data = { 
           ...response.filter(d => d.snapshot === _snapshot)[0]
-        , snapshots: response.map(d => d.snapshot)
+        , snapshots: response.filter(d => d.items.length > 0).map(d => d.snapshot)
     };
     
     return await data;
@@ -38,7 +40,7 @@ const getDashboard = (at?: AssistedTechnology) => {
 
 const getPledgesByFeatures = async ({source, snapshot} : {source:string, snapshot: string | null} ) => {
 
-    let data: Promise<IPledgesByFeatureSnapshot>;
+    let data: Promise<IPledgesByFeatureSnapshot> | any;
 
     switch(source) {
         case Source.Test.toString():

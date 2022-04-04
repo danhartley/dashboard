@@ -21,6 +21,7 @@ export interface IPledgesByFeatureSnapshot {
     snapshot: string;
     snapshots?: Array<string>,
     items: IItem[];
+    error?: any
 }
 
 

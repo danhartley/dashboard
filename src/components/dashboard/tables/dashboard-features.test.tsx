@@ -1,5 +1,4 @@
-import nock from 'nock';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within, fireEvent } from '@testing-library/react';
 import { renderHook, act } from '@testing-library/react-hooks'
 import { useFeatures } from './useFeatures';
 import api from 'src/api/api';
@@ -19,22 +18,32 @@ import { IPledgesByFeatureSnapshot } from '../interfaces';
 }
 
 describe('DashboardFeaturesTable', () => {    
-    test.skip("Should return 7 features (items) for feature for local Test data", async () => {
-        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: null}), { wrapper: createWrapper() });
-
-
-        // const expectation = nock('')
-        // .get('snapshots.json')
-        // .reply(200, {
-        //   answer: 42
-        // });
-        
+    test("Should return 7 features (items) for feature for January", async () => {
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: '23 Jan 2022'}), { wrapper: createWrapper() });
         await waitFor(() => result.current.isSuccess);
-        // expect(result.current.data.items.length).toEqual(7);
-
-        expect(result.current.data).toEqual({answer: 42});
+        expect(result.current.data.items.length).toEqual(7);
     });
-    test("Should return 1 feature (item) for feature for mocked data", async () => {
+    test("Should return 7 features (items) for feature for February", async () => {
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: '23 Feb 2022'}), { wrapper: createWrapper() });
+        await waitFor(() => result.current.isSuccess);
+        expect(result.current.data.items.length).toEqual(7);
+    });
+    test("Should return 0 features (items) for feature for March", async () => {
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: '23 Mar 2022'}), { wrapper: createWrapper() });
+        await waitFor(() => result.current.isSuccess);
+        expect(result.current.data.items.length).toEqual(0);
+    });
+    test("Should return correct honoured and broken totals for January snapshot", async () => {
+        const queryClient = new QueryClient();
+        const { getByText } = render(<QueryClientProvider client={queryClient}><DashboardFeaturesTable></DashboardFeaturesTable></QueryClientProvider>);
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: '23 Jan 2022'}), { wrapper: createWrapper() });
+        await waitFor(() => result.current.isSuccess);
+        expect(getByText('Totals')).toBeInTheDocument();        
+        const row = screen.getByText('Totals').closest("tr");
+        expect(within(row).getByText('20')).toBeInTheDocument();
+        expect(within(row).getByText('8')).toBeInTheDocument();
+    });
+    test("Should return 1 feature (item) for feature for in test mocked data", async () => {
         const items = [{
             id: 1,
             name: 'Human agency and oversight',
@@ -58,16 +67,24 @@ describe('DashboardFeaturesTable', () => {
         jest.spyOn(api, "getPledgesByFeatures").mockImplementation(() => {
             return Promise.resolve(expected)
           });
-        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: null}), { wrapper: createWrapper() });        
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: null}), { wrapper: createWrapper() });
         await waitFor(() => result.current.isSuccess);
         expect(result.current.data.items.length).toEqual(1);
     });
-    test("Should handle no data for mocked data", async () => {
+    test("Should handle no data for in test mocked data", async () => {
         jest.spyOn(api, "getPledgesByFeatures").mockImplementation(() => {
             return Promise.resolve(null)
           });
         const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: null}), { wrapper: createWrapper() });        
         await waitFor(() => result.current.isSuccess);
+        const queryClient = new QueryClient();
+        const { getByText } = render(<QueryClientProvider client={queryClient}><DashboardFeaturesTable></DashboardFeaturesTable></QueryClientProvider>);
+        expect(getByText('Loading...')).toBeInTheDocument();
+    });
+    test("Should handle error for in test mocked data", async () => {
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: 'Bad date'}), { wrapper: createWrapper() });        
+        console.log(result.current)
+        await waitFor(() => result.current.isLoading && result.current.data === undefined);
         const queryClient = new QueryClient();
         const { getByText } = render(<QueryClientProvider client={queryClient}><DashboardFeaturesTable></DashboardFeaturesTable></QueryClientProvider>);
         expect(getByText('Loading...')).toBeInTheDocument();

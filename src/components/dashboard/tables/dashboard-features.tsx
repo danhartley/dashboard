@@ -47,8 +47,8 @@ export const DashboardFeaturesTable = () => {
     const [totals, setTotals] = useState({honoured: 0, broken: 0});
     const { data, isLoading, isError, isSuccess, error, status } = useFeatures({source:source, snapshot: activesnapshot});
 
-    console.log('status', status);
-    console.log('data', data);
+    // console.log('status', status);
+    // console.log('data', data);
 
     const fetchFeatures = async () => {
 
@@ -107,9 +107,11 @@ export const DashboardFeaturesTable = () => {
                 <DashboardControls snapshot={data.snapshot} snapshots={data.snapshots} onChange={setActivesnapshot}></DashboardControls>
             </figure>
         );
-    } else {
+    }
+
+    if(data === undefined) {
         return (
-            <div>Undefined data</div>
+            <div>No data</div>
         )
     }
 };
