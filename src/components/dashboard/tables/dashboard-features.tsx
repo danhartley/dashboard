@@ -43,12 +43,9 @@ export const Row = ({featurePledges}:{featurePledges:FeaturePledges}) => {
 export const DashboardFeaturesTable = () => {
 
     const [source, setSource] = useState<string>(process.env.REACT_APP_SERVER);
-    const [activesnapshot, setActivesnapshot] = useState('23 Jan 2022');
+    const [snapshotId, setSnapshotId] = useState(1);
     const [totals, setTotals] = useState({honoured: 0, broken: 0});
-    const { data, isLoading, isError, isSuccess, error, status } = useFeatures({source:source, snapshot: activesnapshot});
-
-    // console.log('status', status);
-    // console.log('data', data);
+    const { data, isLoading, isError, isSuccess, error } = useFeatures({source:source, snapshotId: snapshotId});
 
     const fetchFeatures = async () => {
 
@@ -104,7 +101,7 @@ export const DashboardFeaturesTable = () => {
                         </tr>
                     </tfoot>
                 </table>
-                <DashboardControls snapshot={data.snapshot} snapshots={data.snapshots} onChange={setActivesnapshot}></DashboardControls>
+                <DashboardControls snapshotId={data.id} snapshots={data.snapshots} onChange={setSnapshotId}></DashboardControls>
             </figure>
         );
     }

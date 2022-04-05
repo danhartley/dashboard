@@ -1,0 +1,27 @@
+{
+    "source": "Trustworthy AI",
+    "items": [
+      {
+        "name": "Responsibility"
+      },
+      {
+        "name": "Safety"
+      },
+      {
+        "name": "Trust"
+      },
+      {
+        "name": "Transparency"
+      },
+      {
+        "name": "Fairness"
+      },
+      {
+        "name": "Sustainability"
+      },
+      {
+        "name": "Accountability",
+        "comments": "Including auditability, minimisation and reporting of negative impact, trade-offs and redress."
+      }
+    ]
+  }

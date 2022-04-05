@@ -19,24 +19,24 @@ import { IPledgesByFeatureSnapshot } from '../interfaces';
 
 describe('DashboardFeaturesTable', () => {    
     test("Should return 7 features (items) for feature for January", async () => {
-        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: '23 Jan 2022'}), { wrapper: createWrapper() });
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshotId: 1}), { wrapper: createWrapper() });
         await waitFor(() => result.current.isSuccess);
         expect(result.current.data.items.length).toEqual(7);
     });
     test("Should return 7 features (items) for feature for February", async () => {
-        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: '23 Feb 2022'}), { wrapper: createWrapper() });
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshotId: 2}), { wrapper: createWrapper() });
         await waitFor(() => result.current.isSuccess);
         expect(result.current.data.items.length).toEqual(7);
     });
     test("Should return 0 features (items) for feature for March", async () => {
-        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: '23 Mar 2022'}), { wrapper: createWrapper() });
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshotId: 3}), { wrapper: createWrapper() });
         await waitFor(() => result.current.isSuccess);
         expect(result.current.data.items.length).toEqual(0);
     });
     test("Should return correct honoured and broken totals for January snapshot", async () => {
         const queryClient = new QueryClient();
         const { getByText } = render(<QueryClientProvider client={queryClient}><DashboardFeaturesTable></DashboardFeaturesTable></QueryClientProvider>);
-        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: '23 Jan 2022'}), { wrapper: createWrapper() });
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshotId: 1}), { wrapper: createWrapper() });
         await waitFor(() => result.current.isSuccess);
         expect(getByText('Totals')).toBeInTheDocument();        
         const row = screen.getByText('Totals').closest("tr");
@@ -63,11 +63,11 @@ describe('DashboardFeaturesTable', () => {
                 },
         ]
         }];
-        const expected:IPledgesByFeatureSnapshot = {source:'Test', snapshot: "", items: items};
+        const expected:IPledgesByFeatureSnapshot = {source:'Test', id: 1, items: items};
         jest.spyOn(api, "getPledgesByFeatures").mockImplementation(() => {
             return Promise.resolve(expected)
           });
-        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: null}), { wrapper: createWrapper() });
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshotId: 1}), { wrapper: createWrapper() });
         await waitFor(() => result.current.isSuccess);
         expect(result.current.data.items.length).toEqual(1);
     });
@@ -75,15 +75,14 @@ describe('DashboardFeaturesTable', () => {
         jest.spyOn(api, "getPledgesByFeatures").mockImplementation(() => {
             return Promise.resolve(null)
           });
-        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: null}), { wrapper: createWrapper() });        
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshotId: 1}), { wrapper: createWrapper() });        
         await waitFor(() => result.current.isSuccess);
         const queryClient = new QueryClient();
         const { getByText } = render(<QueryClientProvider client={queryClient}><DashboardFeaturesTable></DashboardFeaturesTable></QueryClientProvider>);
         expect(getByText('Loading...')).toBeInTheDocument();
     });
     test("Should handle error for in test mocked data", async () => {
-        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshot: 'Bad date'}), { wrapper: createWrapper() });        
-        console.log(result.current)
+        const { result, waitFor } = renderHook(() => useFeatures({source:'Test', snapshotId: 0}), { wrapper: createWrapper() });
         await waitFor(() => result.current.isLoading && result.current.data === undefined);
         const queryClient = new QueryClient();
         const { getByText } = render(<QueryClientProvider client={queryClient}><DashboardFeaturesTable></DashboardFeaturesTable></QueryClientProvider>);

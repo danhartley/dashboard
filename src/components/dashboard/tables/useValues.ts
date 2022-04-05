@@ -1,14 +1,31 @@
 import { useQuery } from 'react-query';
+import { useFeatures } from './useFeatures';
 import { IValue } from 'src/components/dashboard/interfaces';
 
 import api from 'src/api/api';
 
-const getValues = async ({source}): Promise<IValue> => {
-    const data =  await api.getPledgesByValues({source});
-    return data;
-};
+export const useValues = ({source, snapshotId}) => {
 
-export const useValues = ({source}) => {
-    const key = [{source: source}];
-    return useQuery(key, () => getValues({source}), {cacheTime:0});
+    const valuesKey = [{source: source}];
+    const values = useQuery(valuesKey, () => api.getPledgesByValues({source}));
+    const featuresKey = [{source, snapshotId}];
+    const features = useQuery('features', () => api.getPledgesByFeatures({source, snapshotId}), { enabled: Boolean(values.data) } );
+
+    if(features.data && features.data.items.length > 0) {
+
+        values.data.items = values.data.items.map(v => {
+            const f = features.data.items.find(f => {
+                return f.value === v.name
+            });  
+            return { 
+                  ...v
+                , honoured:f.honoured
+                , broken:f.broken
+                , pledges:f.pledges
+                , features: f.id 
+            };
+        });
+    }
+
+    return values;
 };

@@ -6,15 +6,15 @@ export type SliderState = {
 };
 
 export type SliderProps = {
-    intialState:string, 
-    range:string[], 
-    onChange: Dispatch<SetStateAction<string>>
+    intialState:number, 
+    range: { id: number, snapshot: string }[], 
+    onChange: Dispatch<SetStateAction<number>>
 }
 
 export type ControlsProps = {
-    snapshot: string, 
-    snapshots: string[], 
-    onChange: Dispatch<SetStateAction<string>>    
+    snapshotId: number, 
+    snapshots: { id: number, snapshot: string }[],
+    onChange: Dispatch<SetStateAction<number>>    
 }
 
 export type PledgesRowProps = {

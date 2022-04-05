@@ -37,8 +37,9 @@ const Row = ({value}): JSX.Element => {
 const DashboardValuesTable = (): JSX.Element => {
 
     const [source, setSource] = useState<string>(process.env.REACT_APP_SERVER);
+    const [snapshotId, setSnapshotId] = useState(1);
     const [totals, setTotals] = useState({honoured: 0, broken: 0, features: 0});
-    const { data, isLoading, isError, isSuccess, error } = useValues({source:source});
+    const { data, isLoading, isError, isSuccess, error } = useValues({source:source, snapshotId});
 
     const fetchValues = async () => {
         

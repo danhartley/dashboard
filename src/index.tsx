@@ -4,11 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+if (process.env.NODE_ENV === 'development') {
+    const { worker } = require('./mocks/browser')
+    worker.start()
+}
+
 ReactDOM.render(
     <div className='dark:bg-slate-900 dark:text-white'>
-        {/* <React.StrictMode> */}
+        <React.StrictMode>
             <App />
-        {/* </React.StrictMode> */}
+        </React.StrictMode>
     </div>,
     document.getElementById('root')
 );

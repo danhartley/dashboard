@@ -18,7 +18,8 @@ interface IItem {
 
 export interface IPledgesByFeatureSnapshot {
     source: Source | string;
-    snapshot: string;
+    snapshot?: string,
+    id: number;
     snapshots?: Array<string>,
     items: IItem[];
     error?: any

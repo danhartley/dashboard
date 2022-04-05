@@ -3,9 +3,20 @@ import Slider from './dashboard-controls-slider';
 
 describe('Slider', () => {
 
-    let intialState = '23 Jan 2022';
+    let intialState = 1;
     let range = [
-        '23 Jan 2022', '23 Feb 2022', '23 Mar 2022'
+        {
+            id: 1,
+            snapshot: '23 Jan 2022'
+        },
+        {
+            id: 2,
+            snapshot: '23 Feb 2022'
+        },
+        {
+            id: 3,
+            snapshot: '23 Mar 2022'
+        },
     ];
     
     const handleChange = jest.fn();
@@ -16,19 +27,19 @@ describe('Slider', () => {
 
         const slider = getByRole('slider') as HTMLInputElement;
 
-        expect(slider.value).toBe('0');
+        expect(slider.value).toBe("1");
         
-        fireEvent.change(slider, { target: { value: "1" } });
+        fireEvent.change(slider, { target: { value: 2 } });
         
         expect(handleChange).toHaveBeenCalled();
         expect(handleChange).toHaveBeenCalledTimes(1);
-        expect(handleChange).toHaveBeenCalledWith("23 Feb 2022");
+        expect(handleChange).toHaveBeenCalledWith(2);
        
-        fireEvent.change(slider, { target: { value: "2" } });
+        fireEvent.change(slider, { target: { value: 3 } });
         
         expect(handleChange).toHaveBeenCalled();
         expect(handleChange).toHaveBeenCalledTimes(2);
-        expect(handleChange).toHaveBeenCalledWith("23 Mar 2022");
+        expect(handleChange).toHaveBeenCalledWith(3);
 
     });
 
