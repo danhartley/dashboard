@@ -1,6 +1,6 @@
 import { SliderProps } from './types';
 
-const Slider = ({intialState, range, onChange}:SliderProps): JSX.Element => {
+const Slider = ({intialState, range, onChange, namespace}:SliderProps): JSX.Element => {
 
     if(range.length === 0) return <div>Cannot return slider without a range</div>;
 
@@ -17,8 +17,8 @@ const Slider = ({intialState, range, onChange}:SliderProps): JSX.Element => {
 
     return (    
         <>
-        <input type="range" id="slider" name="slider" min={min} onChange={handleChange} max={max} value={state.id} />
-        <label htmlFor="slider">{state.snapshot}</label>           
+        <input type="range" id={`slider-${namespace}`} name="slider" min={min} onChange={handleChange} max={max} value={state.id} />
+        <label htmlFor={`slider-${namespace}`}>{state.snapshot}</label>           
         </>
     )
 };

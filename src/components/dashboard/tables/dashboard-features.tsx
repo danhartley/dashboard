@@ -1,8 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useFeatures } from './useFeatures';
 import { PledgesRow } from './rows/pledges';
-import { IPledgesByFeatureSnapshot, IPledge } from 'src/components/dashboard/interfaces';
+import { IPledge } from 'src/components/dashboard/interfaces';
 import DashboardControls from 'src/components/dashboard/dashboard-controls';
+
+const Figure = ({title, children}: {title?:string, children?: any}) => {
+    return (
+        <figure className="w-full border-solid border-slate-300 border p-3 my-2">
+        <figcaption className="mb-4"><em>{title} Pledges By Feature</em></figcaption>
+        { children }
+        </figure>
+    )
+}
 
 const Header = () => {
     return (
@@ -73,13 +82,13 @@ export const DashboardFeaturesTable = () => {
         message?: string
     }
 
-    const [source, setSource] = useState<string>(process.env.REACT_APP_SERVER);
+    const [source] = useState<string>(process.env.REACT_APP_SERVER);
     const [snapshotId, setSnapshotId] = useState(1);
     const [totals, setTotals] = useState({honoured: 0, broken: 0});
-    const { data, isLoading, isError, error, isSuccess } = useFeatures({source:source, snapshotId: snapshotId});
+    const { data, isLoading, isError, error, isSuccess }: { data:any, isLoading:boolean, isError:boolean, error: Error, isSuccess:boolean } = useFeatures({source:source, snapshotId: snapshotId});
 
-    const fetchFeatures = async () => {
-
+    useEffect(() => {
+        
         if(!data) return;
 
         const totals = {
@@ -87,25 +96,23 @@ export const DashboardFeaturesTable = () => {
             broken: data.items.reduce((total, next) => total + next.broken, 0)
         };        
         setTotals(totals);
-    };
 
-    useEffect(() => {
-        fetchFeatures();
     }, [data]);
 
     if(isLoading) {
-        return <span>Loading...</span>
+        return <Figure>
+            <span>Loading...</span>
+        </Figure>
     }
 
     if(isError) {
-        return <span>Error: { error.message }</span>
+        return <Figure title={error.message} />
     }
     
     if(isSuccess) {        
         return (            
-            <figure className="w-full border-solid border-slate-300 border p-3 my-2">
-                <figcaption className="mb-4"><em>{data.source} Pledges By Feature</em></figcaption>
-                <table data-table-id="features" className="w-4/5 text-xs sm:text-base">
+            <Figure title={data.source}>
+                <table role="tabpanel" data-table-id="features" className="w-4/5 text-xs sm:text-base">
                     <Header />
                     <tbody>
                         { data.items.map(feature => {
@@ -116,8 +123,8 @@ export const DashboardFeaturesTable = () => {
                     </tbody>
                     <Footer totals={totals} />
                 </table>
-                <DashboardControls snapshotId={data.id} snapshots={data.snapshots} onChange={setSnapshotId}></DashboardControls>
-            </figure>
+                <DashboardControls namespace='features' snapshotId={data.id} snapshots={data.snapshots} onChange={setSnapshotId}></DashboardControls>
+            </Figure>
         );
     }
 };

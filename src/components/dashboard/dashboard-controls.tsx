@@ -1,20 +1,23 @@
 import Slider from './dashboard-controls-slider';
 import { ControlsProps } from './types';
 
-const DashboardControls = ({snapshots, snapshotId, onChange}:ControlsProps): JSX.Element => {
+const DashboardControls = ({snapshots, snapshotId, onChange, namespace}:ControlsProps): JSX.Element => {
 
     const options = [
         {
             text: 'Table',
-            active: true
+            active: true,
+            target: 'table'
         },
         {
             text: 'Chart',
-            active: false
+            active: false,
+            target: 'chart'
         },
         {
             text: 'Download',
-            active: false
+            active: false,
+            target: 'download'
         },
     ];
 
@@ -29,16 +32,16 @@ const DashboardControls = ({snapshots, snapshotId, onChange}:ControlsProps): JSX
     return (
         <section>
             <nav className="flex justify-center">
-                <ul className="flex flex-row w-4/5 m-4 justify-evenly" role="tablist">
+                <div className="flex flex-row w-4/5 m-4 justify-evenly" role="tablist">
                     {
                         options.map(o => {
-                            return <li key={o.text}><button role="tab" aria-selected="false" onClick={handleDisplayOptionChange} className="border p-2 border-solid">{o.text}</button></li>
+                            return <button key={o.text} id={`${o.target}-${namespace}`} role="tab" aria-selected="false" onClick={handleDisplayOptionChange} className="border p-2 border-solid">{o.text}</button>
                         })
                     }
-                </ul>                     
+                </div>                     
             </nav>
             <div className="flex justify-center">
-                <Slider intialState={snapshotId} range={snapshots} onChange={onChange}></Slider>    
+                <Slider namespace={namespace} intialState={snapshotId} range={snapshots} onChange={onChange}></Slider>    
             </div>
         </section>
     )

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { IValue } from 'src/components/dashboard/interfaces';
 import { PledgesRow } from './rows/pledges';
 import { useValues } from './useValues';
 import DashboardControls from 'src/components/dashboard/dashboard-controls';
@@ -67,12 +66,16 @@ const Footer = ({totals}) => {
 
 const DashboardValuesTable = (): JSX.Element => {
 
-    const [source, setSource] = useState<string>(process.env.REACT_APP_SERVER);
+    type Error = {
+        message?: string
+    }
+
+    const [source] = useState<string>(process.env.REACT_APP_SERVER);
     const [snapshotId, setSnapshotId] = useState(1);
     const [totals, setTotals] = useState({honoured: 0, broken: 0, features: 0});
-    const { data, isLoading, isError, error, isSuccess } = useValues({source:source, snapshotId});
-
-    const fetchValues = async () => {
+    const { data, isLoading, isError, error, isSuccess }: { data:any, isLoading:boolean, isError:boolean, error: Error, isSuccess:boolean } = useValues({source:source, snapshotId});
+    
+    useEffect(() => {
 
         if(!data) return;
 
@@ -82,10 +85,7 @@ const DashboardValuesTable = (): JSX.Element => {
             features: data.items.reduce((total, next) => total + next.features, 0),
         };        
         setTotals(totals);
-    };
-
-    useEffect(() => {
-        fetchValues();       
+        
     }, [data]);
 
     if(isLoading) {
@@ -100,7 +100,7 @@ const DashboardValuesTable = (): JSX.Element => {
         return (
             <figure className="w-full border-solid border-slate-300 border p-3 my-2">
                 <figcaption className="mb-4"><em>{data.source} Pledges By Values</em></figcaption>
-                <table data-table-id="values" className="w-4/5 text-xs sm:text-base">
+                <table role="tabpanel" aria-labelledby="table" data-table-id="values" className="w-4/5 text-xs sm:text-base">
                     <Header />
                     <tbody>                
                         { data.items.map(value => {
@@ -111,7 +111,7 @@ const DashboardValuesTable = (): JSX.Element => {
                     </tbody>
                     <Footer totals={totals} />
                 </table>
-                <DashboardControls snapshotId={data.id} snapshots={data.snapshots} onChange={setSnapshotId}></DashboardControls>
+                <DashboardControls namespace='values' snapshotId={data.id} snapshots={data.snapshots} onChange={setSnapshotId}></DashboardControls>
             </figure>
         );
     }

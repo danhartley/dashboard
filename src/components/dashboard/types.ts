@@ -7,13 +7,15 @@ export type SliderState = {
 
 export type SliderProps = {
     intialState:number, 
-    range: { id: number, snapshot: string }[], 
+    range: { id: number, snapshot: string }[],
+    namespace?: string,
     onChange: Dispatch<SetStateAction<number>>
 }
 
 export type ControlsProps = {
     snapshotId: number, 
     snapshots: { id: number, snapshot: string }[],
+    namespace?: string,
     onChange: Dispatch<SetStateAction<number>>    
 }
 

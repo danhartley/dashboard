@@ -1,5 +1,3 @@
-import { AssistedTechnology, DashboardStyle, Source } from '../components/dashboard/enums';
-import { IPledgesByFeatureSnapshot, IValue } from '../components/dashboard/interfaces';
 import client from './api-browser-client';
 
 const snapshots = [

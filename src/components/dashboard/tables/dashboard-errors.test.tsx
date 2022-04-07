@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import DashboardFeaturesTable from './dashboard-features';
 import DashboardValuesTable from './dashboard-values';
 
+// For mocking see: https://www.youtube.com/watch?v=ZfvOHRX-FDM
 // For mocking see: https://github.com/satansdeer/react-query-3-example
 // And with TS see: https://klzns.github.io/how-to-use-type-script-and-jest-mocks
 
