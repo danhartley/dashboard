@@ -58,5 +58,19 @@
   },
   "msw": {
     "workerDirectory": "public"
+  },
+  "jest": {
+        "coveragePathIgnorePatterns": [
+            "index.tsx",
+            "reportWebVitals.ts",
+            "/src/mocks",
+            "enums.ts",
+            "interfaces.ts",
+            "types.ts",
+            "webpack.config.js",
+            "simple.tsx",
+            "simple-child.tsx",
+            "api-browser-client.ts" 
+        ]
   }
 }

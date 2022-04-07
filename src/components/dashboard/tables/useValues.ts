@@ -1,20 +1,30 @@
-import { useQuery } from 'react-query';
-import { useFeatures } from './useFeatures';
-import { IValue } from 'src/components/dashboard/interfaces';
+import { useQueries } from 'react-query';
 
 import api from 'src/api/api';
 
-export const useValues = ({source, snapshotId}) => {
+export const useValues = ({source, snapshotId = 1}) => {
 
-    const valuesKey = [{source: source}];
-    const values = useQuery(valuesKey, () => api.getPledgesByValues({source}));
-    const featuresKey = [{source, snapshotId}];
-    const features = useQuery('features', () => api.getPledgesByFeatures({source, snapshotId}), { enabled: Boolean(values.data) } );
+    const getValues = (source, snapshotId) => {
+        return api.getPledgesByValues({source, snapshotId});
+    };
 
-    if(features.data && features.data.items.length > 0) {
+    const getFeatures = (source, snapshotId) => {
+        return api.getPledgesByFeatures({source, snapshotId});
+    };
 
-        values.data.items = values.data.items.map(v => {
-            const f = features.data.items.find(f => {
+    const results = useQueries([
+          { queryKey: ['values', snapshotId], queryFn: () => getValues(source, snapshotId) },
+          { queryKey: ['features', snapshotId], queryFn: () => getFeatures(source, snapshotId) }
+        ]
+    );
+
+    const isSuccess = results.every(result => result.isSuccess)
+
+    let values = results[0];
+
+    if(isSuccess) {
+        results[0].data.items = values.data.items.map(v => {
+            const f = results[1].data.items.find(f => {
                 return f.value === v.name
             });  
             return { 

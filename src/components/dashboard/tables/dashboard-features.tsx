@@ -2,8 +2,23 @@ import { useEffect, useState } from 'react';
 import { useFeatures } from './useFeatures';
 import { PledgesRow } from './rows/pledges';
 import { IPledgesByFeatureSnapshot, IPledge } from 'src/components/dashboard/interfaces';
-
 import DashboardControls from 'src/components/dashboard/dashboard-controls';
+
+const Header = () => {
+    return (
+        <thead>
+            <tr>
+                <th></th>
+                <th colSpan={2}>Pledges</th>
+            </tr>
+            <tr>
+                <th className="text-left w-3/5">Feature</th>
+                <th className="w-1/5">Honoured</th>
+                <th className="w-1/5">Broken</th>
+            </tr>
+        </thead>
+    )
+};
 
 type FeaturePledges = {
     name: string,
@@ -40,16 +55,32 @@ export const Row = ({featurePledges}:{featurePledges:FeaturePledges}) => {
     );
 };
 
+const Footer = ({totals}) => {
+    return (
+        <tfoot>
+            <tr>
+                <th className="text-left pt-2" scope="row">Totals</th>
+                <th>{totals.honoured}</th>
+                <th>{totals.broken}</th>
+            </tr>
+        </tfoot>
+    )
+};
+
 export const DashboardFeaturesTable = () => {
+
+    type Error = {
+        message?: string
+    }
 
     const [source, setSource] = useState<string>(process.env.REACT_APP_SERVER);
     const [snapshotId, setSnapshotId] = useState(1);
     const [totals, setTotals] = useState({honoured: 0, broken: 0});
-    const { data, isLoading, isError, isSuccess, error } = useFeatures({source:source, snapshotId: snapshotId});
+    const { data, isLoading, isError, error, isSuccess } = useFeatures({source:source, snapshotId: snapshotId});
 
     const fetchFeatures = async () => {
 
-        if(!data || data === undefined) return;
+        if(!data) return;
 
         const totals = {
             honoured: data.items.reduce((total, next) => total + next.honoured, 0),
@@ -64,28 +95,18 @@ export const DashboardFeaturesTable = () => {
 
     if(isLoading) {
         return <span>Loading...</span>
-      }
-    
+    }
+
     if(isError) {
-        return <span>Error: {error}</span>
+        return <span>Error: { error.message }</span>
     }
     
-    if(isSuccess && data !== undefined) {
+    if(isSuccess) {        
         return (            
             <figure className="w-full border-solid border-slate-300 border p-3 my-2">
-                <figcaption className="mb-4"><em>{data.source} Pledges By IPledgesByFeatureSnapshot</em></figcaption>
+                <figcaption className="mb-4"><em>{data.source} Pledges By Feature</em></figcaption>
                 <table data-table-id="features" className="w-4/5 text-xs sm:text-base">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th colSpan={2}>Pledges</th>
-                        </tr>
-                        <tr>
-                            <th className="text-left w-3/5">Feature</th>
-                            <th className="w-1/5">Honoured</th>
-                            <th className="w-1/5">Broken</th>
-                        </tr>
-                    </thead>
+                    <Header />
                     <tbody>
                         { data.items.map(feature => {
                             return(
@@ -93,23 +114,11 @@ export const DashboardFeaturesTable = () => {
                             )
                         }) }
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th className="text-left pt-2" scope="row">Totals</th>
-                            <th>{totals.honoured}</th>
-                            <th>{totals.broken}</th>
-                        </tr>
-                    </tfoot>
+                    <Footer totals={totals} />
                 </table>
                 <DashboardControls snapshotId={data.id} snapshots={data.snapshots} onChange={setSnapshotId}></DashboardControls>
             </figure>
         );
-    }
-
-    if(data === undefined) {
-        return (
-            <div>No data</div>
-        )
     }
 };
 

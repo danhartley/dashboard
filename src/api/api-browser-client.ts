@@ -26,12 +26,13 @@ const client = endpoint => {
     
     return window    
         .fetch(`${endpoint}`, config)
-        .then(async response => {
+        .then(async response => {            
             if (response.ok) {
                 return await response.json();
             } else {
-                const errorMessage = await response.text();
-                return Promise.reject(new Error(errorMessage));
+                return new Error('500')
+                // const errorMessage = await response.text();
+                // return Promise.reject([ { error: new Error(errorMessage) } ]);
             }
         });
 };
