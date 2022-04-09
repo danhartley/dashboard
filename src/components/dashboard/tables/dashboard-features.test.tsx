@@ -26,14 +26,9 @@ const renderFeaturesWithSuccess = async snapshotId => {
     return { result, waitFor };
 };
 
-describe('Tests for DashboardFeaturesTable using sw mocks', () => {
-    test('The component renders with title', async () => {
-        const { getByText } = renderComponent();
-        const { result } = await renderFeaturesWithSuccess(1);
-        expect(result.current.isSuccess).toBe(true);
-        expect(getByText('Trustworthy AI Pledges By Feature')).toBeInTheDocument();   
-    });
-    test('While data loading renders laoding', async () => {
+describe('The pledges by features table', () => {
+    
+    test('shows when it is loading', async () => {
         const { getByText } = renderComponent();
         const { result, waitFor } = renderHook(() => useFeatures({ source: 'Test', snapshotId: 1 }), {
             wrapper: createWrapper()
@@ -41,42 +36,74 @@ describe('Tests for DashboardFeaturesTable using sw mocks', () => {
         await waitFor(() => result.current.isLoading);
         expect(getByText(/loading/i)).toBeInTheDocument();
     });
-    test("The value custom hook returns values list", async () => {
-        const { result } = await renderFeaturesWithSuccess(1);
-        expect(result.current.data.items.length).toBe(7);
-    });
-    test("Snapshots have correct totals for hounored and broken pledges", async () => {
+    test('has a title', async () => {
         const { getByText } = renderComponent();
-        await renderFeaturesWithSuccess(1);
-        expect(getByText('Totals')).toBeInTheDocument();        
-        const row = screen.getByText('Totals').closest("tr");
-        expect(within(row).getByText('20')).toBeInTheDocument();
-        expect(within(row).getByText('8')).toBeInTheDocument();
+        const { result } = await renderFeaturesWithSuccess(1);
+        expect(result.current.isSuccess).toBe(true);
+        expect(getByText('Trustworthy AI Pledges By Feature')).toBeInTheDocument();   
     });
-    test('Clicking a value reveals related pledges', async () => {
-        const { getByRole, getByText } = renderComponent();
-        await renderFeaturesWithSuccess(1);
-        const button = getByRole('button', {name: "Human agency and oversight"});
-        userEvent.click(button);
-        expect(getByText('We pledge to evaluate risk, so that fundamental rights are not negatively affected.')).toBeInTheDocument();
-        const row = screen.getByText('Human agency and oversight').closest("tr");
-        expect(within(row).getByText('Human agency and oversight')).toBeTruthy();
-        expect(within(row).getAllByText(1)[0]).toBeTruthy();
-        expect(within(row).getByText(2)).toBeTruthy();
-    });
-    test('Clicking value twice hides related pledges', async () => {
-        const { getByRole, getByText, queryByText } = renderComponent();
-        await renderFeaturesWithSuccess(1);
-        const button = getByRole('button', {name: "Human agency and oversight"});
-        userEvent.click(button);
-        expect(getByText('We pledge to evaluate risk, so that fundamental rights are not negatively affected.')).toBeInTheDocument();
-        userEvent.click(button);
-        expect(await queryByText('We pledge to evaluate risk, so that fundamental rights are not negatively affected.')).not.toBeInTheDocument();
+
+    describe('has a value column', () => {
+        
+        test('with a table header', async () => {
+            const { getByRole } = renderComponent();
+            await renderFeaturesWithSuccess(1);
+            expect(getByRole('columnheader', { name: /feature/i})).toBeTruthy();
+        });
+
+        test("and a row for each value", async () => {
+
+            const { getAllByRole } = renderComponent();
+            const { result } = await renderFeaturesWithSuccess(1);
+            const itemCount = result.current.data.items.length;
+            const body = getAllByRole('rowgroup')[1];
+            const rowCount = within(body).getAllByRole('row').length;
+            expect(itemCount).toEqual(rowCount);
+
+        });
+
+        describe('which when clicked', () => {
+
+            test("shows related pledges in a new row", async () => {
+                const { getByText } = renderComponent();
+                await renderFeaturesWithSuccess(1);
+                expect(getByText('Totals')).toBeInTheDocument();        
+                const row = screen.getByText('Totals').closest("tr");
+                expect(within(row).getByText('20')).toBeInTheDocument();
+                expect(within(row).getByText('8')).toBeInTheDocument();
+            });
+            test('with totals for hounored and broken pledges', async () => {
+                const { getByRole, getByText } = renderComponent();
+                await renderFeaturesWithSuccess(1);
+                const button = getByRole('button', {name: "Human agency and oversight"});
+                userEvent.click(button);
+                expect(getByText('We pledge to evaluate risk, so that fundamental rights are not negatively affected.')).toBeInTheDocument();
+                const row = screen.getByText('Human agency and oversight').closest("tr");
+                expect(within(row).getByText('Human agency and oversight')).toBeTruthy();
+                expect(within(row).getAllByText(1)[0]).toBeTruthy();
+                expect(within(row).getByText(2)).toBeTruthy();
+            });
+        });
+
+        describe('and when clicked again', () => {
+
+            test('hides the related pledges', async () => {
+                const { getByRole, getByText, queryByText } = renderComponent();
+                await renderFeaturesWithSuccess(1);
+                const button = getByRole('button', {name: "Human agency and oversight"});
+                userEvent.click(button);
+                expect(getByText('We pledge to evaluate risk, so that fundamental rights are not negatively affected.')).toBeInTheDocument();
+                userEvent.click(button);
+                expect(await queryByText('We pledge to evaluate risk, so that fundamental rights are not negatively affected.')).not.toBeInTheDocument();
+            });
+
+        });
     });
 });
 
-describe.skip('DashboardFeaturesTable using local mocks', () => {
-    test("The custom feature hook tested with locally mocked valid data", async () => {
+describe.skip('The pledges by features table canbe mocked in the test', () => {
+    
+    test("with valid data", async () => {
         const items = [{
             id: 1,
             name: 'Human agency and oversight',
@@ -104,7 +131,7 @@ describe.skip('DashboardFeaturesTable using local mocks', () => {
         await waitFor(() => result.current.isSuccess);
         expect(result.current.data.items.length).toEqual(1);
     });
-    test("The custom feature hook tested with locally mocked null data", async () => {
+    test("and null data", async () => {
         jest.spyOn(api, "getPledgesByFeatures").mockImplementation(() => {
             return Promise.resolve(null)
         });

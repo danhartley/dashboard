@@ -28,12 +28,12 @@ const renderValuesTable = () => {
     return render(<QueryClientProvider client={queryClient}><DashboardValuesTable></DashboardValuesTable></QueryClientProvider>);
 };
 
-describe('Mock custom feature hook to simulate error', () => {
+describe('Network errors', () => {
 
     const mockedUseFeatures = useFeatures as jest.Mock<any>;
     mockedUseFeatures.mockImplementation(() => ({}));
 
-    test('Returns error', async () => {         
+    test('can be mocked for features', async () => {         
         mockedUseFeatures.mockImplementation(() => ({
             data: null,
             isLoading: false,
@@ -47,7 +47,7 @@ describe('Mock custom feature hook to simulate error', () => {
     });
 });
 
-describe('Mock custom values hook to simulate error', () => {
+describe('and values', () => {
 
     const mockedUseValues = useValues as jest.Mock<any>;
     mockedUseValues.mockImplementation(() => ({}));

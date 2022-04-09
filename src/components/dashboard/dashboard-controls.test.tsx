@@ -2,7 +2,7 @@ import { render, fireEvent, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import DashboardControls from './dashboard-controls';
 
-describe('DashboardControls', () => {
+describe('Dashboard controls', () => {
 
     const snapshots = [
         {
@@ -22,26 +22,31 @@ describe('DashboardControls', () => {
 
     const handleChange = jest.fn();
 
-    test("Slider returns value on change", async () => {
-        const { getByRole } = render(<DashboardControls snapshots={snapshots} snapshotId={snapshotId} onChange={handleChange}></DashboardControls>);
-        const slider = getByRole('slider') as HTMLInputElement;
-        expect(slider.value).toBe('1');
-        fireEvent.change(slider, { target: { value: 2 } });        
-        expect(handleChange).toHaveBeenCalled();
+    describe('include a slider for selecting snapshots', () => {
+        test("which notifies the containing element when it changes", async () => {
+            const { getByRole } = render(<DashboardControls snapshots={snapshots} snapshotId={snapshotId} onChange={handleChange}></DashboardControls>);
+            const slider = getByRole('slider') as HTMLInputElement;
+            expect(slider.value).toBe('1');
+            fireEvent.change(slider, { target: { value: 2 } });        
+            expect(handleChange).toHaveBeenCalled();
+        });
     });
 
-    test("Display buttons return state", () => {
-        const { getByRole } = render(<DashboardControls snapshots={snapshots} snapshotId={snapshotId} onChange={handleChange}></DashboardControls>);
-        const tableButton = getByRole('tab', { name: 'Table' });
-        expect(tableButton).toBeTruthy();
-        userEvent.click(tableButton);
-        const selectedButton = getByRole('tab', { selected: true });
-        expect(tableButton).toEqual(selectedButton);
-    });
+    describe('and tab options to change the display format', () => {
 
-    test("To have 3 display options", () => {
-        const { getByRole } = render(<DashboardControls snapshots={snapshots} snapshotId={snapshotId} onChange={handleChange}></DashboardControls>);
-        const { getByText } = within(getByRole("tablist"));
-        expect(getByText('Chart')).toBeInTheDocument();
-    });    
+        test("in a list", () => {
+            const { getByRole } = render(<DashboardControls snapshots={snapshots} snapshotId={snapshotId} onChange={handleChange}></DashboardControls>);
+            const { getByText } = within(getByRole("tablist"));
+            expect(getByText('Chart')).toBeInTheDocument();
+        });
+        test("with one preselected", () => {
+            const { getByRole } = render(<DashboardControls snapshots={snapshots} snapshotId={snapshotId} onChange={handleChange}></DashboardControls>);
+            const tableButton = getByRole('tab', { name: 'Table' });
+            expect(tableButton).toBeTruthy();
+            userEvent.click(tableButton);
+            const selectedButton = getByRole('tab', { selected: true });
+            expect(tableButton).toEqual(selectedButton);
+        });
+
+    });
 });

@@ -1,7 +1,8 @@
 import { render, fireEvent } from '@testing-library/react';
+import exp from 'constants';
 import Slider from './dashboard-controls-slider';
 
-describe('Slider', () => {
+describe('A slider', () => {
 
     let intialState = 1;
     let range = [
@@ -18,13 +19,12 @@ describe('Slider', () => {
             snapshot: '23 Mar 2022'
         },
     ];
+    let namespace = 'features';
     
     const handleChange = jest.fn();
 
-    test('Should reflect position of slider', async () => {
-
-        const { getByRole } = render(<Slider intialState={intialState} range={range} onChange={handleChange}></Slider>);
-
+    test('has a state which updates with each change', async () => {
+        const { getByRole } = render(<Slider namespace={namespace} intialState={intialState} range={range} onChange={handleChange}></Slider>);
         const slider = getByRole('slider') as HTMLInputElement;
 
         expect(slider.value).toBe("1");
@@ -43,9 +43,18 @@ describe('Slider', () => {
 
     });
 
-    test("Should return null when there range is empty", () => {
+    test('and has a label indicating the current state', () => {
+        const { getByRole, getByLabelText } = render(<Slider namespace={namespace} intialState={intialState} range={range} onChange={handleChange}></Slider>);
+        const slider = getByRole('slider') as HTMLInputElement;
+        const labelText = range.find(r => r.id === parseInt(slider.value)).snapshot;
+        expect(getByLabelText(labelText)).toBeInTheDocument();
+        expect(getByLabelText(labelText).id).toBe('slider-features');
+        
+    });
+
+    test("and is hidden when there are no data", () => {
         range = [];
-        const { container } = render(<Slider intialState={intialState} range={range} onChange={handleChange}></Slider>);
+        const { container } = render(<Slider namespace={namespace} intialState={intialState} range={range} onChange={handleChange}></Slider>);
         expect(container).toContainHTML("<div><div>Cannot return slider without a range</div></div>");
     });
 });

@@ -5,7 +5,7 @@ import Simple from './simple';
 
 jest.mock('./simple-child', () => ({}) => <>{<span>I mock you not. I do, says Mocking Child.</span>}</>);
 
-describe('Simple', () => {
+describe.skip('Simple', () => {
 
     test('Check Simple message', () => {
         const { getByText } = render(<Simple></Simple>);

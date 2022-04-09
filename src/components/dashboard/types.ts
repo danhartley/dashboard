@@ -8,7 +8,7 @@ export type SliderState = {
 export type SliderProps = {
     intialState:number, 
     range: { id: number, snapshot: string }[],
-    namespace?: string,
+    namespace: string,
     onChange: Dispatch<SetStateAction<number>>
 }
 
