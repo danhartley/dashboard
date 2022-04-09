@@ -1,0 +1,5 @@
+{
+    "projectId": "fkt2ue",
+    "testFiles": "**/dashboard/**/*.{feature,features}",
+    "baseUrl": "http://localhost:3000/"
+}

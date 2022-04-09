@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useFeatures } from './useFeatures';
 import { PledgesRow } from './rows/pledges';
-import { IPledge } from 'src/components/dashboard/interfaces';
+import { IPledge } from 'src/components/dashboard/shared/interfaces';
+import { total } from 'src/components/dashboard/shared/utils';
+
 import DashboardControls from 'src/components/dashboard/dashboard-controls';
 
 const Figure = ({title, children}: {title?:string, children?: any}) => {
@@ -92,8 +94,8 @@ export const DashboardFeaturesTable = () => {
         if(!data) return;
 
         const totals = {
-            honoured: data.items.reduce((total, next) => total + next.honoured, 0),
-            broken: data.items.reduce((total, next) => total + next.broken, 0)
+            honoured: data.items.map(i => i.honoured).reduce(total, 0),
+            broken: data.items.map(i => i.broken).reduce(total, 0)
         };        
         setTotals(totals);
 
@@ -130,3 +132,5 @@ export const DashboardFeaturesTable = () => {
 };
 
 export default DashboardFeaturesTable;
+
+

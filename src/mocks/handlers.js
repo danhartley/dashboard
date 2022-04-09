@@ -7,7 +7,7 @@ export const handlers = [
                 [
                     {
                         "id": 1,
-                        "source": "Trustworthy AI",
+                        "source": "Facebook",
                         "snapshot": "23 Jan 2022",
                         "items": [{
                                 "id": 1,
@@ -210,7 +210,7 @@ export const handlers = [
                     },
                     {
                         "id": 2,
-                        "source": "Trustworthy AI",
+                        "source": "Facebook",
                         "snapshot": "23 Feb 2022",
                         "items": [{
                                 "id": 1,
@@ -413,7 +413,7 @@ export const handlers = [
                     },
                     {
                         "id": 3,
-                        "source": "Trustworthy AI",
+                        "source": "Facebook",
                         "snapshot": "23 Mar 2022",
                         "items": []
                     }
@@ -427,7 +427,7 @@ export const handlers = [
                 [
                     {
                         "id": 3,
-                        "source": "Trustworthy AI",
+                        "source": "Facebook",
                         "snapshot": "23 Mar 2022",
                         "items": []
                     }
@@ -441,7 +441,7 @@ export const handlers = [
                 [
                     {
                         "id": 2,
-                        "source": "Trustworthy AI",
+                        "source": "Facebook",
                         "snapshot": "23 Feb 2022",
                         "items": [{
                                 "id": 1,
@@ -644,7 +644,7 @@ export const handlers = [
                     },
                     {
                         "id": 3,
-                        "source": "Trustworthy AI",
+                        "source": "Facebook",
                         "snapshot": "23 Mar 2022",
                         "items": []
                     }
@@ -658,7 +658,7 @@ export const handlers = [
                 [
                     {
                         "id": 1,
-                        "source": "Trustworthy AI",
+                        "source": "Facebook",
                         "snapshot": "23 Jan 2022",
                         "items": [{
                                 "id": 1,
@@ -883,7 +883,7 @@ export const handlers = [
     rest.get('values.json', async (req, res, ctx) => {
         return res(
             ctx.json({
-            "source": "Trustworthy AI",
+            "source": "Facebook",
             "items": [
                 {
                 "name": "Responsibility"
@@ -915,7 +915,7 @@ export const handlers = [
         return res(
             ctx.json({
                 "id": 1,
-                "source": "Trustworthy AI",
+                "source": "Facebook",
                 "items": [
                     {
                         "name": "Responsibility",
@@ -1122,7 +1122,7 @@ export const handlers = [
         return res(
             ctx.json({
                 "id": 2,
-                "source": "Trustworthy AI",
+                "source": "Facebook",
                 "items": [
                     {
                         "name": "Responsibility",

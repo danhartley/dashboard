@@ -6,7 +6,7 @@ describe('The app', () => {
 
     test('has a title', () => {
         render(<App />);
-        const title = screen.getByText(/Trustworthy AI/i);
+        const title = screen.getByText(/Facebook/i);
         expect(title).toBeInTheDocument();
       });
 });

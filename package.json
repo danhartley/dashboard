@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@cucumber/pretty-formatter": "^1.0.0-alpha.2",
+    "@testing-library/cypress": "^8.0.2",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
+    "cypress": "^9.5.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-query": "^3.34.19",
@@ -22,7 +25,9 @@
     "test": "react-scripts test .",
     "coverage": "react-scripts test --coverage .",
     "eject": "react-scripts eject",
-    "analyze": "source-map-explorer 'build/static/js/*.js'"
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "cucumber": "./node_modules/.bin/cucumber-js cypress/integration/dashboard/**/*.feature --import cypress/support/step_definitions/**/*.js",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -43,11 +48,13 @@
     ]
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^8.0.0",
     "@testing-library/dom": "^8.12.0",
     "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.4.1",
     "autoprefixer": "^10.4.4",
+    "cypress-cucumber-preprocessor": "^4.3.1",
     "eslint-import-resolver-babel-module": "^5.3.1",
     "jest": "^27.5.1",
     "msw": "^0.39.2",
@@ -60,17 +67,20 @@
     "workerDirectory": "public"
   },
   "jest": {
-        "coveragePathIgnorePatterns": [
-            "index.tsx",
-            "reportWebVitals.ts",
-            "/src/mocks",
-            "enums.ts",
-            "interfaces.ts",
-            "types.ts",
-            "webpack.config.js",
-            "simple.tsx",
-            "simple-child.tsx",
-            "api-browser-client.ts" 
-        ]
+    "coveragePathIgnorePatterns": [
+      "index.tsx",
+      "reportWebVitals.ts",
+      "/src/mocks",
+      "enums.ts",
+      "interfaces.ts",
+      "types.ts",
+      "webpack.config.js",
+      "simple.tsx",
+      "simple-child.tsx",
+      "api-browser-client.ts"
+    ]
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false
   }
 }

@@ -1,4 +1,4 @@
-import { PledgesRowProps } from 'src/components/dashboard/types';
+import { PledgesRowProps } from 'src/components/dashboard/shared/types';
 
 const PledgeRow = ({pledge, colSpan}): JSX.Element => {
 

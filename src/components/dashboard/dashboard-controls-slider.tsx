@@ -1,4 +1,4 @@
-import { SliderProps } from './types';
+import { SliderProps } from 'src/components/dashboard/shared/types';
 
 const Slider = ({intialState, range, onChange, namespace}:SliderProps): JSX.Element => {
 

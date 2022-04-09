@@ -1,5 +1,5 @@
 import Slider from './dashboard-controls-slider';
-import { ControlsProps } from './types';
+import { ControlsProps } from 'src/components/dashboard/shared/types';
 
 const DashboardControls = ({snapshots, snapshotId, onChange, namespace}:ControlsProps): JSX.Element => {
 
@@ -32,10 +32,10 @@ const DashboardControls = ({snapshots, snapshotId, onChange, namespace}:Controls
     return (
         <section>
             <nav className="flex justify-center">
-                <div className="flex flex-row w-4/5 m-4 justify-evenly" role="tablist">
+                <div className="flex flex-row w-4/5 m-4 justify-evenly" role="tablist" id={namespace}>
                     {
                         options.map(o => {
-                            return <button key={o.text} id={`${o.target}-${namespace}`} role="tab" aria-selected="false" onClick={handleDisplayOptionChange} className="border p-2 border-solid">{o.text}</button>
+                            return <button key={o.text} id={`${o.target}-${namespace}`} role="tab" aria-selected={o.text === 'Table'} onClick={handleDisplayOptionChange} className="border p-2 border-solid">{o.text}</button>
                         })
                     }
                 </div>                     

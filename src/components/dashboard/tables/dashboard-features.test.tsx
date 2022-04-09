@@ -40,7 +40,7 @@ describe('The pledges by features table', () => {
         const { getByText } = renderComponent();
         const { result } = await renderFeaturesWithSuccess(1);
         expect(result.current.isSuccess).toBe(true);
-        expect(getByText('Trustworthy AI Pledges By Feature')).toBeInTheDocument();   
+        expect(getByText('Facebook Pledges By Feature')).toBeInTheDocument();   
     });
 
     describe('has a value column', () => {
@@ -101,7 +101,7 @@ describe('The pledges by features table', () => {
     });
 });
 
-describe.skip('The pledges by features table canbe mocked in the test', () => {
+describe.skip('The pledges by features table can be mocked in the test', () => {
     
     test("with valid data", async () => {
         const items = [{

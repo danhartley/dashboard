@@ -10,7 +10,7 @@ describe('The dashboard', () => {
     test('has an H1 header text', () => {
         const { getByRole } = render(<Dashboard></Dashboard>);
         const { getByText } = within(getByRole("heading", { level: 1 }));
-        expect(getByText('Trustworthy AI')).toBeInTheDocument();
+        expect(getByText('Facebook')).toBeInTheDocument();
     });
 
     test('and two tables', () => {
