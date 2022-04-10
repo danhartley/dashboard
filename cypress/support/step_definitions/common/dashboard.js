@@ -1,6 +1,6 @@
 import { Given } from "cypress-cucumber-preprocessor/steps";
 
-const url = 'ethics/pledge-works/dashboard';
+const url = '/';
 
 Given('{string} visits the dashboard URL', function(user) {
   cy.visit(url);

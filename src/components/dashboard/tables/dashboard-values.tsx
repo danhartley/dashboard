@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { PledgesRow } from './rows/pledges';
-import { useValues } from './useValues';
+import { PledgesRow } from 'src/components/dashboard/tables/rows/pledges';
+import { useValues } from 'src/components/dashboard/hooks/useValues';
 import { total } from 'src/components/dashboard/shared/utils';
 
 import DashboardControls from 'src/components/dashboard/dashboard-controls';

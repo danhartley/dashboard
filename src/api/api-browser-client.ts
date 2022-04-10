@@ -1,20 +1,6 @@
 
 // https://kentcdodds.com/blog/replace-axios-with-a-simple-custom-fetch-wrapper
 
-type Config = {
-    method: 'POST' | 'GET' | 'PUT',
-    headers: {
-        endpoint: string,        
-    }
-    body?: any
-}
-
-type Response = {
-    ok?: string,
-    status?: string,
-    json?: string 
-}
-
 const client = endpoint => {
     const config = {
         method: 'GET',

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useFeatures } from './useFeatures';
+import { useFeatures } from 'src/components/dashboard/hooks/useFeatures';
 import { PledgesRow } from './rows/pledges';
 import { IPledge } from 'src/components/dashboard/shared/interfaces';
 import { total } from 'src/components/dashboard/shared/utils';

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { useFeatures } from './useFeatures';
-import { useValues } from './useValues';
+import { useFeatures } from 'src/components/dashboard/hooks/useFeatures';
+import { useValues } from 'src/components/dashboard/hooks/useValues';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import DashboardFeaturesTable from './dashboard-features';
@@ -10,11 +10,11 @@ import DashboardValuesTable from './dashboard-values';
 // For mocking see: https://github.com/satansdeer/react-query-3-example
 // And with TS see: https://klzns.github.io/how-to-use-type-script-and-jest-mocks
 
-jest.mock('./useFeatures', () => ({
+jest.mock('src/components/dashboard/hooks/useValues', () => ({
     useFeatures: jest.fn(),
 }));
 
-jest.mock('./useValues', () => ({
+jest.mock('src/components/dashboard/hooks/useValues', () => ({
     useValues: jest.fn(),
 }));
 

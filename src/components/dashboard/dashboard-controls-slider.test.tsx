@@ -40,7 +40,6 @@ describe('A slider', () => {
         expect(handleChange).toHaveBeenCalled();
         expect(handleChange).toHaveBeenCalledTimes(2);
         expect(handleChange).toHaveBeenCalledWith(3);
-
     });
 
     test('and has a label indicating the current state', () => {
@@ -48,8 +47,7 @@ describe('A slider', () => {
         const slider = getByRole('slider') as HTMLInputElement;
         const labelText = range.find(r => r.id === parseInt(slider.value)).snapshot;
         expect(getByLabelText(labelText)).toBeInTheDocument();
-        expect(getByLabelText(labelText).id).toBe('slider-features');
-        
+        expect(getByLabelText(labelText).id).toBe('slider-features');        
     });
 
     test("and is hidden when there are no data", () => {
