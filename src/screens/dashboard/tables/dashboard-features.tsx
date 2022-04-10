@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useFeatures } from 'src/components/dashboard/hooks/useFeatures';
+import { useFeatures } from 'src/screens/dashboard/hooks/useFeatures';
 import { PledgesRow } from './rows/pledges';
-import { IPledge } from 'src/components/dashboard/shared/interfaces';
-import { total } from 'src/components/dashboard/shared/utils';
+import { IPledge } from 'src/screens/dashboard/shared/interfaces';
+import { total } from 'src/screens/dashboard/shared/utils';
 
-import DashboardControls from 'src/components/dashboard/dashboard-controls';
+import DashboardControls from 'src/screens/dashboard/dashboard-controls';
 
 const Figure = ({title, children}: {title?:string, children?: any}) => {
     return (

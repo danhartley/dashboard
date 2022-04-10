@@ -1,7 +1,7 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderHook } from '@testing-library/react-hooks'
-import { useValues } from 'src/components/dashboard/hooks/useValues';
+import { useValues } from 'src/screens/dashboard/hooks/useValues';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import DashboardValuesTable from './dashboard-values';

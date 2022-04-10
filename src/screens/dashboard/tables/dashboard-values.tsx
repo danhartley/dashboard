@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { PledgesRow } from 'src/components/dashboard/tables/rows/pledges';
-import { useValues } from 'src/components/dashboard/hooks/useValues';
-import { total } from 'src/components/dashboard/shared/utils';
+import { PledgesRow } from 'src/screens/dashboard/tables/rows/pledges';
+import { useValues } from 'src/screens/dashboard/hooks/useValues';
+import { total } from 'src/screens/dashboard/shared/utils';
 
-import DashboardControls from 'src/components/dashboard/dashboard-controls';
+import DashboardControls from 'src/screens/dashboard/dashboard-controls';
 
 const Header = () => {
     return (

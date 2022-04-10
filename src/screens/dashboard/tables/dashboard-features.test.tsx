@@ -1,7 +1,7 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderHook } from '@testing-library/react-hooks'
-import { useFeatures } from 'src/components/dashboard/hooks/useFeatures';
+import { useFeatures } from 'src/screens/dashboard/hooks/useFeatures';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import api from 'src/api/api';
 import DashboardFeaturesTable from './dashboard-features';

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import { PledgesRow } from './pledges';
-import { PledgesRowProps } from 'src/components/dashboard/shared/types';
+import { PledgesRowProps } from 'src/screens/dashboard/shared/types';
 
 describe('A pledges row', () => {
 

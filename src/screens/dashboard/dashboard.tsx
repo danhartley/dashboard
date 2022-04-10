@@ -1,5 +1,5 @@
-import DashboardFeaturesTable from 'src/components/dashboard/tables/dashboard-features';
-import DashboardValuesTable from 'src/components/dashboard/tables/dashboard-values';
+import DashboardFeaturesTable from 'src/screens/dashboard/tables/dashboard-features';
+import DashboardValuesTable from 'src/screens/dashboard/tables/dashboard-values';
 
 const ResponsibilityDashboard = (): JSX.Element => {
 

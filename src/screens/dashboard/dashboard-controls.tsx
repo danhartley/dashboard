@@ -1,5 +1,5 @@
 import Slider from './dashboard-controls-slider';
-import { ControlsProps } from 'src/components/dashboard/shared/types';
+import { ControlsProps } from 'src/screens/dashboard/shared/types';
 
 const DashboardControls = ({snapshots, snapshotId, onChange, namespace}:ControlsProps): JSX.Element => {
 

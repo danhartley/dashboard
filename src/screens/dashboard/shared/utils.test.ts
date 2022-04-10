@@ -1,4 +1,4 @@
-import { total } from 'src/components/dashboard/shared/utils';
+import { total } from 'src/screens/dashboard/shared/utils';
 
 describe('Total reducer', () => {
     

@@ -4,7 +4,7 @@ import {
 } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools'
   
-import Dashboard from './components/dashboard/dashboard';
+import Dashboard from './screens/dashboard/dashboard';
 
 const queryClient = new QueryClient();
 
