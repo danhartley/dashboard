@@ -1,7 +1,7 @@
 import { Given } from "cypress-cucumber-preprocessor/steps";
 
-const url = '/';
+const url = "/";
 
-Given('{string} visits the dashboard URL', function(user) {
+Given("{string} visits the dashboard URL", function (user) {
   cy.visit(url);
 });

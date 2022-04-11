@@ -1,31 +1,30 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from "react";
 
 export type SliderState = {
-    value: number,
-    text: string
+  value: number;
+  text: string;
 };
 
 export type SliderProps = {
-    intialState:number, 
-    range: { id: number, snapshot: string }[],
-    namespace: string,
-    onChange: Dispatch<SetStateAction<number>>
-}
+  intialState: number;
+  range: { id: number; snapshot: string }[];
+  namespace: string;
+  onChange: Dispatch<SetStateAction<number>>;
+};
 
 export type ControlsProps = {
-    snapshotId: number, 
-    snapshots: { id: number, snapshot: string }[],
-    namespace?: string,
-    onChange: Dispatch<SetStateAction<number>>    
-}
+  snapshotId: number;
+  snapshots: { id: number; snapshot: string }[];
+  namespace?: string;
+  onChange: Dispatch<SetStateAction<number>>;
+};
 
 export type PledgesRowProps = {
-    source: string,
-    colSpan: number,
-    pledges: {
-            name: string;
-            honoured: number;
-            broken: number;
-    }[]
-    
-}
+  source: string;
+  colSpan: number;
+  pledges: {
+    name: string;
+    honoured: number;
+    broken: number;
+  }[];
+};

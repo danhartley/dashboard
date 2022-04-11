@@ -1,7 +1,9 @@
-import { useQuery } from 'react-query';
+import { useQuery } from "react-query";
 
-import api from 'src/api/api';
+import api from "src/api/api";
 
-export const useFeatures = ({source, snapshotId}) => {
-    return useQuery(['snapshot', snapshotId], () => api.getPledgesByFeatures({source, snapshotId}));
+export const useFeatures = ({ source, snapshotId }) => {
+  return useQuery(["snapshot", snapshotId], () =>
+    api.getPledgesByFeatures({ source, snapshotId })
+  );
 };

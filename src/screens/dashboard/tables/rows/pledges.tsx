@@ -1,53 +1,55 @@
-import { PledgesRowProps } from 'src/screens/dashboard/shared/types';
+import { PledgesRowProps } from "src/screens/dashboard/shared/types";
 
-const PledgeRow = ({pledge, colSpan}): JSX.Element => {
+const PledgeRow = ({ pledge, colSpan }): JSX.Element => {
+  const isTrue = (state) => {
+    let classes = "text-xs text-center w-1/5";
 
-    const isTrue = state => {
+    classes += state ? ' after:content-["✓"]' : "";
 
-        let classes = 'text-xs text-center w-1/5';
+    return classes;
+  };
 
-        classes += state   
-            ? ' after:content-["✓"]'
-            : '';
+  const nameClasses = `${colSpan === 3 ? "w-3/5" : "w-2/5"} text-xs py-1`;
 
-        return classes;
-    }
-
-    const nameClasses = `${colSpan === 3 ? "w-3/5" : "w-2/5"} text-xs py-1`;
-
-    return (      
-        <>
-        <tr>                    
-            <td className={nameClasses}>{pledge.name}</td>
-            <td className={isTrue(pledge.honoured > 0)}></td>
-            <td className={isTrue(pledge.broken > 0)}></td>
-            { 
-                colSpan === 4
-                    ? <td className="text-xs text-center w-1/5"></td>
-                    : null
-            }
-            
-        </tr>        
-        </>
-    )
+  return (
+    <>
+      <tr>
+        <td className={nameClasses}>{pledge.name}</td>
+        <td className={isTrue(pledge.honoured > 0)}></td>
+        <td className={isTrue(pledge.broken > 0)}></td>
+        {colSpan === 4 ? <td className="text-xs text-center w-1/5"></td> : null}
+      </tr>
+    </>
+  );
 };
 
-export const PledgesRow = ({pledges, colSpan, source}: PledgesRowProps): JSX.Element => {
-    return (
-        <>
-        <tr>
-            <td colSpan={colSpan}>
-                <table data-table-id={source.toLowerCase() + '-pledges'} className="w-full table-fixed">
-                    <tbody>
-                        {
-                            pledges.map(pledge => {
-                                return <PledgeRow key={pledge.name} pledge={pledge} colSpan={colSpan}></PledgeRow>
-                            })
-                        }
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-        </>
-    )
+export const PledgesRow = ({
+  pledges,
+  colSpan,
+  source,
+}: PledgesRowProps): JSX.Element => {
+  return (
+    <>
+      <tr>
+        <td colSpan={colSpan}>
+          <table
+            data-table-id={source.toLowerCase() + "-pledges"}
+            className="w-full table-fixed"
+          >
+            <tbody>
+              {pledges.map((pledge) => {
+                return (
+                  <PledgeRow
+                    key={pledge.name}
+                    pledge={pledge}
+                    colSpan={colSpan}
+                  ></PledgeRow>
+                );
+              })}
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </>
+  );
 };

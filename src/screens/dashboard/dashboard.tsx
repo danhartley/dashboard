@@ -1,17 +1,16 @@
-import DashboardFeaturesTable from 'src/screens/dashboard/tables/dashboard-features';
-import DashboardValuesTable from 'src/screens/dashboard/tables/dashboard-values';
+import DashboardFeaturesTable from "src/screens/dashboard/tables/dashboard-features";
+import DashboardValuesTable from "src/screens/dashboard/tables/dashboard-values";
 
 const ResponsibilityDashboard = (): JSX.Element => {
-
-    return (        
-        <div className="container mx-auto w-4/5">               
-            <section className="container mx-auto max-w-4xl">                        
-                <h1 className="text-2xl">Facebook</h1>
-                <DashboardFeaturesTable></DashboardFeaturesTable>                                            
-                <DashboardValuesTable></DashboardValuesTable>                        
-            </section>
-        </div>
-    )
+  return (
+    <div className="container mx-auto w-4/5">
+      <section className="container mx-auto max-w-4xl">
+        <h1 className="text-2xl">Facebook</h1>
+        <DashboardFeaturesTable></DashboardFeaturesTable>
+        <DashboardValuesTable></DashboardValuesTable>
+      </section>
+    </div>
+  );
 };
 
 export default ResponsibilityDashboard;

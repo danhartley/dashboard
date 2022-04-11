@@ -1,3 +1,3 @@
 export const total = (total, next) => {
-    return total + next;
+  return total + next;
 };

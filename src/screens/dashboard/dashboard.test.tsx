@@ -1,21 +1,24 @@
-import { render, within } from '@testing-library/react';
+import { render, within } from "@testing-library/react";
 
-import Dashboard from './dashboard';
+import Dashboard from "./dashboard";
 
-jest.mock('./tables/dashboard-features', () => ({}) => <>{<div>DashboardFeaturesTable</div>}</>);
-jest.mock('./tables/dashboard-values', () => ({}) => <>{<div>DashboardValuesTable</div>}</>);
+jest.mock("./tables/dashboard-features", () => ({}) => (
+  <>{<div>DashboardFeaturesTable</div>}</>
+));
+jest.mock("./tables/dashboard-values", () => ({}) => (
+  <>{<div>DashboardValuesTable</div>}</>
+));
 
-describe('The dashboard', () => {
+describe("The dashboard", () => {
+  test("has an H1 header text", () => {
+    const { getByRole } = render(<Dashboard></Dashboard>);
+    const { getByText } = within(getByRole("heading", { level: 1 }));
+    expect(getByText("Facebook")).toBeInTheDocument();
+  });
 
-    test('has an H1 header text', () => {
-        const { getByRole } = render(<Dashboard></Dashboard>);
-        const { getByText } = within(getByRole("heading", { level: 1 }));
-        expect(getByText('Facebook')).toBeInTheDocument();
-    });
-
-    test('and two tables', () => {
-        const { getByText } = render(<Dashboard></Dashboard>);
-        expect(getByText('DashboardFeaturesTable')).toBeInTheDocument();
-        expect(getByText('DashboardValuesTable')).toBeInTheDocument();
-    });
+  test("and two tables", () => {
+    const { getByText } = render(<Dashboard></Dashboard>);
+    expect(getByText("DashboardFeaturesTable")).toBeInTheDocument();
+    expect(getByText("DashboardValuesTable")).toBeInTheDocument();
+  });
 });
