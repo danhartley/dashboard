@@ -24,7 +24,7 @@ export const useValues = ({ source, snapshotId = 1 }) => {
 
   const isSuccess = results.every((result) => result.isSuccess);
 
-  let values = results[0];
+  const values = results[0];
 
   if (isSuccess) {
     results[0].data.items = values.data.items.map((v) => {

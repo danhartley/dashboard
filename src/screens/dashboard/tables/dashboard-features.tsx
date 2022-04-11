@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useFeatures } from "src/screens/dashboard/hooks/useFeatures";
 import { PledgesRow } from "./rows/pledges";
 import { IPledge } from "src/screens/dashboard/shared/interfaces";
+import { TotalsProps } from 'src/screens/dashboard/shared/types';
 import { total } from "src/screens/dashboard/shared/utils";
 
 import DashboardControls from "src/screens/dashboard/dashboard-controls";
@@ -76,7 +77,7 @@ export const Row = ({ featurePledges }: { featurePledges: FeaturePledges }) => {
   );
 };
 
-const Footer = ({ totals }) => {
+const Footer = ({ totals }: TotalsProps) => {
   return (
     <tfoot>
       <tr>

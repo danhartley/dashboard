@@ -1,6 +1,7 @@
-import { PledgesRowProps } from "src/screens/dashboard/shared/types";
+import { PledgeRowProps, PledgesRowProps } from "src/screens/dashboard/shared/types";
 
-const PledgeRow = ({ pledge, colSpan }): JSX.Element => {
+const PledgeRow = ({ pledge, colSpan }: PledgeRowProps): JSX.Element => {
+    
   const isTrue = (state) => {
     let classes = "text-xs text-center w-1/5";
 

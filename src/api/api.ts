@@ -62,7 +62,7 @@ const getPledgesByFeatures = async ({
   source,
   snapshotId,
 }: {
-  source: string;
+  source?: string;
   snapshotId: number;
 }) => {
   return getData(snapshotId);
@@ -84,7 +84,7 @@ const getPledgesByValues = async ({
   source,
   snapshotId,
 }: {
-  source: string;
+  source?: string;
   snapshotId: number;
 }) => {
   const values = await getValues(snapshotId);

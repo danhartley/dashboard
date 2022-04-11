@@ -19,6 +19,15 @@ export type ControlsProps = {
   onChange: Dispatch<SetStateAction<number>>;
 };
 
+export type PledgeRowProps = {
+  colSpan: number;
+  pledge: {
+    name: string;
+    honoured: number;
+    broken: number;
+  };
+};
+
 export type PledgesRowProps = {
   source: string;
   colSpan: number;
@@ -28,3 +37,25 @@ export type PledgesRowProps = {
     broken: number;
   }[];
 };
+
+export type TotalsProps = {
+    totals: {
+        honoured: number,
+        broken: number,
+        features?: number
+    }
+};
+
+export type ValueProps = {
+    value: {
+        name: string,
+        honoured: number,
+        broken: number,
+        features: number,
+        pledges: {
+            name: string;
+            honoured: number;
+            broken: number;
+        }[]; 
+    }
+}

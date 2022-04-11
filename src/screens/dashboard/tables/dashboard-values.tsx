@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { PledgesRow } from "src/screens/dashboard/tables/rows/pledges";
 import { useValues } from "src/screens/dashboard/hooks/useValues";
 import { total } from "src/screens/dashboard/shared/utils";
-
+import { TotalsProps, ValueProps } from 'src/screens/dashboard/shared/types';
 import DashboardControls from "src/screens/dashboard/dashboard-controls";
 
 const Header = () => {
@@ -23,7 +23,7 @@ const Header = () => {
   );
 };
 
-const Row = ({ value }): JSX.Element => {
+const Row = ({ value }: ValueProps ): JSX.Element => {
   const _colSpan = 4;
 
   const [selectedValue, setSelectedValue] = useState("");
@@ -61,7 +61,7 @@ const Row = ({ value }): JSX.Element => {
   );
 };
 
-const Footer = ({ totals }) => {
+const Footer = ({ totals }: TotalsProps ) => {
   return (
     <tfoot>
       <tr>
