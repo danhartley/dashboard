@@ -3,6 +3,7 @@ import { PledgesRow } from "src/screens/dashboard/tables/rows/pledges";
 import { useValues } from "src/screens/dashboard/hooks/useValues";
 import { total } from "src/screens/dashboard/shared/utils";
 import { TotalsProps, ValueProps } from 'src/screens/dashboard/shared/types';
+import { IPledgesByValueSnapshot } from 'src/screens/dashboard/shared/interfaces';
 import DashboardControls from "src/screens/dashboard/dashboard-controls";
 
 const Header = () => {
@@ -91,7 +92,7 @@ const DashboardValuesTable = (): JSX.Element => {
     error,
     isSuccess,
   }: {
-    data: any;
+    data: IPledgesByValueSnapshot;
     isLoading: boolean;
     isError: boolean;
     error: Error;

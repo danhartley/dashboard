@@ -29,6 +29,25 @@ React Query
 Jest
 React Testing Library
 Mock Service Worker
+Strict mode enabled ( see https://reactjs.org/docs/strict-mode.html )
+Static type checking with Typescript ( see https://reactjs.org/docs/static-type-checking.html )
+
+## Debugging tests
+
+npm run test:debug
+In Chrome open: about:inspect
+Select "inspect" on the process
+Click "play" in dev tools
+
+( see https://create-react-app.dev/docs/debugging-tests )
+
+# Tools
+
+## Chrome DevTools console
+
+ Check for mocking (MSW)
+ New axe issues (accessibility) 
+ Web vitals
 
 ## cloc
 

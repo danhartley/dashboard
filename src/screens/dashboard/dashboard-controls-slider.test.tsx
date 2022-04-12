@@ -40,7 +40,7 @@ describe("A slider", () => {
     expect(handleChange).toHaveBeenCalled();
     expect(handleChange).toHaveBeenCalledTimes(1);
     expect(handleChange).toHaveBeenCalledWith(2);
-
+    
     fireEvent.change(slider, { target: { value: 3 } });
 
     expect(handleChange).toHaveBeenCalled();
@@ -48,7 +48,7 @@ describe("A slider", () => {
     expect(handleChange).toHaveBeenCalledWith(3);
   });
 
-  test("and has a label indicating the current state", () => {
+  test("and has a label associated with the current state", () => {
     const { getByRole, getByLabelText } = render(
       <Slider
         namespace={namespace}

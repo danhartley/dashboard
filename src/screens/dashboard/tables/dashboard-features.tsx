@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useFeatures } from "src/screens/dashboard/hooks/useFeatures";
 import { PledgesRow } from "./rows/pledges";
-import { IPledge } from "src/screens/dashboard/shared/interfaces";
+import { IPledge, IPledgesByFeatureSnapshot } from "src/screens/dashboard/shared/interfaces";
 import { TotalsProps } from 'src/screens/dashboard/shared/types';
 import { total } from "src/screens/dashboard/shared/utils";
 
 import DashboardControls from "src/screens/dashboard/dashboard-controls";
 
-const Figure = ({ title, children }: { title?: string; children?: any }) => {
+const Figure = ({ title, children }: { title?: string; children?: JSX.Element | JSX.Element[] }) => {
   return (
     <figure className="w-full border-solid border-slate-300 border p-3 my-2">
       <figcaption className="mb-4">
@@ -106,7 +106,7 @@ export const DashboardFeaturesTable = () => {
     error,
     isSuccess,
   }: {
-    data: any;
+    data: IPledgesByFeatureSnapshot;
     isLoading: boolean;
     isError: boolean;
     error: Error;

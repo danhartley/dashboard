@@ -13,14 +13,29 @@ interface IItem {
   honoured: number;
   broken: number;
   pledges: IPledge[];
-  features?: number;
+  features: number;
 }
 
 export interface IPledgesByFeatureSnapshot {
-  source: Source | string;
+  source: string;
   snapshot?: string;
   id: number;
-  snapshots?: Array<string>;
+  snapshots?: {
+      id: number,
+      snapshot: string
+  }[],
+  items: IItem[];
+  error?: any;
+}
+
+export interface IPledgesByValueSnapshot {
+  source: string;
+  snapshot?: string;
+  id: number;
+  snapshots?: {
+      id: number,
+      snapshot: string
+  }[],
   items: IItem[];
   error?: any;
 }

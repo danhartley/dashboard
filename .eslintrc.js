@@ -7,6 +7,7 @@ module.exports = {
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
+        "react-app", "plugin:jsx-a11y/recommended",
         "prettier"
     ],
     "parser": "@typescript-eslint/parser",
@@ -19,7 +20,8 @@ module.exports = {
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "jsx-a11y"
     ],
     "rules": {
         "react/jsx-uses-react": "off",

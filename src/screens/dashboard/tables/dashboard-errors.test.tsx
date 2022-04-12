@@ -10,7 +10,7 @@ import DashboardValuesTable from "./dashboard-values";
 // For mocking see: https://github.com/satansdeer/react-query-3-example
 // And with TS see: https://klzns.github.io/how-to-use-type-script-and-jest-mocks
 
-jest.mock("src/screens/dashboard/hooks/useValues", () => ({
+jest.mock("src/screens/dashboard/hooks/useFeatures", () => ({
   useFeatures: jest.fn(),
 }));
 
@@ -38,7 +38,7 @@ const renderValuesTable = () => {
 
 describe("Network errors", () => {
   const mockedUseFeatures = useFeatures as jest.Mock<any>;
-  mockedUseFeatures.mockImplementation(() => ({}));
+  mockedUseFeatures.mockImplementation(() => ({}))
 
   test("can be mocked for features", async () => {
     mockedUseFeatures.mockImplementation(() => ({

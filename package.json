@@ -20,11 +20,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test .",
-    "coverage": "react-scripts test --coverage .",
     "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test .",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "coverage": "react-scripts test --coverage .",
+    "build": "react-scripts build",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "cucumber": "./node_modules/.bin/cucumber-js cypress/integration/dashboard/**/*.feature --import cypress/support/step_definitions/**/*.js",
     "cypress:open": "cypress open"
@@ -48,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@axe-core/react": "^4.4.2",
     "@cucumber/cucumber": "^8.0.0",
     "@testing-library/dom": "^8.12.0",
     "@testing-library/react-hooks": "^7.0.2",
