@@ -6,7 +6,7 @@ export interface IPledge {
   broken: number;
 }
 
-interface IItem {
+export interface IItem {
   id: number;
   name: string;
   value: string;
@@ -26,6 +26,11 @@ export interface IPledgesByFeatureSnapshot {
   }[],
   items: IItem[];
   error?: any;
+  totals: {
+    honoured: number,
+    broken: number,
+    features?: number
+  }
 }
 
 export interface IPledgesByValueSnapshot {
@@ -38,6 +43,11 @@ export interface IPledgesByValueSnapshot {
   }[],
   items: IItem[];
   error?: any;
+  totals: {
+    honoured: number,
+    broken: number,
+    features?: number
+  }
 }
 
 export interface IValue {

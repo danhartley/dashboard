@@ -1,7 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderHook } from "@testing-library/react-hooks";
-import { useValues } from "src/screens/dashboard/hooks/useValues";
+import { useValuesWithTotals } from "src/screens/dashboard/hooks/useValues";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import DashboardValuesTable from "./table-values";
@@ -24,7 +24,7 @@ const renderComponent = () => {
 
 const renderValuesWithSuccess = async (snapshotId) => {
   const { result, waitFor } = renderHook(
-    () => useValues({ source: "Test", snapshotId: snapshotId }),
+    () => useValuesWithTotals({ source: "Test", snapshotId: snapshotId }),
     {
       wrapper: createWrapper(),
     }
@@ -37,7 +37,7 @@ describe("The pledges by values table", () => {
   test("shows when it is loading", async () => {
     const { getByText } = renderComponent();
     const { result, waitFor } = renderHook(
-      () => useValues({ source: "Test", snapshotId: 1 }),
+      () => useValuesWithTotals({ source: "Test", snapshotId: 1 }),
       {
         wrapper: createWrapper(),
       }

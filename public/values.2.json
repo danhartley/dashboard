@@ -22,8 +22,7 @@
           "honoured": 0,
           "broken": 1
         }
-      ],
-      "features": 3
+      ]
     },
     {
       "name": "Safety",
@@ -65,8 +64,7 @@
           "honoured": 1,
           "broken": 0
         }
-      ],
-      "features": 2
+      ]
     },
     {
       "name": "Trust",
@@ -88,8 +86,7 @@
           "honoured": 1,
           "broken": 0
         }
-      ],
-      "features": 3
+      ]
     },
     {
       "name": "Transparency",
@@ -111,8 +108,7 @@
           "honoured": 1,
           "broken": 0
         }
-      ],
-      "features": 4
+      ]
     },
     {
       "name": "Fairness",
@@ -139,8 +135,7 @@
           "honoured": 1,
           "broken": 0
         }
-      ],
-      "features": 5
+      ]
     },
     {
       "name": "Sustainability",
@@ -167,8 +162,7 @@
           "honoured": 1,
           "broken": 0
         }
-      ],
-      "features": 6
+      ]
     },
     {
       "name": "Accountability",
@@ -196,8 +190,7 @@
           "honoured": 1,
           "broken": 0
         }
-      ],
-      "features": 7
+      ]
     }
   ]
 }

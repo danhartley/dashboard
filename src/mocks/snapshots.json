@@ -1,5 +1,4 @@
-[
-  {
+[{
     "id": 1,
     "source": "Facebook",
     "snapshot": "1 Jan 2020",
@@ -8,8 +7,6 @@
         "id": 1,
         "name": "Human agency and oversight",
         "value": "Responsibility",
-        "honoured": 1,
-        "broken": 2,
         "pledges": [
           {
             "name": "We pledge to evaluate risk, so that fundamental rights are not negatively affected.",
@@ -31,9 +28,7 @@
       {
         "id": 2,
         "name": "Technical robustness and safety",
-        "value": "Safety",
-        "honoured": 6,
-        "broken": 1,
+        "value": "Safety",        
         "pledges": [
           {
             "name": "We pledge that our systems will be safe and secure, so that they cannot be misused by bad actors.",
@@ -76,8 +71,6 @@
         "id": 3,
         "name": "Privacy and data governance",
         "value": "Trust",
-        "broken": 2,
-        "honoured": 1,
         "pledges": [
           {
             "name": "We guarantee privacy and data protection throughout the system’s entire lifecycle, in order to protect users",
@@ -100,8 +93,6 @@
         "id": 4,
         "name": "Transparency",
         "value": "Transparency",
-        "broken": 0,
-        "honoured": 3,
         "pledges": [
           {
             "name": "We pledge to document processes leading to AI decisions, in order to identify reasons in the case of mistakes.",
@@ -124,8 +115,6 @@
         "id": 5,
         "name": "Diversity, non-discrimination and fairness",
         "value": "Fairness",
-        "broken": 2,
-        "honoured": 2,
         "pledges": [
           {
             "name": "We pledge to consider and involve all affected stakeholders, to enable diversity and inclusion.",
@@ -153,8 +142,6 @@
         "id": 6,
         "name": "Environmental and societal well-being",
         "value": "Sustainability",
-        "honoured": 4,
-        "broken": 0,
         "pledges": [
           {
             "name": "We pledge to consider the environment a stakeholder, in order that our systems are sustainable and ecologically responsible.",
@@ -182,8 +169,6 @@
         "id": 7,
         "name": "Accountability",
         "value": "Accountability",
-        "honoured": 3,
-        "broken": 1,
         "pledges": [
           {
             "name": "We pledge that all decisions will be explainable, so that they can be verified.",
@@ -208,8 +193,8 @@
         ]
       }
     ]
-  },
-  {
+},
+{
     "id": 2,
     "source": "Facebook",
     "snapshot": "1 Jan 2021",
@@ -218,8 +203,6 @@
         "id": 1,
         "name": "Human agency and oversight",
         "value": "Responsibility",
-        "honoured": 2,
-        "broken": 1,
         "pledges": [
           {
             "name": "We pledge to evaluate risk, so that fundamental rights are not negatively affected.",
@@ -242,8 +225,6 @@
         "id": 2,
         "name": "Technical robustness and safety",
         "value": "Safety",
-        "honoured": 6,
-        "broken": 1,
         "pledges": [
           {
             "name": "We pledge that our systems will be safe and secure, so that they cannot be misused by bad actors.",
@@ -286,8 +267,6 @@
         "id": 3,
         "name": "Privacy and data governance",
         "value": "Trust",
-        "broken": 2,
-        "honoured": 1,
         "pledges": [
           {
             "name": "We guarantee privacy and data protection throughout the system’s entire lifecycle, in order to protect users",
@@ -310,8 +289,6 @@
         "id": 4,
         "name": "Transparency",
         "value": "Transparency",
-        "broken": 0,
-        "honoured": 3,
         "pledges": [
           {
             "name": "We pledge to document processes leading to AI decisions, in order to identify reasons in the case of mistakes.",
@@ -334,8 +311,6 @@
         "id": 5,
         "name": "Diversity, non-discrimination and fairness",
         "value": "Fairness",
-        "broken": 2,
-        "honoured": 2,
         "pledges": [
           {
             "name": "We pledge to consider and involve all affected stakeholders, to enable diversity and inclusion.",
@@ -363,8 +338,6 @@
         "id": 6,
         "name": "Environmental and societal well-being",
         "value": "Sustainability",
-        "honoured": 4,
-        "broken": 0,
         "pledges": [
           {
             "name": "We pledge to consider the environment a stakeholder, in order that our systems are sustainable and ecologically responsible.",
@@ -392,8 +365,6 @@
         "id": 7,
         "name": "Accountability",
         "value": "Accountability",
-        "honoured": 3,
-        "broken": 1,
         "pledges": [
           {
             "name": "We pledge that all decisions will be explainable, so that they can be verified.",
@@ -418,11 +389,10 @@
         ]
       }
     ]
-  },
-  {
+},
+{
     "id": 3,
     "source": "Facebook",
     "snapshot": "1 Jan 2022",
     "items": []
-  }
-]
+}]

@@ -1,4 +1,8 @@
 import { total } from "src/screens/dashboard/shared/utils";
+import { getSnapshotsWithTotals } from 'src/screens/dashboard/shared/utils';
+import { IItem } from 'src/screens/dashboard/shared/interfaces';
+ 
+import snapshots from 'src/mocks/snapshots.json';
 
 describe("Total reducer", () => {
   const table = [
@@ -14,4 +18,14 @@ describe("Total reducer", () => {
       expect(reduced).toBe(expected);
     }
   );
+});
+
+describe('Add totals to pledges', () => {
+  test("should add counts for honoured and broken pledges", () => {
+    const snapshot = snapshots[0];
+    const snapShotWithTotals = getSnapshotsWithTotals(snapshot).items[0] as IItem;
+    expect(snapShotWithTotals.honoured).toBe(1);
+    expect(snapShotWithTotals.broken).toBe(2);
+  });
+  test.todo("show values");
 });

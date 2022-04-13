@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import { useFeatures } from "src/screens/dashboard/hooks/useFeatures";
+import { useState } from "react";
+import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
 import { PledgesRow } from "./rows/pledges";
 import { IPledge, IPledgesByFeatureSnapshot } from "src/screens/dashboard/shared/interfaces";
 import { TotalsProps } from 'src/screens/dashboard/shared/types';
-import { total } from "src/screens/dashboard/shared/utils";
 
 import TableControls from "src/screens/dashboard/tables/table-controls";
 
@@ -98,7 +97,6 @@ export const DashboardFeaturesTable = () => {
 
   const [source] = useState<string>(process.env.REACT_APP_SERVER);
   const [snapshotId, setSnapshotId] = useState(1);
-  const [totals, setTotals] = useState({ honoured: 0, broken: 0 });
   const {
     data,
     isLoading,
@@ -111,17 +109,7 @@ export const DashboardFeaturesTable = () => {
     isError: boolean;
     error: Error;
     isSuccess: boolean;
-  } = useFeatures({ source: source, snapshotId: snapshotId });
-
-  useEffect(() => {
-    if (!data) return;
-
-    const totals = {
-      honoured: data.items.map((i) => i.honoured).reduce(total, 0),
-      broken: data.items.map((i) => i.broken).reduce(total, 0),
-    };
-    setTotals(totals);
-  }, [data]);
+  } = useFeaturesWithTotals({ source: source, snapshotId: snapshotId });
 
   if (isLoading) {
     return (
@@ -149,7 +137,7 @@ export const DashboardFeaturesTable = () => {
               return <Row key={feature.name} featurePledges={feature}></Row>;
             })}
           </tbody>
-          <Footer totals={totals} />
+          <Footer totals={data.totals} />
         </table>
         <TableControls
           namespace="features"

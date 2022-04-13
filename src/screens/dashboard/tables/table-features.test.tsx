@@ -1,7 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderHook } from "@testing-library/react-hooks";
-import { useFeatures } from "src/screens/dashboard/hooks/useFeatures";
+import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
 import { QueryClient, QueryClientProvider } from "react-query";
 import api from "src/api/api";
 import DashboardFeaturesTable from "./table-features";
@@ -24,7 +24,7 @@ const renderComponent = () => {
 
 const renderFeaturesWithSuccess = async (snapshotId) => {
   const { result, waitFor } = renderHook(
-    () => useFeatures({ source: "Test", snapshotId: snapshotId }),
+    () => useFeaturesWithTotals({ source: "Test", snapshotId: snapshotId }),
     {
       wrapper: createWrapper(),
     }
@@ -37,7 +37,7 @@ describe("The pledges by features table", () => {
   test("shows when it is loading", async () => {
     const { getByText } = renderComponent();
     const { result, waitFor } = renderHook(
-      () => useFeatures({ source: "Test", snapshotId: 1 }),
+      () => useFeaturesWithTotals({ source: "Test", snapshotId: 1 }),
       {
         wrapper: createWrapper(),
       }
@@ -152,7 +152,7 @@ describe.skip("The pledges by features table can be mocked in the test", () => {
       return Promise.resolve(expected);
     });
     const { result, waitFor } = renderHook(
-      () => useFeatures({ source: "Test", snapshotId: 1 }),
+      () => useFeaturesWithTotals({ source: "Test", snapshotId: 1 }),
       { wrapper: createWrapper() }
     );
     await waitFor(() => result.current.isSuccess);

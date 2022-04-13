@@ -3,15 +3,15 @@ import client from "./api-browser-client";
 const snapshots = [
   {
     id: 1,
-    snapshot: "23 Jan 2022",
+    snapshot: "1 Jan 2020",
   },
   {
     id: 2,
-    snapshot: "23 Feb 2022",
+    snapshot: "1 Jan 2021",
   },
   {
     id: 3,
-    snapshot: "23 Mar 2022",
+    snapshot: "1 Jan 2022",
   },
 ];
 
@@ -23,26 +23,20 @@ const getData = async (snapshotId) => {
 
   const data = {
     ...response[0],
-    snapshots,
-    // , snapshots: response.filter(d => d.items.length > 0).map(d => {
-    //     return {
-    //         id: d.id,
-    //         snapshot: d.snapshot
-    //     }
-    // })
+    snapshots
   };
 
   return await data;
 };
 
-const getValues = async (snapshotId) => {
+// const getValues = async (snapshotId) => {
 
-  const baseUrl = process.env.REACT_APP_API_URL;
-  const endpoint = `${baseUrl}values/${snapshotId}.json`;
-  const response = await client(endpoint);
+//   const baseUrl = process.env.REACT_APP_API_URL;
+//   const endpoint = `${baseUrl}values/${snapshotId}.json`;
+//   const response = await client(endpoint);
 
-  return response;
-};
+//   return response;
+// };
 
 // const getDashboard = (at?: AssistedTechnology) => {
 
@@ -83,27 +77,27 @@ const getPledgesByFeatures = async ({
   // return data;
 };
 
-const getPledgesByValues = async ({
-  source,
-  snapshotId,
-}: {
-  source?: string;
-  snapshotId: number;
-}) => {
-  const values = await getValues(snapshotId);
+// const getPledgesByValues = async ({
+//   source,
+//   snapshotId,
+// }: {
+//   source?: string;
+//   snapshotId: number;
+// }) => {
+//   const values = await getValues(snapshotId);
 
-  const data = {
-    ...values,
-    snapshots,
-  };
+//   const data = {
+//     ...values,
+//     snapshots,
+//   };
 
-  return data;
-};
+//   return data;
+// };
 
 const api = {
   getData,
   getPledgesByFeatures,
-  getPledgesByValues,
+  // getPledgesByValues,
 };
 
 export default api;

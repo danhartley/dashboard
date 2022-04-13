@@ -2,10 +2,10 @@ import { render, within } from "@testing-library/react";
 
 import Dashboard from "./dashboard";
 
-jest.mock("./tables/dashboard-features", () => ({}) => (
+jest.mock("src/screens/dashboard/tables/table-features", () => ({}) => (
   <>{<div>DashboardFeaturesTable</div>}</>
 ));
-jest.mock("./tables/dashboard-values", () => ({}) => (
+jest.mock("src/screens/dashboard/tables/table-values", () => ({}) => (
   <>{<div>DashboardValuesTable</div>}</>
 ));
 

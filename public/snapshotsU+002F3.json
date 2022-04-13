@@ -2,7 +2,7 @@
   {
     "id": 3,
     "source": "Facebook",
-    "snapshot": "23 Mar 2022",
+    "snapshot": "1 Jan 2022",
     "items": [
       {
         "id": 1,
@@ -102,7 +102,6 @@
         "value": "Transparency",
         "broken": 0,
         "honoured": 3,
-        "features": 1,
         "pledges": [
           {
             "name": "We pledge to document processes leading to AI decisions, in order to identify reasons in the case of mistakes.",

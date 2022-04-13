@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
-import { useFeatures } from "src/screens/dashboard/hooks/useFeatures";
-import { useValues } from "src/screens/dashboard/hooks/useValues";
+import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
+import { useValuesWithTotals } from "src/screens/dashboard/hooks/useValues";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import DashboardFeaturesTable from "./table-features";
@@ -11,11 +11,11 @@ import DashboardValuesTable from "./table-values";
 // And with TS see: https://klzns.github.io/how-to-use-type-script-and-jest-mocks
 
 jest.mock("src/screens/dashboard/hooks/useFeatures", () => ({
-  useFeatures: jest.fn(),
+  useFeaturesWithTotals: jest.fn(),
 }));
 
 jest.mock("src/screens/dashboard/hooks/useValues", () => ({
-  useValues: jest.fn(),
+  useValuesWithTotals: jest.fn(),
 }));
 
 const renderFeaturesTable = () => {
@@ -37,7 +37,7 @@ const renderValuesTable = () => {
 };
 
 describe("Network errors", () => {
-  const mockedUseFeatures = useFeatures as jest.Mock<any>;
+  const mockedUseFeatures = useFeaturesWithTotals as jest.Mock<any>;
   mockedUseFeatures.mockImplementation(() => ({}))
 
   test("can be mocked for features", async () => {
@@ -55,7 +55,7 @@ describe("Network errors", () => {
 });
 
 describe("and values", () => {
-  const mockedUseValues = useValues as jest.Mock<any>;
+  const mockedUseValues = useValuesWithTotals as jest.Mock<any>;
   mockedUseValues.mockImplementation(() => ({}));
 
   test("Returns error", async () => {

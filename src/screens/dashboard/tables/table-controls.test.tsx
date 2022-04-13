@@ -6,15 +6,15 @@ describe("Dashboard controls", () => {
   const snapshots = [
     {
       id: 1,
-      snapshot: "23 Jan 2022",
+      snapshot: "1 Jan 2020",
     },
     {
       id: 2,
-      snapshot: "23 Feb 2022",
+      snapshot: "1 Jan 2021",
     },
     {
       id: 3,
-      snapshot: "23 Mar 2022",
+      snapshot: "1 Jan 2022",
     },
   ];
   const snapshotId = 1;

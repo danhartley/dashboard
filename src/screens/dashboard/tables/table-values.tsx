@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { PledgesRow } from "src/screens/dashboard/tables/rows/pledges";
-import { useValues } from "src/screens/dashboard/hooks/useValues";
-import { total } from "src/screens/dashboard/shared/utils";
+import { useValuesWithTotals } from "src/screens/dashboard/hooks/useValues";
 import { TotalsProps, ValueProps } from 'src/screens/dashboard/shared/types';
 import { IPledgesByValueSnapshot } from 'src/screens/dashboard/shared/interfaces';
 
@@ -85,7 +84,6 @@ const DashboardValuesTable = (): JSX.Element => {
 
   const [source] = useState<string>(process.env.REACT_APP_SERVER);
   const [snapshotId, setSnapshotId] = useState(1);
-  const [totals, setTotals] = useState({ honoured: 0, broken: 0, features: 0 });
   const {
     data,
     isLoading,
@@ -98,18 +96,7 @@ const DashboardValuesTable = (): JSX.Element => {
     isError: boolean;
     error: Error;
     isSuccess: boolean;
-  } = useValues({ source: source, snapshotId });
-
-  useEffect(() => {
-    if (!data) return;
-
-    const totals = {
-      honoured: data.items.map((i) => i.honoured).reduce(total, 0),
-      broken: data.items.map((i) => i.broken).reduce(total, 0),
-      features: data.items.map((i) => i.features).reduce(total, 0),
-    };
-    setTotals(totals);
-  }, [data]);
+  } = useValuesWithTotals({ source: source, snapshotId });
 
   if (isLoading) {
     return <span>Loading...</span>;
@@ -137,7 +124,7 @@ const DashboardValuesTable = (): JSX.Element => {
               return <Row key={value.name} value={value}></Row>;
             })}
           </tbody>
-          <Footer totals={totals} />
+          <Footer totals={data.totals} />
         </table>
         <TableControls
           namespace="values"
