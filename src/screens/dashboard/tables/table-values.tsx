@@ -4,7 +4,8 @@ import { useValues } from "src/screens/dashboard/hooks/useValues";
 import { total } from "src/screens/dashboard/shared/utils";
 import { TotalsProps, ValueProps } from 'src/screens/dashboard/shared/types';
 import { IPledgesByValueSnapshot } from 'src/screens/dashboard/shared/interfaces';
-import DashboardControls from "src/screens/dashboard/dashboard-controls";
+
+import TableControls from "src/screens/dashboard/tables/table-controls";
 
 const Header = () => {
   return (
@@ -138,12 +139,12 @@ const DashboardValuesTable = (): JSX.Element => {
           </tbody>
           <Footer totals={totals} />
         </table>
-        <DashboardControls
+        <TableControls
           namespace="values"
           snapshotId={data.id}
           snapshots={data.snapshots}
           onChange={setSnapshotId}
-        ></DashboardControls>
+        ></TableControls>
       </figure>
     );
   }

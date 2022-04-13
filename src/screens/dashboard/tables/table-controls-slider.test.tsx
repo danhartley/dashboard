@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/react";
 import exp from "constants";
-import Slider from "./dashboard-controls-slider";
+import Slider from "./table-controls-slider";
 
 describe("A slider", () => {
   let intialState = 1;

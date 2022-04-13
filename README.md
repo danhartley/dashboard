@@ -18,15 +18,26 @@
 
 ## Client or UI State
 
-React
+React (the one with hooks)
+React Hook Form (or none e.g. HTML names)
+
+### CSS
+Tailwind CSS
 
 ## Server State
 
 React Query
 
+# Dev tools
+
+Typescript (type checking)
+Prettier (code formatter)
+ESLint (static analysis JS & TS)
+
 # Testing & Counting Lines of Code
 
 Jest
+Cypress (Cucumber - Gherkin)
 React Testing Library
 Mock Service Worker
 Strict mode enabled ( see https://reactjs.org/docs/strict-mode.html )
@@ -48,6 +59,39 @@ Click "play" in dev tools
  Check for mocking (MSW)
  New axe issues (accessibility) 
  Web vitals
+
+## VS Code extensions
+
+axe Accessibility Linter
+Babel JavaScript
+Cucumber (Gherkin)
+Jest (Orta)
+Prettier
+Tailwind CSS Intellisense
+
+# Database
+
+TBD
+MWS for local development and testing
+
+# Source control
+
+Git
+GitHub
+Trunk Based Developmnt ( see https://trunkbaseddevelopment.com/ ) ?? GitHib flow
+
+Create a new branch from the main branch.
+Commit your code on this branch and push it to the remote repo (e.g. on GitHub).
+Open a Pull Request (aka Merge Request) in the remote repo.
+Run linter, type checks, and tests.
+Let your team members review your code.
+Merge the branch into the main branch.
+
+( see https://profy.dev/article/react-tech-stack )
+
+## Continuous Integration
+
+TBD GitHub Actions ( see https://github.com/features/actions )
 
 ## cloc
 

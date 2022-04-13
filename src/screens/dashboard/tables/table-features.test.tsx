@@ -4,7 +4,7 @@ import { renderHook } from "@testing-library/react-hooks";
 import { useFeatures } from "src/screens/dashboard/hooks/useFeatures";
 import { QueryClient, QueryClientProvider } from "react-query";
 import api from "src/api/api";
-import DashboardFeaturesTable from "./dashboard-features";
+import DashboardFeaturesTable from "./table-features";
 
 const createWrapper = () => {
   const queryClient = new QueryClient();

@@ -16,8 +16,9 @@ const snapshots = [
 ];
 
 const getData = async (snapshotId) => {
-  const endpoint = `snapshots.${snapshotId}.json`; // Todo: make this snapshots/{snapshotId} on live
 
+  const baseUrl = process.env.REACT_APP_API_URL;
+  const endpoint = `${baseUrl}snapshots/${snapshotId}.json`;
   const response = await client(endpoint);
 
   const data = {
@@ -35,7 +36,9 @@ const getData = async (snapshotId) => {
 };
 
 const getValues = async (snapshotId) => {
-  const endpoint = `values.${snapshotId}.json`;
+
+  const baseUrl = process.env.REACT_APP_API_URL;
+  const endpoint = `${baseUrl}values/${snapshotId}.json`;
   const response = await client(endpoint);
 
   return response;

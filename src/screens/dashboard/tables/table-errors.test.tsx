@@ -3,8 +3,8 @@ import { useFeatures } from "src/screens/dashboard/hooks/useFeatures";
 import { useValues } from "src/screens/dashboard/hooks/useValues";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import DashboardFeaturesTable from "./dashboard-features";
-import DashboardValuesTable from "./dashboard-values";
+import DashboardFeaturesTable from "./table-features";
+import DashboardValuesTable from "./table-values";
 
 // For mocking see: https://www.youtube.com/watch?v=ZfvOHRX-FDM
 // For mocking see: https://github.com/satansdeer/react-query-3-example

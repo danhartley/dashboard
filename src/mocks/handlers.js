@@ -435,7 +435,7 @@ export const handlers = [
       ])
     );
   }),
-  rest.get("snapshots.3.json", async (req, res, ctx) => {
+  rest.get("snapshots/3.json", async (req, res, ctx) => {
     return res(
       ctx.json([
         {
@@ -447,7 +447,7 @@ export const handlers = [
       ])
     );
   }),
-  rest.get("snapshots.2.json", async (req, res, ctx) => {
+  rest.get("snapshots/2.json", async (req, res, ctx) => {
     return res(
       ctx.json([
         {
@@ -670,7 +670,7 @@ export const handlers = [
       ])
     );
   }),
-  rest.get("snapshots.1.json", async (req, res, ctx) => {
+  rest.get("snapshots/1.json", async (req, res, ctx) => {
     return res(
       ctx.json([
         {
@@ -887,7 +887,7 @@ export const handlers = [
       ])
     );
   }),
-  rest.get("snapshots.500.json", async (req, res, ctx) => {
+  rest.get("snapshots/500.json", async (req, res, ctx) => {
     return res(
       ctx.status(500),
       ctx.json({
@@ -895,7 +895,7 @@ export const handlers = [
       })
     );
   }),
-  rest.get("snapshots.0.json", async (req, res, ctx) => {
+  rest.get("snapshots/0.json", async (req, res, ctx) => {
     console.log("handler for 0 snapshot");
     return res(
       ctx.status(200),
@@ -936,7 +936,7 @@ export const handlers = [
       })
     );
   }),
-  rest.get("values.1.json", async (req, res, ctx) => {
+  rest.get("values/1.json", async (req, res, ctx) => {
     return res(
       ctx.json({
         id: 1,
@@ -1144,7 +1144,7 @@ export const handlers = [
       })
     );
   }),
-  rest.get("values.2.json", async (req, res, ctx) => {
+  rest.get("values/2.json", async (req, res, ctx) => {
     return res(
       ctx.json({
         id: 2,

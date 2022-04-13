@@ -1,4 +1,4 @@
-import Slider from "./dashboard-controls-slider";
+import Slider from "./table-controls-slider";
 import { ControlsProps } from "src/screens/dashboard/shared/types";
 
 const DashboardControls = ({

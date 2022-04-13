@@ -5,7 +5,7 @@ import { IPledge, IPledgesByFeatureSnapshot } from "src/screens/dashboard/shared
 import { TotalsProps } from 'src/screens/dashboard/shared/types';
 import { total } from "src/screens/dashboard/shared/utils";
 
-import DashboardControls from "src/screens/dashboard/dashboard-controls";
+import TableControls from "src/screens/dashboard/tables/table-controls";
 
 const Figure = ({ title, children }: { title?: string; children?: JSX.Element | JSX.Element[] }) => {
   return (
@@ -151,12 +151,12 @@ export const DashboardFeaturesTable = () => {
           </tbody>
           <Footer totals={totals} />
         </table>
-        <DashboardControls
+        <TableControls
           namespace="features"
           snapshotId={data.id}
           snapshots={data.snapshots}
           onChange={setSnapshotId}
-        ></DashboardControls>
+        ></TableControls>
       </Figure>
     );
   }

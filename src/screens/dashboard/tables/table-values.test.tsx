@@ -4,7 +4,7 @@ import { renderHook } from "@testing-library/react-hooks";
 import { useValues } from "src/screens/dashboard/hooks/useValues";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import DashboardValuesTable from "./dashboard-values";
+import DashboardValuesTable from "./table-values";
 
 const createWrapper = () => {
   const queryClient = new QueryClient();
