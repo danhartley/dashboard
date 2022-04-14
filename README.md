@@ -2,37 +2,37 @@
 
 ## Locally
 
-npm run build
-serve -s build -l 4000
-json-server public/db.json --port 5000 ( to match production endpoint: .env.production )
-  to view the local 'production' server: http://localhost:5000/snapshots, http://localhost:5000/snapshots/1, etc.
+npm run build  
+serve -s build -l 4000  
+json-server public/db.json --port 5000 ( to match production endpoint: .env.production )  
+  to view the local 'production' server: http://localhost:5000/snapshots, http://localhost:5000/snapshots/1, etc.  
 
 ### json-server
 
-I have it installed globally. ( See https://github.com/typicode/json-server )
+I have it installed globally. ( See https://github.com/typicode/json-server )  
 To test the endpoint, including POSTs, see db.http 
 
 # Stack
 
-[React: UI & UI state](https://reactjs.org/)
-[Typescript](https://www.typescriptlang.org/)
-[Cypress: for BDD](https://cypress.io/)
-[Jest: unit and component tests](https://jestjs.io/)
-[Testing Library: DOM-based selectors](https://testing-library.com/)
-[MSW: mocking browser requests on the network level](https://mswjs.io/)
-[Tailwind CSS: styling](https://tailwindcss.com/)
-[PostCSS: CC preprocessor](https://postcss.org/)
+[React: UI & UI state](https://reactjs.org/)  
+[Typescript](https://www.typescriptlang.org/)  
+[Cypress: for BDD](https://cypress.io/)  
+[Jest: unit and component tests](https://jestjs.io/)  
+[Testing Library: DOM-based selectors](https://testing-library.com/)  
+[MSW: mocking browser requests on the network level](https://mswjs.io/)  
+[Tailwind CSS: styling](https://tailwindcss.com/)  
+[PostCSS: CC preprocessor](https://postcss.org/)  
 
-[Remix: client/server](https://remix.run/)
-[Reach UI: accessible React component library](https://reach.tech/)
-[GitHub | GitHub actions](https://github.com/features/actions)
-[Sentry: error reporting](https://sentry.io/)
+[Remix: client/server](https://remix.run/)  
+[Reach UI: accessible React component library](https://reach.tech/)  
+[GitHub | GitHub actions](https://github.com/features/actions)  
+[Sentry: error reporting](https://sentry.io/)  
 
 # State
 
 ## Client or UI State
 
-React (the one with hooks)
+React (the one with hooks)  
 React Hook Form (or none e.g. HTML names)
 
 ### CSS
@@ -44,25 +44,30 @@ React Query
 
 # Dev tools
 
-Typescript (type checking)
-Prettier (code formatter)
+Typescript (type checking)  
+Prettier (code formatter)  
 ESLint (static analysis JS & TS)
 
-# Testing & Counting Lines of Code
+## Lighthouse
+
+e.g. run: lighthouse http://localhost:4000/ --budget-path=./perf/budget.json at CLI  
+** Todo: add to CI **
+
+## Testing & Counting Lines of Code
 
 Jest
-Cypress (Cucumber - Gherkin)
-React Testing Library
-Mock Service Worker
-Strict mode enabled ( see https://reactjs.org/docs/strict-mode.html )
+Cypress (Cucumber - Gherkin)  
+React Testing Library  
+Mock Service Worker  
+Strict mode enabled ( see https://reactjs.org/docs/strict-mode.html )  
 Static type checking with Typescript ( see https://reactjs.org/docs/static-type-checking.html )
 
 ## Debugging tests
 
-npm run test:debug
-In Chrome open: about:inspect
-Select "inspect" on the process
-Click "play" in dev tools
+npm run test:debug  
+In Chrome open: about:inspect  
+Select "inspect" on the process  
+Click "play" in dev tools  
 
 ( see https://create-react-app.dev/docs/debugging-tests )
 
@@ -70,36 +75,37 @@ Click "play" in dev tools
 
 ## Chrome DevTools console
 
- Check for mocking (MSW)
- New axe issues (accessibility) 
- Web vitals
+ Check for mocking (MSW)  
+ New axe issues (accessibility)   
+ Web vitals  
 
 ## VS Code extensions
 
-axe Accessibility Linter
-Babel JavaScript
-Cucumber (Gherkin)
-Jest (Orta)
-Prettier
-Tailwind CSS Intellisense
+axe Accessibility Linter  
+Babel JavaScript  
+Cucumber (Gherkin)  
+Jest (Orta)  
+Prettier  
+Tailwind CSS Intellisense  
+REST Client
 
 # Database
 
-TBD
+TBD  
 MWS for local development and testing
 
 # Source control
 
-Git
-GitHub
-Trunk Based Developmnt ( see https://trunkbaseddevelopment.com/ ) ?? GitHib flow
+Git  
+GitHub  
+Trunk Based Developmnt ( see https://trunkbaseddevelopment.com/ ) ?? GitHib flow  
 
-Create a new branch from the main branch.
-Commit your code on this branch and push it to the remote repo (e.g. on GitHub).
-Open a Pull Request (aka Merge Request) in the remote repo.
-Run linter, type checks, and tests.
-Let your team members review your code.
-Merge the branch into the main branch.
+Create a new branch from the main branch.  
+Commit your code on this branch and push it to the remote repo (e.g. on GitHub).  
+Open a Pull Request (aka Merge Request) in the remote repo.  
+Run linter, type checks, and tests.  
+Let your team members review your code.  
+Merge the branch into the main branch.  
 
 ( see https://profy.dev/article/react-tech-stack )
 
@@ -116,5 +122,3 @@ e.g. cloc src
 ## find
 
 e.g. find ./src -type f | xargs wc -w | tail -1
-
-
