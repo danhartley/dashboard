@@ -1,0 +1,35 @@
+GET http://localhost:5000/snapshots
+
+###
+
+POST http://localhost:5000/snapshots HTTP/1.1 
+content-type: application/json
+
+{
+  "id": 5,
+  "source": "Google",
+  "snapshot": "1 Jan 2020",
+  "items": []
+}
+
+###
+
+PUT http://localhost:5000/snapshots/5 HTTP/1.1 
+content-type: application/json
+
+{
+  "id": 5,
+  "source": "Google",
+  "snapshot": "1 Jan 2021",
+  "items": []
+}
+
+###
+
+DELETE http://localhost:5000/snapshots/4 HTTP/1.1 
+content-type: application/json
+
+###
+
+DELETE http://localhost:5000/snapshots/5 HTTP/1.1 
+content-type: application/json

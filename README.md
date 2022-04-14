@@ -1,3 +1,17 @@
+# Production
+
+## Locally
+
+npm run build
+serve -s build -l 4000
+json-server public/db.json --port 5000 ( to match production endpoint: .env.production )
+  to view the local 'production' server: http://localhost:5000/snapshots, http://localhost:5000/snapshots/1, etc.
+
+### json-server
+
+I have it installed globally. ( See https://github.com/typicode/json-server )
+To test the endpoint, including POSTs, see db.http 
+
 # Stack
 
 [React: UI & UI state](https://reactjs.org/)

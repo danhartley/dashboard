@@ -18,11 +18,11 @@ const snapshots = [
 const getData = async (snapshotId) => {
 
   const baseUrl = process.env.REACT_APP_API_URL;
-  const endpoint = `${baseUrl}snapshots/${snapshotId}.json`;
+  const endpoint = `${baseUrl}snapshots/${snapshotId}`;
   const response = await client(endpoint);
 
   const data = {
-    ...response[0],
+    ...response,
     snapshots
   };
 
@@ -32,7 +32,7 @@ const getData = async (snapshotId) => {
 // const getValues = async (snapshotId) => {
 
 //   const baseUrl = process.env.REACT_APP_API_URL;
-//   const endpoint = `${baseUrl}values/${snapshotId}.json`;
+//   const endpoint = `${baseUrl}values/${snapshotId}`;
 //   const response = await client(endpoint);
 
 //   return response;

@@ -2,7 +2,9 @@ import { total } from "src/screens/dashboard/shared/utils";
 import { getSnapshotsWithTotals } from 'src/screens/dashboard/shared/utils';
 import { IItem } from 'src/screens/dashboard/shared/interfaces';
  
-import snapshots from 'src/mocks/snapshots.json';
+import db from 'src/mocks/db.json';
+
+const snapshots = db.snapshots;
 
 describe("Total reducer", () => {
   const table = [
