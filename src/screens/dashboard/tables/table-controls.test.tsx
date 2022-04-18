@@ -1,8 +1,8 @@
-import { render, fireEvent, within } from "@testing-library/react";
+import { screen, render, fireEvent, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import DashboardControls from "./table-controls";
+import TableControls from "./table-controls";
 
-describe("Dashboard controls", () => {
+describe("Table controls", () => {
   const snapshots = [
     {
       id: 1,
@@ -23,14 +23,14 @@ describe("Dashboard controls", () => {
 
   describe("include a slider for selecting snapshots", () => {
     test("which notifies the containing element when it changes", async () => {
-      const { getByRole } = render(
-        <DashboardControls
+      render(
+        <TableControls
           snapshots={snapshots}
           snapshotId={snapshotId}
           onChange={handleChange}
-        ></DashboardControls>
+        ></TableControls>
       );
-      const slider = getByRole("slider") as HTMLInputElement;
+      const slider = screen.getByRole("slider") as HTMLInputElement;
       expect(slider.value).toBe("1");
       fireEvent.change(slider, { target: { value: 2 } });
       expect(handleChange).toHaveBeenCalled();
@@ -39,28 +39,28 @@ describe("Dashboard controls", () => {
 
   describe("and tab options to change the display format", () => {
     test("in a list", () => {
-      const { getByRole } = render(
-        <DashboardControls
+      render(
+        <TableControls
           snapshots={snapshots}
           snapshotId={snapshotId}
           onChange={handleChange}
-        ></DashboardControls>
+        ></TableControls>
       );
-      const { getByText } = within(getByRole("tablist"));
+      const { getByText } = within(screen.getByRole("tablist"));
       expect(getByText("Chart")).toBeInTheDocument();
     });
     test("with one preselected", () => {
-      const { getByRole } = render(
-        <DashboardControls
+      render(
+        <TableControls
           snapshots={snapshots}
           snapshotId={snapshotId}
           onChange={handleChange}
-        ></DashboardControls>
+        ></TableControls>
       );
-      const tableButton = getByRole("tab", { name: "Table" });
+      const tableButton = screen.getByRole("tab", { name: "Table" });
       expect(tableButton).toBeTruthy();
       userEvent.click(tableButton);
-      const selectedButton = getByRole("tab", { selected: true });
+      const selectedButton = screen.getByRole("tab", { selected: true });
       expect(tableButton).toEqual(selectedButton);
     });
   });

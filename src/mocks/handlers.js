@@ -42,7 +42,6 @@ export const handlers = [
     );
   }),
   rest.get("snapshots/0", async (req, res, ctx) => {
-    console.log("handler for 0 snapshot");
     return res(
       ctx.status(200),
       ctx.json({

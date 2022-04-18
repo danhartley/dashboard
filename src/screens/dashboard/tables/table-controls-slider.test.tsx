@@ -1,5 +1,4 @@
-import { render, fireEvent } from "@testing-library/react";
-import exp from "constants";
+import { screen, render, fireEvent } from "@testing-library/react";
 import Slider from "./table-controls-slider";
 
 describe("A slider", () => {
@@ -23,7 +22,7 @@ describe("A slider", () => {
   const handleChange = jest.fn();
 
   test("has a state which updates with each change", async () => {
-    const { getByRole } = render(
+    render(
       <Slider
         namespace={namespace}
         intialState={intialState}
@@ -31,7 +30,7 @@ describe("A slider", () => {
         onChange={handleChange}
       ></Slider>
     );
-    const slider = getByRole("slider") as HTMLInputElement;
+    const slider = screen.getByRole("slider") as HTMLInputElement;
 
     expect(slider.value).toBe("1");
 
@@ -49,7 +48,7 @@ describe("A slider", () => {
   });
 
   test("and has a label associated with the current state", () => {
-    const { getByRole, getByLabelText } = render(
+    render(
       <Slider
         namespace={namespace}
         intialState={intialState}
@@ -57,12 +56,12 @@ describe("A slider", () => {
         onChange={handleChange}
       ></Slider>
     );
-    const slider = getByRole("slider") as HTMLInputElement;
+    const slider = screen.getByRole("slider") as HTMLInputElement;
     const labelText = range.find(
       (r) => r.id === parseInt(slider.value)
     ).snapshot;
-    expect(getByLabelText(labelText)).toBeInTheDocument();
-    expect(getByLabelText(labelText).id).toBe("slider-features");
+    expect(screen.getByLabelText(labelText)).toBeInTheDocument();
+    expect(screen.getByLabelText(labelText).id).toBe("slider-features");
   });
 
   test("and is hidden when there are no data", () => {

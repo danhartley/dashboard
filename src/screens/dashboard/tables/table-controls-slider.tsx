@@ -31,7 +31,7 @@ const Slider = ({
         max={max}
         value={state.id}        
       />
-      <label className="pl-4" htmlFor={`slider-${namespace}`}>Snapshot taken: {state.snapshot}</label>
+      <span className="pl-2">Snapshot taken:</span><label className="pl-2" htmlFor={`slider-${namespace}`}>{state.snapshot}</label>
     </>
   );
 };

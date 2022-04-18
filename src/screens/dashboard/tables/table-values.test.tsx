@@ -17,14 +17,14 @@ const renderComponent = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardValuesTable></DashboardValuesTable>
+      <DashboardValuesTable source="Facebook"></DashboardValuesTable>
     </QueryClientProvider>
   );
 };
 
 const renderValuesWithSuccess = async (snapshotId) => {
   const { result, waitFor } = renderHook(
-    () => useValuesWithTotals({ source: "Test", snapshotId: snapshotId }),
+    () => useValuesWithTotals({ source: "Facebook", snapshotId: snapshotId }),
     {
       wrapper: createWrapper(),
     }
@@ -35,46 +35,47 @@ const renderValuesWithSuccess = async (snapshotId) => {
 
 describe("The pledges by values table", () => {
   test("shows when it is loading", async () => {
-    const { getByText } = renderComponent();
+    renderComponent();
     const { result, waitFor } = renderHook(
-      () => useValuesWithTotals({ source: "Test", snapshotId: 1 }),
+      () => useValuesWithTotals({ source: "Facebook", snapshotId: 1 }),
       {
         wrapper: createWrapper(),
       }
     );
     await waitFor(() => result.current.isLoading);
-    expect(getByText(/loading/i)).toBeInTheDocument();
+    expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
   test("has a title", async () => {
-    const { getByText } = renderComponent();
+    renderComponent();
     await renderValuesWithSuccess(1);
-    expect(getByText("Facebook pledges honoured and broken by value")).toBeInTheDocument();
+    expect(screen.getByText("Facebook pledges honoured and broken by value")).toBeInTheDocument();
   });
 
   describe("has a value column", () => {
     test("with a table header", async () => {
-      const { getByRole } = renderComponent();
+      renderComponent();
       await renderValuesWithSuccess(1);
-      expect(getByRole("columnheader", { name: "Value" })).toBeTruthy();
+      expect(screen.getByRole("columnheader", { name: "Value" })).toBeTruthy();
     });
 
     test("and a row for each value", async () => {
-      const { getAllByRole } = renderComponent();
+      renderComponent();
       const { result } = await renderValuesWithSuccess(1);
       const itemCount = result.current.data.items.length;
-      const body = getAllByRole("rowgroup")[1];
+      const body = screen.getAllByRole("rowgroup")[1];
       const rowCount = within(body).getAllByRole("row").length;
       expect(itemCount).toEqual(rowCount);
     });
 
     describe("which when clicked", () => {
       test("shows related pledges in a new row", async () => {
-        const { getByRole, getByText } = renderComponent();
+        const user = userEvent.setup();
+        renderComponent();
         await renderValuesWithSuccess(1);
-        const button = getByRole("button", { name: "Responsibility" });
-        userEvent.click(button);
+        const button = screen.getByRole("button", { name: "Responsibility" });
+        await user.click(button);
         expect(
-          getByText(
+          screen.getByText(
             "We pledge to evaluate risk, so that fundamental rights are not negatively affected."
           )
         ).toBeInTheDocument();
@@ -84,9 +85,9 @@ describe("The pledges by values table", () => {
         expect(within(row).getByText(2)).toBeTruthy();
       });
       test("with totals for hounored and broken pledges", async () => {
-        const { getByText } = renderComponent();
+        renderComponent();
         await renderValuesWithSuccess(1);
-        expect(getByText("Totals")).toBeInTheDocument();
+        expect(screen.getByText("Totals")).toBeInTheDocument();
         const row = screen.getByText("Totals").closest("tr");
         expect(within(row).getByText("20")).toBeInTheDocument();
         expect(within(row).getByText("8")).toBeInTheDocument();
@@ -95,18 +96,19 @@ describe("The pledges by values table", () => {
 
     describe("and when clicked again", () => {
       test("hides the related pledges ", async () => {
-        const { getByRole, getByText, queryByText } = renderComponent();
+        const user = userEvent.setup();
+        renderComponent();
         await renderValuesWithSuccess(1);
-        const button = getByRole("button", { name: "Responsibility" });
-        userEvent.click(button);
+        const button = screen.getByRole("button", { name: "Responsibility" });
+        await user.click(button);
         expect(
-          getByText(
+          screen.getByText(
             "We pledge to evaluate risk, so that fundamental rights are not negatively affected."
           )
         ).toBeInTheDocument();
-        userEvent.click(button);
+        await user.click(button);
         expect(
-          await queryByText(
+          await screen.queryByText(
             "We pledge to evaluate risk, so that fundamental rights are not negatively affected."
           )
         ).not.toBeInTheDocument();

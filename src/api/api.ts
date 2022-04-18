@@ -1,103 +1,60 @@
 import client from "./api-browser-client";
 
+type PledgeProps = {
+  source?: string;
+  snapshotId: number;
+}
+
 const snapshots = [
   {
     id: 1,
     snapshot: "1 Jan 2020",
+    source: "Facebook"
   },
   {
     id: 2,
     snapshot: "1 Jan 2021",
+    source: "Facebook"
   },
   {
     id: 3,
     snapshot: "1 Jan 2022",
+    source: "Facebook"
+  },
+  {
+    id: 4,
+    snapshot: "1 Feb 2022",
+    source: "Google"
   },
 ];
 
-const getData = async (snapshotId) => {
+const getData = async ({
+  source,
+  snapshotId,
+}: PledgeProps) => {
 
   const baseUrl = process.env.REACT_APP_API_URL;
-  const endpoint = `${baseUrl}snapshots/${snapshotId}`;
+  const endpoint = `${baseUrl}snapshots/${snapshotId}?source=${source}`;
   const response = await client(endpoint);
 
   const data = {
     ...response,
-    snapshots
+    snapshots: snapshots.filter(s => s.source === source)
   };
 
   return await data;
 };
 
-// const getValues = async (snapshotId) => {
-
-//   const baseUrl = process.env.REACT_APP_API_URL;
-//   const endpoint = `${baseUrl}values/${snapshotId}`;
-//   const response = await client(endpoint);
-
-//   return response;
-// };
-
-// const getDashboard = (at?: AssistedTechnology) => {
-
-//     const dashboard = {
-//         type: DashboardStyle.Tabular
-//     };
-
-//     switch(at) {
-//         case AssistedTechnology.ScreenReader:
-//             dashboard.type = DashboardStyle.Tabular;
-//             break;
-//         case AssistedTechnology.Unknown:
-//             dashboard.type = DashboardStyle.Visual;
-//     }
-
-//     return dashboard;
-// };
-
 const getPledgesByFeatures = async ({
   source,
   snapshotId,
-}: {
-  source?: string;
-  snapshotId: number;
-}) => {
-  return getData(snapshotId);
-
-  // let data;
-
-  // switch(source) {
-  //     case Source.Test.toString():
-  //         data = getData(snapshotId);
-  //         break;
-  //     default:
-  //         data = getData(snapshotId);
-  // }
-
-  // return data;
+}: PledgeProps) => {
+  return getData({source, snapshotId});
 };
-
-// const getPledgesByValues = async ({
-//   source,
-//   snapshotId,
-// }: {
-//   source?: string;
-//   snapshotId: number;
-// }) => {
-//   const values = await getValues(snapshotId);
-
-//   const data = {
-//     ...values,
-//     snapshots,
-//   };
-
-//   return data;
-// };
 
 const api = {
   getData,
-  getPledgesByFeatures,
-  // getPledgesByValues,
+  getPledgesByFeatures
 };
 
 export default api;

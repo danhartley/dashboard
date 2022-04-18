@@ -25,7 +25,7 @@ const Header = () => {
   );
 };
 
-const Row = ({ value }: ValueProps ): JSX.Element => {
+const Row = ({ value }: ValueProps ) => {
 
   const [selectedValue, setSelectedValue] = useState("");
 
@@ -36,16 +36,16 @@ const Row = ({ value }: ValueProps ): JSX.Element => {
   return (
     <>
       <tr>
-        <td className="py-1">
+        <td className="my-2 py-2 pl-2">
           <button
             onClick={() => handleClick(value.name.toLowerCase())}
           >
             {value.name}
           </button>
         </td>
-        <td className="text-center">{value.honoured}</td>
-        <td className="text-center">{value.broken}</td>
-        <td className="text-center">{value.features}</td>
+        <td className="my-2 text-center">{value.honoured}</td>
+        <td className="my-2 text-center">{value.broken}</td>
+        <td className="my-2 text-center">{value.features}</td>
       </tr>
 
       {value.name.toLowerCase() === selectedValue ? (
@@ -64,7 +64,7 @@ const Footer = ({ totals }: TotalsProps ) => {
   return (
     <tfoot>
       <tr>
-        <th className="text-xs uppercase tracking-wide text-left pt-2" scope="row">
+        <th className="text-xs uppercase tracking-wide text-left pt-6" scope="row">
           Totals
         </th>
         <th>{totals.honoured}</th>
@@ -75,12 +75,11 @@ const Footer = ({ totals }: TotalsProps ) => {
   );
 };
 
-const DashboardValuesTable = (): JSX.Element => {
+const DashboardValuesTable = ({source}: {source?: string}) => {
   type Error = {
     message?: string;
   };
 
-  const [source] = useState<string>(process.env.REACT_APP_SERVER);
   const [snapshotId, setSnapshotId] = useState(1);
   const {
     data,

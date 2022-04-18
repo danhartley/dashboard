@@ -56,7 +56,6 @@ export const Row = ({ feature }: { feature: Feature }) => {
       <td className="my-2 py-2 pl-2">
           <button
             onClick={() => handleClick(feature.name.toLowerCase())}
-            className="border-b border-slate-900 dark:border-slate-50 hover:border-orange-600 dark:hover:border-orange-600"
           >
             {feature.name}
           </button>
@@ -90,12 +89,11 @@ const Footer = ({ totals }: TotalsProps) => {
   );
 };
 
-export const DashboardFeaturesTable = () => {
+export const DashboardFeaturesTable = ({source}: {source?: string}) => {
   type Error = {
     message?: string;
   };
 
-  const [source] = useState<string>(process.env.REACT_APP_SERVER);
   const [snapshotId, setSnapshotId] = useState(1);
   const {
     data,
@@ -109,7 +107,7 @@ export const DashboardFeaturesTable = () => {
     isError: boolean;
     error: Error;
     isSuccess: boolean;
-  } = useFeaturesWithTotals({ source: source, snapshotId: snapshotId });
+  } = useFeaturesWithTotals({ source, snapshotId });
 
   if (isLoading) {
     return (

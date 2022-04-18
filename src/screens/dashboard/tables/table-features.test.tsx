@@ -17,14 +17,14 @@ const renderComponent = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardFeaturesTable></DashboardFeaturesTable>
+      <DashboardFeaturesTable source="Facebook"></DashboardFeaturesTable>
     </QueryClientProvider>
   );
 };
 
 const renderFeaturesWithSuccess = async (snapshotId) => {
   const { result, waitFor } = renderHook(
-    () => useFeaturesWithTotals({ source: "Test", snapshotId: snapshotId }),
+    () => useFeaturesWithTotals({ source: "Facebook", snapshotId: snapshotId }),
     {
       wrapper: createWrapper(),
     }
@@ -35,58 +35,59 @@ const renderFeaturesWithSuccess = async (snapshotId) => {
 
 describe("The pledges by features table", () => {
   test("shows when it is loading", async () => {
-    const { getByText } = renderComponent();
+    renderComponent();
     const { result, waitFor } = renderHook(
-      () => useFeaturesWithTotals({ source: "Test", snapshotId: 1 }),
+      () => useFeaturesWithTotals({ source: "Facebook", snapshotId: 1 }),
       {
         wrapper: createWrapper(),
       }
     );
     await waitFor(() => result.current.isLoading);
-    expect(getByText(/loading/i)).toBeInTheDocument();
+    expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
   test("has a title", async () => {
-    const { getByText } = renderComponent();
+    renderComponent();
     const { result } = await renderFeaturesWithSuccess(1);
     expect(result.current.isSuccess).toBe(true);
-    expect(getByText("Facebook pledges honoured and broken by feature")).toBeInTheDocument();
+    expect(screen.getByText("Facebook pledges honoured and broken by feature")).toBeInTheDocument();
   });
 
   describe("has a value column", () => {
     test("with a table header", async () => {
-      const { getByRole } = renderComponent();
+      renderComponent();
       await renderFeaturesWithSuccess(1);
-      expect(getByRole("columnheader", { name: /feature/i })).toBeTruthy();
+      expect(screen.getByRole("columnheader", { name: /feature/i })).toBeTruthy();
     });
 
     test("and a row for each value", async () => {
-      const { getAllByRole } = renderComponent();
+      renderComponent();
       const { result } = await renderFeaturesWithSuccess(1);
       const itemCount = result.current.data.items.length;
-      const body = getAllByRole("rowgroup")[1];
+      const body = screen.getAllByRole("rowgroup")[1];
       const rowCount = within(body).getAllByRole("row").length;
       expect(itemCount).toEqual(rowCount);
     });
 
     describe("which when clicked", () => {
       test("shows related pledges in a new row", async () => {
-        const { getByText } = renderComponent();
+        renderComponent();
         await renderFeaturesWithSuccess(1);
-        expect(getByText("Totals")).toBeInTheDocument();
+        expect(screen.getByText("Totals")).toBeInTheDocument();
         const row = screen.getByText("Totals").closest("tr");
         expect(within(row).getByText("20")).toBeInTheDocument();
         expect(within(row).getByText("8")).toBeInTheDocument();
       });
       test("with totals for hounored and broken pledges", async () => {
-        const { getByRole, getByText } = renderComponent();
+        const user = userEvent.setup();
+        renderComponent();
         await renderFeaturesWithSuccess(1);
-        const button = getByRole("button", {
-          name: "Human agency and oversight",
+        const button = screen.getByRole("button", {
+          name: /Human agency and oversight/i,
         });
-        userEvent.click(button);
+        await user.click(button);
         expect(
-          getByText(
-            "We pledge to evaluate risk, so that fundamental rights are not negatively affected."
+          screen.getByText(
+            /We pledge to evaluate risk, so that fundamental rights are not negatively affected./i
           )
         ).toBeInTheDocument();
         const row = screen
@@ -102,20 +103,21 @@ describe("The pledges by features table", () => {
 
     describe("and when clicked again", () => {
       test("hides the related pledges", async () => {
-        const { getByRole, getByText, queryByText } = renderComponent();
+        const user = userEvent.setup();
+        renderComponent();
         await renderFeaturesWithSuccess(1);
-        const button = getByRole("button", {
+        const button = screen.getByRole("button", {
           name: "Human agency and oversight",
         });
-        userEvent.click(button);
+        await user.click(button);
         expect(
-          getByText(
+          screen.getByText(
             "We pledge to evaluate risk, so that fundamental rights are not negatively affected."
           )
         ).toBeInTheDocument();
-        userEvent.click(button);
+        await userEvent.click(button);
         expect(
-          await queryByText(
+          await screen.queryByText(
             "We pledge to evaluate risk, so that fundamental rights are not negatively affected."
           )
         ).not.toBeInTheDocument();
@@ -147,12 +149,12 @@ describe.skip("The pledges by features table can be mocked in the test", () => {
         ],
       },
     ];
-    const expected = { source: "Test", id: 1, items: items };
+    const expected = { source: "Facebook", id: 1, items: items };
     jest.spyOn(api, "getPledgesByFeatures").mockImplementation(() => {
       return Promise.resolve(expected);
     });
     const { result, waitFor } = renderHook(
-      () => useFeaturesWithTotals({ source: "Test", snapshotId: 1 }),
+      () => useFeaturesWithTotals({ source: "Facebook", snapshotId: 1 }),
       { wrapper: createWrapper() }
     );
     await waitFor(() => result.current.isSuccess);

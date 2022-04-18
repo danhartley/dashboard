@@ -1,6 +1,15 @@
 GET http://localhost:5000/snapshots
 
 ###
+GET http://localhost:5000/snapshots?source=Facebook
+
+###
+GET http://localhost:5000/snapshots/2?source=
+
+###
+GET http://localhost:5000/snapshots/4?source=Google
+
+###
 
 POST http://localhost:5000/snapshots HTTP/1.1 
 content-type: application/json

@@ -1,7 +1,7 @@
 import Slider from "./table-controls-slider";
 import { ControlsProps } from "src/screens/dashboard/shared/types";
 
-const DashboardControls = ({
+const TableControls = ({
   snapshots,
   snapshotId,
   onChange,
@@ -69,4 +69,4 @@ const DashboardControls = ({
   );
 };
 
-export default DashboardControls;
+export default TableControls;

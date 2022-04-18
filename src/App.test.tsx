@@ -5,7 +5,7 @@ import App from "./App";
 describe("The app", () => {
   test("has a title", () => {
     render(<App />);
-    const title = screen.getByText(/Facebook/i);
+    const title = screen.getByText(/Responsibility dashboard/i);
     expect(title).toBeInTheDocument();
   });
 });

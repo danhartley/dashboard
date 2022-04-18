@@ -1,4 +1,4 @@
-import { useQueries, useQuery, QueryClient } from "react-query";
+import { useQuery } from "react-query";
 import { getSnapshotsWithTotals, getValuesWithTotals } from 'src/screens/dashboard/shared/utils';
 
 import api from "src/api/api";
