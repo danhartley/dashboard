@@ -35,6 +35,14 @@ const DashboardControls = ({
 
   return (
     <section>
+      <div className="mt-8 flex justify-center">
+        <Slider
+          namespace={namespace}
+          intialState={snapshotId}
+          range={snapshots}
+          onChange={onChange}
+        ></Slider>
+      </div>
       <nav className="flex justify-center">
         <div
           className="flex flex-row w-4/5 m-4 justify-evenly"
@@ -57,14 +65,6 @@ const DashboardControls = ({
           })}
         </div>
       </nav>
-      <div className="flex justify-center">
-        <Slider
-          namespace={namespace}
-          intialState={snapshotId}
-          range={snapshots}
-          onChange={onChange}
-        ></Slider>
-      </div>
     </section>
   );
 };

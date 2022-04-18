@@ -7,7 +7,7 @@
       "items": [
         {
           "id": 1,
-          "name": "**Human agency and oversight",
+          "name": "Human agency and oversight",
           "value": "Responsibility",
           "pledges": [
             {
@@ -358,6 +358,11 @@
             },
             {
               "name": "We pledge to monitor the system's effect on society, so that we do not damage institutions, democracy or society at large.",
+              "honoured": 1,
+              "broken": 0
+            },
+            {
+              "name": "We pledge to demonstrate that our products are beneficial, necessary, and are deserving of the resources they use.",
               "honoured": 1,
               "broken": 0
             }

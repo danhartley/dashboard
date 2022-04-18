@@ -2,11 +2,9 @@ import { PledgeRowProps, PledgesRowProps } from "src/screens/dashboard/shared/ty
 
 const PledgeRow = ({ pledge, colSpan }: PledgeRowProps): JSX.Element => {
     
-  const isTrue = (state) => {
-    let classes = "text-xs text-center w-1/5";
-
-    classes += state ? ' after:content-["✓"]' : "";
-
+  const isTrue = (state, content) => {
+    let classes = `text-ml text-center w-1/5`;
+    classes += state ? ` after:content-['${content}']` : " after:content-['-']";
     return classes;
   };
 
@@ -15,9 +13,9 @@ const PledgeRow = ({ pledge, colSpan }: PledgeRowProps): JSX.Element => {
   return (
     <>
       <tr>
-        <td className={nameClasses}>{pledge.name}</td>
-        <td className={isTrue(pledge.honoured > 0)}></td>
-        <td className={isTrue(pledge.broken > 0)}></td>
+        <td className={nameClasses}><span className="pl-4 display: inline-block"><span></span>{pledge.name}</span></td>
+        <td className={isTrue(pledge.honoured > 0, "✓")}></td>
+        <td className={isTrue(pledge.broken > 0, "✗")}></td>
         {colSpan === 4 ? <td className="text-xs text-center w-1/5"></td> : null}
       </tr>
     </>
@@ -35,7 +33,7 @@ export const PledgesRow = ({
         <td colSpan={colSpan}>
           <table
             data-table-id={source.toLowerCase() + "-pledges"}
-            className="w-full table-fixed"
+            className="w-full table-fixed mb-2"
           >
             <tbody>
               {pledges.map((pledge) => {

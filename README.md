@@ -2,15 +2,31 @@
 
 ## Locally
 
-npm run build  
-serve -s build -l 4000  
-json-server public/db.json --port 5000 ( to match production endpoint: .env.production )  
-  to view the local 'production' server: http://localhost:5000/snapshots, http://localhost:5000/snapshots/1, etc.  
+development build running locally:
+
+        npm run start  
+with unit tests:
+
+        npm run test
+        
+production build running locally:
+
+        npm run build  
+        serve -s build -l 4000  
+        json-server public/db.json --port 5000 
+        
+The production endpoint is set in the .env.production file.
+
+Prettier
+
+        prettier --check .  
+
+
 
 ### json-server
 
 I have it installed globally. ( See https://github.com/typicode/json-server )  
-To test the endpoint, including POSTs, see db.http 
+To test the endpoint, including POSTs, see db.http (requires REST Client extension in VS Code)
 
 # Stack
 

@@ -29,9 +29,9 @@ const Slider = ({
         min={min}
         onChange={handleChange}
         max={max}
-        value={state.id}
+        value={state.id}        
       />
-      <label htmlFor={`slider-${namespace}`}>{state.snapshot}</label>
+      <label className="pl-4" htmlFor={`slider-${namespace}`}>Snapshot taken: {state.snapshot}</label>
     </>
   );
 };

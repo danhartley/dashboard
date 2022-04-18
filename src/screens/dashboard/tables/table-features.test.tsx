@@ -49,7 +49,7 @@ describe("The pledges by features table", () => {
     const { getByText } = renderComponent();
     const { result } = await renderFeaturesWithSuccess(1);
     expect(result.current.isSuccess).toBe(true);
-    expect(getByText("Facebook Pledges By Feature")).toBeInTheDocument();
+    expect(getByText("Facebook pledges honoured and broken by feature")).toBeInTheDocument();
   });
 
   describe("has a value column", () => {

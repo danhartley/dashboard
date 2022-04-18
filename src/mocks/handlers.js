@@ -50,52 +50,6 @@ export const handlers = [
       })
     );
   }),
-  // rest.get("values", async (req, res, ctx) => {
-  //   return res(
-  //     ctx.json({
-  //       source: "Facebook",
-  //       items: [
-  //         {
-  //           name: "Responsibility",
-  //         },
-  //         {
-  //           name: "Safety",
-  //         },
-  //         {
-  //           name: "Trust",
-  //         },
-  //         {
-  //           name: "Transparency",
-  //         },
-  //         {
-  //           name: "Fairness",
-  //         },
-  //         {
-  //           name: "Sustainability",
-  //         },
-  //         {
-  //           name: "Accountability",
-  //           comments:
-  //             "Including auditability, minimisation and reporting of negative impact, trade-offs and redress.",
-  //         },
-  //       ],
-  //     })
-  //   );
-  // }),
-  // rest.get("values/1", async (req, res, ctx) => {
-  //   return res(
-  //     ctx.json(
-  //       { ...getValuesWithTotals(snapshots.find(s => s.id === 1)) }
-  //     )
-  //   );
-  // }),
-  // rest.get("values/2", async (req, res, ctx) => {
-  //   return res(
-  //     ctx.json(
-  //       { ...getValuesWithTotals(snapshots.find(s => s.id === 2)) }
-  //     )
-  //   );
-  // }),
   rest.get("manifest.json", (req, res, ctx) => {
     return res(
       ctx.json(

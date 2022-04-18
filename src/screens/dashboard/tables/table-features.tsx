@@ -8,9 +8,9 @@ import TableControls from "src/screens/dashboard/tables/table-controls";
 
 const Figure = ({ title, children }: { title?: string; children?: JSX.Element | JSX.Element[] }) => {
   return (
-    <figure className="w-full border-solid border-slate-300 border p-3 my-2">
-      <figcaption className="mb-4">
-        <em>{title} Pledges By Feature</em>
+    <figure className="w-full border-solid border-slate-900 dark:border-slate-50 border-4 rounded-md p-3 my-2">
+      <figcaption className="font-serif mb-4">
+        <em>{title} pledges honoured and broken by feature</em>
       </figcaption>
       {children}
     </figure>
@@ -22,54 +22,54 @@ const Header = () => {
     <thead>
       <tr>
         <th></th>
-        <th colSpan={2}>Pledges</th>
+        <th className="text-xs uppercase tracking-wide" colSpan={2}>Pledges</th>
       </tr>
       <tr>
-        <th className="text-left w-3/5">Feature</th>
-        <th className="w-1/5">Honoured</th>
-        <th className="w-1/5">Broken</th>
+        <th className="pb-2 text-left text-xs uppercase tracking-wide w-3/5">Feature</th>
+        <th className="text-xs uppercase tracking-wide w-1/5 after:content-['✓'] md:after:content-['Honoured']"></th>
+        <th className="text-xs uppercase tracking-wide w-1/5 after:content-['✗'] md:after:content-['Broken']"></th>
       </tr>
     </thead>
   );
 };
 
-type FeaturePledges = {
+type Feature = {
   name: string;
   honoured: number;
   broken: number;
   pledges: IPledge[];
 };
 
-export const Row = ({ featurePledges }: { featurePledges: FeaturePledges }) => {
-  const _colSpan = 3;
+export const Row = ({ feature }: { feature: Feature }) => {
 
   const [selectedFeature, setSelectedFeature] = useState("");
 
-  const handleClick = (e) => {
-    const id = e.target.getAttribute("data-table-id");
+  const handleClick = id => {
     id !== selectedFeature ? setSelectedFeature(id) : setSelectedFeature("");
   };
+
+  const isSelected = feature.name.toLowerCase() === selectedFeature;
 
   return (
     <>
       <tr>
-        <td className="py-1">
+      <td className="my-2 py-2 pl-2">
           <button
-            data-table-id={featurePledges.name.toLowerCase()}
-            onClick={handleClick}
+            onClick={() => handleClick(feature.name.toLowerCase())}
+            className="border-b border-slate-900 dark:border-slate-50 hover:border-orange-600 dark:hover:border-orange-600"
           >
-            {featurePledges.name}
+            {feature.name}
           </button>
         </td>
-        <td className="text-center">{featurePledges.honoured}</td>
-        <td className="text-center">{featurePledges.broken}</td>
+        <td className={"my-2 text-center"}>{feature.honoured}</td>
+        <td className={"my-2 text-center"}>{feature.broken}</td>
       </tr>
-      {featurePledges.name.toLowerCase() === selectedFeature ? (
+      {isSelected ? (
         <PledgesRow
-          key={featurePledges.name}
-          pledges={featurePledges.pledges}
-          colSpan={_colSpan}
-          source={featurePledges.name}
+          key={feature.name}
+          pledges={feature.pledges}
+          colSpan={3}
+          source={feature.name}
         ></PledgesRow>
       ) : null}
     </>
@@ -80,7 +80,7 @@ const Footer = ({ totals }: TotalsProps) => {
   return (
     <tfoot>
       <tr>
-        <th className="text-left pt-2" scope="row">
+        <th className="text-xs uppercase tracking-wide text-left pt-6" scope="row">
           Totals
         </th>
         <th>{totals.honoured}</th>
@@ -129,12 +129,12 @@ export const DashboardFeaturesTable = () => {
         <table
           role="tabpanel"
           data-table-id="features"
-          className="w-4/5 text-xs sm:text-base"
+          className="w-11/12 text-xs sm:text-base"
         >
           <Header />
           <tbody>
             {data.items.map((feature) => {
-              return <Row key={feature.name} featurePledges={feature}></Row>;
+              return <Row key={feature.name} feature={feature}></Row>;
             })}
           </tbody>
           <Footer totals={data.totals} />

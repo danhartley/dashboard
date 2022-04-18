@@ -48,7 +48,7 @@ describe("The pledges by values table", () => {
   test("has a title", async () => {
     const { getByText } = renderComponent();
     await renderValuesWithSuccess(1);
-    expect(getByText("Facebook Pledges By Values")).toBeInTheDocument();
+    expect(getByText("Facebook pledges honoured and broken by value")).toBeInTheDocument();
   });
 
   describe("has a value column", () => {

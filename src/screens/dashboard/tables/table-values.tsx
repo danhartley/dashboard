@@ -8,29 +8,28 @@ import TableControls from "src/screens/dashboard/tables/table-controls";
 
 const Header = () => {
   return (
+
     <thead>
       <tr>
         <th colSpan={1}></th>
-        <th colSpan={2}>Pledges</th>
-        <th colSpan={2}>Project</th>
+        <th className="text-xs tracking-wide	uppercase" colSpan={2}>Pledges</th>
+        <th className="text-xs tracking-wide	uppercase" colSpan={2}>Project</th>
       </tr>
       <tr>
-        <th className="w-2/5 text-left">Value</th>
-        <th className="w-1/5">Honoured</th>
-        <th className="w-1/5">Broken</th>
-        <th className="w-1/5">Features</th>
+        <th className="pb-2 text-left text-xs tracking-wide	uppercase w-2/5">Value</th>
+        <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✓'] md:after:content-['Honoured']"></th>
+        <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✗'] md:after:content-['Broken']"></th>
+        <th className="text-xs tracking-wide uppercase w-1/5">Features</th>
       </tr>
     </thead>
   );
 };
 
 const Row = ({ value }: ValueProps ): JSX.Element => {
-  const _colSpan = 4;
 
   const [selectedValue, setSelectedValue] = useState("");
 
-  const handleClick = (e) => {
-    const id = e.target.getAttribute("data-table-id");
+  const handleClick = id => {
     id !== selectedValue ? setSelectedValue(id) : setSelectedValue("");
   };
 
@@ -39,8 +38,7 @@ const Row = ({ value }: ValueProps ): JSX.Element => {
       <tr>
         <td className="py-1">
           <button
-            data-table-id={value.name.toLowerCase()}
-            onClick={handleClick}
+            onClick={() => handleClick(value.name.toLowerCase())}
           >
             {value.name}
           </button>
@@ -54,7 +52,7 @@ const Row = ({ value }: ValueProps ): JSX.Element => {
         <PledgesRow
           key={value.name}
           pledges={value.pledges}
-          colSpan={_colSpan}
+          colSpan={4}
           source={value.name}
         ></PledgesRow>
       ) : null}
@@ -66,7 +64,7 @@ const Footer = ({ totals }: TotalsProps ) => {
   return (
     <tfoot>
       <tr>
-        <th className="text-left pt-2" scope="row">
+        <th className="text-xs uppercase tracking-wide text-left pt-2" scope="row">
           Totals
         </th>
         <th>{totals.honoured}</th>
@@ -108,15 +106,15 @@ const DashboardValuesTable = (): JSX.Element => {
 
   if (isSuccess) {
     return (
-      <figure className="w-full border-solid border-slate-300 border p-3 my-2">
-        <figcaption className="mb-4">
-          <em>{data.source} Pledges By Values</em>
+      <figure className="w-full border-solid border-slate-900 dark:border-slate-50 border-4 rounded-md p-3 my-2">
+        <figcaption className="font-serif mb-4">
+          <em>{data.source} pledges honoured and broken by value</em>
         </figcaption>
         <table
           role="tabpanel"
           aria-labelledby="table"
           data-table-id="values"
-          className="w-4/5 text-xs sm:text-base"
+          className="w-11/12 text-xs sm:text-base"
         >
           <Header />
           <tbody>
