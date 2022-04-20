@@ -33,6 +33,13 @@ export const handlers = [
       )
     );
   }),
+  rest.get("snapshots/10", async (req, res, ctx) => {
+    return res(
+      ctx.json(
+        { ...getSnapshotsWithTotals(snapshots.find(s => s.id === 10)) }
+      )
+    );
+  }),
   rest.get("snapshots/500", async (req, res, ctx) => {
     return res(
       ctx.status(500),

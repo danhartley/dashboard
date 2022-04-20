@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
 import { PledgesRow } from "./rows/pledges";
 import { IPledge, IPledgesByFeatureSnapshot } from "src/screens/dashboard/shared/interfaces";
-import { TotalsProps } from 'src/screens/dashboard/shared/types';
+import { TotalsProps, TableProps } from 'src/screens/dashboard/shared/types';
 
 import TableControls from "src/screens/dashboard/tables/table-controls";
 
@@ -53,7 +53,7 @@ export const Row = ({ feature }: { feature: Feature }) => {
   return (
     <>
       <tr>
-      <td className="my-2 py-2 pl-2">
+      <td className="my-2 py-2">
           <button
             onClick={() => handleClick(feature.name.toLowerCase())}
           >
@@ -89,12 +89,11 @@ const Footer = ({ totals }: TotalsProps) => {
   );
 };
 
-export const DashboardFeaturesTable = ({source}: {source?: string}) => {
+export const DashboardFeaturesTable = ({source, snapshotId, setSnapshotId}: TableProps) => {
   type Error = {
     message?: string;
   };
 
-  const [snapshotId, setSnapshotId] = useState(1);
   const {
     data,
     isLoading,

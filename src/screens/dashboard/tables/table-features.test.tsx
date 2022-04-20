@@ -17,14 +17,14 @@ const renderComponent = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardFeaturesTable source="Facebook"></DashboardFeaturesTable>
+      <DashboardFeaturesTable source="RTW" snapshotId={1} setSnapshotId={() => 10}></DashboardFeaturesTable>
     </QueryClientProvider>
   );
 };
 
 const renderFeaturesWithSuccess = async (snapshotId) => {
   const { result, waitFor } = renderHook(
-    () => useFeaturesWithTotals({ source: "Facebook", snapshotId: snapshotId }),
+    () => useFeaturesWithTotals({ source: "RTW", snapshotId: snapshotId }),
     {
       wrapper: createWrapper(),
     }
@@ -37,7 +37,7 @@ describe("The pledges by features table", () => {
   test("shows when it is loading", async () => {
     renderComponent();
     const { result, waitFor } = renderHook(
-      () => useFeaturesWithTotals({ source: "Facebook", snapshotId: 1 }),
+      () => useFeaturesWithTotals({ source: "RTW", snapshotId: 1 }),
       {
         wrapper: createWrapper(),
       }
@@ -49,7 +49,7 @@ describe("The pledges by features table", () => {
     renderComponent();
     const { result } = await renderFeaturesWithSuccess(1);
     expect(result.current.isSuccess).toBe(true);
-    expect(screen.getByText("Facebook pledges honoured and broken by feature")).toBeInTheDocument();
+    expect(screen.getByText("RTW pledges honoured and broken by feature")).toBeInTheDocument();
   });
 
   describe("has a value column", () => {
@@ -149,12 +149,12 @@ describe.skip("The pledges by features table can be mocked in the test", () => {
         ],
       },
     ];
-    const expected = { source: "Facebook", id: 1, items: items };
+    const expected = { source: "RTW", id: 1, items: items };
     jest.spyOn(api, "getPledgesByFeatures").mockImplementation(() => {
       return Promise.resolve(expected);
     });
     const { result, waitFor } = renderHook(
-      () => useFeaturesWithTotals({ source: "Facebook", snapshotId: 1 }),
+      () => useFeaturesWithTotals({ source: "RTW", snapshotId: 1 }),
       { wrapper: createWrapper() }
     );
     await waitFor(() => result.current.isSuccess);

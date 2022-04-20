@@ -1,7 +1,7 @@
 {
   "snapshots": [{
     "id": 1,
-    "source": "Facebook",
+    "source": "RTW",
     "snapshot": "1 Jan 2020",
     "items": [
       {
@@ -197,7 +197,7 @@
 },
 {
     "id": 2,
-    "source": "Facebook",
+    "source": "RTW",
     "snapshot": "1 Jan 2021",
     "items": [
       {
@@ -398,7 +398,7 @@
 },
 {
     "id": 3,
-    "source": "Facebook",
+    "source": "RTW",
     "snapshot": "1 Jan 2022",
     "items": []
 },
@@ -407,5 +407,215 @@
     "source": "Google",
     "snapshot": "1 Feb 2022",
     "items": []
+},
+{
+	"id": 10,
+	"source": "Mossy Earth",
+	"snapshot": "1 Jan 2021",
+	"items": [  {
+    "id": 1,
+    "epic": "Business Ethos",
+		"name": "Sustainble business model",
+		"value": "Sustainability",
+    "pledges":[
+      {
+        "name": "We pledge to operate as an independent company sustained by profits.",
+        "honoured": 1,
+        "broken": 0
+      },      
+      {
+        "name": "We pledge to have a meaningful impact through rewilding, reforestation and conservation projects.",
+        "honoured": 1,
+        "broken": 0
+      },
+      {
+        "name": "We pledge that our revenue structure will sustain our services over the long term.",
+        "honoured": 1,
+        "broken": 0
+      },
+      {
+        "name": "We pledge to demonstrate that nature and conservation are economically viable services.",
+        "honoured": 1,
+        "broken": 0
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "epic": "Business Ethos",
+		"name": "Transparent business model",
+		"value": "Transparency",
+    "pledges":[
+      {
+        "name": "We pledge to work in ways that are transparent.",
+        "honoured": 1,
+        "broken": 0
+      },
+      {
+        "name": "We pledge to explain the methodologies we use.",
+        "honoured": 1,
+        "broken": 0
+      },
+      {
+        "name": "We pledge to provide tools for members to independently verify the impact of the projects they invest in.",
+        "honoured": 1,
+        "broken": 0
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "epic": "Business Ethos",
+		"name": "Accountable business model",
+		"value": "Accountability",
+    "pledges":[
+      {
+        "name": "We pledge to explain the methodologies we use.",
+        "honoured": 1,
+        "broken": 0
+      },
+      {
+        "name": "We pledge to provide tools for members to independently verify the impact of the projects they invest in.",
+        "honoured": 1,
+        "broken": 0
+      }
+    ]
+  },{
+		"id": 4,
+    "epic": "Trust and transparency",
+		"name": "Verification",
+		"value": "Accountability",
+		"pledges": [
+      {
+			"name": "We pledge to make it possible for contributors to verify the impact of their contribution to a project in person.",
+			"honoured": 0,
+			"broken": 1
+		  },
+      {
+			"name": "We pledge to provide tree imagery and GPS coordinates of planting areas soon after planting, to members and customers.",
+			"honoured": 1,
+			"broken": 0
+		  },    
+      {
+			"name": "We pledge to monitor planted areas over time, and publish progress updates from the field.",
+			"honoured": 1,
+			"broken": 0
+		  },
+      {
+        "name": "We pledge to make tree numbers and species lists publicly available via online maps.",
+        "honoured": 1,
+        "broken": 0
+      },
+      {
+        "name": "We pledge to provide 'before' and 'after' photos so that members can see how the forest has grown and changed over time.",
+        "honoured": 0,
+        "broken": 1
+      },
+      {
+        "name": "We pledge to respond to your questions.",
+        "honoured": 1,
+        "broken": 0
+      }
+    ]
+	},
+  {
+    "id": 5,
+    "epic": "Trust and Transparency",
+		"name": "Public scrutiny",
+		"value": "Transparency",
+    "pledges":[      
+      {
+        "name": "We pledge to make public our data and findings.",
+        "honoured": 0,
+        "broken": 1 
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "epic": "Trust and Transparency",
+		"name": "Scientific support for carbon sequestration",
+		"value": "Accountability",
+    "pledges":[      
+      {
+        "name": "We pledge to provide evidence from secondary-research of peer-reviewed literature that our carbon sequestration predictions are justified.",
+        "honoured": 1,
+        "broken": 0
+      },
+      {
+        "name": "We pledge to deliver transparency through technology.",
+        "honoured": 0,
+        "broken": 1
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "epic": "Trust and Transparency",
+		"name": "Scientific support for rewilding",
+		"value": "Transparency",
+    "pledges":[      
+      {
+        "name": "We pledge to share our selection process for rewilding projects.",
+        "honoured": 1,
+        "broken": 0
+      },
+      {
+        "name": "We pledge to demonstrate additionality by establishing that there is a clear cost to inaction.",
+        "honoured": 1,
+        "broken": 0
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "epic": "Trust and Transparency",
+		"name": "Scientific support for rewilding",
+		"value": "Accountability",
+    "pledges":[      
+      {
+        "name": "We pledge to demonstrate that a project achieves one or more of our key rewilding objectives.",
+        "honoured": 1,
+        "broken": 0
+      },
+      {
+        "name": "We pledge to provide evidence of broader socio-economic and environmental benefits.",
+        "honoured": 1,
+        "broken": 0
+      },
+      {
+        "name": "We pledge to back up predictions with scientific evidence and acknowledge remaining uncertainties.",
+        "honoured": 1,
+        "broken": 0
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "epic": "Trust and Transparency",
+		"name": "Scientific support for rewilding",
+		"value": "Fairness",
+    "pledges":[      
+      {
+        "name": "We pledge to consider the big picture including other stakeholders.",
+        "honoured": 1,
+        "broken": 0
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "epic": "Trust and Transparency",
+		"name": "Scientific support for rewilding",
+		"value": "Responsibility",
+    "pledges":[      
+      {
+        "name": "We pledge to address any underlying causes of ecological degradation.",
+        "honoured": 1,
+        "broken": 0
+      }
+    ]
+  }
+]
 }]
 }

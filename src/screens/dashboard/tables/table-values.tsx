@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PledgesRow } from "src/screens/dashboard/tables/rows/pledges";
 import { useValuesWithTotals } from "src/screens/dashboard/hooks/useValues";
-import { TotalsProps, ValueProps } from 'src/screens/dashboard/shared/types';
+import { TotalsProps, ValueProps, TableProps } from 'src/screens/dashboard/shared/types';
 import { IPledgesByValueSnapshot } from 'src/screens/dashboard/shared/interfaces';
 
 import TableControls from "src/screens/dashboard/tables/table-controls";
@@ -36,7 +36,7 @@ const Row = ({ value }: ValueProps ) => {
   return (
     <>
       <tr>
-        <td className="my-2 py-2 pl-2">
+        <td className="my-2 py-2">
           <button
             onClick={() => handleClick(value.name.toLowerCase())}
           >
@@ -75,12 +75,11 @@ const Footer = ({ totals }: TotalsProps ) => {
   );
 };
 
-const DashboardValuesTable = ({source}: {source?: string}) => {
+const DashboardValuesTable = ({source, snapshotId, setSnapshotId}: TableProps) => {
   type Error = {
     message?: string;
   };
 
-  const [snapshotId, setSnapshotId] = useState(1);
   const {
     data,
     isLoading,

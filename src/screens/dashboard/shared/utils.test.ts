@@ -1,5 +1,5 @@
 import { total } from "src/screens/dashboard/shared/utils";
-import { getSnapshotsWithTotals } from 'src/screens/dashboard/shared/utils';
+import { getSnapshotsWithTotals, sortBy } from 'src/screens/dashboard/shared/utils';
 import { IItem } from 'src/screens/dashboard/shared/interfaces';
  
 import db from 'src/mocks/db.json';
@@ -29,5 +29,27 @@ describe('Add totals to pledges', () => {
     expect(snapShotWithTotals.honoured).toBe(1);
     expect(snapShotWithTotals.broken).toBe(2);
   });
-  test.todo("show values");
+});
+
+describe("Sort array by property", () => {
+  const items = [
+    {
+      a: 1,
+      b: 2,
+      c: 3
+    },
+    {
+      a: 12,
+      b: 5,
+      c: 9
+    },
+    {
+      a: 112,
+      b: 5,
+      c: 9
+    },
+  ]
+  test("returns objects ordered by a field descending", () => {
+    expect(sortBy(items, "a", "desc")[0].a).toBe(112);
+  });
 });

@@ -75,7 +75,26 @@ describe("A slider", () => {
       ></Slider>
     );
     expect(container).toContainHTML(
-      "<div><div>Cannot return slider without a range</div></div>"
+      "<div>Cannot return slider without a range</div>"
+    );
+  });
+  test("and shows the snapshot date when there is only one value in the range", () => {
+    range = [
+      {
+        id: 1,
+        snapshot: "1 Jan 2020",
+      },
+    ];
+    const { container } = render(
+      <Slider
+        namespace={namespace}
+        intialState={intialState}
+        range={range}
+        onChange={handleChange}
+      ></Slider>
+    );
+    expect(container).toContainHTML(
+      "<div>1 Jan 2020</div>"
     );
   });
 });

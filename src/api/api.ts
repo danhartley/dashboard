@@ -9,22 +9,27 @@ const snapshots = [
   {
     id: 1,
     snapshot: "1 Jan 2020",
-    source: "Facebook"
+    source: "RTW"
   },
   {
     id: 2,
     snapshot: "1 Jan 2021",
-    source: "Facebook"
+    source: "RTW"
   },
   {
     id: 3,
     snapshot: "1 Jan 2022",
-    source: "Facebook"
+    source: "RTW"
   },
   {
     id: 4,
     snapshot: "1 Feb 2022",
     source: "Google"
+  },
+  {
+    id: 10,
+    snapshot: "1 Jan 2021",
+    source: "Mossy Earth"
   },
 ];
 

@@ -7,16 +7,18 @@ const Slider = ({
   namespace,
 }: SliderProps): JSX.Element => {
   if (range.length === 0)
-    return <div>Cannot return slider without a range</div>;
+    return <>Cannot return slider without a range</>;
+  if (range.length === 1)
+    return <>{range.find((s) => s.id === intialState).snapshot}</>;
 
   const min = range[0].id;
   const max = range[range.length - 1].id;
 
-  const state = range.filter((s) => s.id === intialState)[0];
+  const state = range.find((s) => s.id === intialState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value);
-    const change = range.find((h) => h.id === value);
+    const change = range.find(r => r.id === value);
     onChange(change.id);
   };
 

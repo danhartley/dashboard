@@ -22,7 +22,7 @@ const renderFeaturesTable = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardFeaturesTable></DashboardFeaturesTable>
+      <DashboardFeaturesTable source="RTW" snapshotId={1} setSnapshotId={() => 10}></DashboardFeaturesTable>
     </QueryClientProvider>
   );
 };
@@ -31,7 +31,7 @@ const renderValuesTable = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardValuesTable></DashboardValuesTable>
+      <DashboardValuesTable source="RTW" snapshotId={1} setSnapshotId={() => 10}></DashboardValuesTable>
     </QueryClientProvider>
   );
 };

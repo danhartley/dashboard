@@ -59,3 +59,9 @@ export type ValueProps = {
         }[]; 
     }
 }
+
+export type TableProps = {
+  source: string;
+  snapshotId: number;
+  setSnapshotId: Dispatch<SetStateAction<number>>;
+}

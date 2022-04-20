@@ -35,4 +35,7 @@ describe("The dashboard", () => {
     setup(<Dashboard />);
     expect(screen.getAllByRole("tabpanel")[0]).toBeTruthy();    
   });
+  describe("Tabs for source selection", () => {
+    test.todo("has default selection");
+  });
 });
