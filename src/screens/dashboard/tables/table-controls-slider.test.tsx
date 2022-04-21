@@ -7,15 +7,21 @@ describe("A slider", () => {
     {
       id: 1,
       snapshot: "1 Jan 2020",
+      snapshotId: 1,
+      source: "RTW"
     },
     {
       id: 2,
       snapshot: "1 Jan 2021",
+      snapshotId: 2,
+      source: "RTW"
     },
     {
       id: 3,
       snapshot: "1 Jan 2022",
-    },
+      snapshotId: 3,
+      source: "RTW"
+    }
   ];
   let namespace = "features";
 
@@ -39,7 +45,7 @@ describe("A slider", () => {
     expect(handleChange).toHaveBeenCalled();
     expect(handleChange).toHaveBeenCalledTimes(1);
     expect(handleChange).toHaveBeenCalledWith(2);
-    
+
     fireEvent.change(slider, { target: { value: 3 } });
 
     expect(handleChange).toHaveBeenCalled();
@@ -83,6 +89,8 @@ describe("A slider", () => {
       {
         id: 1,
         snapshot: "1 Jan 2020",
+        snapshotId: 1,
+        source: "RTW"
       },
     ];
     const { container } = render(
@@ -93,8 +101,6 @@ describe("A slider", () => {
         onChange={handleChange}
       ></Slider>
     );
-    expect(container).toContainHTML(
-      "<div>1 Jan 2020</div>"
-    );
+    expect(container).toContainHTML("<div>1 Jan 2020</div>");
   });
 });

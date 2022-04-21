@@ -1,22 +1,31 @@
 import { useState } from "react";
 import { PledgesRow } from "src/screens/dashboard/tables/rows/pledges";
 import { useValuesWithTotals } from "src/screens/dashboard/hooks/useValues";
-import { TotalsProps, ValueProps, TableProps } from 'src/screens/dashboard/shared/types';
-import { IPledgesByValueSnapshot } from 'src/screens/dashboard/shared/interfaces';
+import {
+  TotalsProps,
+  ValueProps,
+  TableProps,
+} from "src/screens/dashboard/shared/types";
+import { IPledgesByValueSnapshot } from "src/screens/dashboard/shared/interfaces";
 
 import TableControls from "src/screens/dashboard/tables/table-controls";
 
 const Header = () => {
   return (
-
     <thead>
       <tr>
         <th colSpan={1}></th>
-        <th className="text-xs tracking-wide	uppercase" colSpan={2}>Pledges</th>
-        <th className="text-xs tracking-wide	uppercase" colSpan={2}>Project</th>
+        <th className="text-xs tracking-wide	uppercase" colSpan={2}>
+          Pledges
+        </th>
+        <th className="text-xs tracking-wide	uppercase" colSpan={2}>
+          Project
+        </th>
       </tr>
       <tr>
-        <th className="pb-2 text-left text-xs tracking-wide	uppercase w-2/5">Value</th>
+        <th className="pb-2 text-left text-xs tracking-wide	uppercase w-2/5">
+          Value
+        </th>
         <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✓'] md:after:content-['Honoured']"></th>
         <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✗'] md:after:content-['Broken']"></th>
         <th className="text-xs tracking-wide uppercase w-1/5">Features</th>
@@ -25,11 +34,10 @@ const Header = () => {
   );
 };
 
-const Row = ({ value }: ValueProps ) => {
-
+const Row = ({ value }: ValueProps) => {
   const [selectedValue, setSelectedValue] = useState("");
 
-  const handleClick = id => {
+  const handleClick = (id) => {
     id !== selectedValue ? setSelectedValue(id) : setSelectedValue("");
   };
 
@@ -37,9 +45,7 @@ const Row = ({ value }: ValueProps ) => {
     <>
       <tr>
         <td className="my-2 py-2">
-          <button
-            onClick={() => handleClick(value.name.toLowerCase())}
-          >
+          <button onClick={() => handleClick(value.name.toLowerCase())}>
             {value.name}
           </button>
         </td>
@@ -60,11 +66,14 @@ const Row = ({ value }: ValueProps ) => {
   );
 };
 
-const Footer = ({ totals }: TotalsProps ) => {
+const Footer = ({ totals }: TotalsProps) => {
   return (
     <tfoot>
       <tr>
-        <th className="text-xs uppercase tracking-wide text-left pt-6" scope="row">
+        <th
+          className="text-xs uppercase tracking-wide text-left pt-6"
+          scope="row"
+        >
           Totals
         </th>
         <th>{totals.honoured}</th>
@@ -75,7 +84,11 @@ const Footer = ({ totals }: TotalsProps ) => {
   );
 };
 
-const DashboardValuesTable = ({source, snapshotId, setSnapshotId}: TableProps) => {
+const DashboardValuesTable = ({
+  source,
+  snapshotId,
+  setSnapshotId,
+}: TableProps) => {
   type Error = {
     message?: string;
   };
@@ -124,8 +137,8 @@ const DashboardValuesTable = ({source, snapshotId, setSnapshotId}: TableProps) =
         </table>
         <TableControls
           namespace="values"
-          snapshotId={data.id}
-          snapshots={data.snapshots}
+          snapshotId={data.snapshotId}
+          snapshots={data.snapshots.filter(s => s.source === data.source)}
           onChange={setSnapshotId}
         ></TableControls>
       </figure>

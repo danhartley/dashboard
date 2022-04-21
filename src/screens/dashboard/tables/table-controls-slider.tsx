@@ -6,20 +6,19 @@ const Slider = ({
   onChange,
   namespace,
 }: SliderProps): JSX.Element => {
-  if (range.length === 0)
-    return <>Cannot return slider without a range</>;
+  if (range.length === 0) return <>Cannot return slider without a range</>;
   if (range.length === 1)
-    return <>{range.find((s) => s.id === intialState).snapshot}</>;
+    return <>{range.find((s) => s.snapshotId === intialState).snapshot}</>;
 
-  const min = range[0].id;
-  const max = range[range.length - 1].id;
+  const min = range[0].snapshotId;
+  const max = range[range.length - 1].snapshotId;
 
-  const state = range.find((s) => s.id === intialState);
+  const state = range.find((s) => s.snapshotId === intialState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value);
-    const change = range.find(r => r.id === value);
-    onChange(change.id);
+    const change = range.find((r) => r.snapshotId === value);
+    onChange(change.snapshotId);
   };
 
   return (
@@ -31,9 +30,12 @@ const Slider = ({
         min={min}
         onChange={handleChange}
         max={max}
-        value={state.id}        
+        value={state.snapshotId}
       />
-      <span className="pl-2">Snapshot taken:</span><label className="pl-2" htmlFor={`slider-${namespace}`}>{state.snapshot}</label>
+      <span className="pl-2">Snapshot taken:</span>
+      <label className="pl-2" htmlFor={`slider-${namespace}`}>
+        {state.snapshot}
+      </label>
     </>
   );
 };

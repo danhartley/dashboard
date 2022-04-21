@@ -20,34 +20,40 @@ export interface IPledgesByFeatureSnapshot {
   source: string;
   snapshot?: string;
   id: number;
+  snapshotId: number;
   snapshots?: {
-      id: number,
-      snapshot: string
-  }[],
+    id: number;
+    snapshot: string;
+    snapshotId: number;
+    source: string;
+  }[];
   items: IItem[];
   error?: any;
   totals: {
-    honoured: number,
-    broken: number,
-    features?: number
-  }
+    honoured: number;
+    broken: number;
+    features?: number;
+  };
 }
 
 export interface IPledgesByValueSnapshot {
   source: string;
   snapshot?: string;
   id: number;
+  snapshotId: number;
   snapshots?: {
-      id: number,
-      snapshot: string
-  }[],
+    id: number;
+    snapshot: string;
+    snapshotId: number;
+    source: string;
+  }[];
   items: IItem[];
   error?: any;
   totals: {
-    honoured: number,
-    broken: number,
-    features?: number
-  }
+    honoured: number;
+    broken: number;
+    features?: number;
+  };
 }
 
 export interface IValue {

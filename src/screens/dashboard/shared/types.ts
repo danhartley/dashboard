@@ -7,14 +7,14 @@ export type SliderState = {
 
 export type SliderProps = {
   intialState: number;
-  range: { id: number; snapshot: string }[];
+  range: { id: number; snapshot: string, snapshotId: number }[];
   namespace: string;
   onChange: Dispatch<SetStateAction<number>>;
 };
 
 export type ControlsProps = {
   snapshotId: number;
-  snapshots: { id: number; snapshot: string }[];
+  snapshots: { id: number; snapshot: string, snapshotId: number, source: string }[];
   namespace?: string;
   onChange: Dispatch<SetStateAction<number>>;
 };
@@ -39,29 +39,29 @@ export type PledgesRowProps = {
 };
 
 export type TotalsProps = {
-    totals: {
-        honoured: number,
-        broken: number,
-        features?: number
-    }
+  totals: {
+    honoured: number;
+    broken: number;
+    features?: number;
+  };
 };
 
 export type ValueProps = {
-    value: {
-        name: string,
-        honoured: number,
-        broken: number,
-        features: number,
-        pledges: {
-            name: string;
-            honoured: number;
-            broken: number;
-        }[]; 
-    }
-}
+  value: {
+    name: string;
+    honoured: number;
+    broken: number;
+    features: number;
+    pledges: {
+      name: string;
+      honoured: number;
+      broken: number;
+    }[];
+  };
+};
 
 export type TableProps = {
   source: string;
   snapshotId: number;
   setSnapshotId: Dispatch<SetStateAction<number>>;
-}
+};

@@ -17,7 +17,11 @@ const renderComponent = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardValuesTable source="RTW" snapshotId={1} setSnapshotId={() => 10}></DashboardValuesTable>
+      <DashboardValuesTable
+        source="RTW"
+        snapshotId={1}
+        setSnapshotId={() => 1}
+      ></DashboardValuesTable>
     </QueryClientProvider>
   );
 };
@@ -48,7 +52,9 @@ describe("The pledges by values table", () => {
   test("has a title", async () => {
     renderComponent();
     await renderValuesWithSuccess(1);
-    expect(screen.getByText("RTW pledges honoured and broken by value")).toBeInTheDocument();
+    expect(
+      screen.getByText("RTW pledges honoured and broken by value")
+    ).toBeInTheDocument();
   });
 
   describe("has a value column", () => {

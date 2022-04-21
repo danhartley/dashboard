@@ -17,7 +17,11 @@ const renderComponent = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardFeaturesTable source="RTW" snapshotId={1} setSnapshotId={() => 10}></DashboardFeaturesTable>
+      <DashboardFeaturesTable
+        source="RTW"
+        snapshotId={1}
+        setSnapshotId={() => 10}
+      ></DashboardFeaturesTable>
     </QueryClientProvider>
   );
 };
@@ -49,14 +53,18 @@ describe("The pledges by features table", () => {
     renderComponent();
     const { result } = await renderFeaturesWithSuccess(1);
     expect(result.current.isSuccess).toBe(true);
-    expect(screen.getByText("RTW pledges honoured and broken by feature")).toBeInTheDocument();
+    expect(
+      screen.getByText("RTW pledges honoured and broken by feature")
+    ).toBeInTheDocument();
   });
 
   describe("has a value column", () => {
     test("with a table header", async () => {
       renderComponent();
       await renderFeaturesWithSuccess(1);
-      expect(screen.getByRole("columnheader", { name: /feature/i })).toBeTruthy();
+      expect(
+        screen.getByRole("columnheader", { name: /feature/i })
+      ).toBeTruthy();
     });
 
     test("and a row for each value", async () => {

@@ -4,24 +4,25 @@
 
 development build running locally:
 
-        npm run start  
+        npm run start
+
 with unit tests:
 
         npm run test
-        
+
+
 production build running locally:
 
-        npm run build  
-        serve -s build -l 4000  
-        json-server public/db.json --port 5000 
-        
+        npm run build
+        serve -s build -l 4000
+        json-server public/db.json --port 5000
+
+
 The production endpoint is set in the .env.production file.
 
 Prettier
 
-        prettier --check .  
-
-
+        prettier --check .
 
 ### json-server
 
@@ -37,12 +38,12 @@ To test the endpoint, including POSTs, see db.http (requires REST Client extensi
 [Testing Library: DOM-based selectors](https://testing-library.com/)  
 [MSW: mocking browser requests on the network level](https://mswjs.io/)  
 [Tailwind CSS: styling](https://tailwindcss.com/)  
-[PostCSS: CC preprocessor](https://postcss.org/)  
+[PostCSS: CC preprocessor](https://postcss.org/)
 
 [Remix: client/server](https://remix.run/)  
 [Reach UI: accessible React component library](https://reach.tech/)  
 [GitHub | GitHub actions](https://github.com/features/actions)  
-[Sentry: error reporting](https://sentry.io/)  
+[Sentry: error reporting](https://sentry.io/)
 
 # State
 
@@ -52,6 +53,7 @@ React (the one with hooks)
 React Hook Form (or none e.g. HTML names)
 
 ### CSS
+
 Tailwind CSS
 
 ## Server State
@@ -83,7 +85,7 @@ Static type checking with Typescript ( see https://reactjs.org/docs/static-type-
 npm run test:debug  
 In Chrome open: about:inspect  
 Select "inspect" on the process  
-Click "play" in dev tools  
+Click "play" in dev tools
 
 ( see https://create-react-app.dev/docs/debugging-tests )
 
@@ -91,9 +93,9 @@ Click "play" in dev tools
 
 ## Chrome DevTools console
 
- Check for mocking (MSW)  
- New axe issues (accessibility)   
- Web vitals  
+Check for mocking (MSW)  
+ New axe issues (accessibility)  
+ Web vitals
 
 ## VS Code extensions
 
@@ -114,14 +116,14 @@ MWS for local development and testing
 
 Git  
 GitHub  
-Trunk Based Developmnt ( see https://trunkbaseddevelopment.com/ ) ?? GitHib flow  
+Trunk Based Developmnt ( see https://trunkbaseddevelopment.com/ ) ?? GitHib flow
 
 Create a new branch from the main branch.  
 Commit your code on this branch and push it to the remote repo (e.g. on GitHub).  
 Open a Pull Request (aka Merge Request) in the remote repo.  
 Run linter, type checks, and tests.  
 Let your team members review your code.  
-Merge the branch into the main branch.  
+Merge the branch into the main branch.
 
 ( see https://profy.dev/article/react-tech-stack )
 

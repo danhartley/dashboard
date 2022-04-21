@@ -7,14 +7,20 @@ describe("Table controls", () => {
     {
       id: 1,
       snapshot: "1 Jan 2020",
+      snapshotId: 1,
+      source: "RTW"
     },
     {
       id: 2,
       snapshot: "1 Jan 2021",
+      snapshotId: 2,
+      source: "RTW"
     },
     {
       id: 3,
       snapshot: "1 Jan 2022",
+      snapshotId: 3,
+      source: "RTW"
     },
   ];
   const snapshotId = 1;

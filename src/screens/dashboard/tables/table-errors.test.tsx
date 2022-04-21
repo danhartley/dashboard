@@ -22,7 +22,11 @@ const renderFeaturesTable = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardFeaturesTable source="RTW" snapshotId={1} setSnapshotId={() => 10}></DashboardFeaturesTable>
+      <DashboardFeaturesTable
+        source="RTW"
+        snapshotId={1}
+        setSnapshotId={() => 10}
+      ></DashboardFeaturesTable>
     </QueryClientProvider>
   );
 };
@@ -31,14 +35,18 @@ const renderValuesTable = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardValuesTable source="RTW" snapshotId={1} setSnapshotId={() => 10}></DashboardValuesTable>
+      <DashboardValuesTable
+        source="RTW"
+        snapshotId={1}
+        setSnapshotId={() => 10}
+      ></DashboardValuesTable>
     </QueryClientProvider>
   );
 };
 
 describe("Network errors", () => {
   const mockedUseFeatures = useFeaturesWithTotals as jest.Mock<any>;
-  mockedUseFeatures.mockImplementation(() => ({}))
+  mockedUseFeatures.mockImplementation(() => ({}));
 
   test("can be mocked for features", async () => {
     mockedUseFeatures.mockImplementation(() => ({
