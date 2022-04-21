@@ -51,7 +51,7 @@ const renderSnapshotsWithSuccess = async () => {
 };
 
 describe("The app", () => {
-  test("has a title", async () => {
+  test("has page title", async () => {
 
     renderSnapshotsWithSuccess();
 
@@ -68,6 +68,24 @@ describe("The app", () => {
     )
     
     const title = await screen.findByText(/Responsibility dashboard/i);
+    expect(title).toBeInTheDocument();
+  });
+  test("unless the URL is unmatched", async () => {
+    renderSnapshotsWithSuccess();
+
+    const queryClient = new QueryClient();
+
+    window.history.pushState({}, 'Test page', "/gibberish");
+
+    render(
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
+      </BrowserRouter>,
+    )
+    
+    const title = await screen.findByText(/Nothing doing, sorry./i);
     expect(title).toBeInTheDocument();
   });
 });

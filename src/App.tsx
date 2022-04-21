@@ -28,14 +28,23 @@ const App = () => {
         <header></header>
           <ReactQueryDevtools initialIsOpen={false} />
           <Routes>
-          <Route key="navigation" path="/" element={<Navigation />}>
-            {
-              data.map((snapshot) => {    
-                return (
-                  <Route key={`${snapshot.source}-${snapshot.snapshotId}`} path={`snapshots/:${snapshot.source}/${snapshot.snapshotId}`} element={<Dashboard />} />
-                )
-              })
-            }
+            <Route key="navigation" path="/" element={<Navigation />}>
+              {
+                  data.map(snapshot => {
+                    return (
+                      <Route key={`${snapshot.source}-${snapshot.snapshotId}`} path="snapshots/:name/:id" element={<Dashboard />} />
+                    )
+                  })
+              }
+              </Route>
+              <Route
+                path="*"
+                element={
+                  <main style={{ padding: "1rem" }}>
+                    <p>Nothing doing, sorry.</p>
+                  </main>
+                }
+              >
             </Route>
           </Routes>
       </>

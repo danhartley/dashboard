@@ -1,24 +1,21 @@
 import { useState, useEffect } from "react";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import DashboardFeaturesTable from "src/screens/dashboard/tables/table-features";
 import DashboardValuesTable from "src/screens/dashboard/tables/table-values";
 
 const Dashboard = (): JSX.Element => {
 
-  const location = useLocation();
-
   const [source, setSource] = useState("");
   const [snapshotId, setSnapshotId] = useState(0);
 
-  useEffect(() => {
-    const parts = decodeURI(location.pathname).split("/");
-    const source = parts.length > 1 ? parts[parts.length - 2] : 'RTW';
-    const snapshotId = parts.length > 2 ? parseInt(parts[parts.length - 1]) : 1; 
-    setSource(source);
-    setSnapshotId(snapshotId);
-  }, [location]);
+  const { name, id } = useParams<'name' | 'id'>();
 
+  useEffect(() => {
+    setSource(name); 
+    setSnapshotId(parseInt(id));
+  }, [name, id]);
+  
   const css = "border-b uppercase focus:border-slate-900 text-sm";
 
   return (

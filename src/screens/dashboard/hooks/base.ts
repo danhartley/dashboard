@@ -6,7 +6,7 @@ import api from "src/api/api";
 export const useFeatureBase = (snapshotId: any, source: any) => {
   const results = useQueries([
     {
-      queryKey: ["snapshot", snapshotId],
+      queryKey: [source, snapshotId],
       queryFn: () => api.getPledgesByFeatures({ source, snapshotId })
     },
     {
