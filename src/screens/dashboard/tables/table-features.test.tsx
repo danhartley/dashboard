@@ -13,14 +13,14 @@ const createWrapper = () => {
   );
 };
 
-const renderComponent = () => {
+const renderComponent = () => {  
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
       <DashboardFeaturesTable
         source="RTW"
         snapshotId={1}
-        setSnapshotId={() => 10}
+        setSnapshotId={() => 1}
       ></DashboardFeaturesTable>
     </QueryClientProvider>
   );
@@ -33,7 +33,7 @@ const renderFeaturesWithSuccess = async (snapshotId) => {
       wrapper: createWrapper(),
     }
   );
-  await waitFor(() => result.current.isSuccess);
+  await waitFor(() => result.current.isSuccess); 
   return { result, waitFor };
 };
 
@@ -49,21 +49,13 @@ describe("The pledges by features table", () => {
     await waitFor(() => result.current.isLoading);
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
-  test("has a title", async () => {
-    renderComponent();
-    const { result } = await renderFeaturesWithSuccess(1);
-    expect(result.current.isSuccess).toBe(true);
-    expect(
-      screen.getByText("RTW pledges honoured and broken by feature")
-    ).toBeInTheDocument();
-  });
-
+  
   describe("has a value column", () => {
     test("with a table header", async () => {
-      renderComponent();
       await renderFeaturesWithSuccess(1);
+      renderComponent();
       expect(
-        screen.getByRole("columnheader", { name: /feature/i })
+        await screen.findByRole("columnheader", { name: /feature/i })
       ).toBeTruthy();
     });
 

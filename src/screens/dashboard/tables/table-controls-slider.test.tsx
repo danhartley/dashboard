@@ -101,6 +101,6 @@ describe("A slider", () => {
         onChange={handleChange}
       ></Slider>
     );
-    expect(container).toContainHTML("<div>1 Jan 2021</div>");
+    expect(container).toContainHTML("Snapshot taken: 1 Jan 2021");
   });
 });

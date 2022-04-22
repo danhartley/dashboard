@@ -137,7 +137,8 @@ export const DashboardFeaturesTable = ({
     return <Figure title={error.message} />;
   }
 
-  if (isSuccess) {
+  if (isSuccess) {    
+    console.log(data);
     return (
       <Figure title={data.source}>
         <table

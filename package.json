@@ -23,7 +23,7 @@
   "scripts": {
     "eject": "react-scripts eject",
     "start": "react-scripts start",
-    "test": "react-scripts test .",
+    "test": "react-scripts test . --detectOpenHandles",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "coverage": "react-scripts test --coverage .",
     "build": "react-scripts build",

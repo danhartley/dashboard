@@ -46,7 +46,7 @@ const Dashboard = (): JSX.Element => {
           </TabPanels>
         </Tabs>
       </section>
-    </div> : null
+    </div> : <div>No valid snapshotId</div>
   );
 };
 

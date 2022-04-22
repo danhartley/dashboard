@@ -99,13 +99,13 @@ export const groupBy = function (xs, key) {
   }, {});
 };
 
-export const getSummary = snapshots => {
-  return Array.from(new Set(snapshots.map(s => {
-    return {
-      id: s.snapshotId,
-      snapshot: s.snapshot,
-      snapshotId: s.snapshotId,
-      source: s.source
-    }
-  })))
-};
+// export const getSummary = snapshots => {
+//   return Array.from(new Set(snapshots.map(s => {
+//     return {
+//       id: s.snapshotId,
+//       snapshot: s.snapshot,
+//       snapshotId: s.snapshotId,
+//       source: s.source
+//     }
+//   })))
+// };

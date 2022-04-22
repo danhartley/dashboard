@@ -11,7 +11,6 @@ const client = (endpoint) => {
 
   return window.fetch(`${endpoint}`, config).then(async (response) => {
     if (response.ok) {
-      console.log('endpoint', endpoint)
       const res = await response;
       const json = await res.json();
       return json;

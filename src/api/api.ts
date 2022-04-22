@@ -25,6 +25,7 @@ const getData = async ({ source, snapshotId }: PledgeProps) => {
 
 const getPledgesByFeatures = async ({ source, snapshotId }: PledgeProps) => {
   const data = await getData({ source, snapshotId });
+  data.snapshots = await getSnapshots();
   return getSnapshotsWithTotals(data);
 };
 
