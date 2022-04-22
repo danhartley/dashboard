@@ -6,13 +6,13 @@ describe("Table controls", () => {
   const snapshots = [
     {
       id: 1,
-      snapshot: "1 Jan 2020",
+      snapshot: "1 Jan 2021",
       snapshotId: 1,
       source: "RTW"
     },
     {
       id: 2,
-      snapshot: "1 Jan 2021",
+      snapshot: "1 July 2021",
       snapshotId: 2,
       source: "RTW"
     },

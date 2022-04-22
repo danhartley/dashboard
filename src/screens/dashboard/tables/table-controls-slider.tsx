@@ -8,7 +8,7 @@ const Slider = ({
 }: SliderProps): JSX.Element => {
   if (range.length === 0) return <>Cannot return slider without a range</>;
   if (range.length === 1)
-    return <>{range.find((s) => s.snapshotId === intialState).snapshot}</>;
+    return <>Snapshot taken: {range.find((s) => s.snapshotId === intialState).snapshot}</>;
 
   const min = range[0].snapshotId;
   const max = range[range.length - 1].snapshotId;

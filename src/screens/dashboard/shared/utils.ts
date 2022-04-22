@@ -63,7 +63,7 @@ export const getValuesWithTotals = (snapshot) => {
         .filter((ov) => ov.value === sh)
         .map((v) => v.broken)
         .reduce(total, 0),
-      features: 10,
+      features: Array.from(new Set(orderedValues.filter(ov => ov.value === sh))).length,
       pledges: orderedValues
         .filter((ov) => ov.value === sh)
         .map((v) => v.pledges)

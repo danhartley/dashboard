@@ -6,13 +6,13 @@ describe("A slider", () => {
   let range = [
     {
       id: 1,
-      snapshot: "1 Jan 2020",
+      snapshot: "1 Jan 2021",
       snapshotId: 1,
       source: "RTW"
     },
     {
       id: 2,
-      snapshot: "1 Jan 2021",
+      snapshot: "1 July 2021",
       snapshotId: 2,
       source: "RTW"
     },
@@ -88,7 +88,7 @@ describe("A slider", () => {
     range = [
       {
         id: 1,
-        snapshot: "1 Jan 2020",
+        snapshot: "1 Jan 2021",
         snapshotId: 1,
         source: "RTW"
       },
@@ -101,6 +101,6 @@ describe("A slider", () => {
         onChange={handleChange}
       ></Slider>
     );
-    expect(container).toContainHTML("<div>1 Jan 2020</div>");
+    expect(container).toContainHTML("<div>1 Jan 2021</div>");
   });
 });

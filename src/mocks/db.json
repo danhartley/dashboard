@@ -3,7 +3,7 @@
     {
       "id": 1,
       "source": "RTW",
-      "snapshot": "1 Jan 2020",
+      "snapshot": "1 Jan 2021",
       "slug": "rtw",
       "snapshotId": 1,
       "items": [
@@ -201,7 +201,7 @@
     {
       "id": 2,
       "source": "RTW",
-      "snapshot": "1 Jan 2021",
+      "snapshot": "1 July 2021",
       "slug": "rtw",
       "snapshotId": 2,
       "items": [
@@ -412,7 +412,7 @@
     {
       "id": 10,
       "source": "MossyEarth",
-      "snapshot": "1 Jan 2021",
+      "snapshot": "22 April 2022",
       "slug": "mossy-earth",
       "snapshotId": 1,
       "items": [
@@ -627,13 +627,13 @@
   "summary": [
     {
       "id": 1,
-      "snapshot": "1 Jan 2020",
+      "snapshot": "1 Jan 2021",
       "snapshotId": 1,
       "source": "RTW"
     },
     {
       "id": 2,
-      "snapshot": "1 Jan 2021",
+      "snapshot": "1 July 2021",
       "snapshotId": 2,
       "source": "RTW"
     },
@@ -645,7 +645,7 @@
     },
     {
       "id": 10,
-      "snapshot": "1 Jan 2021",
+      "snapshot": "22 April 2022",
       "snapshotId": 1,
       "source": "MossyEarth"
     }

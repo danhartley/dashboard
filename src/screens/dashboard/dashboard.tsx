@@ -7,7 +7,7 @@ import DashboardValuesTable from "src/screens/dashboard/tables/table-values";
 const Dashboard = (): JSX.Element => {
 
   const [source, setSource] = useState("");
-  const [snapshotId, setSnapshotId] = useState(0);
+  const [snapshotId, setSnapshotId] = useState(null);
 
   const { name, id } = useParams<'name' | 'id'>();
 
@@ -19,7 +19,7 @@ const Dashboard = (): JSX.Element => {
   const css = "border-b uppercase focus:border-slate-900 text-sm";
 
   return (
-    snapshotId > 0 ?
+    snapshotId ?
     <div className="container mx-auto w-4/5">
       <section className="container mx-auto max-w-4xl pt-4">
         <h2 className="text-xl mt-2 mb-4">Pledges honoured and broken</h2>

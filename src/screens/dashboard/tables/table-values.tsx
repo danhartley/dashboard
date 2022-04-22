@@ -19,7 +19,7 @@ const Header = () => {
           Pledges
         </th>
         <th className="text-xs tracking-wide	uppercase" colSpan={2}>
-          Project
+          
         </th>
       </tr>
       <tr>
@@ -28,7 +28,7 @@ const Header = () => {
         </th>
         <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✓'] md:after:content-['Honoured']"></th>
         <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✗'] md:after:content-['Broken']"></th>
-        <th className="text-xs tracking-wide uppercase w-1/5">Features</th>
+        <th className="text-xs tracking-wide uppercase w-1/5"># Features</th>
       </tr>
     </thead>
   );
@@ -78,7 +78,7 @@ const Footer = ({ totals }: TotalsProps) => {
         </th>
         <th>{totals.honoured}</th>
         <th>{totals.broken}</th>
-        <th>{totals.features}</th>
+        <th></th>
       </tr>
     </tfoot>
   );
