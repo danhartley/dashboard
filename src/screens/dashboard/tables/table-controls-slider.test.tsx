@@ -8,20 +8,20 @@ describe("A slider", () => {
       id: 1,
       snapshot: "1 Jan 2021",
       snapshotId: 1,
-      source: "RTW"
+      source: "RTW",
     },
     {
       id: 2,
       snapshot: "1 July 2021",
       snapshotId: 2,
-      source: "RTW"
+      source: "RTW",
     },
     {
       id: 3,
       snapshot: "1 Jan 2022",
       snapshotId: 3,
-      source: "RTW"
-    }
+      source: "RTW",
+    },
   ];
   let namespace = "features";
 
@@ -90,7 +90,7 @@ describe("A slider", () => {
         id: 1,
         snapshot: "1 Jan 2021",
         snapshotId: 1,
-        source: "RTW"
+        source: "RTW",
       },
     ];
     const { container } = render(

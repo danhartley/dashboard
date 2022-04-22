@@ -15,8 +15,7 @@ const Header = () => {
     <thead>
       <tr>
         <th colSpan={1}></th>
-        <th className="text-xs tracking-wide	uppercase" colSpan={1}>          
-        </th>
+        <th className="text-xs tracking-wide	uppercase" colSpan={1}></th>
         <th className="text-xs tracking-wide	uppercase" colSpan={2}>
           Pledges
         </th>
@@ -138,7 +137,7 @@ const DashboardValuesTable = ({
         <TableControls
           namespace="values"
           snapshotId={data.snapshotId}
-          snapshots={data.snapshots.filter(s => s.source === data.source)}
+          snapshots={data.snapshots.filter((s) => s.source === data.source)}
           onChange={setSnapshotId}
         ></TableControls>
       </Figure>

@@ -627,7 +627,8 @@
           "epic": "Farming Practice",
           "name": "Sustainble methods",
           "value": "Sustainability",
-          "pledges": [{
+          "pledges": [
+            {
               "name": "We pledge to use less water and land than existing farming practices.",
               "honouring": 1,
               "breaking": 0
@@ -684,7 +685,8 @@
           "epic": "Business Ethos",
           "name": "Fair dealing",
           "value": "Fairness",
-          "pledges": [{
+          "pledges": [
+            {
               "name": "We pledge to provide food at prices everyone can afford.",
               "honouring": 0,
               "breaking": 1
@@ -706,7 +708,8 @@
           "epic": "Business Ethos",
           "name": "Openness",
           "value": "Transparency",
-          "pledges": [{
+          "pledges": [
+            {
               "name": "We pledge to make public the resources we use, and the volume and type of produce fit for consumption.",
               "honouring": 0,
               "breaking": 1
@@ -725,7 +728,7 @@
         }
       ]
     }
-    ],
+  ],
   "summary": [
     {
       "id": 1,

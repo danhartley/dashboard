@@ -13,7 +13,7 @@ const createWrapper = () => {
   );
 };
 
-const renderComponent = () => {  
+const renderComponent = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
@@ -33,7 +33,7 @@ const renderFeaturesWithSuccess = async (snapshotId) => {
       wrapper: createWrapper(),
     }
   );
-  await waitFor(() => result.current.isSuccess); 
+  await waitFor(() => result.current.isSuccess);
   return { result, waitFor };
 };
 
@@ -49,7 +49,7 @@ describe("The pledges by features table", () => {
     await waitFor(() => result.current.isLoading);
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
-  
+
   describe("has a value column", () => {
     test("with a table header", async () => {
       await renderFeaturesWithSuccess(1);

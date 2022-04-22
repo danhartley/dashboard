@@ -11,8 +11,8 @@ jest.mock("src/screens/dashboard/tables/table-values", () => ({}) => (
 ));
 
 const renderDashboardWithTables = () => {
-  const mockedUseParams = useParams as jest.Mock<{name:string, id: string}>;
-  mockedUseParams.mockImplementation(() => ({ name:"RWT", id:"1" }));
+  const mockedUseParams = useParams as jest.Mock<{ name: string; id: string }>;
+  mockedUseParams.mockImplementation(() => ({ name: "RWT", id: "1" }));
   render(<Dashboard></Dashboard>);
 };
 
@@ -37,14 +37,14 @@ describe("The dashboard", () => {
     renderDashboardWithTables();
     expect(screen.getByRole("tablist")).toBeInTheDocument();
   });
-  const setup = jsx => {
+  const setup = (jsx) => {
     return {
       user: userEvent.setup(),
       ...render(jsx),
-    }
-  }
+    };
+  };
   test("has default panel", async () => {
     renderDashboardWithTables();
-    expect(screen.getAllByRole("tabpanel")[0]).toBeTruthy();    
+    expect(screen.getAllByRole("tabpanel")[0]).toBeTruthy();
   });
 });

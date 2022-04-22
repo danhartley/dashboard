@@ -137,9 +137,9 @@ export const DashboardFeaturesTable = ({
           <Footer totals={data.totals} />
         </table>
         <TableControls
-          namespace="features"          
+          namespace="features"
           snapshotId={data.snapshotId}
-          snapshots={data.snapshots.filter(s => s.source === data.source)}
+          snapshots={data.snapshots.filter((s) => s.source === data.source)}
           onChange={setSnapshotId}
         ></TableControls>
       </Figure>

@@ -13,47 +13,48 @@ const App = () => {
   const {
     data,
     isSuccess,
-    error
+    error,
   }: {
-    data: { id: number; snapshot: string; source: string, snapshotId: number }[];
+    data: {
+      id: number;
+      snapshot: string;
+      source: string;
+      snapshotId: number;
+    }[];
     isSuccess: boolean;
     error: Error;
-    
   } = useSnapshots();
 
   if (isSuccess) {
-    return (     
-      data && data.length > 0 ?  
+    return data && data.length > 0 ? (
       <>
         <header></header>
-          <ReactQueryDevtools initialIsOpen={false} />
-          <Routes>
-            <Route key="navigation" path="/" element={<Navigation />}>
-              {
-                  data.map(snapshot => {
-                    return (
-                      <Route key={`${snapshot.source}-${snapshot.snapshotId}`} path="snapshots/:name/:id" element={<Dashboard />} />
-                    )
-                  })
-              }
-              </Route>
-              <Route
-                path="*"
-                element={
-                  <main style={{ padding: "1rem" }}>
-                    <p>Nothing doing, sorry.</p>
-                  </main>
-                }
-              >
-            </Route>
-          </Routes>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <Routes>
+          <Route key="navigation" path="/" element={<Navigation />}>
+            {data.map((snapshot) => {
+              return (
+                <Route
+                  key={`${snapshot.source}-${snapshot.snapshotId}`}
+                  path="snapshots/:name/:id"
+                  element={<Dashboard />}
+                />
+              );
+            })}
+          </Route>
+          <Route
+            path="*"
+            element={
+              <main style={{ padding: "1rem" }}>
+                <p>Nothing doing, sorry.</p>
+              </main>
+            }
+          ></Route>
+        </Routes>
       </>
-      : null
-    );
+    ) : null;
   } else {
-    return (
-      <div></div>
-    )
+    return <div></div>;
   }
 };
 

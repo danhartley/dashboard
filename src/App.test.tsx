@@ -13,12 +13,9 @@ const createWrapper = () => {
 };
 
 const renderSnapshotsWithSuccess = async () => {
-  const { result, waitFor } = renderHook(
-    () => useSnapshots(),
-    {
-      wrapper: createWrapper(),
-    }
-  );
+  const { result, waitFor } = renderHook(() => useSnapshots(), {
+    wrapper: createWrapper(),
+  });
   await waitFor(() => result.current.isSuccess);
   return { result, waitFor };
 };
@@ -29,16 +26,16 @@ describe("The app", () => {
 
     const queryClient = new QueryClient();
 
-    window.history.pushState({}, 'Test page', "/gibberish");
+    window.history.pushState({}, "Test page", "/gibberish");
 
     render(
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <App />
         </QueryClientProvider>
-      </BrowserRouter>,
-    )
-    
+      </BrowserRouter>
+    );
+
     const title = await screen.findByText(/Nothing doing, sorry./i);
     expect(title).toBeInTheDocument();
   });

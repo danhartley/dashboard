@@ -10,13 +10,11 @@ with unit tests:
 
         npm run test
 
-
 production build running locally:
 
         npm run build
         serve -s build -l 4000
         json-server public/db.json --port 5000
-
 
 The production endpoint is set in the .env.production file.
 

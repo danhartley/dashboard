@@ -10,34 +10,22 @@ export const handlers = [
     return res(ctx.json(snapshots));
   }),
   rest.get("summary", async (req, res, ctx) => {
-    return res(
-      ctx.json(summary)
-    );
+    return res(ctx.json(summary));
   }),
   rest.get("snapshots/RTW/1", async (req, res, ctx) => {
-    return res(
-      ctx.json(db.snapshots.find((s) => s.id === 1))
-    );
+    return res(ctx.json(db.snapshots.find((s) => s.id === 1)));
   }),
   rest.get("snapshots/RTW/2", async (req, res, ctx) => {
-    return res(
-      ctx.json(db.snapshots.find((s) => s.id === 2))
-    );
+    return res(ctx.json(db.snapshots.find((s) => s.id === 2)));
   }),
   rest.get("snapshots/RTW/3", async (req, res, ctx) => {
-    return res(
-      ctx.json(db.snapshots.find((s) => s.id === 3))
-    );
+    return res(ctx.json(db.snapshots.find((s) => s.id === 3)));
   }),
   rest.get("snapshots/MossyEarth/1", async (req, res, ctx) => {
-    return res(
-      ctx.json(db.snapshots.find((s) => s.id === 10))
-    );
+    return res(ctx.json(db.snapshots.find((s) => s.id === 10)));
   }),
   rest.get("snapshots/RaizFarm/1", async (req, res, ctx) => {
-    return res(
-      ctx.json(db.snapshots.find((s) => s.id === 20))      
-    );
+    return res(ctx.json(db.snapshots.find((s) => s.id === 20)));
   }),
   rest.get("snapshots/500", async (req, res, ctx) => {
     return res(
@@ -56,8 +44,6 @@ export const handlers = [
     );
   }),
   rest.get("manifest.json", (req, res, ctx) => {
-    return res(
-      ctx.json({})
-    );
+    return res(ctx.json({}));
   }),
 ];
