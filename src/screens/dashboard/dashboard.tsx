@@ -19,6 +19,7 @@ const Dashboard = (): JSX.Element => {
   const css = "border-b uppercase focus:border-slate-900 text-sm";
 
   return (
+    snapshotId > 0 ?
     <div className="container mx-auto w-4/5">
       <section className="container mx-auto max-w-4xl pt-4">
         <h2 className="text-xl mt-2 mb-4">Pledges honoured and broken</h2>
@@ -45,7 +46,7 @@ const Dashboard = (): JSX.Element => {
           </TabPanels>
         </Tabs>
       </section>
-    </div>
+    </div> : null
   );
 };
 

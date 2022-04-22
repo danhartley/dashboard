@@ -1,0 +1,3 @@
+{
+  "/snapshots/:source/:snapshotId": "/snapshots?source=:source&snapshotId=:snapshotId"
+}

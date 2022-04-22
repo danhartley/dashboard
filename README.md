@@ -22,7 +22,7 @@ The production endpoint is set in the .env.production file.
 
 Prettier
 
-        prettier --check .
+        npx prettier --check .
 
 ### json-server
 

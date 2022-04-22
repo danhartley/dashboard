@@ -11,7 +11,10 @@ const client = (endpoint) => {
 
   return window.fetch(`${endpoint}`, config).then(async (response) => {
     if (response.ok) {
-      return await response.json();
+      console.log('endpoint', endpoint)
+      const res = await response;
+      const json = await res.json();
+      return json;
     } else {
       return new Error("500");
       // const errorMessage = await response.text();
