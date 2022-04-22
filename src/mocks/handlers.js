@@ -34,6 +34,11 @@ export const handlers = [
       ctx.json(db.snapshots.find((s) => s.id === 10))
     );
   }),
+  rest.get("snapshots/RaizFarm/1", async (req, res, ctx) => {
+    return res(
+      ctx.json(db.snapshots.find((s) => s.id === 20))      
+    );
+  }),
   rest.get("snapshots/500", async (req, res, ctx) => {
     return res(
       ctx.status(500),

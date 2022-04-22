@@ -77,7 +77,7 @@ describe("The pledges by features table", () => {
         expect(within(row).getByText("20")).toBeInTheDocument();
         expect(within(row).getByText("8")).toBeInTheDocument();
       });
-      test("with totals for hounored and broken pledges", async () => {
+      test("with totals for hounored and breaking pledges", async () => {
         const user = userEvent.setup();
         renderComponent();
         await renderFeaturesWithSuccess(1);
@@ -112,13 +112,13 @@ describe("The pledges by features table", () => {
         await user.click(button);
         expect(
           screen.getByText(
-            "We pledge to evaluate risk, so that fundamental rights are not negatively affected."
+            /We pledge to evaluate risk, so that fundamental rights are not negatively affected./i
           )
         ).toBeInTheDocument();
         await userEvent.click(button);
         expect(
           await screen.queryByText(
-            "We pledge to evaluate risk, so that fundamental rights are not negatively affected."
+            /We pledge to evaluate risk, so that fundamental rights are not negatively affected./i
           )
         ).not.toBeInTheDocument();
       });
@@ -133,18 +133,18 @@ describe.skip("The pledges by features table can be mocked in the test", () => {
         id: 1,
         name: "Human agency and oversight",
         value: "Responsibility",
-        honoured: 1,
-        broken: 2,
+        honouring: 1,
+        breaking: 2,
         pledges: [
           {
             name: "We pledge to evaluate risk, so that fundamental rights are not negatively affected.",
-            honoured: 2,
-            broken: 1,
+            honouring: 2,
+            breaking: 1,
           },
           {
             name: "We pledge to enable human agency, so that users retain autonomy.",
-            honoured: 0,
-            broken: 1,
+            honouring: 0,
+            breaking: 1,
           },
         ],
       },
@@ -166,6 +166,6 @@ describe.skip("The pledges by features table can be mocked in the test", () => {
     });
     await renderFeaturesWithSuccess(1);
     const { getByText } = renderComponent();
-    expect(getByText("Loading...")).toBeInTheDocument();
+    expect(getByText(/Loading.../i)).toBeInTheDocument();
   });
 });

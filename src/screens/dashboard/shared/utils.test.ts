@@ -26,12 +26,12 @@ describe("Total reducer", () => {
 });
 
 describe("Add totals to pledges", () => {
-  test("should add counts for honoured and broken pledges", () => {
+  test("should add counts for honouring and breaking pledges", () => {
     const snapshot = snapshots[0];
     const snapShotWithTotals = getSnapshotsWithTotals(snapshot)
       .items[0] as IItem;
-    expect(snapShotWithTotals.honoured).toBe(1);
-    expect(snapShotWithTotals.broken).toBe(2);
+    expect(snapShotWithTotals.honouring).toBe(1);
+    expect(snapShotWithTotals.breaking).toBe(2);
   });
 });
 

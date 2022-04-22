@@ -18,8 +18,8 @@ const PledgeRow = ({ pledge, colSpan }: PledgeRowProps): JSX.Element => {
         <td className={nameClasses}>
           <span className="pl-4 display: inline-block">{pledge.name}</span>
         </td>
-        <td className={isTrue(pledge.honoured > 0, "✓")}></td>
-        <td className={isTrue(pledge.broken > 0, "✗")}></td>
+        <td className={isTrue(pledge.honouring > 0, "✓")}></td>
+        <td className={isTrue(pledge.breaking > 0, "✗")}></td>
         {colSpan === 4 ? <td className="text-xs text-center w-1/5"></td> : null}
       </tr>
     </>

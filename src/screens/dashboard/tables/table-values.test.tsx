@@ -53,7 +53,7 @@ describe("The pledges by values table", () => {
     renderComponent();
     await renderValuesWithSuccess(1);
     expect(
-      screen.getByText("RTW pledges honoured and broken by value")
+      screen.getByText(/RTW honouring and breaking pledges by value/i)
     ).toBeInTheDocument();
   });
 
@@ -82,7 +82,7 @@ describe("The pledges by values table", () => {
         await user.click(button);
         expect(
           screen.getByText(
-            "We pledge to evaluate risk, so that fundamental rights are not negatively affected."
+            /We pledge to evaluate risk, so that fundamental rights are not negatively affected./i
           )
         ).toBeInTheDocument();
         const row = screen.getByText("Responsibility").closest("tr");
@@ -90,7 +90,7 @@ describe("The pledges by values table", () => {
         expect(within(row).getAllByText(1)[0]).toBeTruthy();
         expect(within(row).getByText(2)).toBeTruthy();
       });
-      test("with totals for hounored and broken pledges", async () => {
+      test("with totals for hounored and breaking pledges", async () => {
         renderComponent();
         await renderValuesWithSuccess(1);
         expect(screen.getByText("Totals")).toBeInTheDocument();
@@ -109,13 +109,13 @@ describe("The pledges by values table", () => {
         await user.click(button);
         expect(
           screen.getByText(
-            "We pledge to evaluate risk, so that fundamental rights are not negatively affected."
+            /We pledge to evaluate risk, so that fundamental rights are not negatively affected./i
           )
         ).toBeInTheDocument();
         await user.click(button);
         expect(
           await screen.queryByText(
-            "We pledge to evaluate risk, so that fundamental rights are not negatively affected."
+            /We pledge to evaluate risk, so that fundamental rights are not negatively affected./i
           )
         ).not.toBeInTheDocument();
       });

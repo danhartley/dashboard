@@ -6,25 +6,8 @@ import {
   IPledgesByFeatureSnapshot,
 } from "src/screens/dashboard/shared/interfaces";
 import { TotalsProps, TableProps } from "src/screens/dashboard/shared/types";
-
+import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
-
-const Figure = ({
-  title,
-  children,
-}: {
-  title?: string;
-  children?: JSX.Element | JSX.Element[];
-}) => {
-  return (
-    <figure className="w-full border-solid border-slate-900 dark:border-slate-50 border-4 rounded-md p-3 my-2">
-      <figcaption className="font-serif mb-4">
-        <em>{title} pledges honoured and broken by feature</em>
-      </figcaption>
-      {children}
-    </figure>
-  );
-};
 
 const Header = () => {
   return (
@@ -39,8 +22,8 @@ const Header = () => {
         <th className="pb-2 text-left text-xs uppercase tracking-wide w-3/5">
           Feature
         </th>
-        <th className="text-xs uppercase tracking-wide w-1/5 after:content-['✓'] md:after:content-['Honoured']"></th>
-        <th className="text-xs uppercase tracking-wide w-1/5 after:content-['✗'] md:after:content-['Broken']"></th>
+        <th className="text-xs uppercase tracking-wide w-1/5 after:content-['✓'] md:after:content-['honouring']"></th>
+        <th className="text-xs uppercase tracking-wide w-1/5 after:content-['✗'] md:after:content-['breaking']"></th>
       </tr>
     </thead>
   );
@@ -48,8 +31,8 @@ const Header = () => {
 
 type Feature = {
   name: string;
-  honoured: number;
-  broken: number;
+  honouring: number;
+  breaking: number;
   pledges: IPledge[];
 };
 
@@ -70,8 +53,8 @@ export const Row = ({ feature }: { feature: Feature }) => {
             {feature.name}
           </button>
         </td>
-        <td className={"my-2 text-center"}>{feature.honoured}</td>
-        <td className={"my-2 text-center"}>{feature.broken}</td>
+        <td className={"my-2 text-center"}>{feature.honouring}</td>
+        <td className={"my-2 text-center"}>{feature.breaking}</td>
       </tr>
       {isSelected ? (
         <PledgesRow
@@ -95,8 +78,8 @@ const Footer = ({ totals }: TotalsProps) => {
         >
           Totals
         </th>
-        <th>{totals.honoured}</th>
-        <th>{totals.broken}</th>
+        <th>{totals.honouring}</th>
+        <th>{totals.breaking}</th>
       </tr>
     </tfoot>
   );
@@ -137,8 +120,7 @@ export const DashboardFeaturesTable = ({
     return <Figure title={error.message} />;
   }
 
-  if (isSuccess) {    
-    console.log(data);
+  if (isSuccess) {
     return (
       <Figure title={data.source}>
         <table

@@ -2,16 +2,16 @@ import { Source } from "./enums";
 
 export interface IPledge {
   name: string;
-  honoured: number;
-  broken: number;
+  honouring: number;
+  breaking: number;
 }
 
 export interface IItem {
   id: number;
   name: string;
   value: string;
-  honoured: number;
-  broken: number;
+  honouring: number;
+  breaking: number;
   pledges: IPledge[];
   features: number;
 }
@@ -30,8 +30,8 @@ export interface IPledgesByFeatureSnapshot {
   items: IItem[];
   error?: any;
   totals: {
-    honoured: number;
-    broken: number;
+    honouring: number;
+    breaking: number;
     features?: number;
   };
 }
@@ -50,8 +50,8 @@ export interface IPledgesByValueSnapshot {
   items: IItem[];
   error?: any;
   totals: {
-    honoured: number;
-    broken: number;
+    honouring: number;
+    breaking: number;
     features?: number;
   };
 }

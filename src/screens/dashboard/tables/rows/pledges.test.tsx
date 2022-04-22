@@ -18,13 +18,13 @@ describe("A pledges row", () => {
     pledges: [
       {
         name: "Key pledge",
-        honoured: 1,
-        broken: 0,
+        honouring: 1,
+        breaking: 0,
       },
       {
         name: "Minor pledge",
-        honoured: 0,
-        broken: 1,
+        honouring: 0,
+        breaking: 1,
       },
     ],
   };

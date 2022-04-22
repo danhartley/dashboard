@@ -7,7 +7,7 @@ import {
   TableProps,
 } from "src/screens/dashboard/shared/types";
 import { IPledgesByValueSnapshot } from "src/screens/dashboard/shared/interfaces";
-
+import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
 
 const Header = () => {
@@ -15,20 +15,19 @@ const Header = () => {
     <thead>
       <tr>
         <th colSpan={1}></th>
-        <th className="text-xs tracking-wide	uppercase" colSpan={2}>
-          Pledges
+        <th className="text-xs tracking-wide	uppercase" colSpan={1}>          
         </th>
         <th className="text-xs tracking-wide	uppercase" colSpan={2}>
-          
+          Pledges
         </th>
       </tr>
       <tr>
         <th className="pb-2 text-left text-xs tracking-wide	uppercase w-2/5">
           Value
         </th>
-        <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✓'] md:after:content-['Honoured']"></th>
-        <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✗'] md:after:content-['Broken']"></th>
         <th className="text-xs tracking-wide uppercase w-1/5"># Features</th>
+        <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✓'] md:after:content-['honouring']"></th>
+        <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✗'] md:after:content-['breaking']"></th>
       </tr>
     </thead>
   );
@@ -49,9 +48,9 @@ const Row = ({ value }: ValueProps) => {
             {value.name}
           </button>
         </td>
-        <td className="my-2 text-center">{value.honoured}</td>
-        <td className="my-2 text-center">{value.broken}</td>
         <td className="my-2 text-center">{value.features}</td>
+        <td className="my-2 text-center">{value.honouring}</td>
+        <td className="my-2 text-center">{value.breaking}</td>
       </tr>
 
       {value.name.toLowerCase() === selectedValue ? (
@@ -76,9 +75,9 @@ const Footer = ({ totals }: TotalsProps) => {
         >
           Totals
         </th>
-        <th>{totals.honoured}</th>
-        <th>{totals.broken}</th>
         <th></th>
+        <th>{totals.honouring}</th>
+        <th>{totals.breaking}</th>
       </tr>
     </tfoot>
   );
@@ -108,19 +107,20 @@ const DashboardValuesTable = ({
   } = useValuesWithTotals({ source: source, snapshotId });
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return (
+      <Figure>
+        <span>Loading...</span>
+      </Figure>
+    );
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    return <Figure title={error.message} />;
   }
 
   if (isSuccess) {
     return (
-      <figure className="w-full border-solid border-slate-900 dark:border-slate-50 border-4 rounded-md p-3 my-2">
-        <figcaption className="font-serif mb-4">
-          <em>{data.source} pledges honoured and broken by value</em>
-        </figcaption>
+      <Figure title={data.source}>
         <table
           role="tabpanel"
           aria-labelledby="table"
@@ -141,7 +141,7 @@ const DashboardValuesTable = ({
           snapshots={data.snapshots.filter(s => s.source === data.source)}
           onChange={setSnapshotId}
         ></TableControls>
-      </figure>
+      </Figure>
     );
   }
 };

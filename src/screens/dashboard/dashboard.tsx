@@ -22,7 +22,7 @@ const Dashboard = (): JSX.Element => {
     snapshotId ?
     <div className="container mx-auto w-4/5">
       <section className="container mx-auto max-w-4xl pt-4">
-        <h2 className="text-xl mt-2 mb-4">Pledges honoured and broken</h2>
+        <h2 className="text-xl mt-2 mb-4">Honouring and breaking pledges</h2>
         <Tabs defaultIndex={0}>
           <TabList>
             <Tab className={`${css} mr-4`}>By feature</Tab>

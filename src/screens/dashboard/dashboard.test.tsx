@@ -26,7 +26,7 @@ describe("The dashboard", () => {
   test("has an H1 header text", () => {
     renderDashboardWithTables();
     const { getByText } = within(screen.getByRole("heading", { level: 2 }));
-    expect(getByText("Pledges honoured and broken")).toBeInTheDocument();
+    expect(getByText("Honouring and breaking pledges")).toBeInTheDocument();
   });
   test("has two tables", () => {
     renderDashboardWithTables();

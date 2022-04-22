@@ -23,8 +23,8 @@ export type PledgeRowProps = {
   colSpan: number;
   pledge: {
     name: string;
-    honoured: number;
-    broken: number;
+    honouring: number;
+    breaking: number;
   };
 };
 
@@ -33,15 +33,15 @@ export type PledgesRowProps = {
   colSpan: number;
   pledges: {
     name: string;
-    honoured: number;
-    broken: number;
+    honouring: number;
+    breaking: number;
   }[];
 };
 
 export type TotalsProps = {
   totals: {
-    honoured: number;
-    broken: number;
+    honouring: number;
+    breaking: number;
     features?: number;
   };
 };
@@ -49,13 +49,13 @@ export type TotalsProps = {
 export type ValueProps = {
   value: {
     name: string;
-    honoured: number;
-    broken: number;
+    honouring: number;
+    breaking: number;
     features: number;
     pledges: {
       name: string;
-      honoured: number;
-      broken: number;
+      honouring: number;
+      breaking: number;
     }[];
   };
 };

@@ -6,13 +6,13 @@ export const getSnapshotsWithTotals = (snapshot) => {
   const features = Array.from(new Set(snapshot.items.map((i) => i.name)));
 
   snapshot.items.forEach((i) => {
-    i.honoured = i.pledges.map((p) => p.honoured).reduce(total, 0);
-    i.broken = i.pledges.map((p) => p.broken).reduce(total, 0);
+    i.honouring = i.pledges.map((p) => p.honouring).reduce(total, 0);
+    i.breaking = i.pledges.map((p) => p.breaking).reduce(total, 0);
   });
 
   snapshot.totals = {
-    honoured: snapshot.items.map((i) => i.honoured).reduce(total, 0),
-    broken: snapshot.items.map((i) => i.broken).reduce(total, 0),
+    honouring: snapshot.items.map((i) => i.honouring).reduce(total, 0),
+    breaking: snapshot.items.map((i) => i.breaking).reduce(total, 0),
   };
 
   const items = features.map((f, i) => {
@@ -21,13 +21,13 @@ export const getSnapshotsWithTotals = (snapshot) => {
       name: f,
       value: snapshot.items.find((i) => i.name === f).value,
       epic: snapshot.items.find((i) => i.name === f).epic,
-      honoured: snapshot.items
+      honouring: snapshot.items
         .filter((i) => i.name === f)
-        .map((i) => i.honoured)
+        .map((i) => i.honouring)
         .reduce(total, 0),
-      broken: snapshot.items
+      breaking: snapshot.items
         .filter((i) => i.name === f)
-        .map((i) => i.broken)
+        .map((i) => i.breaking)
         .reduce(total, 0),
       pledges: snapshot.items
         .filter((i) => i.name === f)
@@ -55,13 +55,13 @@ export const getValuesWithTotals = (snapshot) => {
   const items = snapshotValues.map((sh) => {
     return {
       name: sh,
-      honoured: orderedValues
+      honouring: orderedValues
         .filter((ov) => ov.value === sh)
-        .map((v) => v.honoured)
+        .map((v) => v.honouring)
         .reduce(total, 0),
-      broken: orderedValues
+      breaking: orderedValues
         .filter((ov) => ov.value === sh)
-        .map((v) => v.broken)
+        .map((v) => v.breaking)
         .reduce(total, 0),
       features: Array.from(new Set(orderedValues.filter(ov => ov.value === sh))).length,
       pledges: orderedValues
