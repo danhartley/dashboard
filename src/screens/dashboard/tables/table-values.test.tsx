@@ -1,45 +1,12 @@
-import { render, screen, within } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderHook } from "@testing-library/react-hooks";
 import { useValuesWithTotals } from "src/screens/dashboard/hooks/useValues";
-import { QueryClient, QueryClientProvider } from "react-query";
-
-import DashboardValuesTable from "./table-values";
-
-const createWrapper = () => {
-  const queryClient = new QueryClient();
-  return ({ children }) => (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  );
-};
-
-const renderComponent = () => {
-  const queryClient = new QueryClient();
-  return render(
-    <QueryClientProvider client={queryClient}>
-      <DashboardValuesTable
-        source="RTW"
-        snapshotId={1}
-        setSnapshotId={() => 1}
-      ></DashboardValuesTable>
-    </QueryClientProvider>
-  );
-};
-
-const renderValuesWithSuccess = async (snapshotId) => {
-  const { result, waitFor } = renderHook(
-    () => useValuesWithTotals({ source: "RTW", snapshotId: snapshotId }),
-    {
-      wrapper: createWrapper(),
-    }
-  );
-  await waitFor(() => result.current.isSuccess);
-  return { result, waitFor };
-};
+import { createWrapper, renderValuesComponent, renderValuesWithSuccess } from "src/screens/dashboard/tables/shared/test-helpers";
 
 describe("The pledges by values table", () => {
   test("shows when it is loading", async () => {
-    renderComponent();
+    renderValuesComponent();
     const { result, waitFor } = renderHook(
       () => useValuesWithTotals({ source: "RTW", snapshotId: 1 }),
       {
@@ -50,22 +17,19 @@ describe("The pledges by values table", () => {
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
   test("has a title", async () => {
-    renderComponent();
+    renderValuesComponent();
     await renderValuesWithSuccess(1);
-    expect(
-      screen.getByText(/RTW honouring and breaking pledges by value/i)
-    ).toBeInTheDocument();
+    expect(screen.getByText(/pledges by/i)).toBeInTheDocument();
   });
 
   describe("has a value column", () => {
     test("with a table header", async () => {
-      renderComponent();
+      renderValuesComponent();
       await renderValuesWithSuccess(1);
       expect(screen.getByRole("columnheader", { name: "Value" })).toBeTruthy();
     });
-
     test("and a row for each value", async () => {
-      renderComponent();
+      renderValuesComponent();
       const { result } = await renderValuesWithSuccess(1);
       const itemCount = result.current.data.items.length;
       const body = screen.getAllByRole("rowgroup")[1];
@@ -76,7 +40,7 @@ describe("The pledges by values table", () => {
     describe("which when clicked", () => {
       test("shows related pledges in a new row", async () => {
         const user = userEvent.setup();
-        renderComponent();
+        renderValuesComponent();
         await renderValuesWithSuccess(1);
         const button = screen.getByRole("button", { name: "Responsibility" });
         await user.click(button);
@@ -91,7 +55,7 @@ describe("The pledges by values table", () => {
         expect(within(row).getByText(2)).toBeTruthy();
       });
       test("with totals for hounored and breaking pledges", async () => {
-        renderComponent();
+        renderValuesComponent();
         await renderValuesWithSuccess(1);
         expect(screen.getByText("Totals")).toBeInTheDocument();
         const row = screen.getByText("Totals").closest("tr");
@@ -103,7 +67,7 @@ describe("The pledges by values table", () => {
     describe("and when clicked again", () => {
       test("hides the related pledges ", async () => {
         const user = userEvent.setup();
-        renderComponent();
+        renderValuesComponent();
         await renderValuesWithSuccess(1);
         const button = screen.getByRole("button", { name: "Responsibility" });
         await user.click(button);

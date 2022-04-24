@@ -2,6 +2,7 @@ import { total } from "src/screens/dashboard/shared/utils";
 import {
   getSnapshotsWithTotals,
   sortBy,
+  getPledgesWithChecklists,
 } from "src/screens/dashboard/shared/utils";
 import { IItem } from "src/screens/dashboard/shared/interfaces";
 
@@ -55,5 +56,60 @@ describe("Sort array by property", () => {
   ];
   test("returns objects ordered by a field descending", () => {
     expect(sortBy(items, "a", "desc")[0].a).toBe(112);
+  });
+  test.todo("use table for multiple tests");
+});
+
+describe("Pledges with checklists", () => {
+  test("Should return only pledges that have a checkist", () => {
+    const pledges = [
+      {
+        name: "We pledge to work in ways that are transparent.",
+        honouring: 1,
+        breaking: 0,
+      },
+      {
+        name: "We pledge to explain the methodologies we use.",
+        honouring: 1,
+        breaking: 0,
+        checklist: [
+          {
+            id: 1,
+            check: "Explain each methodology in detail on the website.",
+            checked: true,
+          },
+          {
+            id: 1,
+            check: "Create a unique URL for each methodology.",
+            checked: true,
+          },
+          {
+            id: 1,
+            check: "Link to supporting evidence.",
+            checked: true,
+          },
+        ],
+      },
+      {
+        name: "We pledge to provide tools for members to independently verify the impact of the projects they invest in.",
+        honouring: 1,
+        breaking: 0,
+      },
+    ];
+
+    const snapshot = {
+      id: 1,
+      source: "mossy-earth",
+      snapshotId: 1,
+      items: [
+        {
+          id: 1,
+          pledges: pledges,
+        },
+      ],
+    };
+
+    expect(getPledgesWithChecklists(snapshot).length).toBe(1);
+    expect(getPledgesWithChecklists(snapshot)[0].source).toBe("mossy-earth");
   });
 });

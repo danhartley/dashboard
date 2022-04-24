@@ -21,7 +21,7 @@ export const handlers = [
   rest.get("snapshots/RTW/3", async (req, res, ctx) => {
     return res(ctx.json(db.snapshots.find((s) => s.id === 3)));
   }),
-  rest.get("snapshots/MossyEarth/1", async (req, res, ctx) => {
+  rest.get("snapshots/mossy-earth/1", async (req, res, ctx) => {
     return res(ctx.json(db.snapshots.find((s) => s.id === 10)));
   }),
   rest.get("snapshots/RaizFarm/1", async (req, res, ctx) => {

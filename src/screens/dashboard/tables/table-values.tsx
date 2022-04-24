@@ -24,7 +24,7 @@ const Header = () => {
         <th className="pb-2 text-left text-xs tracking-wide	uppercase w-2/5">
           Value
         </th>
-        <th className="text-xs tracking-wide uppercase w-1/5"># Features</th>
+        <th className="text-xs tracking-wide uppercase w-1/5"># Principles</th>
         <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✓'] md:after:content-['honouring']"></th>
         <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✗'] md:after:content-['breaking']"></th>
       </tr>
@@ -119,7 +119,7 @@ const DashboardValuesTable = ({
 
   if (isSuccess) {
     return (
-      <Figure title={data.source}>
+      <Figure title={`${data.source} pledges by value`}>
         <table
           role="tabpanel"
           aria-labelledby="table"

@@ -1,45 +1,13 @@
-import { render, screen, within } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderHook } from "@testing-library/react-hooks";
 import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
-import { QueryClient, QueryClientProvider } from "react-query";
 import api from "src/api/api";
-import DashboardFeaturesTable from "./table-features";
-
-const createWrapper = () => {
-  const queryClient = new QueryClient();
-  return ({ children }) => (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  );
-};
-
-const renderComponent = () => {
-  const queryClient = new QueryClient();
-  return render(
-    <QueryClientProvider client={queryClient}>
-      <DashboardFeaturesTable
-        source="RTW"
-        snapshotId={1}
-        setSnapshotId={() => 1}
-      ></DashboardFeaturesTable>
-    </QueryClientProvider>
-  );
-};
-
-const renderFeaturesWithSuccess = async (snapshotId) => {
-  const { result, waitFor } = renderHook(
-    () => useFeaturesWithTotals({ source: "RTW", snapshotId: snapshotId }),
-    {
-      wrapper: createWrapper(),
-    }
-  );
-  await waitFor(() => result.current.isSuccess);
-  return { result, waitFor };
-};
+import { createWrapper, renderFeaturesComponent, renderFeaturesWithSuccess } from "src/screens/dashboard/tables/shared/test-helpers";
 
 describe("The pledges by features table", () => {
   test("shows when it is loading", async () => {
-    renderComponent();
+  renderFeaturesComponent();
     const { result, waitFor } = renderHook(
       () => useFeaturesWithTotals({ source: "RTW", snapshotId: 1 }),
       {
@@ -53,14 +21,14 @@ describe("The pledges by features table", () => {
   describe("has a value column", () => {
     test("with a table header", async () => {
       await renderFeaturesWithSuccess(1);
-      renderComponent();
+    renderFeaturesComponent();
       expect(
-        await screen.findByRole("columnheader", { name: /feature/i })
+        await screen.findByRole("columnheader", { name: /principle/i })
       ).toBeTruthy();
     });
 
     test("and a row for each value", async () => {
-      renderComponent();
+    renderFeaturesComponent();
       const { result } = await renderFeaturesWithSuccess(1);
       const itemCount = result.current.data.items.length;
       const body = screen.getAllByRole("rowgroup")[1];
@@ -70,7 +38,7 @@ describe("The pledges by features table", () => {
 
     describe("which when clicked", () => {
       test("shows related pledges in a new row", async () => {
-        renderComponent();
+      renderFeaturesComponent();
         await renderFeaturesWithSuccess(1);
         expect(screen.getByText("Totals")).toBeInTheDocument();
         const row = screen.getByText("Totals").closest("tr");
@@ -79,7 +47,7 @@ describe("The pledges by features table", () => {
       });
       test("with totals for hounored and breaking pledges", async () => {
         const user = userEvent.setup();
-        renderComponent();
+      renderFeaturesComponent();
         await renderFeaturesWithSuccess(1);
         const button = screen.getByRole("button", {
           name: /Human agency and oversight/i,
@@ -104,7 +72,7 @@ describe("The pledges by features table", () => {
     describe("and when clicked again", () => {
       test("hides the related pledges", async () => {
         const user = userEvent.setup();
-        renderComponent();
+      renderFeaturesComponent();
         await renderFeaturesWithSuccess(1);
         const button = screen.getByRole("button", {
           name: "Human agency and oversight",
@@ -165,7 +133,7 @@ describe.skip("The pledges by features table can be mocked in the test", () => {
       return Promise.resolve(null);
     });
     await renderFeaturesWithSuccess(1);
-    const { getByText } = renderComponent();
+  const { getByText } = renderFeaturesComponent();
     expect(getByText(/Loading.../i)).toBeInTheDocument();
   });
 });

@@ -30,7 +30,7 @@ const summary = [
     id: 10,
     snapshot: "1 Jan 2021",
     snapshotId: 1,
-    source: "MossyEarth",
+    source: "mossy-earth",
   },
 ];
 

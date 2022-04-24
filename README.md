@@ -20,6 +20,7 @@ The production endpoint is set in the .env.production file.
 
 Prettier
 
+        npx prettier --write .
         npx prettier --check .
 
 ### json-server

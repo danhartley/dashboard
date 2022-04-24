@@ -80,7 +80,7 @@ export const getValuesWithTotals = (snapshot) => {
     snapshot: snapshot.snapshot,
     items: items,
     snapshots: snapshot.snapshots,
-    totals: { ...snapshot.totals, features: 100 },
+    totals: { ...snapshot.totals },
   };
 
   return values;
@@ -101,13 +101,22 @@ export const groupBy = function (xs, key) {
   }, {});
 };
 
-// export const getSummary = snapshots => {
-//   return Array.from(new Set(snapshots.map(s => {
-//     return {
-//       id: s.snapshotId,
-//       snapshot: s.snapshot,
-//       snapshotId: s.snapshotId,
-//       source: s.source
-//     }
-//   })))
-// };
+export const getPledgesWithChecklists = (snapshot) => {
+  return snapshot.items
+    .map((i) => {
+      return {
+        pledges: i.pledges.map((p) => {
+          return {
+            id: snapshot.id,
+            snapshotId: snapshot.snapshotId,
+            source: snapshot.source,
+            itemId: i.id,
+            pledge: p,
+          };
+        }),
+      };
+    })
+    .map((i) => i.pledges)
+    .flat()
+    .filter((p) => p.pledge.checklist);
+};

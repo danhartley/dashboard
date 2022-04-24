@@ -1,7 +1,7 @@
 import { getValuesWithTotals } from "src/screens/dashboard/shared/utils";
 import { useFeatureBase } from "./base";
 
-export const useValuesWithTotals = ({ source, snapshotId = 1 }) => {
+export const useValuesWithTotals = ({ source, snapshotId }) => {
   const { isSuccess, snapshot } = useFeatureBase(snapshotId, source);
 
   if (isSuccess) {

@@ -9,6 +9,9 @@ jest.mock("src/screens/dashboard/tables/table-features", () => ({}) => (
 jest.mock("src/screens/dashboard/tables/table-values", () => ({}) => (
   <>{<div>DashboardValuesTable</div>}</>
 ));
+jest.mock("src/screens/dashboard/tables/table-pledges", () => ({}) => (
+  <>{<div>DashboardPledgesTable</div>}</>
+));
 
 const renderDashboardWithTables = () => {
   const mockedUseParams = useParams as jest.Mock<{ name: string; id: string }>;
@@ -26,12 +29,13 @@ describe("The dashboard", () => {
   test("has an H1 header text", () => {
     renderDashboardWithTables();
     const { getByText } = within(screen.getByRole("heading", { level: 2 }));
-    expect(getByText("Honouring and breaking pledges")).toBeInTheDocument();
+    expect(getByText("RWT")).toBeInTheDocument();
   });
-  test("has two tables", () => {
+  test("has three tables", () => {
     renderDashboardWithTables();
     expect(screen.getByText("DashboardFeaturesTable")).toBeInTheDocument();
     expect(screen.getByText("DashboardValuesTable")).toBeInTheDocument();
+    expect(screen.getByText("DashboardPledgesTable")).toBeInTheDocument();
   });
   test("has tabs", () => {
     renderDashboardWithTables();

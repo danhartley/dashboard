@@ -65,6 +65,16 @@ export type ValueProps = {
   };
 };
 
+export type PledgeProps = {
+    pledge: {
+      name: string,
+      checklist: [{
+        check: string,
+        checked: boolean
+      }]
+    }
+}
+
 export type TableProps = {
   source: string;
   snapshotId: number;

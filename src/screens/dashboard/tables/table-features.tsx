@@ -20,7 +20,7 @@ const Header = () => {
       </tr>
       <tr>
         <th className="pb-2 text-left text-xs uppercase tracking-wide w-3/5">
-          Feature
+          Principle
         </th>
         <th className="text-xs uppercase tracking-wide w-1/5 after:content-['✓'] md:after:content-['honouring']"></th>
         <th className="text-xs uppercase tracking-wide w-1/5 after:content-['✗'] md:after:content-['breaking']"></th>
@@ -122,7 +122,7 @@ export const DashboardFeaturesTable = ({
 
   if (isSuccess) {
     return (
-      <Figure title={data.source}>
+      <Figure title={`${data.source} pledges by principle`}>
         <table
           role="tabpanel"
           data-table-id="features"

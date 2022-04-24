@@ -3,6 +3,7 @@
     {
       "id": 1,
       "source": "RTW",
+      "strapline": "Making the tech industry responsible",
       "snapshot": "1 Jan 2021",
       "slug": "rtw",
       "snapshotId": 1,
@@ -177,7 +178,24 @@
             {
               "name": "We pledge that all decisions will be explainable, so that they can be verified.",
               "honouring": 0,
-              "breaking": 1
+              "breaking": 1,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Explain each methodology in detail on the website.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Create a unique URL for each methodology.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Link to supporting evidence.",
+                  "checked": true
+                }
+              ]
             },
             {
               "name": "We pledge to make our Responsibility Dashboard public, so that we can be held accountable.",
@@ -201,6 +219,7 @@
     {
       "id": 2,
       "source": "RTW",
+      "strapline": "Making the tech industry responsible",
       "snapshot": "1 July 2021",
       "slug": "rtw",
       "snapshotId": 2,
@@ -380,7 +399,24 @@
             {
               "name": "We pledge that all decisions will be explainable, so that they can be verified.",
               "honouring": 0,
-              "breaking": 1
+              "breaking": 1,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Explain each methodology in detail on the website.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Create a unique URL for each methodology.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Link to supporting evidence.",
+                  "checked": true
+                }
+              ]
             },
             {
               "name": "We pledge to make our Responsibility Dashboard public, so that we can be held accountable.",
@@ -403,7 +439,8 @@
     },
     {
       "id": 10,
-      "source": "MossyEarth",
+      "source": "mossy-earth",
+      "strapline": "More than just tree planting",
       "snapshot": "22 April 2022",
       "slug": "mossy-earth",
       "snapshotId": 1,
@@ -450,7 +487,24 @@
             {
               "name": "We pledge to explain the methodologies we use.",
               "honouring": 1,
-              "breaking": 0
+              "breaking": 0,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Explain each methodology in detail on the website.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Create a unique URL for each methodology.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Link to supporting evidence.",
+                  "checked": true
+                }
+              ]
             },
             {
               "name": "We pledge to provide tools for members to independently verify the impact of the projects they invest in.",
@@ -618,6 +672,7 @@
     {
       "id": 20,
       "source": "RaizFarm",
+      "strapline": "Changing the way we connect with food",
       "snapshot": "22 April 2022",
       "slug": "raiz-farm",
       "snapshotId": 1,
@@ -631,7 +686,24 @@
             {
               "name": "We pledge to use less water and land than existing farming practices.",
               "honouring": 1,
-              "breaking": 0
+              "breaking": 0,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Explain each methodology in detail on the website.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Create a unique URL for each methodology.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Link to supporting evidence.",
+                  "checked": true
+                }
+              ]
             },
             {
               "name": "We pledge to be as efficient as existing organic farms.",
@@ -746,7 +818,7 @@
       "id": 10,
       "snapshot": "22 April 2022",
       "snapshotId": 1,
-      "source": "MossyEarth"
+      "source": "mossy-earth"
     },
     {
       "id": 20,

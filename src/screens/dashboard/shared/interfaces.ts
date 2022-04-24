@@ -18,6 +18,7 @@ export interface IItem {
 
 export interface IPledgesByFeatureSnapshot {
   source: string;
+  strapline: string;
   snapshot?: string;
   id: number;
   snapshotId: number;
@@ -38,6 +39,7 @@ export interface IPledgesByFeatureSnapshot {
 
 export interface IPledgesByValueSnapshot {
   source: string;
+  strapline: string;
   snapshot?: string;
   id: number;
   snapshotId: number;
@@ -54,6 +56,20 @@ export interface IPledgesByValueSnapshot {
     breaking: number;
     features?: number;
   };
+}
+
+export interface IPledgesWithChecklists {
+    id: number;
+    snapshotId: number;
+    itemId: number;
+    source: string;    
+    pledge: {
+      name: string,
+      checklist: [{
+        check: string,
+        checked: boolean
+      }]
+    }
 }
 
 export interface IValue {
