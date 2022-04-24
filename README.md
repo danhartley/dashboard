@@ -1,34 +1,34 @@
-# Production
+# Responsible development
 
-## Locally
+Tables showing the outcome of company pledges, broken down by principles, values and requirement checklists.
 
-development build running locally:
+Based on [Create React App](https://create-react-app.dev/) and the TypeScript template.
+
+## CLI commands
+
+Build and server app locally against mocked data:
 
         npm run start
 
-with unit tests:
+Run unit tests and unit tests with coverage:
 
-        npm run test
+        npm run test  
+        npm run coverage
 
-production build running locally:
+Build production ready app and run it locally:
 
         npm run build
         serve -s build -l 4000
         json-server public/db.json --port 5000
 
-The production endpoint is set in the .env.production file.
-
-Prettier
-
-        npx prettier --write .
-        npx prettier --check .
+NB The production endpoint is set in the .env.production file.
 
 ### json-server
 
 I have it installed globally. ( See https://github.com/typicode/json-server )  
 To test the endpoint, including POSTs, see db.http (requires REST Client extension in VS Code)
 
-# Stack
+## Development stack
 
 [React: UI & UI state](https://reactjs.org/)  
 [Typescript](https://www.typescriptlang.org/)  
@@ -38,40 +38,12 @@ To test the endpoint, including POSTs, see db.http (requires REST Client extensi
 [MSW: mocking browser requests on the network level](https://mswjs.io/)  
 [Tailwind CSS: styling](https://tailwindcss.com/)  
 [PostCSS: CC preprocessor](https://postcss.org/)
-
-[Remix: client/server](https://remix.run/)  
 [Reach UI: accessible React component library](https://reach.tech/)  
 [GitHub | GitHub actions](https://github.com/features/actions)  
-[Sentry: error reporting](https://sentry.io/)
 
-# State
-
-## Client or UI State
-
-React (the one with hooks)  
-React Hook Form (or none e.g. HTML names)
-
-### CSS
-
-Tailwind CSS
-
-## Server State
-
-React Query
-
-# Dev tools
-
+### Code validation
 Typescript (type checking)  
-Prettier (code formatter)  
 ESLint (static analysis JS & TS)
-
-## Lighthouse
-
-e.g. run: lighthouse http://localhost:4000/ --budget-path=./perf/budget.json at CLI  
-** Todo: add to CI **
-
-## Testing & Counting Lines of Code
-
 Jest
 Cypress (Cucumber - Gherkin)  
 React Testing Library  
@@ -79,7 +51,31 @@ Mock Service Worker
 Strict mode enabled ( see https://reactjs.org/docs/strict-mode.html )  
 Static type checking with Typescript ( see https://reactjs.org/docs/static-type-checking.html )
 
-## Debugging tests
+### Lighthouse
+
+e.g. run: lighthouse http://localhost:4000/ --budget-path=./perf/budget.json at CLI  
+** Todo: add to CI **
+
+### Prettier standard code formatting
+
+        npx prettier --write .
+        npx prettier --check .
+
+### cloc code line breakdown
+
+https://github.com/AlDanial/cloc
+
+e.g. cloc src
+
+### find code file size
+
+e.g. find ./src -type f | xargs wc -w | tail -1
+
+Check for mocking (MSW)  
+ New axe issues (accessibility)  
+ Web vitals
+
+### Debugging tests
 
 npm run test:debug  
 In Chrome open: about:inspect  
@@ -88,15 +84,7 @@ Click "play" in dev tools
 
 ( see https://create-react-app.dev/docs/debugging-tests )
 
-# Tools
-
-## Chrome DevTools console
-
-Check for mocking (MSW)  
- New axe issues (accessibility)  
- Web vitals
-
-## VS Code extensions
+### VS Code extensions
 
 axe Accessibility Linter  
 Babel JavaScript  
@@ -106,16 +94,16 @@ Prettier
 Tailwind CSS Intellisense  
 REST Client
 
-# Database
+### Database
 
-TBD  
 MWS for local development and testing
+json-server for rest-styled queries
 
-# Source control
+### Source control
 
 Git  
 GitHub  
-Trunk Based Developmnt ( see https://trunkbaseddevelopment.com/ ) ?? GitHib flow
+Trunk Based Development ( see https://trunkbaseddevelopment.com/ ) or GitHib flow TBD
 
 Create a new branch from the main branch.  
 Commit your code on this branch and push it to the remote repo (e.g. on GitHub).  
@@ -126,16 +114,6 @@ Merge the branch into the main branch.
 
 ( see https://profy.dev/article/react-tech-stack )
 
-## Continuous Integration
+### Continuous Integration
 
 TBD GitHub Actions ( see https://github.com/features/actions )
-
-## cloc
-
-https://github.com/AlDanial/cloc
-
-e.g. cloc src
-
-## find
-
-e.g. find ./src -type f | xargs wc -w | tail -1

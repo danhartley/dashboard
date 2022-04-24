@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[data-reach-tab][data-selected] {
+    @apply border-slate-500 !important;
+}
