@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { useSnapshots } from "src/screens/dashboard/hooks/useSnapshots";
+import { transformSourceName } from "src/shared/utils";
 
 const Navigation = (): JSX.Element => {
   type Error = {
@@ -37,7 +38,7 @@ const Navigation = (): JSX.Element => {
                         to={`snapshots/${d.source}/${d.snapshotId}`}
                         key={`${d.source}-${d.snapshotId}`}
                       >
-                        {d.source} {d.snapshot}
+                        {transformSourceName(d.source)} {d.snapshot}
                       </Link>
                     </li>
                   );

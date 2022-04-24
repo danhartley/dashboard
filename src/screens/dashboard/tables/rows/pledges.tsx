@@ -1,7 +1,7 @@
 import {
   PledgeRowProps,
   PledgesRowProps,
-} from "src/screens/dashboard/shared/types";
+} from "src/shared/types";
 
 const PledgeRow = ({ pledge, colSpan }: PledgeRowProps): JSX.Element => {
   const isTrue = (state, content) => {

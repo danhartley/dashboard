@@ -120,3 +120,16 @@ export const getPledgesWithChecklists = (snapshot) => {
     .flat()
     .filter((p) => p.pledge.checklist);
 };
+
+export const transformSourceName = str => {
+
+  if(!str) return "";
+  if(str === "") return "";
+
+  if(str === str.toUpperCase()) return str;
+
+  const parts = str.split("-");
+  return parts.map(part => {
+    return `${part.slice(0,1).toUpperCase()}${part.slice(1)}`
+  }).join(" ");
+};

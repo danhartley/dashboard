@@ -1,5 +1,5 @@
 import Slider from "./table-controls-slider";
-import { ControlsProps } from "src/screens/dashboard/shared/types";
+import { ControlsProps } from "src/shared/types";
 
 const TableControls = ({
   snapshots,

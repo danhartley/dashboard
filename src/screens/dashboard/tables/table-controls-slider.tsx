@@ -1,4 +1,4 @@
-import { SliderProps } from "src/screens/dashboard/shared/types";
+import { SliderProps } from "src/shared/types";
 
 const Slider = ({
   intialState,

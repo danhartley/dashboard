@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
 import { useParams } from "react-router-dom";
+import { transformSourceName } from "src/shared/utils";
 import DashboardFeaturesTable from "src/screens/dashboard/tables/table-features";
 import DashboardValuesTable from "src/screens/dashboard/tables/table-values";
 import DashboardPledgesTable from "src/screens/dashboard/tables/table-pledges";
@@ -21,7 +22,7 @@ const Dashboard = (): JSX.Element => {
   return snapshotId ? (
     <div className="container mx-auto w-4/5">
       <section className="container mx-auto max-w-4xl pt-4">
-        <h2 className="text-xl mt-2 mb-4">{source}</h2>
+        <h2 className="text-xl mt-2 mb-4">{transformSourceName(source)}</h2>
         <Tabs defaultIndex={0}>
           <TabList>
             <Tab className={css}>By principle</Tab>

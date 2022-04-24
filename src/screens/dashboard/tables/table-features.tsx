@@ -4,8 +4,8 @@ import { PledgesRow } from "./rows/pledges";
 import {
   IPledge,
   IPledgesByFeatureSnapshot,
-} from "src/screens/dashboard/shared/interfaces";
-import { TotalsProps, TableProps } from "src/screens/dashboard/shared/types";
+} from "src/shared/interfaces";
+import { TotalsProps, TableProps } from "src/shared/types";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
 

@@ -5,8 +5,8 @@ import {
   TotalsProps,
   ValueProps,
   TableProps,
-} from "src/screens/dashboard/shared/types";
-import { IPledgesByValueSnapshot } from "src/screens/dashboard/shared/interfaces";
+} from "src/shared/types";
+import { IPledgesByValueSnapshot } from "src/shared/interfaces";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
 

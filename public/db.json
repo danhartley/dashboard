@@ -411,7 +411,7 @@
     },
     {
       "id": 10,
-      "source": "MossyEarth",
+      "source": "mossy-earth",
       "snapshot": "1 Jan 2021",
       "slug": "mossy-earth",
       "snapshotId": 1,
@@ -647,7 +647,7 @@
       "id": 10,
       "snapshot": "1 Jan 2021",
       "snapshotId": 1,
-      "source": "MossyEarth"
+      "source": "mossy-earth"
     }
   ]
 }

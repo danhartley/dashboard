@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 
 import { PledgesRow } from "./pledges";
-import { PledgesRowProps } from "src/screens/dashboard/shared/types";
+import { PledgesRowProps } from "src/shared/types";
 
 describe("A pledges row", () => {
   const Wrapper = ({ children }) => {

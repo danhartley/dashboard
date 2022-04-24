@@ -671,7 +671,7 @@
     },
     {
       "id": 20,
-      "source": "RaizFarm",
+      "source": "raiz-farm",
       "strapline": "Changing the way we connect with food",
       "snapshot": "22 April 2022",
       "slug": "raiz-farm",
@@ -824,7 +824,7 @@
       "id": 20,
       "snapshot": "22 April 2022",
       "snapshotId": 1,
-      "source": "RaizFarm"
+      "source": "raiz-farm"
     }
   ]
 }

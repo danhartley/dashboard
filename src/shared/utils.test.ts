@@ -1,10 +1,11 @@
-import { total } from "src/screens/dashboard/shared/utils";
 import {
+  total,
   getSnapshotsWithTotals,
   sortBy,
   getPledgesWithChecklists,
-} from "src/screens/dashboard/shared/utils";
-import { IItem } from "src/screens/dashboard/shared/interfaces";
+  transformSourceName
+} from "src/shared/utils";
+import { IItem } from "src/shared/interfaces";
 
 import db from "src/mocks/db.json";
 
@@ -111,5 +112,14 @@ describe("Pledges with checklists", () => {
 
     expect(getPledgesWithChecklists(snapshot).length).toBe(1);
     expect(getPledgesWithChecklists(snapshot)[0].source).toBe("mossy-earth");
+  });
+});
+
+describe("Capitalise text", () => {
+  test("should transform string", () => {
+    expect(transformSourceName(null)).toBe("");
+    expect(transformSourceName("")).toBe("");
+    expect(transformSourceName("mossy-earth")).toBe("Mossy Earth");
+    expect(transformSourceName("RTW")).toBe("RTW");    
   });
 });

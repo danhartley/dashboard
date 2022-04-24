@@ -1,4 +1,4 @@
-import { getValuesWithTotals } from "src/screens/dashboard/shared/utils";
+import { getValuesWithTotals } from "src/shared/utils";
 import { useFeatureBase } from "./base";
 
 export const useValuesWithTotals = ({ source, snapshotId }) => {

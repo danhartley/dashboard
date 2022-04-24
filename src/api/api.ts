@@ -1,5 +1,5 @@
 import client from "./api-browser-client";
-import { getSnapshotsWithTotals } from "src/screens/dashboard/shared/utils";
+import { getSnapshotsWithTotals } from "src/shared/utils";
 
 type PledgeProps = {
   source?: string;

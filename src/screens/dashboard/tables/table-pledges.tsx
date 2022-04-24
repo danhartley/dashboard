@@ -3,8 +3,8 @@ import { usePledgesWithChecklists } from "src/screens/dashboard/hooks/usePledges
 import {  
   PledgeProps,
   TableProps,
-} from "src/screens/dashboard/shared/types";
-import { IPledgesWithChecklists } from "src/screens/dashboard/shared/interfaces";
+} from "src/shared/types";
+import { IPledgesWithChecklists } from "src/shared/interfaces";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 
 const Header = () => {

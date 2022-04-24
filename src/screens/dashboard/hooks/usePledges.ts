@@ -1,4 +1,4 @@
-import { getPledgesWithChecklists } from "src/screens/dashboard/shared/utils";
+import { getPledgesWithChecklists } from "src/shared/utils";
 import { useFeatureBase } from "./base";
 
 export const usePledgesWithChecklists = ({ source, snapshotId }) => {
