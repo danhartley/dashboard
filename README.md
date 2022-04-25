@@ -122,3 +122,9 @@ Merge the branch into the main branch.
 ### Continuous Integration
 
 TBD GitHub Actions ( see https://github.com/features/actions )
+
+### gh-pages
+
+remove build from .gitignore
+git add build && git commit -m "Initial dist subtree commit"
+git subtree push --prefix build origin gh-pages
