@@ -58,7 +58,6 @@ describe("Sort array by property", () => {
   test("returns objects ordered by a field descending", () => {
     expect(sortBy(items, "a", "desc")[0].a).toBe(112);
   });
-  test.todo("use table for multiple tests");
 });
 
 describe("Pledges with checklists", () => {

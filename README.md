@@ -19,7 +19,7 @@ Build production ready app and run it locally:
 
         npm run build
         serve -s build -l 4000
-        json-server public/db.json --port 5000
+        json-server public/db.json --port 5000 --routes routes.json
 
 NB The production endpoint is set in the .env.production file.
 
