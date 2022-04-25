@@ -1,6 +1,6 @@
 # Responsible development
 
-Tables showing the outcome of company pledges, broken down by principles, values and requirement checklists.
+Responsible dashboard that illustrates the outcome of company pledges, broken down by principles, values and requirement checklists.
 
 Based on [Create React App](https://create-react-app.dev/) and the TypeScript template.
 
@@ -12,7 +12,7 @@ Build and server app locally against mocked data:
 
 Run unit tests and unit tests with coverage:
 
-        npm run test  
+        npm run test
         npm run coverage
 
 Build production ready app and run it locally:
@@ -31,17 +31,21 @@ To test the endpoint, including POSTs, see db.http (requires REST Client extensi
 ## Development stack
 
 [React: UI & UI state](https://reactjs.org/)  
+[React Query](https://react-query.tanstack.com/)
 [Typescript](https://www.typescriptlang.org/)  
 [Cypress: for BDD](https://cypress.io/)  
+[Cucumber.js](https://cucumber.io/docs/installation/javascript/)
 [Jest: unit and component tests](https://jestjs.io/)  
 [Testing Library: DOM-based selectors](https://testing-library.com/)  
 [MSW: mocking browser requests on the network level](https://mswjs.io/)  
+[json-server](https://github.com/typicode/json-server)
 [Tailwind CSS: styling](https://tailwindcss.com/)  
 [PostCSS: CC preprocessor](https://postcss.org/)
 [Reach UI: accessible React component library](https://reach.tech/)  
-[GitHub | GitHub actions](https://github.com/features/actions)  
+[GitHub | GitHub actions](https://github.com/features/actions)
 
 ### Code validation
+
 Typescript (type checking)  
 ESLint (static analysis JS & TS)
 Jest
@@ -104,6 +108,7 @@ json-server for rest-styled queries
 Git  
 GitHub  
 Trunk Based Development ( see https://trunkbaseddevelopment.com/ ) or GitHib flow TBD
+Husky ( see https://github.com/typicode/husky )
 
 Create a new branch from the main branch.  
 Commit your code on this branch and push it to the remote repo (e.g. on GitHub).  

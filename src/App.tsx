@@ -13,7 +13,6 @@ const App = () => {
   const {
     data,
     isSuccess,
-    error,
   }: {
     data: {
       id: number;

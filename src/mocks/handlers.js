@@ -21,10 +21,13 @@ export const handlers = [
   rest.get("snapshots/RTW/3", async (req, res, ctx) => {
     return res(ctx.json(db.snapshots.find((s) => s.id === 3)));
   }),
-  rest.get("snapshots/mossy-earth/1", async (req, res, ctx) => {
+  rest.get("snapshots/natural-climate-solutions/1", async (req, res, ctx) => {
     return res(ctx.json(db.snapshots.find((s) => s.id === 10)));
   }),
-  rest.get("snapshots/raiz-farm/1", async (req, res, ctx) => {
+  rest.get("snapshots/natural-climate-solutions/2", async (req, res, ctx) => {
+    return res(ctx.json(db.snapshots.find((s) => s.id === 11)));
+  }),
+  rest.get("snapshots/vertical-farming/1", async (req, res, ctx) => {
     return res(ctx.json(db.snapshots.find((s) => s.id === 20)));
   }),
   rest.get("snapshots/500", async (req, res, ctx) => {

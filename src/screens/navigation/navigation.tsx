@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import { useSnapshots } from "src/screens/dashboard/hooks/useSnapshots";
 import { transformSourceName } from "src/shared/utils";
+import ActiveLink from "src/shared/components/active-link";
 
 const Navigation = (): JSX.Element => {
   type Error = {
@@ -10,7 +11,6 @@ const Navigation = (): JSX.Element => {
   const {
     data,
     isSuccess,
-    error,
   }: {
     data: {
       id: number;
@@ -27,19 +27,21 @@ const Navigation = (): JSX.Element => {
       <div className="container mx-auto w-4/5">
         <section className="container mx-auto max-w-4xl pt-4">
           <h1 className="font-serif text-3xl mt-4 mb-6">
-            Responsibility dashboard
+            <Link key="home" to="">
+              Responsibility dashboard
+            </Link>
           </h1>
           <ul>
             {isSuccess
               ? data.map((d) => {
                   return (
                     <li key={`${d.source}-${d.snapshotId}`}>
-                      <Link
+                      <ActiveLink
                         to={`snapshots/${d.source}/${d.snapshotId}`}
                         key={`${d.source}-${d.snapshotId}`}
                       >
                         {transformSourceName(d.source)} {d.snapshot}
-                      </Link>
+                      </ActiveLink>
                     </li>
                   );
                 })

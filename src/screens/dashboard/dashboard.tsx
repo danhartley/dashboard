@@ -20,7 +20,7 @@ const Dashboard = (): JSX.Element => {
   const css = "border-b uppercase focus:border-slate-900 text-sm mr-4";
 
   return snapshotId ? (
-    <div className="container mx-auto w-4/5">
+    <div className="container mx-auto w-4/5 h-100v">
       <section className="container mx-auto max-w-4xl pt-4">
         <h2 className="text-xl mt-2 mb-4">{transformSourceName(source)}</h2>
         <Tabs defaultIndex={0}>
@@ -47,9 +47,9 @@ const Dashboard = (): JSX.Element => {
             </TabPanel>
             <TabPanel>
               <DashboardPledgesTable
-              source={source}
-              snapshotId={snapshotId}
-              setSnapshotId={setSnapshotId}
+                source={source}
+                snapshotId={snapshotId}
+                setSnapshotId={setSnapshotId}
               ></DashboardPledgesTable>
             </TabPanel>
           </TabPanels>

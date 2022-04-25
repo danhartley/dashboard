@@ -3,7 +3,7 @@ import {
   getSnapshotsWithTotals,
   sortBy,
   getPledgesWithChecklists,
-  transformSourceName
+  transformSourceName,
 } from "src/shared/utils";
 import { IItem } from "src/shared/interfaces";
 
@@ -100,7 +100,7 @@ describe("Pledges with checklists", () => {
 
     const snapshot = {
       id: 1,
-      source: "mossy-earth",
+      source: "natural-climate-solutions",
       snapshotId: 1,
       items: [
         {
@@ -111,7 +111,9 @@ describe("Pledges with checklists", () => {
     };
 
     expect(getPledgesWithChecklists(snapshot).length).toBe(1);
-    expect(getPledgesWithChecklists(snapshot)[0].source).toBe("mossy-earth");
+    expect(getPledgesWithChecklists(snapshot)[0].source).toBe(
+      "natural-climate-solutions"
+    );
   });
 });
 
@@ -119,7 +121,9 @@ describe("Capitalise text", () => {
   test("should transform string", () => {
     expect(transformSourceName(null)).toBe("");
     expect(transformSourceName("")).toBe("");
-    expect(transformSourceName("mossy-earth")).toBe("Mossy Earth");
-    expect(transformSourceName("RTW")).toBe("RTW");    
+    expect(transformSourceName("natural-climate-solutions")).toBe(
+      "Natural Climate Solutions"
+    );
+    expect(transformSourceName("RTW")).toBe("RTW");
   });
 });

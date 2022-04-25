@@ -439,11 +439,285 @@
     },
     {
       "id": 10,
-      "source": "mossy-earth",
+      "source": "natural-climate-solutions",
+      "strapline": "More than just tree planting",
+      "snapshot": "22 April 2021",
+      "slug": "natural-climate-solutions",
+      "snapshotId": 1,
+      "items": [
+        {
+          "id": 1,
+          "epic": "Business Ethos",
+          "name": "Sustainble business model",
+          "value": "Sustainability",
+          "pledges": [
+            {
+              "name": "We pledge to operate as an independent company sustained by profits.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to have a meaningful impact through rewilding, reforestation and conservation projects.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge that our revenue structure will sustain our services over the long term.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to demonstrate that nature and conservation are economically viable services.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to set a price for individual membership that is viable for the business, and sustainable for the planet. ",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "epic": "Business Ethos",
+          "name": "Transparent business model",
+          "value": "Transparency",
+          "pledges": [
+            {
+              "name": "We pledge to work in ways that are transparent.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to explain the methodologies we use.",
+              "honouring": 0,
+              "breaking": 1,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Explain each methodology in detail on the website.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Create a unique URL for each methodology.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Link to supporting evidence.",
+                  "checked": true
+                }
+              ]
+            },
+            {
+              "name": "We pledge to provide tools for members to independently verify the impact of the projects they invest in.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "epic": "Business Ethos",
+          "name": "Accountable business model",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge to explain the methodologies we use.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to provide tools for members to independently verify the impact of the projects they invest in.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "epic": "Trust and transparency",
+          "name": "Verification",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge to make it possible for contributors to verify the impact of their contribution to a project in person.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to provide tree imagery and GPS coordinates of planting areas soon after planting, to members and customers.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to monitor planted areas over time, and publish progress updates from the field.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to make tree numbers and species lists publicly available via online maps.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to provide 'before' and 'after' photos so that members can see how the forest has grown and changed over time.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to respond to your questions.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "epic": "Trust and Transparency",
+          "name": "Public scrutiny",
+          "value": "Transparency",
+          "pledges": [
+            {
+              "name": "We pledge to make public our data and findings.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for carbon sequestration",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge to provide evidence from secondary-research of peer-reviewed literature that our carbon sequestration predictions are justified.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to deliver transparency through technology.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for rewilding",
+          "value": "Transparency",
+          "pledges": [
+            {
+              "name": "We pledge to share our selection process for rewilding projects.",
+              "honouring": 0,
+              "breaking": 1,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Create a management plan with the project partner.",
+                  "checked": true
+                },
+                {
+                  "id": 2,
+                  "check": "Agree on a specific timeline for intervention and monitoring.",
+                  "checked": true
+                },
+                {
+                  "id": 3,
+                  "check": "Keep members up to date with progress and share data, photos and videos.",
+                  "checked": true
+                },
+                {
+                  "id": 4,
+                  "check": "Set up Q&A sessions between the team and members.",
+                  "checked": true
+                },
+                {
+                  "id": 5,
+                  "check": "Create podcasts to include members.",
+                  "checked": true
+                },
+                {
+                  "id": 6,
+                  "check": "Set up camera traps, record data, and report.",
+                  "checked": true
+                },
+                {
+                  "id": 7,
+                  "check": "Attach electronic trackers, record data, and report.",
+                  "checked": true
+                }
+              ]
+            },
+            {
+              "name": "We pledge to demonstrate additionality by establishing that there is a clear cost to inaction.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for rewilding",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge to demonstrate that a project achieves one or more of our key rewilding objectives.",
+              "honouring": 1,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to provide evidence of broader socio-economic and environmental benefits.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to back up predictions with scientific evidence and acknowledge remaining uncertainties.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for rewilding",
+          "value": "Fairness",
+          "pledges": [
+            {
+              "name": "We pledge to consider the big picture including other stakeholders.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for rewilding",
+          "value": "Responsibility",
+          "pledges": [
+            {
+              "name": "We pledge to address any underlying causes of ecological degradation.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "source": "natural-climate-solutions",
       "strapline": "More than just tree planting",
       "snapshot": "22 April 2022",
-      "slug": "mossy-earth",
-      "snapshotId": 1,
+      "slug": "natural-climate-solutions",
+      "snapshotId": 2,
       "items": [
         {
           "id": 1,
@@ -468,6 +742,11 @@
             },
             {
               "name": "We pledge to demonstrate that nature and conservation are economically viable services.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to set a price for individual membership that is viable for the business, and sustainable for the planet. ",
               "honouring": 1,
               "breaking": 0
             }
@@ -609,7 +888,44 @@
             {
               "name": "We pledge to share our selection process for rewilding projects.",
               "honouring": 1,
-              "breaking": 0
+              "breaking": 0,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Create a management plan with the project partner.",
+                  "checked": true
+                },
+                {
+                  "id": 2,
+                  "check": "Agree on a specific timeline for intervention and monitoring.",
+                  "checked": true
+                },
+                {
+                  "id": 3,
+                  "check": "Keep members up to date with progress and share data, photos and videos.",
+                  "checked": true
+                },
+                {
+                  "id": 4,
+                  "check": "Set up Q&A sessions between the team and members.",
+                  "checked": true
+                },
+                {
+                  "id": 5,
+                  "check": "Create podcasts to include members.",
+                  "checked": true
+                },
+                {
+                  "id": 6,
+                  "check": "Set up camera traps, record data, and report.",
+                  "checked": true
+                },
+                {
+                  "id": 7,
+                  "check": "Attach electronic trackers, record data, and report.",
+                  "checked": true
+                }
+              ]
             },
             {
               "name": "We pledge to demonstrate additionality by establishing that there is a clear cost to inaction.",
@@ -671,10 +987,10 @@
     },
     {
       "id": 20,
-      "source": "raiz-farm",
+      "source": "vertical-farming",
       "strapline": "Changing the way we connect with food",
       "snapshot": "22 April 2022",
-      "slug": "raiz-farm",
+      "slug": "vertical-farming",
       "snapshotId": 1,
       "items": [
         {
@@ -694,12 +1010,12 @@
                   "checked": true
                 },
                 {
-                  "id": 1,
+                  "id": 2,
                   "check": "Create a unique URL for each methodology.",
                   "checked": true
                 },
                 {
-                  "id": 1,
+                  "id": 3,
                   "check": "Link to supporting evidence.",
                   "checked": true
                 }
@@ -816,15 +1132,21 @@
     },
     {
       "id": 10,
-      "snapshot": "22 April 2022",
+      "snapshot": "22 April 2021",
       "snapshotId": 1,
-      "source": "mossy-earth"
+      "source": "natural-climate-solutions"
+    },
+    {
+      "id": 11,
+      "snapshot": "22 April 2022",
+      "snapshotId": 2,
+      "source": "natural-climate-solutions"
     },
     {
       "id": 20,
       "snapshot": "22 April 2022",
       "snapshotId": 1,
-      "source": "raiz-farm"
+      "source": "vertical-farming"
     }
   ]
 }
