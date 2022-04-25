@@ -1,0 +1,1152 @@
+{
+  "snapshots": [
+    {
+      "id": 1,
+      "source": "RTW",
+      "strapline": "Making the tech industry responsible",
+      "snapshot": "1 Jan 2021",
+      "slug": "rtw",
+      "snapshotId": 1,
+      "items": [
+        {
+          "id": 1,
+          "name": "Human agency and oversight",
+          "value": "Responsibility",
+          "pledges": [
+            {
+              "name": "We pledge to evaluate risk, so that fundamental rights are not negatively affected.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to enable human agency, so that users retain autonomy.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge that there will be human oversight, so that human values are upheld.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Technical robustness and safety",
+          "value": "Safety",
+          "pledges": [
+            {
+              "name": "We pledge that our systems will be safe and secure, so that they cannot be misused by bad actors.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge that our systems will be robust, so as to minimise risk and prevent harm.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge that our systems will be resistant to attacks and protected against vulnerabilities, so that our systems and data are safe.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to put in place safeguards, so that the system will not be compromised in case of problems.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to consider unintended consequences and errors, so that no harm comes to living beings or the environment.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to put in place evaluation processes, so that we support, mitigate and correct unintended risks.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to demonstrate reproducible results, so that we can accurately describe the system.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Privacy and data governance",
+          "value": "Trust",
+          "pledges": [
+            {
+              "name": "We guarantee privacy and data protection throughout the system’s entire lifecycle, in order to protect users",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We guarantee the integrity of data, in order to enforce biases, inaccuracies, errors and mistakes.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to put in place data protocols governing data access, in order to protect individuals' data.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Transparency",
+          "value": "Transparency",
+          "pledges": [
+            {
+              "name": "We pledge to document processes leading to AI decisions, in order to identify reasons in the case of mistakes.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to make AI decisions that can be understood and traced by human beings, in order that we can explain those decisions.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to make all AI systems identifiable, in order that people can decide whether to accept any interaction.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Diversity, non-discrimination and fairness",
+          "value": "Fairness",
+          "pledges": [
+            {
+              "name": "We pledge to consider and involve all affected stakeholders, to enable diversity and inclusion.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to use only data sets that are free of bias and complete, in order not to perpetuate unfairness.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to make systems accessible to as wide a range of users as possible, in order that they benefit from equitable access and participation.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to consult stakeholders, in order to develop trustworthy systems.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Environmental and societal well-being",
+          "value": "Sustainability",
+          "pledges": [
+            {
+              "name": "We pledge to consider the environment a stakeholder, in order that our systems are sustainable and ecologically responsible.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to scrutinise the system's processes and supply chains, so that it is environmentally friendly.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to monitor the system's effect on society, so that we do not damage people's mental or physical wellbeing.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to monitor the system's effect on society, so that we do not damage institutions, democracy or society at large.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "Accountability",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge that all decisions will be explainable, so that they can be verified.",
+              "honouring": 0,
+              "breaking": 1,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Explain each methodology in detail on the website.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Create a unique URL for each methodology.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Link to supporting evidence.",
+                  "checked": true
+                }
+              ]
+            },
+            {
+              "name": "We pledge to make our Responsibility Dashboard public, so that we can be held accountable.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to make public our certifications, so that we can be held accountable.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to open channels of communication, so that we can be held accountable.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "source": "RTW",
+      "strapline": "Making the tech industry responsible",
+      "snapshot": "1 July 2021",
+      "slug": "rtw",
+      "snapshotId": 2,
+      "items": [
+        {
+          "id": 1,
+          "name": "Human agency and oversight",
+          "value": "Responsibility",
+          "pledges": [
+            {
+              "name": "We pledge to evaluate risk, so that fundamental rights are not negatively affected.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to enable human agency, so that users retain autonomy.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge that there will be human oversight, so that human values are upheld.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Technical robustness and safety",
+          "value": "Safety",
+          "pledges": [
+            {
+              "name": "We pledge that our systems will be safe and secure, so that they cannot be misused by bad actors.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge that our systems will be robust, so as to minimise risk and prevent harm.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge that our systems will be resistant to attacks and protected against vulnerabilities, so that our systems and data are safe.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to put in place safeguards, so that the system will not be compromised in case of problems.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to consider unintended consequences and errors, so that no harm comes to living beings or the environment.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to put in place evaluation processes, so that we support, mitigate and correct unintended risks.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to demonstrate reproducible results, so that we can accurately describe the system.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Privacy and data governance",
+          "value": "Trust",
+          "pledges": [
+            {
+              "name": "We guarantee privacy and data protection throughout the system’s entire lifecycle, in order to protect users",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We guarantee the integrity of data, in order to enforce biases, inaccuracies, errors and mistakes.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to put in place data protocols governing data access, in order to protect individuals' data.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Transparency",
+          "value": "Transparency",
+          "pledges": [
+            {
+              "name": "We pledge to document processes leading to AI decisions, in order to identify reasons in the case of mistakes.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to make AI decisions that can be understood and traced by human beings, in order that we can explain those decisions.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to make all AI systems identifiable, in order that people can decide whether to accept any interaction.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Diversity, non-discrimination and fairness",
+          "value": "Fairness",
+          "pledges": [
+            {
+              "name": "We pledge to consider and involve all affected stakeholders, to enable diversity and inclusion.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to use only data sets that are free of bias and complete, in order not to perpetuate unfairness.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to make systems accessible to as wide a range of users as possible, in order that they benefit from equitable access and participation.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to consult stakeholders, in order to develop trustworthy systems.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Environmental and societal well-being",
+          "value": "Sustainability",
+          "pledges": [
+            {
+              "name": "We pledge to consider the environment a stakeholder, in order that our systems are sustainable and ecologically responsible.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to scrutinise the system's processes and supply chains, so that it is environmentally friendly.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to monitor the system's effect on society, so that we do not damage people's mental or physical wellbeing.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to monitor the system's effect on society, so that we do not damage institutions, democracy or society at large.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to demonstrate that our products are beneficial, necessary, and are deserving of the resources they use.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "Accountability",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge that all decisions will be explainable, so that they can be verified.",
+              "honouring": 0,
+              "breaking": 1,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Explain each methodology in detail on the website.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Create a unique URL for each methodology.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Link to supporting evidence.",
+                  "checked": true
+                }
+              ]
+            },
+            {
+              "name": "We pledge to make our Responsibility Dashboard public, so that we can be held accountable.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to make public our certifications, so that we can be held accountable.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to open channels of communication, so that we can be held accountable.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "source": "natural-climate-solutions",
+      "strapline": "More than just tree planting",
+      "snapshot": "22 April 2021",
+      "slug": "natural-climate-solutions",
+      "snapshotId": 1,
+      "items": [
+        {
+          "id": 1,
+          "epic": "Business Ethos",
+          "name": "Sustainble business model",
+          "value": "Sustainability",
+          "pledges": [
+            {
+              "name": "We pledge to operate as an independent company sustained by profits.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to have a meaningful impact through rewilding, reforestation and conservation projects.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge that our revenue structure will sustain our services over the long term.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to demonstrate that nature and conservation are economically viable services.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to set a price for individual membership that is viable for the business, and sustainable for the planet. ",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "epic": "Business Ethos",
+          "name": "Transparent business model",
+          "value": "Transparency",
+          "pledges": [
+            {
+              "name": "We pledge to work in ways that are transparent.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to explain the methodologies we use.",
+              "honouring": 0,
+              "breaking": 1,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Explain each methodology in detail on the website.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Create a unique URL for each methodology.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Link to supporting evidence.",
+                  "checked": true
+                }
+              ]
+            },
+            {
+              "name": "We pledge to provide tools for members to independently verify the impact of the projects they invest in.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "epic": "Business Ethos",
+          "name": "Accountable business model",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge to explain the methodologies we use.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to provide tools for members to independently verify the impact of the projects they invest in.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "epic": "Trust and transparency",
+          "name": "Verification",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge to make it possible for contributors to verify the impact of their contribution to a project in person.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to provide tree imagery and GPS coordinates of planting areas soon after planting, to members and customers.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to monitor planted areas over time, and publish progress updates from the field.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to make tree numbers and species lists publicly available via online maps.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to provide 'before' and 'after' photos so that members can see how the forest has grown and changed over time.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to respond to your questions.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "epic": "Trust and Transparency",
+          "name": "Public scrutiny",
+          "value": "Transparency",
+          "pledges": [
+            {
+              "name": "We pledge to make public our data and findings.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for carbon sequestration",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge to provide evidence from secondary-research of peer-reviewed literature that our carbon sequestration predictions are justified.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to deliver transparency through technology.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for rewilding",
+          "value": "Transparency",
+          "pledges": [
+            {
+              "name": "We pledge to share our selection process for rewilding projects.",
+              "honouring": 0,
+              "breaking": 1,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Create a management plan with the project partner.",
+                  "checked": true
+                },
+                {
+                  "id": 2,
+                  "check": "Agree on a specific timeline for intervention and monitoring.",
+                  "checked": true
+                },
+                {
+                  "id": 3,
+                  "check": "Keep members up to date with progress and share data, photos and videos.",
+                  "checked": true
+                },
+                {
+                  "id": 4,
+                  "check": "Set up Q&A sessions between the team and members.",
+                  "checked": true
+                },
+                {
+                  "id": 5,
+                  "check": "Create podcasts to include members.",
+                  "checked": true
+                },
+                {
+                  "id": 6,
+                  "check": "Set up camera traps, record data, and report.",
+                  "checked": true
+                },
+                {
+                  "id": 7,
+                  "check": "Attach electronic trackers, record data, and report.",
+                  "checked": true
+                }
+              ]
+            },
+            {
+              "name": "We pledge to demonstrate additionality by establishing that there is a clear cost to inaction.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for rewilding",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge to demonstrate that a project achieves one or more of our key rewilding objectives.",
+              "honouring": 1,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to provide evidence of broader socio-economic and environmental benefits.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to back up predictions with scientific evidence and acknowledge remaining uncertainties.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for rewilding",
+          "value": "Fairness",
+          "pledges": [
+            {
+              "name": "We pledge to consider the big picture including other stakeholders.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for rewilding",
+          "value": "Responsibility",
+          "pledges": [
+            {
+              "name": "We pledge to address any underlying causes of ecological degradation.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "source": "natural-climate-solutions",
+      "strapline": "More than just tree planting",
+      "snapshot": "22 April 2022",
+      "slug": "natural-climate-solutions",
+      "snapshotId": 2,
+      "items": [
+        {
+          "id": 1,
+          "epic": "Business Ethos",
+          "name": "Sustainble business model",
+          "value": "Sustainability",
+          "pledges": [
+            {
+              "name": "We pledge to operate as an independent company sustained by profits.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to have a meaningful impact through rewilding, reforestation and conservation projects.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge that our revenue structure will sustain our services over the long term.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to demonstrate that nature and conservation are economically viable services.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to set a price for individual membership that is viable for the business, and sustainable for the planet. ",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "epic": "Business Ethos",
+          "name": "Transparent business model",
+          "value": "Transparency",
+          "pledges": [
+            {
+              "name": "We pledge to work in ways that are transparent.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to explain the methodologies we use.",
+              "honouring": 1,
+              "breaking": 0,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Explain each methodology in detail on the website.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Create a unique URL for each methodology.",
+                  "checked": true
+                },
+                {
+                  "id": 1,
+                  "check": "Link to supporting evidence.",
+                  "checked": true
+                }
+              ]
+            },
+            {
+              "name": "We pledge to provide tools for members to independently verify the impact of the projects they invest in.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "epic": "Business Ethos",
+          "name": "Accountable business model",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge to explain the methodologies we use.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to provide tools for members to independently verify the impact of the projects they invest in.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "epic": "Trust and transparency",
+          "name": "Verification",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge to make it possible for contributors to verify the impact of their contribution to a project in person.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to provide tree imagery and GPS coordinates of planting areas soon after planting, to members and customers.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to monitor planted areas over time, and publish progress updates from the field.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to make tree numbers and species lists publicly available via online maps.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to provide 'before' and 'after' photos so that members can see how the forest has grown and changed over time.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to respond to your questions.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "epic": "Trust and Transparency",
+          "name": "Public scrutiny",
+          "value": "Transparency",
+          "pledges": [
+            {
+              "name": "We pledge to make public our data and findings.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for carbon sequestration",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge to provide evidence from secondary-research of peer-reviewed literature that our carbon sequestration predictions are justified.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to deliver transparency through technology.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for rewilding",
+          "value": "Transparency",
+          "pledges": [
+            {
+              "name": "We pledge to share our selection process for rewilding projects.",
+              "honouring": 1,
+              "breaking": 0,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Create a management plan with the project partner.",
+                  "checked": true
+                },
+                {
+                  "id": 2,
+                  "check": "Agree on a specific timeline for intervention and monitoring.",
+                  "checked": true
+                },
+                {
+                  "id": 3,
+                  "check": "Keep members up to date with progress and share data, photos and videos.",
+                  "checked": true
+                },
+                {
+                  "id": 4,
+                  "check": "Set up Q&A sessions between the team and members.",
+                  "checked": true
+                },
+                {
+                  "id": 5,
+                  "check": "Create podcasts to include members.",
+                  "checked": true
+                },
+                {
+                  "id": 6,
+                  "check": "Set up camera traps, record data, and report.",
+                  "checked": true
+                },
+                {
+                  "id": 7,
+                  "check": "Attach electronic trackers, record data, and report.",
+                  "checked": true
+                }
+              ]
+            },
+            {
+              "name": "We pledge to demonstrate additionality by establishing that there is a clear cost to inaction.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for rewilding",
+          "value": "Accountability",
+          "pledges": [
+            {
+              "name": "We pledge to demonstrate that a project achieves one or more of our key rewilding objectives.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to provide evidence of broader socio-economic and environmental benefits.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to back up predictions with scientific evidence and acknowledge remaining uncertainties.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for rewilding",
+          "value": "Fairness",
+          "pledges": [
+            {
+              "name": "We pledge to consider the big picture including other stakeholders.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "epic": "Trust and Transparency",
+          "name": "Scientific support for rewilding",
+          "value": "Responsibility",
+          "pledges": [
+            {
+              "name": "We pledge to address any underlying causes of ecological degradation.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "source": "vertical-farming",
+      "strapline": "Changing the way we connect with food",
+      "snapshot": "22 April 2022",
+      "slug": "vertical-farming",
+      "snapshotId": 1,
+      "items": [
+        {
+          "id": 1,
+          "epic": "Farming Practice",
+          "name": "Sustainble methods",
+          "value": "Sustainability",
+          "pledges": [
+            {
+              "name": "We pledge to use less water and land than existing farming practices.",
+              "honouring": 1,
+              "breaking": 0,
+              "checklist": [
+                {
+                  "id": 1,
+                  "check": "Explain each methodology in detail on the website.",
+                  "checked": true
+                },
+                {
+                  "id": 2,
+                  "check": "Create a unique URL for each methodology.",
+                  "checked": true
+                },
+                {
+                  "id": 3,
+                  "check": "Link to supporting evidence.",
+                  "checked": true
+                }
+              ]
+            },
+            {
+              "name": "We pledge to be as efficient as existing organic farms.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to use no herbicides or persticides in line with organic farming practices.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to reduce fertiliser use by half in comparison with existing farms.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to carry out a feasibility study.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to build a prototype to test our ideas in practice.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to be energy efficient.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to be energy self-sufficient.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to minimise waste.",
+              "honouring": 1,
+              "breaking": 0
+            },
+            {
+              "name": "We pledge to sell our produce locally.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "epic": "Business Ethos",
+          "name": "Fair dealing",
+          "value": "Fairness",
+          "pledges": [
+            {
+              "name": "We pledge to provide food at prices everyone can afford.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to use land that is degraded and unfit for housing or amenities.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to hire locally and pay fairly.",
+              "honouring": 0,
+              "breaking": 1
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "epic": "Business Ethos",
+          "name": "Openness",
+          "value": "Transparency",
+          "pledges": [
+            {
+              "name": "We pledge to make public the resources we use, and the volume and type of produce fit for consumption.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to support claims with evidence and primary or secondary research.",
+              "honouring": 0,
+              "breaking": 1
+            },
+            {
+              "name": "We pledge to leave land in a better state than we found it.",
+              "honouring": 1,
+              "breaking": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "id": 1,
+      "snapshot": "1 Jan 2021",
+      "snapshotId": 1,
+      "source": "RTW"
+    },
+    {
+      "id": 2,
+      "snapshot": "1 July 2021",
+      "snapshotId": 2,
+      "source": "RTW"
+    },
+    {
+      "id": 10,
+      "snapshot": "22 April 2021",
+      "snapshotId": 1,
+      "source": "natural-climate-solutions"
+    },
+    {
+      "id": 11,
+      "snapshot": "22 April 2022",
+      "snapshotId": 2,
+      "source": "natural-climate-solutions"
+    },
+    {
+      "id": 20,
+      "snapshot": "22 April 2022",
+      "snapshotId": 1,
+      "source": "vertical-farming"
+    }
+  ]
+}
