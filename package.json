@@ -98,5 +98,5 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false
   },
-  "homepage": "."
+  "homepage": "https://danhartley.github.io/dashboard"
 }
