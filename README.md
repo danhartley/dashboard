@@ -136,6 +136,12 @@ git subtree push --prefix build origin gh-pages
 
 ( see also https://create-react-app.dev/docs/production-build )
 
+## CRA
+
+https://create-react-app.dev/docs/deployment/
+
+Build & deploy: npm run deploy
+
 ### proxy in package.json
 
 Valid only when running local dev server i.e. npm run start
