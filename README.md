@@ -134,7 +134,11 @@ git add build && git commit -m "Initial dist subtree commit"
 ( manually change index.html paths to ./ )
 git subtree push --prefix build origin gh-pages
 
+OR,
+
 ( see also https://create-react-app.dev/docs/production-build )
+
+NB when re-running may have to delete node_modules/.cache/gh-pages worked
 
 ## CRA
 
@@ -144,6 +148,8 @@ Build & deploy: npm run deploy
 
 ### proxy in package.json
 
-Valid only when running local dev server i.e. npm run start
+Valid only when running local dev server i.e. npm run start ** REMOVED **
+
+--- "proxy": "https://danhartley.github.io/",
 
 ( see https://create-react-app.dev/docs/proxying-api-requests-in-development/ )
