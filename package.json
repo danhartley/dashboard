@@ -97,5 +97,6 @@
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false
-  }
+  },
+  "homepage": "./"
 }

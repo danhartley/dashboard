@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -27,11 +27,11 @@ const queryClient = new QueryClient();
 ReactDOM.render(
   <div className="dark:bg-slate-900 dark:text-white">
     <React.StrictMode>
-      <BrowserRouter>
+      <HashRouter>
         <QueryClientProvider client={queryClient}>
           <App />
         </QueryClientProvider>
-      </BrowserRouter>
+      </HashRouter>
     </React.StrictMode>
   </div>,
   document.getElementById("root")
