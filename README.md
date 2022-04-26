@@ -20,6 +20,7 @@ Build production ready app and run it locally:
         npm run build
         serve -s build -l 4000
         json-server public/db.json --port 5000 --routes routes.json
+        json-server https://danhartley.github.io/dashboard/db.json  --port 5000 --routes routes.json
 
 NB The production endpoint is set in the .env.production file.
 
@@ -27,6 +28,8 @@ NB The production endpoint is set in the .env.production file.
 
 I have it installed globally. ( See https://github.com/typicode/json-server )  
 To test the endpoint, including POSTs, see db.http (requires REST Client extension in VS Code)
+
+json-server https://danhartley.github.io/dashboard/db.json --port 5000 --routes routes.json
 
 ## Development stack
 
