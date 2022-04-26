@@ -94,5 +94,6 @@
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false
-  }
+  },
+  "proxy": "https://danhartley.github.io/"
 }

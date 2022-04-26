@@ -42,6 +42,7 @@ json-server https://danhartley.github.io/dashboard/db.json --port 5000 --routes 
 [Testing Library: DOM-based selectors](https://testing-library.com/)  
 [MSW: mocking browser requests on the network level](https://mswjs.io/)  
 [json-server](https://github.com/typicode/json-server)
+[Heroku](https://devcenter.heroku.com/)
 [Tailwind CSS: styling](https://tailwindcss.com/)  
 [PostCSS: CC preprocessor](https://postcss.org/)
 [Reach UI: accessible React component library](https://reach.tech/)  
@@ -130,4 +131,13 @@ TBD GitHub Actions ( see https://github.com/features/actions )
 
 remove build from .gitignore
 git add build && git commit -m "Initial dist subtree commit"
+( manually change index.html paths to ./ )
 git subtree push --prefix build origin gh-pages
+
+( see also https://create-react-app.dev/docs/production-build )
+
+### proxy in package.json
+
+Valid only when running local dev server i.e. npm run start
+
+( see https://create-react-app.dev/docs/proxying-api-requests-in-development/ )
