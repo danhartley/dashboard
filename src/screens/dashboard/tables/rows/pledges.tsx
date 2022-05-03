@@ -1,7 +1,4 @@
-import {
-  PledgeRowProps,
-  PledgesRowProps,
-} from "src/shared/types";
+import { PledgeRowProps, PledgesRowProps } from "src/shared/types";
 
 const PledgeRow = ({ pledge, colSpan }: PledgeRowProps): JSX.Element => {
   const isTrue = (state, content) => {

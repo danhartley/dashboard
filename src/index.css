@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 [data-reach-tab][data-selected] {
-    @apply border-slate-500 !important;
+  @apply border-slate-500 !important;
 }

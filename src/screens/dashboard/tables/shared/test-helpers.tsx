@@ -77,7 +77,7 @@ export const renderPledgesComponent = () => {
   );
 };
 
-export const renderPledgesWithSuccess = async (source= "RTW", snapshotId) => {
+export const renderPledgesWithSuccess = async (source = "RTW", snapshotId) => {
   const { result, waitFor } = renderHook(
     () => usePledgesWithChecklists({ source: source, snapshotId: snapshotId }),
     {

@@ -59,17 +59,19 @@ export interface IPledgesByValueSnapshot {
 }
 
 export interface IPledgesWithChecklists {
-    id: number;
-    snapshotId: number;
-    itemId: number;
-    source: string;    
-    pledge: {
-      name: string,
-      checklist: [{
-        check: string,
-        checked: boolean
-      }]
-    }
+  id: number;
+  snapshotId: number;
+  itemId: number;
+  source: string;
+  pledge: {
+    name: string;
+    checklist: [
+      {
+        check: string;
+        checked: boolean;
+      }
+    ];
+  };
 }
 
 export interface IValue {

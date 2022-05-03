@@ -3,11 +3,15 @@ import userEvent from "@testing-library/user-event";
 import { renderHook } from "@testing-library/react-hooks";
 import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
 import api from "src/api/api";
-import { createWrapper, renderFeaturesComponent, renderFeaturesWithSuccess } from "src/screens/dashboard/tables/shared/test-helpers";
+import {
+  createWrapper,
+  renderFeaturesComponent,
+  renderFeaturesWithSuccess,
+} from "src/screens/dashboard/tables/shared/test-helpers";
 
 describe("The pledges by features table", () => {
   test("shows when it is loading", async () => {
-  renderFeaturesComponent();
+    renderFeaturesComponent();
     const { result, waitFor } = renderHook(
       () => useFeaturesWithTotals({ source: "RTW", snapshotId: 1 }),
       {
@@ -21,14 +25,14 @@ describe("The pledges by features table", () => {
   describe("has a value column", () => {
     test("with a table header", async () => {
       await renderFeaturesWithSuccess(1);
-    renderFeaturesComponent();
+      renderFeaturesComponent();
       expect(
         await screen.findByRole("columnheader", { name: /principle/i })
       ).toBeTruthy();
     });
 
     test("and a row for each value", async () => {
-    renderFeaturesComponent();
+      renderFeaturesComponent();
       const { result } = await renderFeaturesWithSuccess(1);
       const itemCount = result.current.data.items.length;
       const body = screen.getAllByRole("rowgroup")[1];
@@ -38,7 +42,7 @@ describe("The pledges by features table", () => {
 
     describe("which when clicked", () => {
       test("shows related pledges in a new row", async () => {
-      renderFeaturesComponent();
+        renderFeaturesComponent();
         await renderFeaturesWithSuccess(1);
         expect(screen.getByText("Totals")).toBeInTheDocument();
         const row = screen.getByText("Totals").closest("tr");
@@ -47,7 +51,7 @@ describe("The pledges by features table", () => {
       });
       test("with totals for hounored and breaking pledges", async () => {
         const user = userEvent.setup();
-      renderFeaturesComponent();
+        renderFeaturesComponent();
         await renderFeaturesWithSuccess(1);
         const button = screen.getByRole("button", {
           name: /Human agency and oversight/i,
@@ -72,7 +76,7 @@ describe("The pledges by features table", () => {
     describe("and when clicked again", () => {
       test("hides the related pledges", async () => {
         const user = userEvent.setup();
-      renderFeaturesComponent();
+        renderFeaturesComponent();
         await renderFeaturesWithSuccess(1);
         const button = screen.getByRole("button", {
           name: "Human agency and oversight",
@@ -133,7 +137,7 @@ describe.skip("The pledges by features table can be mocked in the test", () => {
       return Promise.resolve(null);
     });
     await renderFeaturesWithSuccess(1);
-  const { getByText } = renderFeaturesComponent();
+    const { getByText } = renderFeaturesComponent();
     expect(getByText(/Loading.../i)).toBeInTheDocument();
   });
 });

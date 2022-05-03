@@ -2,7 +2,11 @@ import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderHook } from "@testing-library/react-hooks";
 import { useValuesWithTotals } from "src/screens/dashboard/hooks/useValues";
-import { createWrapper, renderValuesComponent, renderValuesWithSuccess } from "src/screens/dashboard/tables/shared/test-helpers";
+import {
+  createWrapper,
+  renderValuesComponent,
+  renderValuesWithSuccess,
+} from "src/screens/dashboard/tables/shared/test-helpers";
 
 describe("The pledges by values table", () => {
   test("shows when it is loading", async () => {
