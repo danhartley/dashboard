@@ -1,29 +1,30 @@
 import { useState } from "react";
 import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
 import { PledgesRow } from "./rows/pledges";
-import {
-  IPledge,
-  IPledgesByFeatureSnapshot,
-} from "src/shared/interfaces";
+import { IPledge, IPledgesByFeatureSnapshot } from "src/shared/interfaces";
 import { TotalsProps, TableProps } from "src/shared/types";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
 
 const Header = () => {
+  const css = "text-xs sm:text-sm tracking-wide uppercase pb-2";
+
   return (
     <thead>
       <tr>
         <th></th>
-        <th className="text-xs uppercase tracking-wide" colSpan={2}>
+        <th className={css} colSpan={2}>
           Pledges
         </th>
       </tr>
       <tr>
-        <th className="pb-2 text-left text-xs uppercase tracking-wide w-3/5">
-          Principle
-        </th>
-        <th className="text-xs uppercase tracking-wide w-1/5 after:content-['✓'] md:after:content-['honouring']"></th>
-        <th className="text-xs uppercase tracking-wide w-1/5 after:content-['✗'] md:after:content-['breaking']"></th>
+        <th className={`${css} text-left w-3/5`}>Principle</th>
+        <th
+          className={`${css} w-1/5 after:content-['✓'] md:after:content-['honouring']`}
+        ></th>
+        <th
+          className={`${css} w-1/5 after:content-['✗'] md:after:content-['breaking']`}
+        ></th>
       </tr>
     </thead>
   );
@@ -49,7 +50,10 @@ export const Row = ({ feature }: { feature: Feature }) => {
     <>
       <tr>
         <td className="my-2 py-2">
-          <button onClick={() => handleClick(feature.name.toLowerCase())}>
+          <button
+            className="text-left"
+            onClick={() => handleClick(feature.name.toLowerCase())}
+          >
             {feature.name}
           </button>
         </td>

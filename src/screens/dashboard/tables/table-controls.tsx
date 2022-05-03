@@ -35,7 +35,7 @@ const TableControls = ({
 
   return (
     <section>
-      <div className="mt-8 flex justify-center">
+      <div className="mt-8 justify-center flex">
         <Slider
           namespace={namespace}
           intialState={snapshotId}
@@ -57,7 +57,7 @@ const TableControls = ({
                 role="tab"
                 aria-selected={o.text === "Table"}
                 onClick={handleDisplayOptionChange}
-                className="border p-2 border-solid"
+                className="border p-2 border-solid text-sm sm:text-base"
               >
                 {o.text}
               </button>

@@ -17,7 +17,8 @@ const Dashboard = (): JSX.Element => {
     setSnapshotId(parseInt(id));
   }, [name, id]);
 
-  const css = "border-b uppercase focus:border-slate-900 text-sm mr-4";
+  const css =
+    "border-b uppercase focus:border-slate-900 text-xs sm:text-base mr-4";
 
   return snapshotId ? (
     <div className="container mx-auto w-4/5 h-100v">
@@ -27,7 +28,7 @@ const Dashboard = (): JSX.Element => {
           <TabList>
             <Tab className={css}>By principle</Tab>
             <Tab className={css}>By value</Tab>
-            <Tab className={css}>Pledge checklists</Tab>
+            <Tab className={css}>Checklists</Tab>
             {/* <Tab className={css}>By weight</Tab> */}
           </TabList>
           <TabPanels>

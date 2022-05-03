@@ -66,8 +66,7 @@ describe("A slider", () => {
     const labelText = range.find(
       (r) => r.id === parseInt(slider.value)
     ).snapshot;
-    expect(screen.getByLabelText(labelText)).toBeInTheDocument();
-    expect(screen.getByLabelText(labelText).id).toBe("slider-features");
+    expect(screen.getByLabelText(`Snapshot: ${labelText}`)).toBeInTheDocument();
   });
 
   test("and is hidden when there are no data", () => {
@@ -101,6 +100,6 @@ describe("A slider", () => {
         onChange={handleChange}
       ></Slider>
     );
-    expect(container).toContainHTML("Snapshot taken: 1 Jan 2021");
+    expect(container).toContainHTML("Snapshot: 1 Jan 2021");
   });
 });

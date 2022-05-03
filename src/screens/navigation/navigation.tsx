@@ -31,7 +31,7 @@ const Navigation = (): JSX.Element => {
               Responsibility dashboard
             </Link>
           </h1>
-          <ul>
+          <ul className="text-sm sm:text-base">
             {isSuccess
               ? data.map((d) => {
                   return (

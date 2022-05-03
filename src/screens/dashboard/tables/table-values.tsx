@@ -1,32 +1,32 @@
 import { useState } from "react";
 import { PledgesRow } from "src/screens/dashboard/tables/rows/pledges";
 import { useValuesWithTotals } from "src/screens/dashboard/hooks/useValues";
-import {
-  TotalsProps,
-  ValueProps,
-  TableProps,
-} from "src/shared/types";
+import { TotalsProps, ValueProps, TableProps } from "src/shared/types";
 import { IPledgesByValueSnapshot } from "src/shared/interfaces";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
 
 const Header = () => {
+  const css = "text-xs sm:text-sm tracking-wide uppercase pb-2";
+
   return (
     <thead>
       <tr>
         <th colSpan={1}></th>
-        <th className="text-xs tracking-wide	uppercase" colSpan={1}></th>
-        <th className="text-xs tracking-wide	uppercase" colSpan={2}>
+        <th className={css} colSpan={1}></th>
+        <th className={css} colSpan={2}>
           Pledges
         </th>
       </tr>
       <tr>
-        <th className="pb-2 text-left text-xs tracking-wide	uppercase w-2/5">
-          Value
-        </th>
-        <th className="text-xs tracking-wide uppercase w-1/5"># Principles</th>
-        <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✓'] md:after:content-['honouring']"></th>
-        <th className="text-xs tracking-wide uppercase w-1/5 after:content-['✗'] md:after:content-['breaking']"></th>
+        <th className={`${css} text-left w-2/5`}>Value</th>
+        <th className={`${css} text-xs tracking-wide w-1/5`}>Principles</th>
+        <th
+          className={`${css} w-1/5 after:content-['✓'] md:after:content-['honouring']`}
+        ></th>
+        <th
+          className={`${css} w-1/5 after:content-['✗'] md:after:content-['breaking']`}
+        ></th>
       </tr>
     </thead>
   );
@@ -43,7 +43,10 @@ const Row = ({ value }: ValueProps) => {
     <>
       <tr>
         <td className="my-2 py-2">
-          <button onClick={() => handleClick(value.name.toLowerCase())}>
+          <button
+            className="text-left"
+            onClick={() => handleClick(value.name.toLowerCase())}
+          >
             {value.name}
           </button>
         </td>

@@ -9,10 +9,7 @@ const Slider = ({
   if (range.length === 0) return <>Cannot return slider without a range</>;
   if (range.length === 1)
     return (
-      <>
-        Snapshot taken:{" "}
-        {range.find((s) => s.snapshotId === intialState).snapshot}
-      </>
+      <>Snapshot: {range.find((s) => s.snapshotId === intialState).snapshot}</>
     );
 
   const min = range[0].snapshotId;
@@ -37,10 +34,10 @@ const Slider = ({
         max={max}
         value={state.snapshotId}
       />
-      <span className="pl-2">Snapshot taken:</span>
-      <label className="pl-2" htmlFor={`slider-${namespace}`}>
-        {state.snapshot}
-      </label>
+      <label
+        className="pl-2 text-xs sm:text-base"
+        htmlFor={`slider-${namespace}`}
+      >{`Snapshot: ${state.snapshot}`}</label>
     </>
   );
 };
