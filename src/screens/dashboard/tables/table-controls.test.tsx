@@ -55,12 +55,14 @@ describe("Table controls", () => {
       const { getByText } = within(screen.getByRole("tablist"));
       expect(getByText("Chart")).toBeInTheDocument();
     });
-    test("with one preselected", () => {
+    test("with table format preselected", () => {
       render(
         <TableControls
           snapshots={snapshots}
           snapshotId={snapshotId}
           onChange={handleChange}
+          target="table"
+          setTarget={jest.fn()}
         ></TableControls>
       );
       const tableButton = screen.getByRole("tab", { name: "Table" });

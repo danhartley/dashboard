@@ -41,12 +41,16 @@ json-server https://danhartley.github.io/dashboard/db.json --port 5000 --routes 
 [Jest: unit and component tests](https://jestjs.io/)  
 [Testing Library: DOM-based selectors](https://testing-library.com/)  
 [MSW: mocking browser requests on the network level](https://mswjs.io/)  
-[json-server](https://github.com/typicode/json-server)
-[Heroku](https://devcenter.heroku.com/)
+[json-server](https://github.com/typicode/json-server)  
+[Heroku](https://devcenter.heroku.com/)  
 [Tailwind CSS: styling](https://tailwindcss.com/)  
-[PostCSS: CC preprocessor](https://postcss.org/)
+[PostCSS: CC preprocessor](https://postcss.org/)  
 [Reach UI: accessible React component library](https://reach.tech/)  
-[GitHub | GitHub actions](https://github.com/features/actions)
+[GitHub | GitHub actions](https://github.com/features/actions)  
+[Chart.js](https://www.chartjs.org/)  
+[ReactChartJS](https://github.com/reactchartjs/react-chartjs-2)  
+[Chart annotations](https://www.chartjs.org/chartjs-plugin-annotation/latest/)  
+[Chart labels](https://chartjs-plugin-datalabels.netlify.app/)
 
 ### Code validation
 
@@ -57,7 +61,9 @@ Cypress (Cucumber - Gherkin)
 React Testing Library  
 Mock Service Worker  
 Strict mode enabled ( see https://reactjs.org/docs/strict-mode.html )  
-Static type checking with Typescript ( see https://reactjs.org/docs/static-type-checking.html )
+Static type checking with Typescript ( see https://reactjs.org/docs/static-type-checking.html )  
+New axe issues (accessibility)  
+Web vitals
 
 ### Lighthouse
 
@@ -78,10 +84,6 @@ e.g. cloc src
 ### find code file size
 
 e.g. find ./src -type f | xargs wc -w | tail -1
-
-Check for mocking (MSW)  
- New axe issues (accessibility)  
- Web vitals
 
 ### Debugging tests
 
@@ -126,6 +128,10 @@ Merge the branch into the main branch.
 ### Continuous Integration
 
 TBD GitHub Actions ( see https://github.com/features/actions )
+
+[Access Lint](https://accesslint.com/)
+
+Automated and continuous web accessibility testing runs whenever a pull request is made.
 
 ### gh-pages
 

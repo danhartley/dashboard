@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Slider from "./table-controls-slider";
 import { ControlsProps } from "src/shared/types";
 
@@ -6,6 +7,8 @@ const TableControls = ({
   snapshotId,
   onChange,
   namespace,
+  target,
+  setTarget,
 }: ControlsProps): JSX.Element => {
   const options = [
     {
@@ -27,10 +30,8 @@ const TableControls = ({
 
   type ChangeEvent = React.KeyboardEvent | React.MouseEvent;
 
-  const handleDisplayOptionChange = (e: ChangeEvent) => {
-    const target = e.target as HTMLButtonElement;
-    target.setAttribute("aria-selected", "true");
-    target.disabled = true;
+  const handleDisplayOptionChange = (target) => {
+    setTarget(target);
   };
 
   return (
@@ -52,12 +53,14 @@ const TableControls = ({
           {options.map((o) => {
             return (
               <button
-                key={o.text}
+                key={`${o.text}-${namespace}`}
                 id={`${o.target}-${namespace}`}
                 role="tab"
-                aria-selected={o.text === "Table"}
-                onClick={handleDisplayOptionChange}
-                className="border p-2 border-solid text-sm sm:text-base"
+                aria-selected={o.target === target}
+                onClick={() => handleDisplayOptionChange(o.target)}
+                className={`border p-2 border-solid rounded tracking-wider text-sm sm:text-base ${
+                  o.target === target ? "border-slate-900" : "border-slate-300"
+                }`}
               >
                 {o.text}
               </button>

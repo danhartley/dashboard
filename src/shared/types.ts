@@ -22,6 +22,8 @@ export type ControlsProps = {
   }[];
   namespace?: string;
   onChange: Dispatch<SetStateAction<number>>;
+  target?: string;
+  setTarget?: Dispatch<SetStateAction<string>>;
 };
 
 export type PledgeRowProps = {

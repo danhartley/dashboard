@@ -96,6 +96,31 @@ describe("The pledges by features table", () => {
       });
     });
   });
+
+  describe("has buttons to select format", () => {
+    test("table button is selected by default and table visible", async () => {
+      renderFeaturesComponent();
+      await renderFeaturesWithSuccess(1);
+      const tableButton = screen.getByRole("tab", { name: "Table" });
+      expect(tableButton).toBeTruthy();
+      await userEvent.click(tableButton);
+      expect(await screen.findByRole("tab", { selected: true })).toEqual(
+        tableButton
+      );
+      expect(await screen.findByRole("tabpanel")).toBeInTheDocument();
+    });
+    test("chart button selected when clicked and chart visible", async () => {
+      renderFeaturesComponent();
+      await renderFeaturesWithSuccess(1);
+      const chartButton = screen.getByRole("tab", { name: "Chart" });
+      expect(chartButton).toBeTruthy();
+      await userEvent.click(chartButton);
+      expect(await screen.findByRole("tab", { selected: true })).toEqual(
+        chartButton
+      );
+      expect(await screen.findByRole("tabpanel")).toBeInTheDocument();
+    });
+  });
 });
 
 describe.skip("The pledges by features table can be mocked in the test", () => {

@@ -20,22 +20,29 @@ const renderSnapshotsWithSuccess = async () => {
   return { result, waitFor };
 };
 
+const renderApp = () => {
+  const queryClient = new QueryClient();
+  render(
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </BrowserRouter>
+  );
+};
+
 describe("The app", () => {
-  test("unless the URL is unmatched", async () => {
+  test("renders successfully for a valud route", async () => {
     renderSnapshotsWithSuccess();
-
-    const queryClient = new QueryClient();
-
-    window.history.pushState({}, "Test page", "/gibberish");
-
-    render(
-      <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
-          <App />
-        </QueryClientProvider>
-      </BrowserRouter>
-    );
-
+    window.history.pushState({}, "Home page", "/");
+    renderApp();
+    const text = await screen.findByText(/github/i);
+    expect(text).toBeInTheDocument();
+  });
+  test("renders an error message for an unmatched route", async () => {
+    renderSnapshotsWithSuccess();
+    window.history.pushState({}, "Nonsense page", "/gibberish");
+    renderApp();
     const title = await screen.findByText(/Nothing doing, sorry./i);
     expect(title).toBeInTheDocument();
   });

@@ -116,7 +116,7 @@ const DashboardPledgesTable = ({
           <Header />
           <tbody>
             {data.map((item) => {
-              return <Row key={item.id} pledge={item.pledge}></Row>;
+              return <Row key={item.pledge.name} pledge={item.pledge}></Row>;
             })}
           </tbody>
           <Footer />

@@ -5,6 +5,7 @@ import { IPledge, IPledgesByFeatureSnapshot } from "src/shared/interfaces";
 import { TotalsProps, TableProps } from "src/shared/types";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
+import FeaturesChart from "src/screens/dashboard/charts/chart-features";
 
 const Header = () => {
   const css = "text-xs sm:text-sm tracking-wide uppercase pb-2";
@@ -112,6 +113,8 @@ export const DashboardFeaturesTable = ({
     isSuccess: boolean;
   } = useFeaturesWithTotals({ source, snapshotId });
 
+  const [target, setTarget] = useState("table");
+
   if (isLoading) {
     return (
       <Figure>
@@ -127,24 +130,31 @@ export const DashboardFeaturesTable = ({
   if (isSuccess) {
     return (
       <Figure title={`${data.source} pledges by principle`}>
-        <table
-          role="tabpanel"
-          data-table-id="features"
-          className="w-11/12 text-xs sm:text-base"
-        >
-          <Header />
-          <tbody>
-            {data.items.map((feature) => {
-              return <Row key={feature.name} feature={feature}></Row>;
-            })}
-          </tbody>
-          <Footer totals={data.totals} />
-        </table>
+        {target === "table" ? (
+          <table
+            role="tabpanel"
+            data-table-id="features"
+            className="w-11/12 text-xs sm:text-base"
+          >
+            <Header />
+            <tbody>
+              {data.items.map((feature) => {
+                return <Row key={feature.name} feature={feature}></Row>;
+              })}
+            </tbody>
+            <Footer totals={data.totals} />
+          </table>
+        ) : target === "chart" ? (
+          <FeaturesChart totals={data.totals}></FeaturesChart>
+        ) : null}
+
         <TableControls
           namespace="features"
           snapshotId={data.snapshotId}
           snapshots={data.snapshots.filter((s) => s.source === data.source)}
           onChange={setSnapshotId}
+          target={target}
+          setTarget={setTarget}
         ></TableControls>
       </Figure>
     );
