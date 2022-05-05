@@ -18,7 +18,7 @@ const Dashboard = (): JSX.Element => {
   }, [name, id]);
 
   const css =
-    "border-b uppercase hover:border-slate-900 focus:border-slate-900 text-xs sm:text-sm mr-4";
+    "border-b uppercase hover:text-indigo-700 focus:text-indigo-700 text-xs sm:text-sm mr-4";
 
   return snapshotId ? (
     <>

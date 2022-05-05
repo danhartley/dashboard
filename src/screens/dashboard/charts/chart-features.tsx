@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
-import { Chart, LinearScale, CategoryScale, BarElement } from "chart.js";
-
-// import { Chart, registerables } from 'chart.js'
-
-// Chart.register(...registerables)
-
 import annotationPlugin from "chartjs-plugin-annotation";
+import {
+  Chart,
+  LinearScale,
+  CategoryScale,
+  BarElement,
+  Tooltip,
+} from "chart.js";
 
 Chart.register(annotationPlugin);
-Chart.register(LinearScale, CategoryScale, BarElement);
+Chart.register(LinearScale, CategoryScale, BarElement, Tooltip);
 
 type ChartProps = {
   totals: {
@@ -22,8 +23,15 @@ const FeaturesChart = ({ totals }: ChartProps) => {
   const [data, setData] = useState(null);
   const [scales, setScales] = useState(null);
 
-  // https://venngage.com/blog/color-blind-friendly-palette/
-  const zesty = ["#85C0F9", "#A95AA1", "#F5793A", "#0F2080"];
+  const colours = [
+    "#F5793A",
+    "#FC6385",
+    "#0F2080",
+    "#1C3B40",
+    "#85C0F9",
+    "#A5C4C6",
+    "#A95AA1",
+  ];
 
   useEffect(() => {
     setData({
@@ -31,9 +39,9 @@ const FeaturesChart = ({ totals }: ChartProps) => {
       datasets: [
         {
           indexAxis: "x",
-          // label: `label`,
+          label: "Snapshot total",
           data: [totals.honouring, totals.breaking * -1],
-          backgroundColor: [zesty[0], zesty[1]],
+          backgroundColor: [colours[0], colours[1]],
           minBarLength: 1,
         },
       ],
@@ -41,12 +49,11 @@ const FeaturesChart = ({ totals }: ChartProps) => {
 
     setScales({
       y: {
-        type: "linear",
-        min: -20,
+        min: -30,
         max: 30,
       },
     });
-  }, []);
+  }, [totals]);
 
   const options = { scales, responsive: true };
 
@@ -61,7 +68,7 @@ const FeaturesChart = ({ totals }: ChartProps) => {
         <div>
           <div role="tabpanel">
             <Bar data={data} options={options}>
-              <div>Hello Fallback World</div>
+              <div>Please see data in tabular form</div>
             </Bar>
           </div>
         </div>

@@ -96,7 +96,8 @@
       "webpack.config.js",
       "simple.tsx",
       "simple-child.tsx",
-      "api-browser-client.ts"
+      "api-browser-client.ts",
+      "src/screens/dashboard/tables/shared"
     ]
   },
   "cypress-cucumber-preprocessor": {

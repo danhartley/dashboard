@@ -6,7 +6,7 @@ const ActiveLink = ({ children, to, ...props }: LinkProps) => {
 
   return (
     <div>
-      <Link className={match ? "font-bold" : ""} to={to} {...props}>
+      <Link className={match ? "text-indigo-700" : ""} to={to} {...props}>
         {children}
       </Link>
     </div>
