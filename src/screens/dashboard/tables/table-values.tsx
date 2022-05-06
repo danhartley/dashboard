@@ -46,7 +46,6 @@ const DashboardValuesTable = ({
       <Figure title="Pledges by value">
         <table
           role="tabpanel"
-          aria-labelledby="table"
           data-table-id="values"
           className="w-11/12 text-xs sm:text-base"
         >
@@ -72,13 +71,18 @@ const DashboardValuesTable = ({
 export default DashboardValuesTable;
 
 const Header = () => {
-  const css = "text-xs sm:text-sm tracking-wider uppercase pb-2";
+  const css =
+    "text-sky-800 font-normal text-xs sm:text-sm tracking-wider uppercase pb-2";
 
   return (
     <thead>
       <tr>
-        <th colSpan={1}></th>
-        <th className={css} colSpan={1}></th>
+        <th colSpan={1}>
+          <span className="hidden">for accessibility</span>
+        </th>
+        <th className={css} colSpan={1}>
+          <span className="hidden">for accessibility</span>
+        </th>
         <th className={css} colSpan={2}>
           Pledges
         </th>
@@ -88,10 +92,14 @@ const Header = () => {
         <th className={`${css} text-xs tracking-wider w-1/5`}>Principles</th>
         <th
           className={`${css} w-1/5 after:content-['✓'] md:after:content-['honouring']`}
-        ></th>
+        >
+          <span className="hidden">for accessibility</span>
+        </th>
         <th
           className={`${css} w-1/5 after:content-['✗'] md:after:content-['breaking']`}
-        ></th>
+        >
+          <span className="hidden">for accessibility</span>
+        </th>
       </tr>
     </thead>
   );
@@ -107,7 +115,7 @@ const Row = ({ value }: ValueProps) => {
   return (
     <>
       <tr>
-        <td className="my-2 py-2 hover:text-sky-800">
+        <td className="my-2 py-2 hover:text-orange-800">
           <button
             className="text-left"
             onClick={() => handleClick(value.name.toLowerCase())}
@@ -137,14 +145,16 @@ const Footer = ({ totals }: TotalsProps) => {
     <tfoot>
       <tr>
         <th
-          className="text-xs uppercase tracking-wider text-left pt-6"
+          className="text-sky-800 font-normal text-xs uppercase tracking-wider text-left pt-6"
           scope="row"
         >
           Totals
         </th>
-        <th></th>
-        <th>{totals.honouring}</th>
-        <th>{totals.breaking}</th>
+        <th>
+          <span className="hidden">for accessibility</span>
+        </th>
+        <th className="text-sky-800 font-normal">{totals.honouring}</th>
+        <th className="text-sky-800 font-normal">{totals.breaking}</th>
       </tr>
     </tfoot>
   );

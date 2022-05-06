@@ -81,12 +81,15 @@ export const DashboardFeaturesTable = ({
 export default DashboardFeaturesTable;
 
 const Header = (): JSX.Element => {
-  const css = "text-xs sm:text-sm tracking-wider uppercase pb-2 font-normal";
+  const css =
+    "text-sky-800 font-normal text-xs sm:text-sm tracking-wider uppercase pb-2";
 
   return (
     <thead>
       <tr>
-        <th></th>
+        <th>
+          <span className="hidden">for accessibility</span>
+        </th>
         <th className={css} colSpan={2}>
           Pledges
         </th>
@@ -95,10 +98,14 @@ const Header = (): JSX.Element => {
         <th className={`${css} text-left w-3/5`}>Principle</th>
         <th
           className={`${css} w-1/5 after:content-['✓'] md:after:content-['honouring']`}
-        ></th>
+        >
+          <span className="hidden">for accessibility</span>
+        </th>
         <th
           className={`${css} w-1/5 after:content-['✗'] md:after:content-['breaking']`}
-        ></th>
+        >
+          <span className="hidden">for accessibility</span>
+        </th>
       </tr>
     </thead>
   );
@@ -123,7 +130,7 @@ export const Row = ({ feature }: { feature: Feature }): JSX.Element => {
   return (
     <>
       <tr>
-        <td className="my-2 py-2 hover:text-sky-800">
+        <td className="my-2 py-2 hover:text-orange-800">
           <button
             className="text-left"
             onClick={() => handleClick(feature.name.toLowerCase())}
@@ -156,8 +163,8 @@ const Footer = ({ totals }: TotalsProps): JSX.Element => {
         >
           Totals
         </th>
-        <th className="font-normal">{totals.honouring}</th>
-        <th className="font-normal">{totals.breaking}</th>
+        <th className="text-sky-800 font-normal">{totals.honouring}</th>
+        <th className="text-sky-800 font-normal">{totals.breaking}</th>
       </tr>
     </tfoot>
   );

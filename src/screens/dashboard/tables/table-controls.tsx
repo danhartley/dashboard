@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Slider from "./table-controls-slider";
 import { ControlsProps } from "src/shared/types";
 
@@ -44,7 +43,7 @@ const TableControls = ({
           onChange={onChange}
         ></Slider>
       </div>
-      <nav className="flex justify-center">
+      <nav id={`views-${namespace}`} className="flex justify-center">
         <div
           className="flex flex-row w-4/5 m-4 justify-evenly"
           role="tablist"

@@ -63,10 +63,10 @@ const Navigation = ({ isSuccess, data }: NavigationProps): JSX.Element => {
     data && data.length > 0
       ? data.map((d) => {
           return (
-            <li key={`${d.source}-${d.snapshotId}`} className="my-2">
+            <li key={`li-${d.source}-${d.snapshotId}`} className="my-2">
               <ActiveLink
                 to={`snapshots/${d.source}/${d.snapshotId}`}
-                key={`${d.source}-${d.snapshotId}`}
+                key={`link-${d.source}-${d.snapshotId}`}
               >
                 {transformSourceName(d.source)} {d.snapshot}
               </ActiveLink>
@@ -75,7 +75,10 @@ const Navigation = ({ isSuccess, data }: NavigationProps): JSX.Element => {
         })
       : null;
   return isSuccess ? (
-    <nav className="w-3/3 lg:w-1/3 bg-sky-100 p-4 min-h-max lg:min-h-85v">
+    <nav
+      id="projects"
+      className="w-3/3 lg:w-1/3 bg-sky-100 p-4 min-h-max lg:min-h-85v"
+    >
       <h2 className="mb-4 uppercase text-xs tracking-wider">Projects</h2>
       <ul className="text-xs">{links}</ul>
     </nav>
