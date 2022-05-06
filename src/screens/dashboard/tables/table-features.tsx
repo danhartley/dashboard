@@ -46,7 +46,7 @@ export const DashboardFeaturesTable = ({
 
   if (isSuccess) {
     return (
-      <Figure title={`${data.source} pledges by principle`}>
+      <Figure title="Pledges by principle">
         {target === "table" ? (
           <table
             role="tabpanel"
@@ -81,7 +81,7 @@ export const DashboardFeaturesTable = ({
 export default DashboardFeaturesTable;
 
 const Header = (): JSX.Element => {
-  const css = "text-xs sm:text-sm tracking-wide uppercase pb-2";
+  const css = "text-xs sm:text-sm tracking-wider uppercase pb-2 font-normal";
 
   return (
     <thead>
@@ -123,7 +123,7 @@ export const Row = ({ feature }: { feature: Feature }): JSX.Element => {
   return (
     <>
       <tr>
-        <td className="my-2 py-2">
+        <td className="my-2 py-2 hover:text-sky-800">
           <button
             className="text-left"
             onClick={() => handleClick(feature.name.toLowerCase())}
@@ -151,13 +151,13 @@ const Footer = ({ totals }: TotalsProps): JSX.Element => {
     <tfoot>
       <tr>
         <th
-          className="text-xs uppercase tracking-wide text-left pt-6"
+          className="text-xs uppercase tracking-wider text-left pt-6 font-normal"
           scope="row"
         >
           Totals
         </th>
-        <th>{totals.honouring}</th>
-        <th>{totals.breaking}</th>
+        <th className="font-normal">{totals.honouring}</th>
+        <th className="font-normal">{totals.breaking}</th>
       </tr>
     </tfoot>
   );

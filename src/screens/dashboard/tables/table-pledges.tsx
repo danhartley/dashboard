@@ -41,7 +41,7 @@ const DashboardPledgesTable = ({
 
   if (isSuccess) {
     return (
-      <Figure title={`${data[0].source} pledges with checklists`}>
+      <Figure title="Pledges with checklists">
         <table
           role="tabpanel"
           aria-labelledby="table"
@@ -64,7 +64,7 @@ const DashboardPledgesTable = ({
 export default DashboardPledgesTable;
 
 const Header = (): JSX.Element => {
-  const css = "text-xs sm:text-sm tracking-wide uppercase pb-2";
+  const css = "text-xs sm:text-sm tracking-wider uppercase pb-2 font-normal";
 
   return (
     <thead>
@@ -86,7 +86,7 @@ const Row = ({ pledge }: PledgeProps): JSX.Element => {
   return (
     <>
       <tr>
-        <td className="my-2 py-2">
+        <td className="my-2 py-2 hover:text-sky-800">
           <button
             className="text-left"
             onClick={() => handleClick(pledge.name.toLowerCase())}

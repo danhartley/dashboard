@@ -17,12 +17,18 @@ const Dashboard = (): JSX.Element => {
     setSnapshotId(parseInt(id));
   }, [name, id]);
 
-  const css =
-    "border-b hover:border-orange-700 focus:border-orange-700 uppercase hover:text-orange-700 focus:text-orange-700 text-xs sm:text-sm mr-4";
+  const css = `
+    border-b hover:border-sky-800 focus:border-sky-800
+    uppercase 
+    text-sky-800 hover:text-black focus:text-black text-xs sm:text-sm 
+    mr-4 tracking-wider
+    `;
 
   return snapshotId ? (
-    <main className="w-4/4 lg:w-3/4">
-      <h2 className="text-xl mb-4">{transformSourceName(source)}</h2>
+    <main className="w-3/3 lg:w-2/3 bg-red-100 p-4 min-h-full">
+      <h2 className="text-xl mb-4 font-serif italic text-wider">
+        {transformSourceName(source)}
+      </h2>
       <Tabs defaultIndex={0}>
         <TabList>
           <Tab className={css}>By principle</Tab>

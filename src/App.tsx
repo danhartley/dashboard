@@ -28,7 +28,7 @@ const App = () => {
     return data && data.length > 0 ? (
       <>
         <ReactQueryDevtools initialIsOpen={false} />
-        <section className="min-h-screen">
+        <section>
           <section className="mx-auto w-4/5">
             <Routes>
               <Route key="layout" path="/" element={<Layout />}>
@@ -48,6 +48,13 @@ const App = () => {
                     </>
                   );
                 })}
+                <Route
+                  key="default"
+                  path="/"
+                  element={
+                    <main className="w-3/3 lg:w-2/3 bg-red-100 p-4 min-h-85v"></main>
+                  }
+                ></Route>
               </Route>
               <Route
                 path="*"
@@ -59,7 +66,6 @@ const App = () => {
               ></Route>
             </Routes>
           </section>
-          <Footer></Footer>
         </section>
       </>
     ) : null;
@@ -69,20 +75,3 @@ const App = () => {
 };
 
 export default App;
-
-const Footer = () => {
-  return (
-    <section className="container mx-auto max-w-4xl pb-4">
-      <div>
-        Dashboard{" "}
-        <a
-          className="class-pointer border-b pb-1 hover:border-slate-900 focus:border-slate-900"
-          href="https://github.com/danhartley/dashboard"
-        >
-          repository
-        </a>{" "}
-        on GitHub
-      </div>
-    </section>
-  );
-};

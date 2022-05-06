@@ -43,7 +43,7 @@ const DashboardValuesTable = ({
 
   if (isSuccess) {
     return (
-      <Figure title={`${data.source} pledges by value`}>
+      <Figure title="Pledges by value">
         <table
           role="tabpanel"
           aria-labelledby="table"
@@ -72,7 +72,7 @@ const DashboardValuesTable = ({
 export default DashboardValuesTable;
 
 const Header = () => {
-  const css = "text-xs sm:text-sm tracking-wide uppercase pb-2";
+  const css = "text-xs sm:text-sm tracking-wider uppercase pb-2";
 
   return (
     <thead>
@@ -85,7 +85,7 @@ const Header = () => {
       </tr>
       <tr>
         <th className={`${css} text-left w-2/5`}>Value</th>
-        <th className={`${css} text-xs tracking-wide w-1/5`}>Principles</th>
+        <th className={`${css} text-xs tracking-wider w-1/5`}>Principles</th>
         <th
           className={`${css} w-1/5 after:content-['✓'] md:after:content-['honouring']`}
         ></th>
@@ -107,7 +107,7 @@ const Row = ({ value }: ValueProps) => {
   return (
     <>
       <tr>
-        <td className="my-2 py-2">
+        <td className="my-2 py-2 hover:text-sky-800">
           <button
             className="text-left"
             onClick={() => handleClick(value.name.toLowerCase())}
@@ -137,7 +137,7 @@ const Footer = ({ totals }: TotalsProps) => {
     <tfoot>
       <tr>
         <th
-          className="text-xs uppercase tracking-wide text-left pt-6"
+          className="text-xs uppercase tracking-wider text-left pt-6"
           scope="row"
         >
           Totals

@@ -35,7 +35,7 @@ const Slider = ({
         value={state.snapshotId}
       />
       <label
-        className="pl-2 text-xs sm:text-base"
+        className="pl-2 text-xs"
         htmlFor={`slider-${namespace}`}
       >{`Snapshot: ${state.snapshot}`}</label>
     </>
