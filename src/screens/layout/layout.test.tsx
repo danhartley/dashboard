@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter } from "react-router-dom";
 import { screen, render } from "@testing-library/react";
 import { useSnapshots } from "src/screens/dashboard/hooks/useSnapshots";
-import Navigation from "./navigation";
+import Layout from "src/screens/layout/layout";
 
 jest.mock("src/screens/dashboard/hooks/useSnapshots", () => ({
   useSnapshots: jest.fn(),
@@ -15,13 +15,13 @@ const renderDashboard = () => {
   render(
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <Navigation></Navigation>
+        <Layout></Layout>
       </QueryClientProvider>
     </BrowserRouter>
   );
 };
 
-describe("Navigation", () => {
+describe("Layout", () => {
   test("has a header", () => {
     renderDashboard();
     expect(screen.getByText(/Responsibility dashboard/i)).toBeInTheDocument();

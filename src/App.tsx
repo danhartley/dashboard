@@ -2,25 +2,8 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { Routes, Route } from "react-router-dom";
 import { useSnapshots } from "src/screens/dashboard/hooks/useSnapshots";
 
-import Navigation from "src/screens/navigation/navigation";
+import Layout from "src/screens/layout/layout";
 import Dashboard from "src/screens/dashboard/dashboard";
-
-const Footer = () => {
-  return (
-    <section className="container mx-auto max-w-4xl pb-4">
-      <div>
-        Dashboard{" "}
-        <a
-          className="class-pointer border-b pb-1 hover:border-slate-900 focus:border-slate-900"
-          href="https://github.com/danhartley/dashboard"
-        >
-          repository
-        </a>{" "}
-        on GitHub
-      </div>
-    </section>
-  );
-};
 
 const App = () => {
   type Error = {
@@ -44,19 +27,25 @@ const App = () => {
   if (isSuccess) {
     return data && data.length > 0 ? (
       <>
-        <header></header>
         <ReactQueryDevtools initialIsOpen={false} />
-        <section className="min-h-screen flex flex-col justify-between container mx-auto w-4/5">
-          <section className="container mx-auto max-w-4xl">
+        <section className="min-h-screen">
+          <section className="mx-auto w-4/5">
             <Routes>
-              <Route key="navigation" path="/" element={<Navigation />}>
+              <Route key="layout" path="/" element={<Layout />}>
                 {data.map((snapshot) => {
                   return (
-                    <Route
-                      key={`${snapshot.source}-${snapshot.snapshotId}`}
-                      path="snapshots/:name/:id"
-                      element={<Dashboard />}
-                    />
+                    <>
+                      <Route
+                        key={`${snapshot.source}-${snapshot.snapshotId}`}
+                        path="snapshots/:name/:id"
+                        element={<Dashboard />}
+                      />
+                      <Route
+                        key={`${snapshot.source}-default`}
+                        path="snapshots/:name/"
+                        element={<Dashboard />}
+                      />
+                    </>
                   );
                 })}
               </Route>
@@ -75,8 +64,25 @@ const App = () => {
       </>
     ) : null;
   } else {
-    return <div>Nothing doing!</div>;
+    return null;
   }
 };
 
 export default App;
+
+const Footer = () => {
+  return (
+    <section className="container mx-auto max-w-4xl pb-4">
+      <div>
+        Dashboard{" "}
+        <a
+          className="class-pointer border-b pb-1 hover:border-slate-900 focus:border-slate-900"
+          href="https://github.com/danhartley/dashboard"
+        >
+          repository
+        </a>{" "}
+        on GitHub
+      </div>
+    </section>
+  );
+};

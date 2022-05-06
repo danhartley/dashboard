@@ -4,71 +4,6 @@ import { PledgeProps, TableProps } from "src/shared/types";
 import { IPledgesWithChecklists } from "src/shared/interfaces";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 
-const Header = () => {
-  const css = "text-xs sm:text-sm tracking-wide uppercase pb-2";
-
-  return (
-    <thead>
-      <tr>
-        <th colSpan={2} className={`text-left ${css}`}>
-          Pledge
-        </th>
-      </tr>
-    </thead>
-  );
-};
-
-const Row = ({ pledge }: PledgeProps) => {
-  const [selectedValue, setSelectedValue] = useState("");
-
-  const handleClick = (id) => {
-    id !== selectedValue ? setSelectedValue(id) : setSelectedValue("");
-  };
-  return (
-    <>
-      <tr>
-        <td className="my-2 py-2">
-          <button
-            className="text-left"
-            onClick={() => handleClick(pledge.name.toLowerCase())}
-          >
-            {pledge.name}
-          </button>
-        </td>
-      </tr>
-
-      {pledge.name.toLowerCase() === selectedValue.toLowerCase()
-        ? pledge.checklist.map((item) => {
-            const css = "pl-4 display: inline-block text-xs";
-
-            return (
-              <tr key={item.check}>
-                <td className={css}>{item.check}</td>
-                <td
-                  className={
-                    item.checked ? "after:content-['✓']" : "after:content-['✗']"
-                  }
-                >
-                  {item.checked}
-                </td>
-              </tr>
-            );
-          })
-        : null}
-    </>
-  );
-};
-
-const Footer = () => {
-  return (
-    <tfoot>
-      <tr>
-        <th></th>
-      </tr>
-    </tfoot>
-  );
-};
-
 const DashboardPledgesTable = ({
   source,
   snapshotId,
@@ -127,3 +62,68 @@ const DashboardPledgesTable = ({
 };
 
 export default DashboardPledgesTable;
+
+const Header = (): JSX.Element => {
+  const css = "text-xs sm:text-sm tracking-wide uppercase pb-2";
+
+  return (
+    <thead>
+      <tr>
+        <th colSpan={2} className={`text-left ${css}`}>
+          Pledge
+        </th>
+      </tr>
+    </thead>
+  );
+};
+
+const Row = ({ pledge }: PledgeProps): JSX.Element => {
+  const [selectedValue, setSelectedValue] = useState("");
+
+  const handleClick = (id) => {
+    id !== selectedValue ? setSelectedValue(id) : setSelectedValue("");
+  };
+  return (
+    <>
+      <tr>
+        <td className="my-2 py-2">
+          <button
+            className="text-left"
+            onClick={() => handleClick(pledge.name.toLowerCase())}
+          >
+            {pledge.name}
+          </button>
+        </td>
+      </tr>
+
+      {pledge.name.toLowerCase() === selectedValue.toLowerCase()
+        ? pledge.checklist.map((item) => {
+            const css = "pl-4 display: inline-block text-xs";
+
+            return (
+              <tr key={item.check}>
+                <td className={css}>{item.check}</td>
+                <td
+                  className={
+                    item.checked ? "after:content-['✓']" : "after:content-['✗']"
+                  }
+                >
+                  {item.checked}
+                </td>
+              </tr>
+            );
+          })
+        : null}
+    </>
+  );
+};
+
+const Footer = (): JSX.Element => {
+  return (
+    <tfoot>
+      <tr>
+        <th></th>
+      </tr>
+    </tfoot>
+  );
+};

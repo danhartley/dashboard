@@ -6,6 +6,71 @@ import { IPledgesByValueSnapshot } from "src/shared/interfaces";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
 
+const DashboardValuesTable = ({
+  source,
+  snapshotId,
+  setSnapshotId,
+}: TableProps) => {
+  type Error = {
+    message?: string;
+  };
+
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    isSuccess,
+  }: {
+    data: IPledgesByValueSnapshot;
+    isLoading: boolean;
+    isError: boolean;
+    error: Error;
+    isSuccess: boolean;
+  } = useValuesWithTotals({ source: source, snapshotId });
+
+  if (isLoading) {
+    return (
+      <Figure>
+        <span>Loading...</span>
+      </Figure>
+    );
+  }
+
+  if (isError) {
+    return <Figure title={error.message} />;
+  }
+
+  if (isSuccess) {
+    return (
+      <Figure title={`${data.source} pledges by value`}>
+        <table
+          role="tabpanel"
+          aria-labelledby="table"
+          data-table-id="values"
+          className="w-11/12 text-xs sm:text-base"
+        >
+          <Header />
+          <tbody>
+            {data.items.map((value) => {
+              return <Row key={value.name} value={value}></Row>;
+            })}
+          </tbody>
+          <Footer totals={data.totals} />
+        </table>
+        <TableControls
+          namespace="values"
+          snapshotId={data.snapshotId}
+          snapshots={data.snapshots.filter((s) => s.source === data.source)}
+          onChange={setSnapshotId}
+        ></TableControls>
+      </Figure>
+    );
+  }
+};
+
+export default DashboardValuesTable;
+
 const Header = () => {
   const css = "text-xs sm:text-sm tracking-wide uppercase pb-2";
 
@@ -84,68 +149,3 @@ const Footer = ({ totals }: TotalsProps) => {
     </tfoot>
   );
 };
-
-const DashboardValuesTable = ({
-  source,
-  snapshotId,
-  setSnapshotId,
-}: TableProps) => {
-  type Error = {
-    message?: string;
-  };
-
-  const {
-    data,
-    isLoading,
-    isError,
-    error,
-    isSuccess,
-  }: {
-    data: IPledgesByValueSnapshot;
-    isLoading: boolean;
-    isError: boolean;
-    error: Error;
-    isSuccess: boolean;
-  } = useValuesWithTotals({ source: source, snapshotId });
-
-  if (isLoading) {
-    return (
-      <Figure>
-        <span>Loading...</span>
-      </Figure>
-    );
-  }
-
-  if (isError) {
-    return <Figure title={error.message} />;
-  }
-
-  if (isSuccess) {
-    return (
-      <Figure title={`${data.source} pledges by value`}>
-        <table
-          role="tabpanel"
-          aria-labelledby="table"
-          data-table-id="values"
-          className="w-11/12 text-xs sm:text-base"
-        >
-          <Header />
-          <tbody>
-            {data.items.map((value) => {
-              return <Row key={value.name} value={value}></Row>;
-            })}
-          </tbody>
-          <Footer totals={data.totals} />
-        </table>
-        <TableControls
-          namespace="values"
-          snapshotId={data.snapshotId}
-          snapshots={data.snapshots.filter((s) => s.source === data.source)}
-          onChange={setSnapshotId}
-        ></TableControls>
-      </Figure>
-    );
-  }
-};
-
-export default DashboardValuesTable;

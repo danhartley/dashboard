@@ -25,3 +25,5 @@ yarn-error.log*
 # no longer in user
 
 data.ts
+
+NOTES.md

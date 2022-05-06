@@ -10,7 +10,7 @@ const Dashboard = (): JSX.Element => {
   const [source, setSource] = useState("");
   const [snapshotId, setSnapshotId] = useState(null);
 
-  const { name, id } = useParams<"name" | "id">();
+  const { name, id = "1" } = useParams<"name" | "id">();
 
   useEffect(() => {
     setSource(name);
@@ -18,11 +18,11 @@ const Dashboard = (): JSX.Element => {
   }, [name, id]);
 
   const css =
-    "border-b uppercase hover:text-indigo-700 focus:text-indigo-700 text-xs sm:text-sm mr-4";
+    "border-b hover:border-orange-700 focus:border-orange-700 uppercase hover:text-orange-700 focus:text-orange-700 text-xs sm:text-sm mr-4";
 
   return snapshotId ? (
-    <>
-      <h2 className="text-xl mt-2 mb-4">{transformSourceName(source)}</h2>
+    <main className="w-4/4 lg:w-3/4">
+      <h2 className="text-xl mb-4">{transformSourceName(source)}</h2>
       <Tabs defaultIndex={0}>
         <TabList>
           <Tab className={css}>By principle</Tab>
@@ -53,7 +53,7 @@ const Dashboard = (): JSX.Element => {
           </TabPanel>
         </TabPanels>
       </Tabs>
-    </>
+    </main>
   ) : null;
 };
 
