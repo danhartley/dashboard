@@ -5,6 +5,7 @@ import { TotalsProps, ValueProps, TableProps } from "src/shared/types";
 import { IPledgesByValueSnapshot } from "src/shared/interfaces";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
+import FeaturesChart from "src/screens/dashboard/charts/chart-features";
 
 const DashboardValuesTable = ({
   source,
@@ -29,6 +30,8 @@ const DashboardValuesTable = ({
     isSuccess: boolean;
   } = useValuesWithTotals({ source: source, snapshotId });
 
+  const [target, setTarget] = useState("table");
+
   if (isLoading) {
     return (
       <Figure>
@@ -44,24 +47,30 @@ const DashboardValuesTable = ({
   if (isSuccess) {
     return (
       <Figure title="Pledges by value">
-        <table
-          role="tabpanel"
-          data-table-id="values"
-          className="w-11/12 text-xs sm:text-base"
-        >
-          <Header />
-          <tbody>
-            {data.items.map((value) => {
-              return <Row key={value.name} value={value}></Row>;
-            })}
-          </tbody>
-          <Footer totals={data.totals} />
-        </table>
+        {target === "table" ? (
+          <table
+            role="tabpanel"
+            data-table-id="values"
+            className="w-11/12 text-xs sm:text-base"
+          >
+            <Header />
+            <tbody>
+              {data.items.map((value) => {
+                return <Row key={value.name} value={value}></Row>;
+              })}
+            </tbody>
+            <Footer totals={data.totals} />
+          </table>
+        ) : target === "chart" ? (
+          <FeaturesChart totals={data.totals}></FeaturesChart>
+        ) : null}
         <TableControls
           namespace="values"
           snapshotId={data.snapshotId}
           snapshots={data.snapshots.filter((s) => s.source === data.source)}
           onChange={setSnapshotId}
+          target={target}
+          setTarget={setTarget}
         ></TableControls>
       </Figure>
     );
@@ -73,6 +82,8 @@ export default DashboardValuesTable;
 const Header = () => {
   const css =
     "text-sky-800 font-normal text-xs sm:text-sm tracking-wider uppercase pb-2";
+
+  const text = `after:content-['#'] md:after:content-['Principles']`;
 
   return (
     <thead>
@@ -89,7 +100,7 @@ const Header = () => {
       </tr>
       <tr>
         <th className={`${css} text-left w-2/5`}>Value</th>
-        <th className={`${css} text-xs tracking-wider w-1/5`}>Principles</th>
+        <th className={`${css} ${text} text-xs tracking-wider w-1/5`}></th>
         <th
           className={`${css} w-1/5 after:content-['✓'] md:after:content-['honouring']`}
         >

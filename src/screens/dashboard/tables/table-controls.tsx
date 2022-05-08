@@ -20,16 +20,17 @@ const TableControls = ({
       active: false,
       target: "chart",
     },
-    {
-      text: "Download",
-      active: false,
-      target: "download",
-    },
+    // {
+    //   text: "Download",
+    //   active: false,
+    //   target: "download",
+    // },
   ];
 
   type ChangeEvent = React.KeyboardEvent | React.MouseEvent;
 
   const handleDisplayOptionChange = (target) => {
+    if (!setTarget) return;
     setTarget(target);
   };
 

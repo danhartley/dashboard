@@ -30,7 +30,7 @@ const App = () => {
       <>
         <ReactQueryDevtools initialIsOpen={false} />
         <section>
-          <section className="mx-auto w-4/5 flex flex-col">
+          <section className="mx-auto w-11/12 flex flex-col">
             <Routes>
               <Route key="layout" path="/" element={<Layout />}>
                 {data.map((snapshot) => {

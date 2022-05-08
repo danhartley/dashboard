@@ -23,15 +23,7 @@ const FeaturesChart = ({ totals }: ChartProps) => {
   const [data, setData] = useState(null);
   const [scales, setScales] = useState(null);
 
-  const colours = [
-    "#F5793A",
-    "#FC6385",
-    "#0F2080",
-    "#1C3B40",
-    "#85C0F9",
-    "#A5C4C6",
-    "#A95AA1",
-  ];
+  const colours = ["#F5793A", "#FC6385"];
 
   useEffect(() => {
     setData({
