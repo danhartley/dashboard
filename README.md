@@ -109,6 +109,17 @@ REST Client
 MWS for local development and testing
 json-server for rest-styled queries
 
+#### Heroku
+
+[Heroku](https://dashboard.heroku.com/apps)
+
+( Seel also: https://dashboard.heroku.com/apps/dashboard-data-heroku/deploy/heroku-git )
+
+open dashboard-data-heroku  
+update db  
+add and commit changes  
+git push heroku main
+
 ### Source control
 
 Git  
