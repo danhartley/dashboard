@@ -48,19 +48,7 @@ export const DashboardFeaturesTable = ({
     return (
       <Figure title="Pledges by principle">
         {target === "table" ? (
-          <table
-            role="tabpanel"
-            data-table-id="features"
-            className="w-11/12 text-xs sm:text-base"
-          >
-            <Header />
-            <tbody>
-              {data.items.map((feature) => {
-                return <Row key={feature.name} feature={feature}></Row>;
-              })}
-            </tbody>
-            <Footer totals={data.totals} />
-          </table>
+          <FeaturesTable data={data}></FeaturesTable>
         ) : target === "chart" ? (
           <FeaturesChart totals={data.totals}></FeaturesChart>
         ) : null}
@@ -116,6 +104,28 @@ type Feature = {
   honouring: number;
   breaking: number;
   pledges: IPledge[];
+};
+
+type FeatureTableProps = {
+  data: IPledgesByFeatureSnapshot;
+};
+
+const FeaturesTable = ({ data }: FeatureTableProps): JSX.Element => {
+  return (
+    <table
+      role="tabpanel"
+      data-table-id="features"
+      className="w-11/12 text-xs sm:text-base"
+    >
+      <Header />
+      <tbody>
+        {data.items.map((feature) => {
+          return <Row key={feature.name} feature={feature}></Row>;
+        })}
+      </tbody>
+      <Footer totals={data.totals} />
+    </table>
+  );
 };
 
 export const Row = ({ feature }: { feature: Feature }): JSX.Element => {

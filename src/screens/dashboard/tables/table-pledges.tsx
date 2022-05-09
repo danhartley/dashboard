@@ -44,7 +44,6 @@ const DashboardPledgesTable = ({
       <Figure title="Pledges with checklists">
         <table
           role="tabpanel"
-          // aria-labelledby="table"
           data-table-id="values"
           className="w-11/12 text-xs sm:text-base"
         >
