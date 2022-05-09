@@ -5,9 +5,9 @@ import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
 import { useValuesWithTotals } from "src/screens/dashboard/hooks/useValues";
 import { usePledgesWithChecklists } from "src/screens/dashboard/hooks/usePledges";
 
-import DashboardFeaturesTable from "src/screens/dashboard/tables/table-features";
-import DashboardValuesTable from "src/screens/dashboard/tables/table-values";
-import DashboardPledgesTable from "src/screens/dashboard/tables/table-pledges";
+import FeaturesView from "src/screens/dashboard/views/view-features";
+import ValuesView from "src/screens/dashboard/views/view-values";
+import PledgesView from "src/screens/dashboard/views/view-pledges";
 
 export const createWrapper = () => {
   const queryClient = new QueryClient();
@@ -16,15 +16,16 @@ export const createWrapper = () => {
   );
 };
 
-export const renderFeaturesComponent = () => {
+export const renderFeaturesView = (showAllViews = false) => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardFeaturesTable
+      <FeaturesView
         source="RTW"
         snapshotId={1}
         setSnapshotId={() => 1}
-      ></DashboardFeaturesTable>
+        showAllViews={showAllViews}
+      ></FeaturesView>
     </QueryClientProvider>
   );
 };
@@ -40,15 +41,15 @@ export const renderFeaturesWithSuccess = async (snapshotId) => {
   return { result, waitFor };
 };
 
-export const renderValuesComponent = () => {
+export const renderValuesView = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardValuesTable
+      <ValuesView
         source="RTW"
         snapshotId={1}
         setSnapshotId={() => 1}
-      ></DashboardValuesTable>
+      ></ValuesView>
     </QueryClientProvider>
   );
 };
@@ -68,11 +69,11 @@ export const renderPledgesComponent = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardPledgesTable
+      <PledgesView
         source="RTW"
         snapshotId={1}
         setSnapshotId={() => 1}
-      ></DashboardPledgesTable>
+      ></PledgesView>
     </QueryClientProvider>
   );
 };

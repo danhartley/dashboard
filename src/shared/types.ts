@@ -24,6 +24,7 @@ export type ControlsProps = {
   onChange: Dispatch<SetStateAction<number>>;
   target?: string;
   setTarget?: Dispatch<SetStateAction<string>>;
+  showSelector?: boolean;
 };
 
 export type PledgeRowProps = {
@@ -79,8 +80,9 @@ export type PledgeProps = {
   };
 };
 
-export type TableProps = {
+export type ViewProps = {
   source: string;
   snapshotId: number;
   setSnapshotId: Dispatch<SetStateAction<number>>;
+  showAllViews?: boolean;
 };

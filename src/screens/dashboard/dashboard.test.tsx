@@ -3,14 +3,14 @@ import { useParams } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import Dashboard from "./dashboard";
 
-jest.mock("src/screens/dashboard/tables/table-features", () => ({}) => (
-  <>{<div>DashboardFeaturesTable</div>}</>
+jest.mock("src/screens/dashboard/views/view-features", () => ({}) => (
+  <>{<div>FeaturesView</div>}</>
 ));
-jest.mock("src/screens/dashboard/tables/table-values", () => ({}) => (
-  <>{<div>DashboardValuesTable</div>}</>
+jest.mock("src/screens/dashboard/views/view-values", () => ({}) => (
+  <>{<div>ValuesView</div>}</>
 ));
-jest.mock("src/screens/dashboard/tables/table-pledges", () => ({}) => (
-  <>{<div>DashboardPledgesTable</div>}</>
+jest.mock("src/screens/dashboard/views/view-pledges", () => ({}) => (
+  <>{<div>PledgesView</div>}</>
 ));
 
 const renderDashboardWithTables = () => {
@@ -33,9 +33,9 @@ describe("The dashboard", () => {
   });
   test("has three tables", () => {
     renderDashboardWithTables();
-    expect(screen.getByText("DashboardFeaturesTable")).toBeInTheDocument();
-    expect(screen.getByText("DashboardValuesTable")).toBeInTheDocument();
-    expect(screen.getByText("DashboardPledgesTable")).toBeInTheDocument();
+    expect(screen.getByText("FeaturesView")).toBeInTheDocument();
+    expect(screen.getByText("ValuesView")).toBeInTheDocument();
+    expect(screen.getByText("PledgesView")).toBeInTheDocument();
   });
   test("has tabs", () => {
     renderDashboardWithTables();

@@ -1,76 +1,34 @@
 import { useState } from "react";
-import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
-import { PledgesRow } from "./rows/pledges";
+import { PledgesRow } from "src/screens/dashboard/tables/rows/pledges";
 import { IPledge, IPledgesByFeatureSnapshot } from "src/shared/interfaces";
-import { TotalsProps, TableProps } from "src/shared/types";
-import Figure from "src/screens/dashboard/tables/figure/figure";
-import TableControls from "src/screens/dashboard/tables/table-controls";
-import FeaturesChart from "src/screens/dashboard/charts/chart-features";
+import { TotalsProps } from "src/shared/types";
 
-export const DashboardFeaturesTable = ({
-  source,
-  snapshotId,
-  setSnapshotId,
-}: TableProps) => {
-  type Error = {
-    message?: string;
-  };
-
-  const {
-    data,
-    isLoading,
-    isError,
-    error,
-    isSuccess,
-  }: {
-    data: IPledgesByFeatureSnapshot;
-    isLoading: boolean;
-    isError: boolean;
-    error: Error;
-    isSuccess: boolean;
-  } = useFeaturesWithTotals({ source, snapshotId });
-
-  const [target, setTarget] = useState("table");
-
-  if (isLoading) {
-    return (
-      <Figure>
-        <span>Loading...</span>
-      </Figure>
-    );
-  }
-
-  if (isError) {
-    return <Figure title={error.message} />;
-  }
-
-  if (isSuccess) {
-    return (
-      <Figure title="Pledges by principle">
-        {target === "table" ? (
-          <FeaturesTable data={data}></FeaturesTable>
-        ) : target === "chart" ? (
-          <FeaturesChart totals={data.totals}></FeaturesChart>
-        ) : null}
-
-        <TableControls
-          namespace="features"
-          snapshotId={data.snapshotId}
-          snapshots={data.snapshots.filter((s) => s.source === data.source)}
-          onChange={setSnapshotId}
-          target={target}
-          setTarget={setTarget}
-        ></TableControls>
-      </Figure>
-    );
-  }
+type FeatureTableProps = {
+  data: IPledgesByFeatureSnapshot;
 };
 
-export default DashboardFeaturesTable;
+const FeaturesTable = ({ data }: FeatureTableProps): JSX.Element => {
+  return (
+    <table
+      role="tabpanel"
+      data-table-id="features"
+      className="w-11/12 text-xs sm:text-base mb-16"
+    >
+      <Header />
+      <tbody>
+        {data.items.map((feature) => {
+          return <Row key={feature.name} feature={feature}></Row>;
+        })}
+      </tbody>
+      <Footer totals={data.totals} />
+    </table>
+  );
+};
+
+export default FeaturesTable;
 
 const Header = (): JSX.Element => {
-  const css =
-    "text-sky-800 font-normal text-xs sm:text-sm tracking-wider uppercase pb-2";
+  const css = "font-normal text-xs sm:text-sm tracking-wider uppercase pb-2";
 
   return (
     <thead>
@@ -85,12 +43,12 @@ const Header = (): JSX.Element => {
       <tr>
         <th className={`${css} text-left w-3/5`}>Principle</th>
         <th
-          className={`${css} w-1/5 after:content-['✓'] md:after:content-['honouring']`}
+          className={`${css} text-green-800 w-1/5 after:content-['✓'] md:after:content-['honouring']`}
         >
           <span className="hidden">for accessibility</span>
         </th>
         <th
-          className={`${css} w-1/5 after:content-['✗'] md:after:content-['breaking']`}
+          className={`${css} text-pink-800 w-1/5 after:content-['✗'] md:after:content-['breaking']`}
         >
           <span className="hidden">for accessibility</span>
         </th>
@@ -104,28 +62,6 @@ type Feature = {
   honouring: number;
   breaking: number;
   pledges: IPledge[];
-};
-
-type FeatureTableProps = {
-  data: IPledgesByFeatureSnapshot;
-};
-
-const FeaturesTable = ({ data }: FeatureTableProps): JSX.Element => {
-  return (
-    <table
-      role="tabpanel"
-      data-table-id="features"
-      className="w-11/12 text-xs sm:text-base"
-    >
-      <Header />
-      <tbody>
-        {data.items.map((feature) => {
-          return <Row key={feature.name} feature={feature}></Row>;
-        })}
-      </tbody>
-      <Footer totals={data.totals} />
-    </table>
-  );
 };
 
 export const Row = ({ feature }: { feature: Feature }): JSX.Element => {
@@ -173,8 +109,8 @@ const Footer = ({ totals }: TotalsProps): JSX.Element => {
         >
           Totals
         </th>
-        <th className="text-sky-800 font-normal">{totals.honouring}</th>
-        <th className="text-sky-800 font-normal">{totals.breaking}</th>
+        <th className="text-green-800 font-normal">{totals.honouring}</th>
+        <th className="text-pink-800 font-normal">{totals.breaking}</th>
       </tr>
     </tfoot>
   );

@@ -103,6 +103,7 @@ Jest (Orta)
 Prettier  
 Tailwind CSS Intellisense  
 REST Client
+VSCode React Refactor
 
 ### Database
 

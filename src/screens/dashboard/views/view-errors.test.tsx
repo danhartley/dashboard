@@ -3,8 +3,8 @@ import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
 import { useValuesWithTotals } from "src/screens/dashboard/hooks/useValues";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import DashboardFeaturesTable from "./table-features";
-import DashboardValuesTable from "./table-values";
+import FeaturesView from "src/screens/dashboard/views/view-features";
+import ValuesView from "src/screens/dashboard/views/view-values";
 
 // For mocking see: https://www.youtube.com/watch?v=ZfvOHRX-FDM
 // For mocking see: https://github.com/satansdeer/react-query-3-example
@@ -18,15 +18,15 @@ jest.mock("src/screens/dashboard/hooks/useValues", () => ({
   useValuesWithTotals: jest.fn(),
 }));
 
-const renderFeaturesTable = () => {
+const renderFeaturesView = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardFeaturesTable
+      <FeaturesView
         source="RTW"
         snapshotId={1}
         setSnapshotId={() => 10}
-      ></DashboardFeaturesTable>
+      ></FeaturesView>
     </QueryClientProvider>
   );
 };
@@ -35,11 +35,11 @@ const renderValuesTable = () => {
   const queryClient = new QueryClient();
   return render(
     <QueryClientProvider client={queryClient}>
-      <DashboardValuesTable
+      <ValuesView
         source="RTW"
         snapshotId={1}
         setSnapshotId={() => 10}
-      ></DashboardValuesTable>
+      ></ValuesView>
     </QueryClientProvider>
   );
 };
@@ -57,7 +57,7 @@ describe("Network errors", () => {
       error: { message: "We have a problem" },
     }));
 
-    const { getByText } = renderFeaturesTable();
+    const { getByText } = renderFeaturesView();
     expect(getByText(/We have a problem/i)).toBeInTheDocument();
   });
 });

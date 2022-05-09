@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
 import { useParams } from "react-router-dom";
 import { transformSourceName } from "src/shared/utils";
-import DashboardFeaturesTable from "src/screens/dashboard/tables/table-features";
-import DashboardValuesTable from "src/screens/dashboard/tables/table-values";
-import DashboardPledgesTable from "src/screens/dashboard/tables/table-pledges";
+import FeaturesView from "src/screens/dashboard/views/view-features";
+import ValuesView from "src/screens/dashboard/views/view-values";
+import PledgesView from "src/screens/dashboard/views/view-pledges";
 
 const Dashboard = (): JSX.Element => {
   const [source, setSource] = useState("");
@@ -31,31 +31,47 @@ const Dashboard = (): JSX.Element => {
       </h2>
       <Tabs defaultIndex={0}>
         <TabList>
+          <Tab className={css}>All</Tab>
           <Tab className={css}>By principle</Tab>
           <Tab className={css}>By value</Tab>
           <Tab className={css}>Checklists</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
-            <DashboardFeaturesTable
+            <FeaturesView
               source={source}
               snapshotId={snapshotId}
               setSnapshotId={setSnapshotId}
-            ></DashboardFeaturesTable>
+              showAllViews={true}
+            ></FeaturesView>
+            <ValuesView
+              source={source}
+              snapshotId={snapshotId}
+              setSnapshotId={setSnapshotId}
+              showAllViews={false}
+            ></ValuesView>
           </TabPanel>
           <TabPanel>
-            <DashboardValuesTable
+            <FeaturesView
               source={source}
               snapshotId={snapshotId}
               setSnapshotId={setSnapshotId}
-            ></DashboardValuesTable>
+              showAllViews={true}
+            ></FeaturesView>
           </TabPanel>
           <TabPanel>
-            <DashboardPledgesTable
+            <ValuesView
               source={source}
               snapshotId={snapshotId}
               setSnapshotId={setSnapshotId}
-            ></DashboardPledgesTable>
+            ></ValuesView>
+          </TabPanel>
+          <TabPanel>
+            <PledgesView
+              source={source}
+              snapshotId={snapshotId}
+              setSnapshotId={setSnapshotId}
+            ></PledgesView>
           </TabPanel>
         </TabPanels>
       </Tabs>

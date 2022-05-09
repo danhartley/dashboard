@@ -13,6 +13,10 @@ export enum DashboardStyle {
   Visual = 2,
 }
 
+export enum PledgeActionColour {
+  Honouring = "#166534", // green 800
+  Breaking = "#9d174d", // pink 800
+}
 // export enum Figure {
 //     Features = 1,
 //     Values = 2

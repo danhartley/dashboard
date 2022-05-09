@@ -5,13 +5,13 @@ import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
 import api from "src/api/api";
 import {
   createWrapper,
-  renderFeaturesComponent,
+  renderFeaturesView,
   renderFeaturesWithSuccess,
 } from "src/screens/dashboard/tables/shared/test-helpers";
 
 describe("The pledges by features table", () => {
   test("shows when it is loading", async () => {
-    renderFeaturesComponent();
+    renderFeaturesView();
     const { result, waitFor } = renderHook(
       () => useFeaturesWithTotals({ source: "RTW", snapshotId: 1 }),
       {
@@ -25,14 +25,14 @@ describe("The pledges by features table", () => {
   describe("has a value column", () => {
     test("with a table header", async () => {
       await renderFeaturesWithSuccess(1);
-      renderFeaturesComponent();
+      renderFeaturesView();
       expect(
         await screen.findByRole("columnheader", { name: /principle/i })
       ).toBeTruthy();
     });
 
     test("and a row for each value", async () => {
-      renderFeaturesComponent();
+      renderFeaturesView();
       const { result } = await renderFeaturesWithSuccess(1);
       const itemCount = result.current.data.items.length;
       const body = screen.getAllByRole("rowgroup")[1];
@@ -42,7 +42,7 @@ describe("The pledges by features table", () => {
 
     describe("which when clicked", () => {
       test("shows related pledges in a new row", async () => {
-        renderFeaturesComponent();
+        renderFeaturesView();
         await renderFeaturesWithSuccess(1);
         expect(screen.getByText("Totals")).toBeInTheDocument();
         const row = screen.getByText("Totals").closest("tr");
@@ -51,7 +51,7 @@ describe("The pledges by features table", () => {
       });
       test("with totals for hounored and breaking pledges", async () => {
         const user = userEvent.setup();
-        renderFeaturesComponent();
+        renderFeaturesView();
         await renderFeaturesWithSuccess(1);
         const button = screen.getByRole("button", {
           name: /Human agency and oversight/i,
@@ -76,7 +76,7 @@ describe("The pledges by features table", () => {
     describe("and when clicked again", () => {
       test("hides the related pledges", async () => {
         const user = userEvent.setup();
-        renderFeaturesComponent();
+        renderFeaturesView();
         await renderFeaturesWithSuccess(1);
         const button = screen.getByRole("button", {
           name: "Human agency and oversight",
@@ -99,7 +99,7 @@ describe("The pledges by features table", () => {
 
   describe("has buttons to select format", () => {
     test("table button is selected by default and table visible", async () => {
-      renderFeaturesComponent();
+      renderFeaturesView();
       await renderFeaturesWithSuccess(1);
       const tableButton = screen.getByRole("tab", { name: "Table" });
       expect(tableButton).toBeTruthy();
@@ -110,7 +110,7 @@ describe("The pledges by features table", () => {
       expect(await screen.findByRole("tabpanel")).toBeInTheDocument();
     });
     test("chart button selected when clicked and chart visible", async () => {
-      renderFeaturesComponent();
+      renderFeaturesView();
       await renderFeaturesWithSuccess(1);
       const chartButton = screen.getByRole("tab", { name: "Chart" });
       expect(chartButton).toBeTruthy();
@@ -119,6 +119,14 @@ describe("The pledges by features table", () => {
         chartButton
       );
       expect(await screen.findByRole("tabpanel")).toBeInTheDocument();
+    });
+  });
+  describe("displays all views", () => {
+    test("when flag showAllViews set to true", async () => {
+      renderFeaturesView(true);
+      await renderFeaturesWithSuccess(1);
+      const panels = await screen.findAllByRole("tabpanel");
+      expect(panels.length).toBe(2);
     });
   });
 });
@@ -162,7 +170,7 @@ describe.skip("The pledges by features table can be mocked in the test", () => {
       return Promise.resolve(null);
     });
     await renderFeaturesWithSuccess(1);
-    const { getByText } = renderFeaturesComponent();
+    const { getByText } = renderFeaturesView();
     expect(getByText(/Loading.../i)).toBeInTheDocument();
   });
 });

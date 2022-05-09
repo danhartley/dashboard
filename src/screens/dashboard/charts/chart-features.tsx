@@ -8,6 +8,7 @@ import {
   BarElement,
   Tooltip,
 } from "chart.js";
+import { PledgeActionColour } from "src/shared/enums";
 
 Chart.register(annotationPlugin);
 Chart.register(LinearScale, CategoryScale, BarElement, Tooltip);
@@ -19,35 +20,33 @@ type ChartProps = {
   };
 };
 
-const FeaturesChart = ({ totals }: ChartProps) => {
+const TotalsChart = ({ totals }: ChartProps) => {
   const [data, setData] = useState(null);
-  const [scales, setScales] = useState(null);
-
-  const colours = ["#F5793A", "#FC6385"];
 
   useEffect(() => {
     setData({
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Custom Chart Title",
+          },
+        },
+      },
+      type: "bar",
       labels: ["Honoured", "Breaking"],
       datasets: [
         {
-          indexAxis: "x",
-          label: "Snapshot total",
+          label: "Total scores",
           data: [totals.honouring, totals.breaking * -1],
-          backgroundColor: [colours[0], colours[1]],
-          minBarLength: 1,
+          backgroundColor: [
+            PledgeActionColour.Honouring,
+            PledgeActionColour.Breaking,
+          ],
         },
       ],
     });
-
-    setScales({
-      y: {
-        min: -30,
-        max: 30,
-      },
-    });
   }, [totals]);
-
-  const options = { scales, responsive: true };
 
   return (
     <>
@@ -59,7 +58,7 @@ const FeaturesChart = ({ totals }: ChartProps) => {
       ) : (
         <div>
           <div role="tabpanel">
-            <Bar data={data} options={options}>
+            <Bar data={data}>
               <div>Please see data in tabular form</div>
             </Bar>
           </div>
@@ -69,4 +68,4 @@ const FeaturesChart = ({ totals }: ChartProps) => {
   );
 };
 
-export default FeaturesChart;
+export default TotalsChart;

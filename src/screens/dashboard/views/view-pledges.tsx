@@ -1,14 +1,10 @@
 import { useState } from "react";
 import { usePledgesWithChecklists } from "src/screens/dashboard/hooks/usePledges";
-import { PledgeProps, TableProps } from "src/shared/types";
+import { PledgeProps, ViewProps } from "src/shared/types";
 import { IPledgesWithChecklists } from "src/shared/interfaces";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 
-const DashboardPledgesTable = ({
-  source,
-  snapshotId,
-  setSnapshotId,
-}: TableProps) => {
+const PledgesView = ({ source, snapshotId, setSnapshotId }: ViewProps) => {
   type Error = {
     message?: string;
   };
@@ -45,7 +41,7 @@ const DashboardPledgesTable = ({
         <table
           role="tabpanel"
           data-table-id="values"
-          className="w-11/12 text-xs sm:text-base"
+          className="w-11/12 text-xs sm:text-base mb-16"
         >
           <Header />
           <tbody>
@@ -60,7 +56,7 @@ const DashboardPledgesTable = ({
   }
 };
 
-export default DashboardPledgesTable;
+export default PledgesView;
 
 const Header = (): JSX.Element => {
   const css =

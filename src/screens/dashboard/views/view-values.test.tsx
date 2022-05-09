@@ -4,13 +4,13 @@ import { renderHook } from "@testing-library/react-hooks";
 import { useValuesWithTotals } from "src/screens/dashboard/hooks/useValues";
 import {
   createWrapper,
-  renderValuesComponent,
+  renderValuesView,
   renderValuesWithSuccess,
 } from "src/screens/dashboard/tables/shared/test-helpers";
 
 describe("The pledges by values table", () => {
   test("shows when it is loading", async () => {
-    renderValuesComponent();
+    renderValuesView();
     const { result, waitFor } = renderHook(
       () => useValuesWithTotals({ source: "RTW", snapshotId: 1 }),
       {
@@ -21,19 +21,19 @@ describe("The pledges by values table", () => {
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
   test("has a title", async () => {
-    renderValuesComponent();
+    renderValuesView();
     await renderValuesWithSuccess(1);
     expect(screen.getByText(/pledges by/i)).toBeInTheDocument();
   });
 
   describe("has a value column", () => {
     test("with a table header", async () => {
-      renderValuesComponent();
+      renderValuesView();
       await renderValuesWithSuccess(1);
       expect(screen.getByRole("columnheader", { name: "Value" })).toBeTruthy();
     });
     test("and a row for each value", async () => {
-      renderValuesComponent();
+      renderValuesView();
       const { result } = await renderValuesWithSuccess(1);
       const itemCount = result.current.data.items.length;
       const body = screen.getAllByRole("rowgroup")[1];
@@ -44,7 +44,7 @@ describe("The pledges by values table", () => {
     describe("which when clicked", () => {
       test("shows related pledges in a new row", async () => {
         const user = userEvent.setup();
-        renderValuesComponent();
+        renderValuesView();
         await renderValuesWithSuccess(1);
         const button = screen.getByRole("button", { name: "Responsibility" });
         await user.click(button);
@@ -59,7 +59,7 @@ describe("The pledges by values table", () => {
         expect(within(row).getByText(2)).toBeTruthy();
       });
       test("with totals for hounored and breaking pledges", async () => {
-        renderValuesComponent();
+        renderValuesView();
         await renderValuesWithSuccess(1);
         expect(screen.getByText("Totals")).toBeInTheDocument();
         const row = screen.getByText("Totals").closest("tr");
@@ -71,7 +71,7 @@ describe("The pledges by values table", () => {
     describe("and when clicked again", () => {
       test("hides the related pledges ", async () => {
         const user = userEvent.setup();
-        renderValuesComponent();
+        renderValuesView();
         await renderValuesWithSuccess(1);
         const button = screen.getByRole("button", { name: "Responsibility" });
         await user.click(button);

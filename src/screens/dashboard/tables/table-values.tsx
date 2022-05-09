@@ -1,83 +1,31 @@
 import { useState } from "react";
 import { PledgesRow } from "src/screens/dashboard/tables/rows/pledges";
-import { useValuesWithTotals } from "src/screens/dashboard/hooks/useValues";
-import { TotalsProps, ValueProps, TableProps } from "src/shared/types";
+import { TotalsProps, ValueProps } from "src/shared/types";
 import { IPledgesByValueSnapshot } from "src/shared/interfaces";
-import Figure from "src/screens/dashboard/tables/figure/figure";
-import TableControls from "src/screens/dashboard/tables/table-controls";
-import FeaturesChart from "src/screens/dashboard/charts/chart-features";
 
-const DashboardValuesTable = ({
-  source,
-  snapshotId,
-  setSnapshotId,
-}: TableProps) => {
-  type Error = {
-    message?: string;
-  };
-
-  const {
-    data,
-    isLoading,
-    isError,
-    error,
-    isSuccess,
-  }: {
-    data: IPledgesByValueSnapshot;
-    isLoading: boolean;
-    isError: boolean;
-    error: Error;
-    isSuccess: boolean;
-  } = useValuesWithTotals({ source: source, snapshotId });
-
-  const [target, setTarget] = useState("table");
-
-  if (isLoading) {
-    return (
-      <Figure>
-        <span>Loading...</span>
-      </Figure>
-    );
-  }
-
-  if (isError) {
-    return <Figure title={error.message} />;
-  }
-
-  if (isSuccess) {
-    return (
-      <Figure title="Pledges by value">
-        {target === "table" ? (
-          <table
-            role="tabpanel"
-            data-table-id="values"
-            className="w-11/12 text-xs sm:text-base"
-          >
-            <Header />
-            <tbody>
-              {data.items.map((value) => {
-                return <Row key={value.name} value={value}></Row>;
-              })}
-            </tbody>
-            <Footer totals={data.totals} />
-          </table>
-        ) : target === "chart" ? (
-          <FeaturesChart totals={data.totals}></FeaturesChart>
-        ) : null}
-        <TableControls
-          namespace="values"
-          snapshotId={data.snapshotId}
-          snapshots={data.snapshots.filter((s) => s.source === data.source)}
-          onChange={setSnapshotId}
-          target={target}
-          setTarget={setTarget}
-        ></TableControls>
-      </Figure>
-    );
-  }
+type ValuesTableProps = {
+  data: IPledgesByValueSnapshot;
 };
 
-export default DashboardValuesTable;
+const ValuesTable = ({ data }: ValuesTableProps) => {
+  return (
+    <table
+      role="tabpanel"
+      data-table-id="values"
+      className="w-11/12 text-xs sm:text-base mb-16"
+    >
+      <Header />
+      <tbody>
+        {data.items.map((value) => {
+          return <Row key={value.name} value={value}></Row>;
+        })}
+      </tbody>
+      <Footer totals={data.totals} />
+    </table>
+  );
+};
+
+export default ValuesTable;
 
 const Header = () => {
   const css =
@@ -102,12 +50,12 @@ const Header = () => {
         <th className={`${css} text-left w-2/5`}>Value</th>
         <th className={`${css} ${text} text-xs tracking-wider w-1/5`}></th>
         <th
-          className={`${css} w-1/5 after:content-['✓'] md:after:content-['honouring']`}
+          className={`${css} text-green-800 w-1/5 after:content-['✓'] md:after:content-['honouring']`}
         >
           <span className="hidden">for accessibility</span>
         </th>
         <th
-          className={`${css} w-1/5 after:content-['✗'] md:after:content-['breaking']`}
+          className={`${css} text-pink-800 w-1/5 after:content-['✗'] md:after:content-['breaking']`}
         >
           <span className="hidden">for accessibility</span>
         </th>
