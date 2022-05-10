@@ -160,7 +160,8 @@ NB when re-running may have to delete node_modules/.cache/gh-pages worked
 
 ## CRA
 
-https://create-react-app.dev/docs/deployment/
+Check for updates: https://create-react-app.dev/docs/updating-to-new-releases/  
+Review deployment: https://create-react-app.dev/docs/deployment/
 
 Build & deploy: npm run deploy
 

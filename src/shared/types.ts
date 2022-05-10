@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction } from "react";
-import { EViewType } from "./enums";
 
 export type SliderState = {
   value: number;
@@ -23,8 +22,8 @@ export type ControlsProps = {
   }[];
   namespace?: string;
   onChange: Dispatch<SetStateAction<number>>;
-  target?: EViewType;
-  setTarget?: Dispatch<SetStateAction<EViewType>>;
+  target?: ViewType;
+  setTarget?: Dispatch<SetStateAction<ViewType>>;
   showSelector?: boolean;
 };
 
@@ -91,3 +90,20 @@ export type ViewProps = {
 export type Error = {
   message?: string;
 };
+
+// export type ViewType = "chart" | "table";
+
+const VIEWTYPES = {
+  CHART: "chart",
+  TABLE: "table",
+} as const;
+
+export type ViewType = typeof VIEWTYPES[keyof typeof VIEWTYPES];
+
+const PLEDGEACTIONCOLOURS = {
+  HONOURING: "#166534", // green 800
+  BREAKING: "#9d174d", // pink 800
+} as const;
+
+export type ColourType =
+  typeof PLEDGEACTIONCOLOURS[keyof typeof PLEDGEACTIONCOLOURS];

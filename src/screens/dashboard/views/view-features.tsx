@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
 import { IPledgesByFeatureSnapshot } from "src/shared/interfaces";
 import { ViewProps, Error } from "src/shared/types";
-import { EViewType } from "src/shared/enums";
+import { ViewType } from "src/shared/types";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
 import FeaturesTable from "src/screens/dashboard/tables/table-features";
@@ -28,7 +28,7 @@ export const FeaturesView = ({
     isSuccess: boolean;
   } = useFeaturesWithTotals({ source, snapshotId });
 
-  const [target, setTarget] = useState(EViewType.table);
+  const [target, setTarget] = useState<ViewType>("table");
 
   if (isLoading) {
     return (
@@ -47,13 +47,13 @@ export const FeaturesView = ({
       <Figure title="Pledges by principle">
         {showAllViews
           ? showComponents(data)
-          : ShowComponentsConditionally(target, data)}
+          : ShowComponentsConditionally(target as ViewType, data)}
         <TableControls
           namespace="features"
           snapshotId={data.snapshotId}
           snapshots={data.snapshots.filter((s) => s.source === data.source)}
           onChange={setSnapshotId}
-          target={target}
+          target={target as ViewType}
           setTarget={setTarget}
           showSelector={!showAllViews}
         ></TableControls>
@@ -65,14 +65,14 @@ export const FeaturesView = ({
 export default FeaturesView;
 
 function ShowComponentsConditionally(
-  target: EViewType,
+  target: ViewType,
   data: IPledgesByFeatureSnapshot
 ) {
   return (
     <>
-      {target === EViewType.table ? (
+      {target === "table" ? (
         <FeaturesTable data={data}></FeaturesTable>
-      ) : target === EViewType.chart ? (
+      ) : target === "chart" ? (
         <TotalsChart totals={data.totals}></TotalsChart>
       ) : null}
     </>

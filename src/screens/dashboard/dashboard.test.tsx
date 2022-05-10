@@ -33,8 +33,8 @@ describe("The dashboard", () => {
   });
   test("has three tables", () => {
     renderDashboardWithTables();
-    expect(screen.getByText("FeaturesView")).toBeInTheDocument();
-    expect(screen.getByText("ValuesView")).toBeInTheDocument();
+    expect(screen.getAllByText("FeaturesView")[0]).toBeInTheDocument();
+    expect(screen.getAllByText("ValuesView")[0]).toBeInTheDocument();
     expect(screen.getByText("PledgesView")).toBeInTheDocument();
   });
   test("has tabs", () => {

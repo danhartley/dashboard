@@ -6,7 +6,7 @@ import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
 import TotalsChart from "src/screens/dashboard/charts/chart-features";
 import ValuesTable from "src/screens/dashboard//tables/table-values";
-import { EViewType } from "src/shared/enums";
+import { ViewType } from "src/shared/types";
 
 const ValuesView = ({
   source,
@@ -32,7 +32,7 @@ const ValuesView = ({
     isSuccess: boolean;
   } = useValuesWithTotals({ source: source, snapshotId });
 
-  const [target, setTarget] = useState(EViewType.table);
+  const [target, setTarget] = useState<ViewType>("table");
 
   if (isLoading) {
     return (
@@ -51,13 +51,13 @@ const ValuesView = ({
       <Figure title="Pledges by value">
         {showAllViews
           ? showComponents(data)
-          : ShowComponentsConditionally(target, data)}
+          : ShowComponentsConditionally(target as ViewType, data)}
         <TableControls
           namespace="values"
           snapshotId={data.snapshotId}
           snapshots={data.snapshots.filter((s) => s.source === data.source)}
           onChange={setSnapshotId}
-          target={target}
+          target={target as ViewType}
           setTarget={setTarget}
           showSelector={false}
         ></TableControls>
@@ -69,14 +69,14 @@ const ValuesView = ({
 export default ValuesView;
 
 function ShowComponentsConditionally(
-  target: EViewType,
+  target: ViewType,
   data: IPledgesByValueSnapshot
 ) {
   return (
     <>
-      {target === EViewType.table ? (
+      {target === "table" ? (
         <ValuesTable data={data}></ValuesTable>
-      ) : target === EViewType.chart ? (
+      ) : target === "chart" ? (
         <TotalsChart totals={data.totals}></TotalsChart>
       ) : null}
     </>

@@ -8,7 +8,7 @@ import {
   BarElement,
   Tooltip,
 } from "chart.js";
-import { PledgeActionColour } from "src/shared/enums";
+import { ColourType } from "src/shared/types";
 
 Chart.register(annotationPlugin);
 Chart.register(LinearScale, CategoryScale, BarElement, Tooltip);
@@ -24,6 +24,10 @@ const TotalsChart = ({ totals }: ChartProps) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
+    const bgColours = Array<ColourType>();
+    bgColours.push("#166534");
+    bgColours.push("#9d174d");
+
     setData({
       options: {
         plugins: {
@@ -39,10 +43,7 @@ const TotalsChart = ({ totals }: ChartProps) => {
         {
           label: "Total scores",
           data: [totals.honouring, totals.breaking * -1],
-          backgroundColor: [
-            PledgeActionColour.Honouring,
-            PledgeActionColour.Breaking,
-          ],
+          backgroundColor: bgColours,
         },
       ],
     });

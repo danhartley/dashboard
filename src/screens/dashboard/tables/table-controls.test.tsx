@@ -1,7 +1,8 @@
+import React from "react";
 import { screen, render, fireEvent, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import TableControls from "./table-controls";
-import { EViewType } from "src/shared/enums";
+import { ViewType } from "src/shared/types";
 
 describe("Table controls", () => {
   const snapshots = [
@@ -51,19 +52,21 @@ describe("Table controls", () => {
           snapshots={snapshots}
           snapshotId={snapshotId}
           onChange={handleChange}
+          showSelector={true}
         ></TableControls>
       );
       const { getByText } = within(screen.getByRole("tablist"));
       expect(getByText("Chart")).toBeInTheDocument();
     });
     test("with table format preselected", () => {
-      render(
+      const { container } = render(
         <TableControls
           snapshots={snapshots}
           snapshotId={snapshotId}
           onChange={handleChange}
-          target={EViewType.table}
+          target={"table" as ViewType}
           setTarget={jest.fn()}
+          showSelector={true}
         ></TableControls>
       );
       const tableButton = screen.getByRole("tab", { name: "Table" });

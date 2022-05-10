@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
-import { EViewType } from "src/shared/enums";
+import { ViewType } from "src/shared/types";
 
 type ViewSelectorProps = {
   namespace: string;
-  target?: EViewType;
-  setTarget?: Dispatch<SetStateAction<EViewType>>;
+  target?: ViewType;
+  setTarget?: Dispatch<SetStateAction<ViewType>>;
 };
 
 const ViewSelector = ({ namespace, target, setTarget }: ViewSelectorProps) => {
@@ -12,12 +12,12 @@ const ViewSelector = ({ namespace, target, setTarget }: ViewSelectorProps) => {
     {
       text: "Table",
       active: true,
-      target: EViewType.table,
+      target: "table",
     },
     {
       text: "Chart",
       active: false,
-      target: EViewType.chart,
+      target: "chart",
     },
   ];
 

@@ -1,27 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
-import { useSnapshots } from "src/screens/dashboard/hooks/useSnapshots";
-import { Error } from "src/shared/types";
 
 const Layout = (): JSX.Element => {
-  const {
-    data,
-    isSuccess,
-  }: {
-    data: {
-      id: number;
-      snapshot: string;
-      source: string;
-      snapshotId: number;
-    }[];
-    isSuccess: boolean;
-    error: Error;
-  } = useSnapshots();
-
   return (
     <>
       <Header />
       <section className="flex flex-col lg:flex-row min-h-85v">
-        {/* <Navigation data={data} isSuccess={isSuccess}></Navigation> */}
         <Outlet />
       </section>
       <Footer />

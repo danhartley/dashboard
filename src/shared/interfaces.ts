@@ -1,5 +1,3 @@
-import { Source } from "./enums";
-
 export interface IPledge {
   name: string;
   honouring: number;
