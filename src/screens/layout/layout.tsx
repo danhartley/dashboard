@@ -1,11 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
 import { useSnapshots } from "src/screens/dashboard/hooks/useSnapshots";
+import { Error } from "src/shared/types";
 
 const Layout = (): JSX.Element => {
-  type Error = {
-    message?: string;
-  };
-
   const {
     data,
     isSuccess,

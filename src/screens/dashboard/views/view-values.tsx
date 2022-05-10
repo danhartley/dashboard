@@ -6,6 +6,7 @@ import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
 import TotalsChart from "src/screens/dashboard/charts/chart-features";
 import ValuesTable from "src/screens/dashboard//tables/table-values";
+import { EViewType } from "src/shared/enums";
 
 const ValuesView = ({
   source,
@@ -31,7 +32,7 @@ const ValuesView = ({
     isSuccess: boolean;
   } = useValuesWithTotals({ source: source, snapshotId });
 
-  const [target, setTarget] = useState("table");
+  const [target, setTarget] = useState(EViewType.table);
 
   if (isLoading) {
     return (
@@ -68,14 +69,14 @@ const ValuesView = ({
 export default ValuesView;
 
 function ShowComponentsConditionally(
-  target: string,
+  target: EViewType,
   data: IPledgesByValueSnapshot
 ) {
   return (
     <>
-      {target === "table" ? (
+      {target === EViewType.table ? (
         <ValuesTable data={data}></ValuesTable>
-      ) : target === "chart" ? (
+      ) : target === EViewType.chart ? (
         <TotalsChart totals={data.totals}></TotalsChart>
       ) : null}
     </>

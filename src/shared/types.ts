@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { EViewType } from "./enums";
 
 export type SliderState = {
   value: number;
@@ -22,8 +23,8 @@ export type ControlsProps = {
   }[];
   namespace?: string;
   onChange: Dispatch<SetStateAction<number>>;
-  target?: string;
-  setTarget?: Dispatch<SetStateAction<string>>;
+  target?: EViewType;
+  setTarget?: Dispatch<SetStateAction<EViewType>>;
   showSelector?: boolean;
 };
 
@@ -85,4 +86,8 @@ export type ViewProps = {
   snapshotId: number;
   setSnapshotId: Dispatch<SetStateAction<number>>;
   showAllViews?: boolean;
+};
+
+export type Error = {
+  message?: string;
 };

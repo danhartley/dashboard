@@ -1,14 +1,10 @@
 import { useState } from "react";
 import { usePledgesWithChecklists } from "src/screens/dashboard/hooks/usePledges";
-import { PledgeProps, ViewProps } from "src/shared/types";
+import { PledgeProps, ViewProps, Error } from "src/shared/types";
 import { IPledgesWithChecklists } from "src/shared/interfaces";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 
 const PledgesView = ({ source, snapshotId, setSnapshotId }: ViewProps) => {
-  type Error = {
-    message?: string;
-  };
-
   const {
     data,
     isLoading,

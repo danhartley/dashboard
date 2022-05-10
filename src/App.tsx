@@ -1,16 +1,13 @@
 import { ReactQueryDevtools } from "react-query/devtools";
 import { Routes, Route } from "react-router-dom";
 import { useSnapshots } from "src/screens/dashboard/hooks/useSnapshots";
+import { Error } from "src/shared/types";
 
 import Layout from "src/screens/layout/layout";
 import Dashboard from "src/screens/dashboard/dashboard";
 import Navigation from "src/screens/dashboard/navigation";
 
 const App = () => {
-  type Error = {
-    message?: string;
-  };
-
   const {
     data,
     isSuccess,

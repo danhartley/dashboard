@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useFeaturesWithTotals } from "src/screens/dashboard/hooks/useFeatures";
 import { IPledgesByFeatureSnapshot } from "src/shared/interfaces";
-import { ViewProps } from "src/shared/types";
+import { ViewProps, Error } from "src/shared/types";
+import { EViewType } from "src/shared/enums";
 import Figure from "src/screens/dashboard/tables/figure/figure";
 import TableControls from "src/screens/dashboard/tables/table-controls";
 import FeaturesTable from "src/screens/dashboard/tables/table-features";
@@ -13,10 +14,6 @@ export const FeaturesView = ({
   setSnapshotId,
   showAllViews = true,
 }: ViewProps) => {
-  type Error = {
-    message?: string;
-  };
-
   const {
     data,
     isLoading,
@@ -31,7 +28,7 @@ export const FeaturesView = ({
     isSuccess: boolean;
   } = useFeaturesWithTotals({ source, snapshotId });
 
-  const [target, setTarget] = useState("table");
+  const [target, setTarget] = useState(EViewType.table);
 
   if (isLoading) {
     return (
@@ -68,14 +65,14 @@ export const FeaturesView = ({
 export default FeaturesView;
 
 function ShowComponentsConditionally(
-  target: string,
+  target: EViewType,
   data: IPledgesByFeatureSnapshot
 ) {
   return (
     <>
-      {target === "table" ? (
+      {target === EViewType.table ? (
         <FeaturesTable data={data}></FeaturesTable>
-      ) : target === "chart" ? (
+      ) : target === EViewType.chart ? (
         <TotalsChart totals={data.totals}></TotalsChart>
       ) : null}
     </>

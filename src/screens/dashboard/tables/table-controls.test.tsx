@@ -1,6 +1,7 @@
 import { screen, render, fireEvent, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import TableControls from "./table-controls";
+import { EViewType } from "src/shared/enums";
 
 describe("Table controls", () => {
   const snapshots = [
@@ -61,7 +62,7 @@ describe("Table controls", () => {
           snapshots={snapshots}
           snapshotId={snapshotId}
           onChange={handleChange}
-          target="table"
+          target={EViewType.table}
           setTarget={jest.fn()}
         ></TableControls>
       );
