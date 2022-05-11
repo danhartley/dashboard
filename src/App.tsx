@@ -6,6 +6,7 @@ import { Error } from "src/shared/types";
 import Layout from "src/screens/layout/layout";
 import Dashboard from "src/screens/dashboard/dashboard";
 import Navigation from "src/screens/dashboard/navigation";
+import AddPledge from "src/screens/pledges/pledges-add";
 
 const App = () => {
   const {
@@ -62,6 +63,11 @@ const App = () => {
                     <p>Nothing doing, sorry.</p>
                   </main>
                 }
+              ></Route>
+              <Route
+                key="add pldege"
+                path="/add-pledge"
+                element={<AddPledge></AddPledge>}
               ></Route>
             </Routes>
           </section>
