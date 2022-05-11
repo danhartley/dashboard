@@ -26,7 +26,7 @@ const Dashboard = (): JSX.Element => {
     `;
 
   return snapshotId ? (
-    <main className="w-10/12 md:w-4/6 bg-db-figure p-4 min-h-full mx-auto">
+    <main className="w-10/12 md:w-4/6 bg-db-figure p-4 min-h-full mx-auto rounded-lg">
       <h2 className="text-xl mb-4 font-serif italic text-wider">
         {transformSourceName(source)}
       </h2>
