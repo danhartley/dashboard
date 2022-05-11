@@ -7,11 +7,18 @@ import {
   CategoryScale,
   BarElement,
   Tooltip,
+  // Legend
 } from "chart.js";
 import { ColourType } from "src/shared/types";
 
 Chart.register(annotationPlugin);
-Chart.register(LinearScale, CategoryScale, BarElement, Tooltip);
+Chart.register(
+  LinearScale,
+  CategoryScale,
+  BarElement,
+  Tooltip
+  // , Legend
+);
 
 type ChartProps = {
   totals: {
@@ -29,14 +36,6 @@ const TotalsChart = ({ totals }: ChartProps) => {
     bgColours.push("#9d174d");
 
     setData({
-      options: {
-        plugins: {
-          title: {
-            display: true,
-            text: "Custom Chart Title",
-          },
-        },
-      },
       type: "bar",
       labels: ["Honoured", "Breaking"],
       datasets: [
@@ -49,6 +48,28 @@ const TotalsChart = ({ totals }: ChartProps) => {
     });
   }, [totals]);
 
+  // const options = {
+  //   plugins: {
+  //     legend: {
+  //       display: true,
+  //       labels: {
+  //         font: {
+  //           size: 15
+  //         },
+  //         generateLabels: function(chart) {
+  //           const ds = chart.data.datasets[0];
+  //           return [{
+  //             datasetIndex: 0,
+  //             text: ds.label,
+  //             fillStyle: "black",
+  //             fontColor: "black"
+  //           }];
+  //         }
+  //       }
+  //   }
+  //   }
+  // };
+
   return (
     <>
       {data === null ? (
@@ -59,6 +80,9 @@ const TotalsChart = ({ totals }: ChartProps) => {
       ) : (
         <div>
           <div role="tabpanel">
+            <h3 className="font-serif mb-4">
+              <em>Totals for honouring and breaking pledges</em>
+            </h3>
             <Bar data={data}>
               <div>Please see data in tabular form</div>
             </Bar>

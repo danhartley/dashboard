@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
+// import "@reach/tabs/styles.css";
 import { useParams } from "react-router-dom";
 import { transformSourceName } from "src/shared/utils";
 import FeaturesView from "src/screens/dashboard/views/view-features";
@@ -25,7 +26,7 @@ const Dashboard = (): JSX.Element => {
     `;
 
   return snapshotId ? (
-    <main className="w-10/12 md:w-4/6 bg-red-100 p-4 min-h-full mx-auto">
+    <main className="w-10/12 md:w-4/6 bg-db-figure p-4 min-h-full mx-auto">
       <h2 className="text-xl mb-4 font-serif italic text-wider">
         {transformSourceName(source)}
       </h2>

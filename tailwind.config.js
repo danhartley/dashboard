@@ -19,6 +19,10 @@ module.exports = {
         "5v": "5vh",
         "85v": "85vh",
       },
+      colors: {
+        "db-bg": "#b1bfa5",
+        "db-figure": "#e9e1e5",
+      },
     },
   },
   plugins: [],

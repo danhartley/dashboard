@@ -19,13 +19,13 @@ if (process.env.NODE_ENV !== "production") {
   // to log results (for example: reportWebVitals(console.log))
   // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 
-  // reportWebVitals(console.log);
+  reportWebVitals(console.log);
 }
 
 const queryClient = new QueryClient();
 
 ReactDOM.render(
-  <div className="bg-slate-300">
+  <div className="bg-db-bg">
     <React.StrictMode>
       <HashRouter>
         <QueryClientProvider client={queryClient}>

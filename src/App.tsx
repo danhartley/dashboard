@@ -50,7 +50,6 @@ const App = () => {
                   key="default"
                   path="/"
                   element={
-                    // <main className="w-3/3 lg:w-2/3 bg-red-100 p-4 min-h-85v"></main>
                     <Navigation data={data} isSuccess={isSuccess}></Navigation>
                   }
                 ></Route>
