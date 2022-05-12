@@ -25,7 +25,7 @@ if (process.env.NODE_ENV !== "production") {
 const queryClient = new QueryClient();
 
 ReactDOM.render(
-  <div className="bg-db-bg">
+  <div className="bg-twilight text-light">
     <React.StrictMode>
       <HashRouter>
         <QueryClientProvider client={queryClient}>

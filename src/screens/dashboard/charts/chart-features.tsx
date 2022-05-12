@@ -32,8 +32,8 @@ const TotalsChart = ({ totals }: ChartProps) => {
 
   useEffect(() => {
     const bgColours = Array<ColourType>();
-    bgColours.push("#166534");
-    bgColours.push("#9d174d");
+    bgColours.push("#ADFB2E");
+    bgColours.push("#FDC0CB");
 
     setData({
       type: "bar",
@@ -48,27 +48,47 @@ const TotalsChart = ({ totals }: ChartProps) => {
     });
   }, [totals]);
 
-  // const options = {
-  //   plugins: {
-  //     legend: {
-  //       display: true,
-  //       labels: {
-  //         font: {
-  //           size: 15
-  //         },
-  //         generateLabels: function(chart) {
-  //           const ds = chart.data.datasets[0];
-  //           return [{
-  //             datasetIndex: 0,
-  //             text: ds.label,
-  //             fillStyle: "black",
-  //             fontColor: "black"
-  //           }];
-  //         }
-  //       }
-  //   }
-  //   }
-  // };
+  const options = {
+    scales: {
+      x: {
+        grid: {
+          borderColor: "white",
+        },
+        ticks: {
+          color: "white",
+        },
+      },
+      y: {
+        grid: {
+          borderColor: "white",
+        },
+        ticks: {
+          color: "white",
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: true,
+        labels: {
+          font: {
+            size: 15,
+          },
+          generateLabels: function (chart) {
+            const ds = chart.data.datasets[0];
+            return [
+              {
+                datasetIndex: 0,
+                text: ds.label,
+                fillStyle: "black",
+                fontColor: "black",
+              },
+            ];
+          },
+        },
+      },
+    },
+  };
 
   return (
     <>
@@ -83,7 +103,7 @@ const TotalsChart = ({ totals }: ChartProps) => {
             <h3 className="font-serif mb-4">
               <em>Totals for honouring and breaking pledges</em>
             </h3>
-            <Bar data={data}>
+            <Bar data={data} options={options}>
               <div>Please see data in tabular form</div>
             </Bar>
           </div>

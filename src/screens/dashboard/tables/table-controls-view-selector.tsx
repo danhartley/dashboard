@@ -41,7 +41,7 @@ const ViewSelector = ({ namespace, target, setTarget }: ViewSelectorProps) => {
               role="tab"
               aria-selected={o.target === target}
               onClick={() => handleDisplayOptionChange(o.target)}
-              className={`border p-2 border-solid rounded tracking-wider text-sm sm:text-base hover:border-sky-800 ${
+              className={`border p-2 border-solid rounded tracking-wider text-sm sm:text-base hover:border-celestial ${
                 o.target === target ? "border-slate-900" : "border-white"
               }`}
             >

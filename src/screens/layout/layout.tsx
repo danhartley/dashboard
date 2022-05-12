@@ -18,7 +18,7 @@ const Header = (): JSX.Element => {
   return (
     <header className="h-10v py-5 m-auto">
       <h1 className="font-serif text-2xl lg:text-3xl">
-        <Link key="home" to="">
+        <Link key="home" to="" className="text-night">
           Responsibility Dashboard
         </Link>
       </h1>
@@ -28,16 +28,16 @@ const Header = (): JSX.Element => {
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className="py-2 m-auto">
+    <footer className="py-2 m-auto text-night">
       <div>
-        Dashboard{" "}
+        <span>{`Dashboard `}</span>
         <a
-          className="class-pointer border-b pb-1 hover:border-slate-900 focus:border-slate-900"
+          className="class-pointer border-b border-night pb-1 hover:text-light hover:border-light"
           href="https://github.com/danhartley/dashboard"
         >
           repository
-        </a>{" "}
-        on GitHub
+        </a>
+        <span>{` on GitHub`}</span>
       </div>
     </footer>
   );

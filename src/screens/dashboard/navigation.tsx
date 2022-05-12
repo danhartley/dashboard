@@ -20,10 +20,10 @@ const Navigation = ({ isSuccess, data }: NavigationProps): JSX.Element => {
   return isSuccess ? (
     <nav
       id="projects"
-      className="w-10/12 md:w-4/6 bg-db-figure p-4 lg:min-h-85v m-auto min-h-85v rounded-lg"
+      className="w-10/12 md:w-4/6 bg-night p-4 lg:min-h-85v m-auto min-h-85v rounded-lg"
     >
-      <h2 className="mb-4 uppercase text-xs tracking-wider">Projects</h2>
-      <ul className="text-xs">{links}</ul>
+      <h2 className="text-xl mb-4 font-serif italic text-wider">Projects</h2>
+      <ul className="text-md">{links}</ul>
     </nav>
   ) : null;
 };

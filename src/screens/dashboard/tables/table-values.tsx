@@ -29,7 +29,7 @@ export default ValuesTable;
 
 const Header = () => {
   const css =
-    "text-sky-800 font-normal text-xs sm:text-sm tracking-wider uppercase pb-2";
+    "text-celestial font-normal text-xs sm:text-sm tracking-wider uppercase pb-2";
 
   const text = `after:content-['#'] md:after:content-['Principles']`;
 
@@ -50,12 +50,12 @@ const Header = () => {
         <th className={`${css} text-left w-2/5`}>Value</th>
         <th className={`${css} ${text} text-xs tracking-wider w-1/5`}></th>
         <th
-          className={`${css} text-green-800 w-1/5 after:content-['✓'] md:after:content-['honouring']`}
+          className={`${css} text-honouring w-1/5 after:content-['✓'] md:after:content-['honouring']`}
         >
           <span className="hidden">for accessibility</span>
         </th>
         <th
-          className={`${css} text-pink-800 w-1/5 after:content-['✗'] md:after:content-['breaking']`}
+          className={`${css} text-breaking w-1/5 after:content-['✗'] md:after:content-['breaking']`}
         >
           <span className="hidden">for accessibility</span>
         </th>
@@ -74,7 +74,7 @@ const Row = ({ value }: ValueProps) => {
   return (
     <>
       <tr>
-        <td className="my-2 py-2 hover:text-orange-800">
+        <td className="my-2 py-2 hover:text-sun">
           <button
             className="text-left"
             onClick={() => handleClick(value.name.toLowerCase())}
@@ -104,7 +104,7 @@ const Footer = ({ totals }: TotalsProps) => {
     <tfoot>
       <tr>
         <th
-          className="text-sky-800 font-normal text-xs uppercase tracking-wider text-left pt-6"
+          className="text-celestial font-normal text-xs uppercase tracking-wider text-left pt-6"
           scope="row"
         >
           Totals
@@ -112,8 +112,8 @@ const Footer = ({ totals }: TotalsProps) => {
         <th>
           <span className="hidden">for accessibility</span>
         </th>
-        <th className="text-sky-800 font-normal">{totals.honouring}</th>
-        <th className="text-sky-800 font-normal">{totals.breaking}</th>
+        <th className="text-honouring font-normal">{totals.honouring}</th>
+        <th className="text-breaking font-normal">{totals.breaking}</th>
       </tr>
     </tfoot>
   );

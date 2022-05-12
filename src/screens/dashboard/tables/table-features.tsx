@@ -43,12 +43,12 @@ const Header = (): JSX.Element => {
       <tr>
         <th className={`${css} text-left w-3/5`}>Principle</th>
         <th
-          className={`${css} text-green-800 w-1/5 after:content-['✓'] md:after:content-['honouring']`}
+          className={`${css} text-honouring w-1/5 after:content-['✓'] md:after:content-['honouring']`}
         >
           <span className="hidden">for accessibility</span>
         </th>
         <th
-          className={`${css} text-pink-800 w-1/5 after:content-['✗'] md:after:content-['breaking']`}
+          className={`${css} text-breaking w-1/5 after:content-['✗'] md:after:content-['breaking']`}
         >
           <span className="hidden">for accessibility</span>
         </th>
@@ -76,7 +76,7 @@ export const Row = ({ feature }: { feature: Feature }): JSX.Element => {
   return (
     <>
       <tr>
-        <td className="my-2 py-2 hover:text-orange-800">
+        <td className="my-2 py-2 hover:text-sun">
           <button
             className="text-left"
             onClick={() => handleClick(feature.name.toLowerCase())}
@@ -109,8 +109,8 @@ const Footer = ({ totals }: TotalsProps): JSX.Element => {
         >
           Totals
         </th>
-        <th className="text-green-800 font-normal">{totals.honouring}</th>
-        <th className="text-pink-800 font-normal">{totals.breaking}</th>
+        <th className="text-honouring font-normal">{totals.honouring}</th>
+        <th className="text-breaking font-normal">{totals.breaking}</th>
       </tr>
     </tfoot>
   );

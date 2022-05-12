@@ -19,14 +19,14 @@ const Dashboard = (): JSX.Element => {
   }, [name, id]);
 
   const css = `
-    border-b hover:border-sky-800 focus:border-sky-800
+    border-b border-black hover:border-light
     uppercase 
-    text-sky-800 hover:text-black focus:text-black text-xs sm:text-sm 
+    text-celestial hover:text-light text-xs sm:text-sm 
     mr-4 tracking-wider
     `;
 
   return snapshotId ? (
-    <main className="w-10/12 md:w-4/6 bg-db-figure p-4 min-h-full mx-auto rounded-lg">
+    <main className="w-10/12 md:w-4/6 bg-night p-4 min-h-full mx-auto rounded-lg">
       <h2 className="text-xl mb-4 font-serif italic text-wider">
         {transformSourceName(source)}
       </h2>
