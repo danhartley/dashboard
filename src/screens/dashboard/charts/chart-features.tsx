@@ -7,18 +7,11 @@ import {
   CategoryScale,
   BarElement,
   Tooltip,
-  // Legend
 } from "chart.js";
 import { ColourType } from "src/shared/types";
 
 Chart.register(annotationPlugin);
-Chart.register(
-  LinearScale,
-  CategoryScale,
-  BarElement,
-  Tooltip
-  // , Legend
-);
+Chart.register(LinearScale, CategoryScale, BarElement, Tooltip);
 
 type ChartProps = {
   totals: {
@@ -32,8 +25,8 @@ const TotalsChart = ({ totals }: ChartProps) => {
 
   useEffect(() => {
     const bgColours = Array<ColourType>();
-    bgColours.push("#ADFB2E");
-    bgColours.push("#FDC0CB");
+    bgColours.push("#7f1d1d");
+    bgColours.push("#0c4a6e");
 
     setData({
       type: "bar",
@@ -52,18 +45,18 @@ const TotalsChart = ({ totals }: ChartProps) => {
     scales: {
       x: {
         grid: {
-          borderColor: "white",
+          borderColor: "black",
         },
         ticks: {
-          color: "white",
+          color: "black",
         },
       },
       y: {
         grid: {
-          borderColor: "white",
+          borderColor: "black",
         },
         ticks: {
-          color: "white",
+          color: "black",
         },
       },
     },

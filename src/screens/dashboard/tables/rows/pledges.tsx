@@ -2,12 +2,13 @@ import { PledgeRowProps, PledgesRowProps } from "src/shared/types";
 
 const PledgeRow = ({ pledge, colSpan }: PledgeRowProps): JSX.Element => {
   const isTrue = (state, content) => {
-    let classes = `text-ml text-center w-1/5`;
-    classes += state ? ` after:content-['${content}']` : " after:content-['-']";
+    const classes = state
+      ? ` after:content-['${content}']`
+      : " after:content-['-']";
     return classes;
   };
 
-  const nameClasses = `${colSpan === 3 ? "w-3/5" : "w-2/5"} text-xs py-1`;
+  const nameClasses = `${colSpan === 4 ? "w-8/12" : "w-6/12"} text-xs py-1`;
 
   return (
     <>
@@ -15,9 +16,15 @@ const PledgeRow = ({ pledge, colSpan }: PledgeRowProps): JSX.Element => {
         <td className={nameClasses}>
           <span className="pl-4 display: inline-block">{pledge.name}</span>
         </td>
-        <td className={isTrue(pledge.honouring > 0, "✓")}></td>
-        <td className={isTrue(pledge.breaking > 0, "✗")}></td>
-        {colSpan === 4 ? <td className="text-xs text-center w-1/5"></td> : null}
+        <td className="text-xs text-center w-2/12">
+          <span className={isTrue(pledge.honouring > 0, "✓")}></span>
+        </td>
+        <td className="text-xs text-center w-2/12">
+          <span className={isTrue(pledge.breaking > 0, "✗")}></span>
+        </td>
+        {colSpan === 5 ? (
+          <td className="text-xs text-center w-2/12"></td>
+        ) : null}
       </tr>
     </>
   );

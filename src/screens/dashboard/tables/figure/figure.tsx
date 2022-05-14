@@ -8,7 +8,7 @@ const Figure = ({
   children?: JSX.Element | JSX.Element[];
 }) => {
   return (
-    <figure className="w-full border-solid border-stone-500 border p-3 my-2">
+    <figure className="w-full border-solid border-stone-500 border p-3 my-2 rounded">
       <figcaption className="font-serif mb-4">
         <em>{transformSourceName(title)}</em>
       </figcaption>

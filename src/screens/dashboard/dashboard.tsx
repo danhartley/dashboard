@@ -19,25 +19,46 @@ const Dashboard = (): JSX.Element => {
   }, [name, id]);
 
   const css = `
-    border-b border-black hover:border-light
-    uppercase 
-    text-celestial hover:text-light text-xs sm:text-sm 
+    border-b border-stone-300 hover:border-black
+    uppercase hover:stone-500 text-xs sm:text-sm 
     mr-4 tracking-wider
     `;
 
   return snapshotId ? (
-    <main className="w-10/12 md:w-4/6 bg-night p-4 min-h-full mx-auto rounded-lg">
+    <main className="w-10/12 md:w-4/6 p-4 min-h-full mx-auto">
       <h2 className="text-xl mb-4 font-serif italic text-wider">
         {transformSourceName(source)}
       </h2>
       <Tabs defaultIndex={0}>
         <TabList>
-          <Tab className={css}>All</Tab>
-          <Tab className={css}>By principle</Tab>
           <Tab className={css}>By value</Tab>
+          <Tab className={css}>By principle</Tab>
           <Tab className={css}>Checklists</Tab>
+          <Tab className={css}>All</Tab>
         </TabList>
         <TabPanels>
+          <TabPanel>
+            <ValuesView
+              source={source}
+              snapshotId={snapshotId}
+              setSnapshotId={setSnapshotId}
+            ></ValuesView>
+          </TabPanel>
+          <TabPanel>
+            <FeaturesView
+              source={source}
+              snapshotId={snapshotId}
+              setSnapshotId={setSnapshotId}
+              showAllViews={true}
+            ></FeaturesView>
+          </TabPanel>
+          <TabPanel>
+            <PledgesView
+              source={source}
+              snapshotId={snapshotId}
+              setSnapshotId={setSnapshotId}
+            ></PledgesView>
+          </TabPanel>
           <TabPanel>
             <FeaturesView
               source={source}
@@ -51,28 +72,6 @@ const Dashboard = (): JSX.Element => {
               setSnapshotId={setSnapshotId}
               showAllViews={false}
             ></ValuesView>
-          </TabPanel>
-          <TabPanel>
-            <FeaturesView
-              source={source}
-              snapshotId={snapshotId}
-              setSnapshotId={setSnapshotId}
-              showAllViews={true}
-            ></FeaturesView>
-          </TabPanel>
-          <TabPanel>
-            <ValuesView
-              source={source}
-              snapshotId={snapshotId}
-              setSnapshotId={setSnapshotId}
-            ></ValuesView>
-          </TabPanel>
-          <TabPanel>
-            <PledgesView
-              source={source}
-              snapshotId={snapshotId}
-              setSnapshotId={setSnapshotId}
-            ></PledgesView>
           </TabPanel>
         </TabPanels>
       </Tabs>

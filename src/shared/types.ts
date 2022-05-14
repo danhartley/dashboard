@@ -101,8 +101,8 @@ const VIEWTYPES = {
 export type ViewType = typeof VIEWTYPES[keyof typeof VIEWTYPES];
 
 const PLEDGEACTIONCOLOURS = {
-  HONOURING: "#ADFB2E", // honouring
-  BREAKING: "#FDC0CB", // breaking
+  HONOURING: "#7f1d1d", // honouring
+  BREAKING: "#0c4a6e", // breaking
 } as const;
 
 export type ColourType =

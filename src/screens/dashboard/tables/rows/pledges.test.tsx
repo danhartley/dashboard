@@ -65,6 +65,6 @@ describe("A pledges row", () => {
         ></PledgesRow>
       </Wrapper>
     );
-    expect(screen.getAllByRole("cell").length).toBe(1 + 4 + 4);
+    expect(screen.getAllByRole("cell").length).toBe(1 + 3 + 3);
   });
 });

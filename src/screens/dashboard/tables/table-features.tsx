@@ -12,7 +12,7 @@ const FeaturesTable = ({ data }: FeatureTableProps): JSX.Element => {
     <table
       role="tabpanel"
       data-table-id="features"
-      className="w-11/12 text-xs sm:text-base mb-16"
+      className="text-xs sm:text-base mb-16 w-full"
     >
       <Header />
       <tbody>
@@ -33,7 +33,7 @@ const Header = (): JSX.Element => {
   return (
     <thead>
       <tr>
-        <th>
+        <th colSpan={2}>
           <span className="hidden">for accessibility</span>
         </th>
         <th className={css} colSpan={2}>
@@ -41,14 +41,17 @@ const Header = (): JSX.Element => {
         </th>
       </tr>
       <tr>
-        <th className={`${css} text-left w-3/5`}>Principle</th>
+        <th className="w-1/12"></th>
+        <th className={`${css} text-left w-7/12`}>
+          <span className="-ml-10">Principle</span>
+        </th>
         <th
-          className={`${css} text-honouring w-1/5 after:content-['✓'] md:after:content-['honouring']`}
+          className={`${css} w-2/12 after:content-['✓'] md:after:content-['honouring']`}
         >
           <span className="hidden">for accessibility</span>
         </th>
         <th
-          className={`${css} text-breaking w-1/5 after:content-['✗'] md:after:content-['breaking']`}
+          className={`${css} w-2/12 after:content-['✗'] md:after:content-['breaking']`}
         >
           <span className="hidden">for accessibility</span>
         </th>
@@ -65,33 +68,42 @@ type Feature = {
 };
 
 export const Row = ({ feature }: { feature: Feature }): JSX.Element => {
-  const [selectedFeature, setSelectedFeature] = useState("");
-
+  type RowType = {
+    id?: string;
+    open?: boolean;
+  };
+  const [selected, setSelected] = useState<RowType>({});
   const handleClick = (id) => {
-    id !== selectedFeature ? setSelectedFeature(id) : setSelectedFeature("");
+    id !== selected.id
+      ? setSelected({ id: id, open: !selected.open })
+      : setSelected({});
   };
 
-  const isSelected = feature.name.toLowerCase() === selectedFeature;
+  let css = "text-xs ";
+  css += selected.open ? "before:content-['-']" : "before:content-['+']";
 
   return (
     <>
       <tr>
-        <td className="my-2 py-2 hover:text-sun">
+        <td className="w-1/12">
+          <span className={css}></span>
+        </td>
+        <td className="w-7/12 my-2 py-2">
           <button
-            className="text-left"
+            className="text-left -ml-10"
             onClick={() => handleClick(feature.name.toLowerCase())}
           >
             {feature.name}
           </button>
         </td>
-        <td className={"my-2 text-center"}>{feature.honouring}</td>
-        <td className={"my-2 text-center"}>{feature.breaking}</td>
+        <td className={"w-2/12 my-2 text-center"}>{feature.honouring}</td>
+        <td className={"w-2/12 my-2 text-center"}>{feature.breaking}</td>
       </tr>
-      {isSelected ? (
+      {feature.name.toLowerCase() === selected.id ? (
         <PledgesRow
           key={feature.name}
           pledges={feature.pledges}
-          colSpan={3}
+          colSpan={4}
           source={feature.name}
         ></PledgesRow>
       ) : null}
@@ -109,8 +121,8 @@ const Footer = ({ totals }: TotalsProps): JSX.Element => {
         >
           Totals
         </th>
-        <th className="text-honouring font-normal">{totals.honouring}</th>
-        <th className="text-breaking font-normal">{totals.breaking}</th>
+        <th className="font-normal">{totals.honouring}</th>
+        <th className="font-normal">{totals.breaking}</th>
       </tr>
     </tfoot>
   );

@@ -37,7 +37,7 @@ const PledgesView = ({ source, snapshotId, setSnapshotId }: ViewProps) => {
         <table
           role="tabpanel"
           data-table-id="values"
-          className="w-11/12 text-xs sm:text-base mb-16"
+          className="w-full text-xs sm:text-base mb-16"
         >
           <Header />
           <tbody>
@@ -55,52 +55,77 @@ const PledgesView = ({ source, snapshotId, setSnapshotId }: ViewProps) => {
 export default PledgesView;
 
 const Header = (): JSX.Element => {
-  const css =
-    "text-celestial font-normal text-xs sm:text-sm tracking-wider uppercase pb-2";
+  const css = "font-normal text-xs sm:text-sm tracking-wider uppercase pb-2";
 
   return (
     <thead>
       <tr>
-        <th colSpan={2} className={`text-left ${css}`}>
-          Pledge
+        <th className={`w-1/12 text-left ${css}`}>
+          <span>&nbsp;</span>
         </th>
+        <th></th>
+      </tr>
+      <tr>
+        <th className="w-1/12"></th>
+        <th className={`w-8/12 text-left ${css}`}>
+          <span className=" lg:-ml-10">Pledge</span>
+        </th>
+        <th className="w-3/12"></th>
       </tr>
     </thead>
   );
 };
 
 const Row = ({ pledge }: PledgeProps): JSX.Element => {
-  const [selectedValue, setSelectedValue] = useState("");
-
-  const handleClick = (id) => {
-    id !== selectedValue ? setSelectedValue(id) : setSelectedValue("");
+  type RowType = {
+    id?: string;
+    open?: boolean;
   };
+  const [selected, setSelected] = useState<RowType>({});
+  const handleClick = (id) => {
+    id !== selected.id
+      ? setSelected({ id: id, open: !selected.open })
+      : setSelected({});
+  };
+
+  let css = "text-xs mr-2 ";
+  css += selected.open ? "before:content-['-']" : "before:content-['+']";
+
   return (
     <>
       <tr>
-        <td className="my-2 py-2 hover:text-sun">
+        <td className="w-1/12">
+          <span className={css}></span>
+        </td>
+        <td className="w-8/12 my-2 py-2 hover:text-hover-over">
           <button
-            className="text-left"
+            className="text-left lg:-ml-10"
             onClick={() => handleClick(pledge.name.toLowerCase())}
           >
             {pledge.name}
           </button>
         </td>
+        <td className="w-3/12">
+          <span className="display-inline"></span>
+        </td>
       </tr>
 
-      {pledge.name.toLowerCase() === selectedValue.toLowerCase()
+      {pledge.name.toLowerCase() === selected.id
         ? pledge.checklist.map((item) => {
-            const css = "pl-4 display: inline-block text-xs";
+            const css = "pl-4 display: inline-block text-xs w-8/12";
 
             return (
               <tr key={item.check}>
+                <td className="w-1/12"></td>
                 <td className={css}>{item.check}</td>
-                <td
-                  className={
-                    item.checked ? "after:content-['✓']" : "after:content-['✗']"
-                  }
-                >
-                  {item.checked}
+                <td className="w-3/12">
+                  <span
+                    className={
+                      item.checked
+                        ? "inline after:content-['✓']"
+                        : "inline after:content-['✗']"
+                    }
+                  ></span>
                 </td>
               </tr>
             );
