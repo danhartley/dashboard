@@ -1,9 +1,13 @@
+import { indexOf } from "cypress/types/lodash";
+
 export const total = (total, next) => {
   return total + next;
 };
 
 export const getSnapshotsWithTotals = (snapshot) => {
-  const features = Array.from(new Set(snapshot.items.map((i) => i.name)));
+  const features = snapshot.items
+    .map((i) => i.name)
+    .filter((e, i, a) => i === a.indexOf(e));
 
   snapshot.items.forEach((i) => {
     i.honouring = i.pledges.map((p) => p.honouring).reduce(total, 0);
@@ -42,9 +46,9 @@ export const getSnapshotsWithTotals = (snapshot) => {
 };
 
 export const getValuesWithTotals = (snapshot) => {
-  const snapshotValues = Array.from(
-    new Set(snapshot.items.map((i) => i.value))
-  );
+  const snapshotValues = snapshot.items
+    .map((i) => i.value)
+    .filter((e, i, a) => i === a.indexOf(e));
   const flattenedValues = snapshotValues
     .map((value) => {
       return snapshot.items.filter((i) => i.value === value);
@@ -63,9 +67,9 @@ export const getValuesWithTotals = (snapshot) => {
         .filter((ov) => ov.value === sh)
         .map((v) => v.breaking)
         .reduce(total, 0),
-      features: Array.from(
-        new Set(orderedValues.filter((ov) => ov.value === sh))
-      ).length,
+      features: orderedValues
+        .filter((ov) => ov.value === sh)
+        .filter((e, i, a) => i === a.indexOf(e)).length,
       pledges: orderedValues
         .filter((ov) => ov.value === sh)
         .map((v) => v.pledges)
